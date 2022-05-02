@@ -19,7 +19,7 @@ public class PlayerSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || (Gamepad.current.rightTrigger.wasPressedThisFrame))
+        if (Input.GetMouseButtonDown(0))// || (Gamepad.current.rightTrigger.wasPressedThisFrame))
         {
             myAnim.Play("PlayerAttack");
             DoBasicProjectile();
@@ -29,13 +29,13 @@ public class PlayerSkills : MonoBehaviour
 
     void DoBasicProjectile()
     {
-        GameObject proj = Instantiate(BasicProjectile, transform.position + transform.right * .1f, transform.localRotation);
+        GameObject proj = Instantiate(BasicProjectile, transform.position + (transform.right * .1f) + Vector3.up*.15f, transform.localRotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.TargetEnemy = true;
         BP.dmg = 1;
 
 
-        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * .5f;
+        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 3.5f;
 
 
     }

@@ -16,6 +16,7 @@ public class CamControls : MonoBehaviour
     float zoomDist = 0;
     public Image RedFlash;
     Color32 redflashCol;
+    public GameObject DebugMenu;
 
     private void Start()
     {
@@ -102,6 +103,18 @@ public class CamControls : MonoBehaviour
             {
                 transform.eulerAngles = Vector3.zero;
             }
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Backspace))
+        {
+            if(!DebugMenu.activeSelf)
+            DebugMenu.SetActive(true);
+            else
+                DebugMenu.SetActive(false);
+
         }
     }
 }

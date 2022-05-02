@@ -15,6 +15,7 @@ public class NPCStatus : MonoBehaviour
     public float preventAtk = 0;
     public bool Alive = true;
     public List<GameObject> Gibs;
+    public float RunSpeed;
 
     private void Start()
     {

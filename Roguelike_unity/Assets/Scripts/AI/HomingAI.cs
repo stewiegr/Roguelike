@@ -95,7 +95,7 @@ public class HomingAI : MonoBehaviour
 
     void DoMovement()
     {
-        MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, 1f));// * Time.deltaTime;     
+        MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
     }
 
     public void Knockback(float _duration)
@@ -159,16 +159,16 @@ public class HomingAI : MonoBehaviour
         if (!xOb && !yOb)
         {
             if (GameInfo.Player.position.x + desiredPos.x - transform.position.x < -.15f)
-                movement.x = -1;
+                movement.x = -MyStatus.RunSpeed;
             else if (GameInfo.Player.position.x + desiredPos.x - transform.position.x > .15f)
-                movement.x = 1;
+                movement.x = MyStatus.RunSpeed;
             else
                 movement.x = 0;
 
             if (GameInfo.Player.position.y + desiredPos.y - transform.position.y < -.15f)
-                movement.y = -1;
+                movement.y = -MyStatus.RunSpeed;
             else if (GameInfo.Player.position.y + desiredPos.y - transform.position.y > .15f)
-                movement.y = 1;
+                movement.y = MyStatus.RunSpeed;
             else
                 movement.y = 0;
         }

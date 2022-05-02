@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void DoMovement()
     {
-        transform.position += (Vector3)Vector2.ClampMagnitude(movement, 1) * Time.deltaTime;
+        transform.position += (Vector3)Vector2.ClampMagnitude(movement, 3) * Time.deltaTime;
 
         if (Cursor.visible)
         {
@@ -111,16 +111,16 @@ public class PlayerController : MonoBehaviour
     void CheckKeyboard()
     {
         if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-            movement.x = -1;
+            movement.x = -3;
         else if (!Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-            movement.x = 1;
+            movement.x = 3;
         else
             movement.x = 0;
 
         if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
-            movement.y = 1;
+            movement.y = 3;
         else if (!Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
-            movement.y = -1;
+            movement.y = -3;
         else
             movement.y = 0;
     }
