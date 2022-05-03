@@ -1,28 +1,7 @@
 fileFormatVersion: 2
-guid: 2004f5a0b91db324fbdf9fcf3ce46069
+guid: a41c727e6dea07548adf5227efcb1abc
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 2582388242363297581
-    second: Despawn_anim_spritesheet_0
-  - first:
-      213: -5100029968625708320
-    second: Despawn_anim_spritesheet_1
-  - first:
-      213: 7929388346908973451
-    second: Despawn_anim_spritesheet_2
-  - first:
-      213: -5562606378732836683
-    second: Despawn_anim_spritesheet_3
-  - first:
-      213: -7265711930847351415
-    second: Despawn_anim_spritesheet_4
-  - first:
-      213: -893990468046744161
-    second: Despawn_anim_spritesheet_5
-  - first:
-      213: -6265705235932174051
-    second: Despawn_anim_spritesheet_6
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -110,18 +89,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -137,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_0
+      name: Door_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
-        height: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +118,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2fa532ac6c76d320800000000000000
-      internalID: 2582388242363297581
+      spriteID: 471f3e7cd7b736746b4213dc487f236a
+      internalID: -997423277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_1
+      name: Door_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83fdf77ca6c07a4e8c9e9de2e9787be
+      internalID: 149571937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
-        width: 32
-        height: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e2d730c3cd0939b0800000000000000
-      internalID: -5100029968625708320
+      spriteID: cb290110ee5845e4180763baef0a92ac
+      internalID: 993141057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_2
+      name: Door_3
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
+        x: 48
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,92 +181,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8991a790b8da0e60800000000000000
-      internalID: 7929388346908973451
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Despawn_anim_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b8ae4278f6adc2b0800000000000000
-      internalID: -5562606378732836683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Despawn_anim_spritesheet_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98da6898e710b2b90800000000000000
-      internalID: -7265711930847351415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Despawn_anim_spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f951d77e768e793f0800000000000000
-      internalID: -893990468046744161
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Despawn_anim_spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1925f8f84ebb09a0800000000000000
-      internalID: -6265705235932174051
+      spriteID: 870f646cd821bfa4ebaa28629eb4e7ec
+      internalID: 979446666
       vertices: []
       indices: 
       edges: []
@@ -294,13 +198,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Despawn_anim_spritesheet_4: -7265711930847351415
-      Despawn_anim_spritesheet_5: -893990468046744161
-      Despawn_anim_spritesheet_0: 2582388242363297581
-      Despawn_anim_spritesheet_6: -6265705235932174051
-      Despawn_anim_spritesheet_2: 7929388346908973451
-      Despawn_anim_spritesheet_3: -5562606378732836683
-      Despawn_anim_spritesheet_1: -5100029968625708320
+      Door_1: 149571937
+      Door_3: 979446666
+      Door_0: -997423277
+      Door_2: 993141057
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

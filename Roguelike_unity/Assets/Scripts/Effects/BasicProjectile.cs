@@ -21,13 +21,18 @@ public class BasicProjectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         {
-            if (TargetEnemy && collision.transform.tag == "Enemy" || TargetPlayer &&  collision.transform.tag == "Player")
+            if ((TargetEnemy && collision.transform.tag == "Enemy" || TargetPlayer &&  collision.transform.tag == "Player"))
             {
                 CreateExplosion(TargetPlayer, TargetEnemy);
                 GameObject.Destroy(this.gameObject);
             }
+            if(collision.transform.tag=="WorldObject")
+            {
+                CreateExplosion(TargetPlayer, TargetEnemy);
+            }
         }
     }
+
 
     void CreateExplosion(bool _player, bool _enemy)
     {

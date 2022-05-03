@@ -35,7 +35,7 @@ public class PlayerSkills : MonoBehaviour
         BP.dmg = 1;
 
 
-        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 3.5f;
+        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 7.5f;
 
 
     }

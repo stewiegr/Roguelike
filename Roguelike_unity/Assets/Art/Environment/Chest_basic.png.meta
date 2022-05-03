@@ -1,28 +1,7 @@
 fileFormatVersion: 2
-guid: 2004f5a0b91db324fbdf9fcf3ce46069
+guid: 81d80e2d62c5cb34d99afc46e5ec5575
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 2582388242363297581
-    second: Despawn_anim_spritesheet_0
-  - first:
-      213: -5100029968625708320
-    second: Despawn_anim_spritesheet_1
-  - first:
-      213: 7929388346908973451
-    second: Despawn_anim_spritesheet_2
-  - first:
-      213: -5562606378732836683
-    second: Despawn_anim_spritesheet_3
-  - first:
-      213: -7265711930847351415
-    second: Despawn_anim_spritesheet_4
-  - first:
-      213: -893990468046744161
-    second: Despawn_anim_spritesheet_5
-  - first:
-      213: -6265705235932174051
-    second: Despawn_anim_spritesheet_6
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -110,18 +89,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -137,11 +104,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_0
+      name: Chest_basic_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -151,18 +118,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2fa532ac6c76d320800000000000000
-      internalID: 2582388242363297581
+      spriteID: 82151e2d9d8a83b4692a911d6a331601
+      internalID: 573312809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_1
+      name: Chest_basic_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -172,18 +139,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e2d730c3cd0939b0800000000000000
-      internalID: -5100029968625708320
+      spriteID: 83f235f4b2f95d54da36397e08fe35ff
+      internalID: 1658655154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_2
+      name: Chest_basic_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -193,18 +160,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8991a790b8da0e60800000000000000
-      internalID: 7929388346908973451
+      spriteID: b4bdb974af381c04a9ad3058ea982cea
+      internalID: -1041513215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_3
+      name: Chest_basic_3
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -214,18 +181,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b8ae4278f6adc2b0800000000000000
-      internalID: -5562606378732836683
+      spriteID: 11e50e4ba8814d04fb96bf7ae65337b7
+      internalID: -1830006358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_4
+      name: Chest_basic_4
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -235,18 +202,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98da6898e710b2b90800000000000000
-      internalID: -7265711930847351415
+      spriteID: 133d885145d2b7e46a7f37c0f0b24ab5
+      internalID: 953495704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_5
+      name: Chest_basic_5
       rect:
         serializedVersion: 2
         x: 160
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -256,18 +223,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f951d77e768e793f0800000000000000
-      internalID: -893990468046744161
+      spriteID: ee2aafb97ea02d3409339c6406a7942f
+      internalID: 622450857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Despawn_anim_spritesheet_6
+      name: Chest_basic_6
       rect:
         serializedVersion: 2
         x: 192
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -277,8 +244,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1925f8f84ebb09a0800000000000000
-      internalID: -6265705235932174051
+      spriteID: d15895c3514209946bfc5cc6bc03570f
+      internalID: 769673993
       vertices: []
       indices: 
       edges: []
@@ -294,13 +261,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Despawn_anim_spritesheet_4: -7265711930847351415
-      Despawn_anim_spritesheet_5: -893990468046744161
-      Despawn_anim_spritesheet_0: 2582388242363297581
-      Despawn_anim_spritesheet_6: -6265705235932174051
-      Despawn_anim_spritesheet_2: 7929388346908973451
-      Despawn_anim_spritesheet_3: -5562606378732836683
-      Despawn_anim_spritesheet_1: -5100029968625708320
+      Chest_basic_6: 769673993
+      Chest_basic_3: -1830006358
+      Chest_basic_2: -1041513215
+      Chest_basic_1: 1658655154
+      Chest_basic_0: 573312809
+      Chest_basic_5: 622450857
+      Chest_basic_4: 953495704
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
