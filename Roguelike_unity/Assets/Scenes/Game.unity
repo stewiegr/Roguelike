@@ -2950,7 +2950,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &379020593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9300,10 +9300,10 @@ MonoBehaviour:
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  SpawnDelay: 30
+  SpawnDelay: 10
   Waves: 3
-  MaxPerWave: 100
-  MinPerWave: 50
+  MaxPerWave: 25
+  MinPerWave: 15
   WaveModifier: 1.25
   SpawnBounds1: {x: -9, y: 5.5}
   SpawnBounds2: {x: 9, y: -4.5}
