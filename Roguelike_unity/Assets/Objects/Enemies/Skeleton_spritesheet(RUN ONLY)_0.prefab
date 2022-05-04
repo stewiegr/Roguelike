@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3064419744887775197}
   - component: {fileID: -1058236326798848937}
   - component: {fileID: -1758737721101815025}
-  - component: {fileID: 6889191222014256735}
+  - component: {fileID: 952994781760852485}
   m_Layer: 6
   m_Name: Skeleton_spritesheet(RUN ONLY)_0
   m_TagString: Enemy
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &3296787891474627488
 Animator:
   serializedVersion: 4
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnim: {fileID: 3296787891474627488}
   MyNav: {fileID: -1058236326798848937}
-  Life: 5
+  Life: 3
   AtkDmg: 2
-  AtkRange: 0.25
-  AtkDly: 90
+  AtkRange: 0.8
+  AtkDly: 65
   preventAtk: 0
   Alive: 1
   Gibs:
@@ -153,6 +153,7 @@ MonoBehaviour:
   - {fileID: 3491742006542195160, guid: f52f8c1e8fd800a48b9f568fa069ed13, type: 3}
   - {fileID: 6954091987368322368, guid: 53f53b558a0eac74ebd70eb45423c8d8, type: 3}
   RunSpeed: 3
+  GM: {fileID: 0}
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,8 +191,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &6889191222014256735
-CircleCollider2D:
+--- !u!61 &952994781760852485
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -203,6 +204,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021765202, y: -0.22855195}
+  m_Offset: {x: 0.006943226, y: 0.33388704}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.22332288
+  m_Size: {x: 0.2547574, y: 0.47262037}
+  m_EdgeRadius: 0

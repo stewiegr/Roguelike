@@ -16,6 +16,7 @@ public class NPCStatus : MonoBehaviour
     public bool Alive = true;
     public List<GameObject> Gibs;
     public float RunSpeed;
+    public GameManager GM;
 
     private void Start()
     {
@@ -27,6 +28,9 @@ public class NPCStatus : MonoBehaviour
                 Gibs[i].SetActive(false);
             }
         }
+
+        if (Random.Range(0, 30) > 28)
+            RunSpeed = 6;
     }
 
     public void TakeDmg(int _dmg, float _knockback)
@@ -35,7 +39,7 @@ public class NPCStatus : MonoBehaviour
         Life -= _dmg;
         if (Life > 0)
             MyNav.Knockback(_knockback);
-        else
+        else if(Alive)
         {
             Die();
         }
@@ -44,6 +48,8 @@ public class NPCStatus : MonoBehaviour
     void Die()
     {
         Alive = false;
+        GM.currentKillsThisWave++;
+        GM.LivingEnemies--;
         GetComponent<Collider2D>().enabled = false;
 
         if (Random.Range(0, 10) > 7)

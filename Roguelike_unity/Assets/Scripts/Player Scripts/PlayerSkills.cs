@@ -10,21 +10,28 @@ public class PlayerSkills : MonoBehaviour
     public GameObject NearCircle;
     public GameObject BasicProjectile;
     List<GameObject> Targets = new List<GameObject>(0);
-    bool resetTrigger = true;
+    float atkDly = 20;
+    PlayerStatus MyStatus;
     void Start()
     {
         myAnim = transform.root.GetComponent<Animator>();
+        MyStatus = transform.root.GetComponent<PlayerStatus>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))// || (Gamepad.current.rightTrigger.wasPressedThisFrame))
+        if (atkDly > 0)
+            atkDly -= 60 * Time.deltaTime;
+        if (MyStatus.Alive)
         {
-            myAnim.Play("PlayerAttack");
-            DoBasicProjectile();
+            if (Input.GetMouseButton(0) && atkDly<=0)// || (Gamepad.current.rightTrigger.wasPressedThisFrame))
+            {
+                atkDly = 15;
+                myAnim.Play("PlayerAttack");
+                DoBasicProjectile();
+            }
         }
-        
     }
 
     void DoBasicProjectile()

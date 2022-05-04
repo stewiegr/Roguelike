@@ -119,7 +119,7 @@ public class HomingAI : MonoBehaviour
         {
             FreeMove = false;
             KnockbackDur -= 60 * Time.deltaTime;
-            MyRB.velocity = Vector2.ClampMagnitude(((Vector2)transform.position - GameInfo.PlayerPos).normalized, Mathf.Clamp(KnockbackDur, 2, 5));
+            MyRB.velocity = Vector2.ClampMagnitude(((Vector2)transform.position - GameInfo.PlayerPos).normalized * 2, KnockbackDur);
         }
         else
             FreeMove = true;

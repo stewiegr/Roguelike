@@ -6,7 +6,7 @@ public class AreaDamage : MonoBehaviour
 {
     public float Dur = 3;
     public int Dmg = 1;
-    public float force;
+    public float force=20;
     public List<NPCStatus> AffectNPCs = new List<NPCStatus>();
     public PlayerStatus AffectPlayer=null;
     public bool HitPlayer = false;
@@ -49,7 +49,10 @@ public class AreaDamage : MonoBehaviour
                 NPC.TakeDmg(Dmg,force);
             }
         }
+    }
 
+    public void DestroyOnComplete()
+    {
         GameObject.Destroy(this.gameObject);
     }
 }

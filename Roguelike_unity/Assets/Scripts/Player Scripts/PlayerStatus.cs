@@ -7,12 +7,14 @@ public class PlayerStatus : MonoBehaviour
     // Start is called before the first frame update
     public int MaxLife = 8;
     public int CurrentLife = 8;
+    public bool Alive = true;
     float iFrames = 60;
     int activeHearts = 0;
     int updateHeart = 0;
     int heartLife;
     float heartAnimDel = 20;
     public List<HeartAnim> Hearts;
+    Animator MyAnim;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class PlayerStatus : MonoBehaviour
     {
         heartLife = CurrentLife;
         ActivateHearts();
+        MyAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -87,11 +90,17 @@ public class PlayerStatus : MonoBehaviour
 
         if (CurrentLife > 0 && iFrames<=0)
         {
+            MyAnim.SetTrigger("Hurt");
             CurrentLife -= _dmg;
             iFrames = 60;
             //CamID.Cam.JarScreen(new Vector3(Random.Range(-.06f, .06f), Random.Range(-.06f, .06f),-10f));]
             CamID.Cam.ZoomScreen(.05f);
            // CamID.Cam.DamageFlash(25);
+        }
+        if (CurrentLife<=0 && Alive)
+        {
+            Alive = false;
+            MyAnim.SetBool("Dead", true);
         }
     }
 

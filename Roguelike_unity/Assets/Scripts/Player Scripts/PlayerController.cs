@@ -17,12 +17,14 @@ public class PlayerController : MonoBehaviour
     Vector2 movement;
     SpriteRenderer MySpr;
     Animator myAnim;
+    PlayerStatus MyStatus;
 
     Vector2 mouseLast;
 
     public GameObject GamepadCH;
     public Transform AttackHandler;
     float PosUpdate = 20;
+    Rigidbody2D MyRB;
 
     // Start is called before the first frame update
     void Start()
@@ -32,28 +34,38 @@ public class PlayerController : MonoBehaviour
         Player = this.transform;
         MySpr = GetComponent<SpriteRenderer>();
         GamepadCH.SetActive(false);
+        MyStatus = GetComponent<PlayerStatus>();
+        MyRB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetInput();
-        DoMovement();
-
-        if(PosUpdate>=0)
+        if (MyStatus.Alive)
         {
-            PosUpdate -= 60 * Time.deltaTime;
-            if(PosUpdate<0)
+            GetInput();
+            DoMovement();
+
+            if (PosUpdate >= 0)
             {
-                GameInfo.PlayerPos = transform.position;
-                PosUpdate = 5;
+                PosUpdate -= 60 * Time.deltaTime;
+                if (PosUpdate < 0)
+                {
+                    GameInfo.PlayerPos = transform.position;
+                    PosUpdate = 5;
+                }
             }
+        }
+        else
+        {
+            movement = Vector2.zero;
+            
         }
     }
 
     void DoMovement()
     {
-        transform.position += (Vector3)Vector2.ClampMagnitude(movement, 3) * Time.deltaTime;
+         MyRB.velocity = (Vector3)Vector2.ClampMagnitude(movement, 3);
 
         if (Cursor.visible)
         {

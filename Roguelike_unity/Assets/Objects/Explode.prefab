@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 690056978226575204}
   - component: {fileID: 3883940841009068528}
   - component: {fileID: 6993859453735796979}
+  - component: {fileID: -1692471092944370014}
   m_Layer: 8
   m_Name: Explode
   m_TagString: Untagged
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
-  m_Color: {r: 1, g: 0.4698741, b: 0.109803915, a: 0.5529412}
+  m_Sprite: {fileID: -1742052682, guid: 0871acad7e6b88b45becc1389b8c7207, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dur: 3
   Dmg: 1
-  force: 0
+  force: 10
   AffectNPCs: []
   AffectPlayer: {fileID: 0}
   HitPlayer: 0
@@ -143,3 +144,23 @@ CircleCollider2D:
   m_Offset: {x: 0.0027515888, y: 0}
   serializedVersion: 2
   m_Radius: 0.5999701
+--- !u!95 &-1692471092944370014
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4849497849845511185}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b2f89f04c7d95a40b127ab318d4a420, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
