@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class CamControls : MonoBehaviour
 {
@@ -17,18 +18,21 @@ public class CamControls : MonoBehaviour
     public Image RedFlash;
     Color32 redflashCol;
     public GameObject DebugMenu;
+    public Transform Player;
+    public float followSharpness = 0.1f;
 
     private void Start()
     {
         HomePos = transform.position;
         ShakeDur = 0;
         ShakeAmt = 0;
-        CamID.Cam = this;
+        CamID.Cam = GetComponent<Camera>();
         CamID.GameCam = GetComponent<Camera>();
         JarDist.x = 0;
         JarDist.y = 0;
         homeZoom = GetComponent<Camera>().orthographicSize;
         redflashCol = RedFlash.color;
+
     }
 
     public void DamageFlash(byte alpha)
@@ -68,7 +72,10 @@ public class CamControls : MonoBehaviour
         {
             redflashCol.a = 0;
             RedFlash.color = redflashCol;
-        }    
+        }
+
+        
+            
     }
 
     void DoFlash()
@@ -116,5 +123,6 @@ public class CamControls : MonoBehaviour
                 DebugMenu.SetActive(false);
 
         }
+
     }
 }

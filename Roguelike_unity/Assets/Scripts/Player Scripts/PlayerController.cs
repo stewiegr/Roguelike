@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D MyRB;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameInfo.Player = this.transform;
         myAnim = GetComponent<Animator>();

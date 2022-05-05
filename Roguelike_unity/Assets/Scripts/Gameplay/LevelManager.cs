@@ -56,16 +56,7 @@ public class LevelManager : MonoBehaviour
                     delay -= 60 * Time.deltaTime;
                     if (delay <= 0)
                     {
-                        Vector2 pos;
-                        do
-                            pos = new Vector2(Random.Range(SpawnBounds1.x, SpawnBounds2.x), Random.Range(SpawnBounds1.y, SpawnBounds2.y));
-                        while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < 1.5f);
-
-                        GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos, transform.rotation);
-                        NPC.GetComponent<NPCStatus>().GM = GM;
-                        delay = SpawnDelay;
-                        spawnedSoFar++;
-                        GM.LivingEnemies++;
+                        SpawnMonster();
                     }
                 }
             }
@@ -78,8 +69,22 @@ public class LevelManager : MonoBehaviour
         {
             chestUp = true;
             RewardChest.gameObject.SetActive(true);
-            CamID.Cam.ShakeScreen(2, 5);
+            //CamID.Cam.ShakeScreen(2, 5);
         }
+    }
+
+    void SpawnMonster()
+    {
+        Vector2 pos;
+        do
+            pos = new Vector2(Random.Range(SpawnBounds1.x, SpawnBounds2.x), Random.Range(SpawnBounds1.y, SpawnBounds2.y));
+        while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < 1.5f);
+
+        GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos, transform.rotation);
+        NPC.GetComponent<NPCStatus>().GM = GM;
+        delay = SpawnDelay;
+        spawnedSoFar++;
+        GM.LivingEnemies++;
     }
 
     void InitWave()

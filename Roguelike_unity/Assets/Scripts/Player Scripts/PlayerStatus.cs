@@ -94,7 +94,7 @@ public class PlayerStatus : MonoBehaviour
             CurrentLife -= _dmg;
             iFrames = 60;
             //CamID.Cam.JarScreen(new Vector3(Random.Range(-.06f, .06f), Random.Range(-.06f, .06f),-10f));]
-            CamID.Cam.ZoomScreen(.05f);
+            //CamID.Cam.ZoomScreen(.05f);
            // CamID.Cam.DamageFlash(25);
         }
         if (CurrentLife<=0 && Alive)

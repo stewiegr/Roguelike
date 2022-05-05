@@ -65,7 +65,8 @@ public class NPCStatus : MonoBehaviour
                 }
             }
             gameObject.SetActive(false);
-            CamID.Cam.ShakeScreen(1, 4);
+           // GameObject.Destroy(this.gameObject);
+            CamID.CMController.ShakeScreen(1, 4);
         }
         else
         {

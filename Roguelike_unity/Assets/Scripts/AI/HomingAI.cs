@@ -73,20 +73,7 @@ public class HomingAI : MonoBehaviour
             }
             if(launch)
             {
-                if (UpTraj > -3)
-                {
-                    transform.position += Vector3.ClampMagnitude((Vector3)launchTraj + new Vector3(0, UpTraj, 0), 2) * Time.deltaTime;
-                    UpTraj -= .1f * 60 * Time.deltaTime;
-                    transform.eulerAngles += new Vector3(0, 0, rotAmt * 60 * Time.deltaTime);
-                }
-                else
-                {
-                    MyStatus.MyAnim.speed = 1;
-                    MyStatus.MyAnim.SetTrigger("Die");
-                    MySpr.sortingLayerName = "Default";
-                    launch = false;
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                }
+                LaunchMath();
             }
 
         }
@@ -96,6 +83,24 @@ public class HomingAI : MonoBehaviour
     void DoMovement()
     {
         MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
+    }
+
+    void LaunchMath()
+    {
+        if (UpTraj > -3)
+        {
+            transform.position += Vector3.ClampMagnitude((Vector3)launchTraj + new Vector3(0, UpTraj, 0), 2) * Time.deltaTime;
+            UpTraj -= .1f * 60 * Time.deltaTime;
+            transform.eulerAngles += new Vector3(0, 0, rotAmt * 60 * Time.deltaTime);
+        }
+        else
+        {
+            MyStatus.MyAnim.speed = 1;
+            MyStatus.MyAnim.SetTrigger("Die");
+            MySpr.sortingLayerName = "Default";
+            launch = false;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
     }
 
     public void Knockback(float _duration)
