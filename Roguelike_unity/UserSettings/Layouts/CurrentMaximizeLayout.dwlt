@@ -225,9 +225,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: ba010000
       m_LastClickedID: 0
-      m_ExpandedIDs: 26e8feff961cffff88b0ffffdaf1ffff28f9ffffda5700000a58000096580000bc580000
+      m_ExpandedIDs: 26e8feff961cffff88b0ffffdaf1ffff28f9ffff0a58000096580000bc580000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -526,9 +526,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 13.151342, y: 0.9103315, z: -0.46146855}
+    m_Target: {x: 0.5, y: -1, z: 0}
     speed: 2
-    m_Value: {x: 13.151342, y: 0.9103315, z: -0.46146855}
+    m_Value: {x: 0.5, y: -1, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -579,9 +579,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 56.121056
+    m_Target: 11.011357
     speed: 2
-    m_Value: 56.121056
+    m_Value: 11.011357
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -706,8 +706,8 @@ MonoBehaviour:
     y: 0
     width: 100
     height: 746
-  m_MinSize: {x: 242, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 240, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -816,21 +816,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Objects/Environment
+    - Assets/Art/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Objects/Environment
+  - Assets/Art/UI
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\lazyl\OneDrive\Desktop\Unity Project\Roguelike\Roguelike_unity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 160}
-    m_SelectedIDs: 5e5a0000
-    m_LastClickedID: 23134
+    scrollPos: {x: 0, y: 180}
+    m_SelectedIDs: 585a0000
+    m_LastClickedID: 23128
     m_ExpandedIDs: 000000003c5a00003e5a0000405a0000425a00000e5c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -884,10 +884,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000aa7c0000c07c0000421b0000e85500004e1b0000681d0000ee5b000000000000
+    m_SelectedInstanceIDs: ba010000
+    m_LastClickedInstanceID: 442
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000aa7c0000c07c0000421b0000e85500004e1b0000681d0000ee5b00000000000092590000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
