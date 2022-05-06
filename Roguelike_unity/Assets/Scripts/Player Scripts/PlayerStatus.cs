@@ -7,6 +7,7 @@ public class PlayerStatus : MonoBehaviour
     // Start is called before the first frame update
     public int MaxLife = 8;
     public int CurrentLife = 8;
+    public float RunSpeed;
     public bool Alive = true;
     float iFrames = 60;
     int activeHearts = 0;

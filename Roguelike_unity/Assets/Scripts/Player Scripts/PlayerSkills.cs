@@ -49,8 +49,7 @@ public class PlayerSkills : MonoBehaviour
 
     void DoBasicAtk()
     {
-        NearCircle.gameObject.SetActive(true);
-        NearCircle.GetComponent<TriggerMonitor>().SetValues(3, 3, 7);
+        //NearCircle.gameObject.SetActive(true);
     }
 
     public void ReceiveTargets(List<GameObject> Targets)

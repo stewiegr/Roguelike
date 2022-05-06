@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void DoMovement()
     {
-         MyRB.velocity = (Vector3)Vector2.ClampMagnitude(movement, 3);
+         MyRB.velocity = (Vector3)Vector2.ClampMagnitude(movement, MyStatus.RunSpeed);
 
         if (Cursor.visible)
         {
@@ -123,16 +123,16 @@ public class PlayerController : MonoBehaviour
     void CheckKeyboard()
     {
         if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-            movement.x = -3;
+            movement.x = -MyStatus.RunSpeed;
         else if (!Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-            movement.x = 3;
+            movement.x = MyStatus.RunSpeed; 
         else
             movement.x = 0;
 
         if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
-            movement.y = 3;
+            movement.y = MyStatus.RunSpeed; 
         else if (!Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
-            movement.y = -3;
+            movement.y = -MyStatus.RunSpeed; 
         else
             movement.y = 0;
     }
