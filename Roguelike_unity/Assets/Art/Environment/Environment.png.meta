@@ -1153,6 +1153,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Environment_50
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ea1bfefbc37204db2944f8f75dd1e9
+      internalID: 346248636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environment_51
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6a403c386f0a2145a578ab4b7e971d0
+      internalID: -436572007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environment_52
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86ea017758f5d6446a224654fdb92228
+      internalID: 109620828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1166,6 +1229,7 @@ TextureImporter:
     nameFileIdTable:
       Environment_12: 1389358531
       Environment_27: 2030933594
+      Environment_51: -436572007
       Environment_32: -969068036
       Environment_46: -119818770
       Environment_45: 2060942334
@@ -1185,6 +1249,7 @@ TextureImporter:
       Environment_43: 896989856
       Environment_22: -1200246301
       Environment_23: -1374266871
+      Environment_52: 109620828
       Environment_4: -1288363259
       Environment_17: 1027334174
       Environment_3: -499680686
@@ -1198,6 +1263,7 @@ TextureImporter:
       Environment_6: 17611326
       Environment_30: 1744467358
       Environment_36: 1683567105
+      Environment_50: 346248636
       Environment_25: 960772513
       Environment_47: -681806917
       Environment_38: -1861422874
