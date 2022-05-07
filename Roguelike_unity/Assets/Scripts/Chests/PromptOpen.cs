@@ -11,6 +11,8 @@ public class PromptOpen : MonoBehaviour
     public SpriteRenderer Item2;
     bool open = false;
 
+    float animDel = 20;
+
     Vector2 Item1Pos;
     Vector2 Item2Pos;
 
@@ -28,55 +30,67 @@ public class PromptOpen : MonoBehaviour
         {
             if(Prompt.gameObject.activeSelf)
             {
+                transform.root.GetComponent<Animator>().Play("WoodChestOpen");
                 OpenChest();
             }
         }
 
         if(open)
         {
-            LerpItemsOut();
+            if (animDel <= 0)
+                LerpItemsOut();
+            else
+                animDel -= 60 * Time.deltaTime;
         }
         if(!open && Item1.gameObject.activeSelf)
         {
-            if (Item1.transform.position.y > transform.position.y)
-                Item1.transform.position = Vector2.Lerp(Item1.transform.position, transform.position, 6 * Time.deltaTime);
-            else
-                Item1.transform.position = transform.position;
-            if (Item2.transform.position.y > transform.position.y)
-                Item2.transform.position = Vector2.Lerp(Item2.transform.position, transform.position, 6 * Time.deltaTime);
-            else
-                Item2.transform.position = transform.position;
-
-            if(Vector2.Distance(Item1.transform.position, transform.position) < .2f)
-            {
-                Item1.gameObject.SetActive(false);
-                Item2.gameObject.SetActive(false);
-            }
+            LerpItemsIn();
         }
 
 
     }
     void LerpItemsIn()
     {
+        if (Item1.transform.position.y > transform.position.y)
+            Item1.transform.position = Vector2.Lerp(Item1.transform.position, transform.position, 6 * Time.deltaTime);
+        else
+            Item1.transform.position = transform.position;
+        if (Item2.transform.position.y > transform.position.y)
+            Item2.transform.position = Vector2.Lerp(Item2.transform.position, transform.position, 6 * Time.deltaTime);
+        else
+            Item2.transform.position = transform.position;
 
+        if (Vector2.Distance(Item1.transform.position, transform.position) < .2f)
+        {
+            Item1.gameObject.SetActive(false);
+            Item2.gameObject.SetActive(false);
+            transform.root.GetComponent<Animator>().Play("WoodChestClosed");
+        }
     }
     void LerpItemsOut()
     {
+        if(!Item1.gameObject.activeSelf)
+            Item1.gameObject.SetActive(true);
+        if (!Item2.gameObject.activeSelf)
+            Item2.gameObject.SetActive(true);
+
+        Item2.gameObject.SetActive(true);
+        Item1.gameObject.SetActive(true);
+        Item2.gameObject.SetActive(true);
         if (Item1.transform.position.y < Item1Pos.y)
             Item1.transform.position = Vector2.Lerp(Item1.transform.position, Item1Pos, 6 * Time.deltaTime);
         else
             Item1.transform.position = Item1Pos;
         if (Item2.transform.position.y < Item2Pos.y)
             Item2.transform.position = Vector2.Lerp(Item2.transform.position, Item2Pos, 6 * Time.deltaTime);
-        else
+        else      
             Item2.transform.position = Item2Pos;
     }
     void OpenChest()
     {
-        Item1.gameObject.SetActive(true);
-        Item2.gameObject.SetActive(true);
         open = true;
         Prompt.gameObject.SetActive(false);
+        animDel = 20;
     }
 
     void CloseChest()
