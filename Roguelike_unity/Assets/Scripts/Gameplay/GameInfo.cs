@@ -9,4 +9,5 @@ public static class GameInfo
     public static Vector2 PlayerPos;
     public static GameManager GM;
     public static ItemDatabase ItemDB;
+    public static bool PlayerInMenu = false;
 }

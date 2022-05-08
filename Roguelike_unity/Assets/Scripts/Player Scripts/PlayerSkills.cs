@@ -23,7 +23,7 @@ public class PlayerSkills : MonoBehaviour
     {
         if (atkDly > 0)
             atkDly -= 60 * Time.deltaTime;
-        if (MyStatus.Alive)
+        if (MyStatus.Alive && !GameInfo.PlayerInMenu)
         {
             if (Input.GetMouseButton(0) && atkDly<=0)// || (Gamepad.current.rightTrigger.wasPressedThisFrame))
             {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PromptOpen : MonoBehaviour
+public class ChestInteract : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshPro Prompt;
@@ -30,6 +30,7 @@ public class PromptOpen : MonoBehaviour
             if(Prompt.gameObject.activeSelf)
             {
                 transform.root.GetComponent<Animator>().Play("WoodChestOpen");
+                GameInfo.PlayerInMenu = true;
                 OpenChest();
             }
         }
@@ -41,7 +42,11 @@ public class PromptOpen : MonoBehaviour
                 if(!allOpen)
                 {
                     for (int i = 0; i <= 8; i++)
+                    {
                         Squares[i].SetActive(true);
+                        Squares[i].GetComponent<InvSlot>().MyChest = Inv;
+                        Squares[i].GetComponent<InvSlot>().IndexInInv = i;
+                    }
                     allOpen = true;
 
                     AssignItems();
@@ -49,11 +54,11 @@ public class PromptOpen : MonoBehaviour
             }
             else
             {
-                animDel -= 60 * Time.deltaTime;
-                if (Random.Range(0, 20) > animDel)
-                {
-                    Squares[Random.Range(0, 9)].SetActive(true);
-                }
+                    animDel -= 60 * Time.deltaTime;
+                    if (Random.Range(0, 20) > animDel)
+                    {
+                        Squares[Random.Range(0, 9)].SetActive(true);
+                    }             
             }
         }
 
@@ -71,7 +76,8 @@ public class PromptOpen : MonoBehaviour
         {
             for(int i = index; i<9; i++)
             {
-                Squares[index].GetComponent<InvSlot>().ClearSlot();              
+                Squares[index].GetComponent<InvSlot>().ClearSlot();
+                Inv.MyItems.Add(null);
             }
         }
     }
@@ -90,6 +96,7 @@ public class PromptOpen : MonoBehaviour
             Squares[i].SetActive(false);
         allOpen = false;
         transform.root.GetComponent<Animator>().Play("WoodChestClosed");
+        GameInfo.PlayerInMenu = false;
     }
 
 
