@@ -1162,7 +1162,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1183,7 +1183,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1204,7 +1204,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1212,6 +1212,111 @@ TextureImporter:
       bones: []
       spriteID: 86ea017758f5d6446a224654fdb92228
       internalID: 109620828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environment_53
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f169e6d448809f84f8984a48a94af7b6
+      internalID: -1733451826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environment_54
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01b64345342e55649824fe15d1eee0f1
+      internalID: 1311489915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environment_55
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 954869a6d5c19e4429e5785302e4f446
+      internalID: -1331980094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environment_56
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 932ed8a9f93bca74cb87d4ebe47699e0
+      internalID: 922262264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environment_57
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f49e4ea359507774e979a9c922b9f381
+      internalID: -1122433374
       vertices: []
       indices: 
       edges: []
@@ -1227,17 +1332,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Environment_55: -1331980094
       Environment_12: 1389358531
       Environment_27: 2030933594
       Environment_51: -436572007
       Environment_32: -969068036
       Environment_46: -119818770
+      Environment_57: -1122433374
       Environment_45: 2060942334
       Environment_2: -2054577037
       Environment_16: 310444517
       Environment_34: -887422591
       Environment_20: 2079944578
       Environment_5: 1221671513
+      Environment_56: 922262264
       Environment_9: 111251890
       Environment_31: 190183367
       Environment_44: -966717331
@@ -1246,6 +1354,7 @@ TextureImporter:
       Environment_21: 578838953
       Environment_48: 1830861400
       Environment_24: -1536316858
+      Environment_54: 1311489915
       Environment_43: 896989856
       Environment_22: -1200246301
       Environment_23: -1374266871
@@ -1276,6 +1385,7 @@ TextureImporter:
       Environment_29: -1663841046
       Environment_11: 1899714085
       Environment_18: -1233979541
+      Environment_53: -1733451826
       Environment_15: -828118711
       Environment_28: -1015819363
       Environment_10: -327250568
