@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.U2D;
 
 public class CinemachineControls : MonoBehaviour
 {
     CinemachineBasicMultiChannelPerlin noise;
     CinemachineVirtualCamera CCam;
+    public PixelPerfectCamera PPCam;
+    public bool zoom = false;
+    public GameObject ZoomOffset;
+    public GameObject NormalTarg;
+
     float ShakeDur = 0;
-    float ShakeMag = 0;
+    
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         CCam = GetComponent<CinemachineVirtualCamera>();
         CamID.CMController = this;
         noise = CCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -25,9 +31,45 @@ public class CinemachineControls : MonoBehaviour
             ShakeDur -= 60 * Time.deltaTime;
             if(ShakeDur<=0)
             {
-                ShakeMag = 0;
                 noise.m_AmplitudeGain = 0;
             }
+        }
+
+        if (GameInfo.PlayerInMenu)
+        {
+            zoom = true;
+            CCam.Follow = ZoomOffset.transform;
+        }
+        else
+        {
+            zoom = false;
+            CCam.Follow = NormalTarg.transform;
+        }
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (zoom)
+            DoZoomIn();
+        else
+            DoZoomOut();
+    }
+
+    void DoZoomIn()
+    {
+        if(PPCam.assetsPPU<32)
+        {
+            PPCam.assetsPPU += 1;
+        }
+    }
+
+    void DoZoomOut()
+    {
+        if (PPCam.assetsPPU > 16)
+        {
+            PPCam.assetsPPU -= 1;
         }
     }
 

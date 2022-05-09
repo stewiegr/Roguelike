@@ -93,10 +93,15 @@ public class ChestInteract : MonoBehaviour
     {
         open = false;
         for (int i = 0; i <= 8; i++)
+        {
+            Squares[i].GetComponent<InvSlot>().ReturnHome();
             Squares[i].SetActive(false);
+
+        }
         allOpen = false;
         transform.root.GetComponent<Animator>().Play("WoodChestClosed");
         GameInfo.PlayerInMenu = false;
+        GameInfo.ItemInfoWindow.SetActive(false);
     }
 
 

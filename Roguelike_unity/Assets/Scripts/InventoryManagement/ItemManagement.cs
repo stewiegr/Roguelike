@@ -28,6 +28,12 @@ public class ItemManagement : MonoBehaviour
         }
     }
 
+    public void CancelInteract()
+    {
+        CurrentDestination = ParentSlot;
+        DropItem();
+    }
+
     public InvSlot DropItem()
     {
         if (CurrentDestination != null)

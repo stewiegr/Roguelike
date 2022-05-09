@@ -10,9 +10,9 @@ public class Item : ScriptableObject
 
     public float MoveSpeed;
     public float RateOfFire;
+    public float EnergyRegen;
     public float Damage;
     public float Range;
-    public float ShotSpeed;
     public float Luck;
 
     public Sprite ItemGFX;

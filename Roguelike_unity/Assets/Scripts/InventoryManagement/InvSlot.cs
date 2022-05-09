@@ -29,6 +29,20 @@ public class InvSlot : MonoBehaviour
         {
             MyItemGFX.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -6);
         }
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.transform.name);
+                if (hit.collider.transform == this.transform)
+                {
+                    GameInfo.ItemInfoWindow.SetActive(true);
+                    GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
+                }
+            }
+        }
     }
     public void UpdateSlot(Item _item)
     {
@@ -45,6 +59,13 @@ public class InvSlot : MonoBehaviour
     {
         GameItem = null;
         ItemRenderer.sprite = null;
+    }
+
+    public void ReturnHome()
+    {
+        dragging = false;
+        MyItemGameObject.CancelInteract();
+        MyItemGameObject.transform.position = HomePos;
     }
 
     void ClickListener()
