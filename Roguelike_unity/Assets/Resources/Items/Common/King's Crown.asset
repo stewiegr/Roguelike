@@ -16,9 +16,9 @@ MonoBehaviour:
   ItemDescription: It says 'Prom 2022' on the back.
   MoveSpeed: 0
   RateOfFire: 0
+  EnergyRegen: 0
   Damage: 0
   Range: 0
-  ShotSpeed: 0
   Luck: 3
   ItemGFX: {fileID: 425629547, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  ItemType: 0
+  ItemType: 2

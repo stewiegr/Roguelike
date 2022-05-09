@@ -31,6 +31,8 @@ public class ChestInteract : MonoBehaviour
             {
                 transform.root.GetComponent<Animator>().Play("WoodChestOpen");
                 GameInfo.PlayerInMenu = true;
+                GameInfo.GM.InventoryWindow.SetActive(true);
+                GameInfo.PositionInv();
                 OpenChest();
             }
         }
@@ -59,6 +61,17 @@ public class ChestInteract : MonoBehaviour
                     {
                         Squares[Random.Range(0, 9)].SetActive(true);
                     }             
+            }
+        }
+
+        if(open)
+        {
+            if(Input.GetKeyDown(KeyCode.I))
+            {
+                GameInfo.PlayerInMenu = false;
+                GameInfo.GM.InventoryWindow.SetActive(false);
+                CloseChest();
+                Prompt.gameObject.SetActive(true);
             }
         }
 
@@ -96,11 +109,12 @@ public class ChestInteract : MonoBehaviour
         {
             Squares[i].GetComponent<InvSlot>().ReturnHome();
             Squares[i].SetActive(false);
-
         }
         allOpen = false;
         transform.root.GetComponent<Animator>().Play("WoodChestClosed");
         GameInfo.PlayerInMenu = false;
+        GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
+        GameInfo.GM.InventoryWindow.SetActive(false);
         GameInfo.ItemInfoWindow.SetActive(false);
     }
 

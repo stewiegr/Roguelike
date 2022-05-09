@@ -12,4 +12,16 @@ public static class GameInfo
     public static GameObject ItemOnCursor;
     public static bool PlayerInMenu = false;
     public static GameObject ItemInfoWindow;
+    public static Transform ZoomOffset;
+    public static Transform Inv;
+
+    public static void PositionInv()
+    {
+        PlayerInventory inv = Player.GetComponent<PlayerInventory>();
+        Inv.transform.position = new Vector3(ZoomOffset.position.x + 2, ZoomOffset.position.y, Inv.position.z);
+        for (int i = 0; i <= 15; i++)
+        {
+            inv.Squares[i].HomePos = inv.Squares[i].transform.localPosition;
+        }
+    }
 }

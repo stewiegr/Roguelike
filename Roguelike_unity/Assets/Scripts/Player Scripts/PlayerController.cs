@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public Transform AttackHandler;
     float PosUpdate = 20;
     Rigidbody2D MyRB;
+    bool CanMove = true;
 
     // Start is called before the first frame update
     void Awake()
@@ -59,13 +60,13 @@ public class PlayerController : MonoBehaviour
         else
         {
             movement = Vector2.zero;
-            
+
         }
     }
 
     void DoMovement()
     {
-         MyRB.velocity = (Vector3)Vector2.ClampMagnitude(movement, MyStatus.RunSpeed);
+        MyRB.velocity = (Vector3)Vector2.ClampMagnitude(movement, MyStatus.RunSpeed);
 
         if (Cursor.visible)
         {
@@ -113,7 +114,7 @@ public class PlayerController : MonoBehaviour
                 GamepadCH.SetActive(true);
             }
         }
-        else if (!Cursor.visible && (Vector2)Input.mousePosition - mouseLast!=Vector2.zero)
+        else if (!Cursor.visible && (Vector2)Input.mousePosition - mouseLast != Vector2.zero)
         {
             Cursor.visible = true;
             GamepadCH.SetActive(false);
@@ -125,14 +126,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
             movement.x = -MyStatus.RunSpeed;
         else if (!Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-            movement.x = MyStatus.RunSpeed; 
+            movement.x = MyStatus.RunSpeed;
         else
             movement.x = 0;
 
         if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
-            movement.y = MyStatus.RunSpeed; 
+            movement.y = MyStatus.RunSpeed;
         else if (!Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
-            movement.y = -MyStatus.RunSpeed; 
+            movement.y = -MyStatus.RunSpeed;
         else
             movement.y = 0;
     }

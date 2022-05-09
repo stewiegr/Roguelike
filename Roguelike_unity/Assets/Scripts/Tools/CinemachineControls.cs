@@ -21,6 +21,7 @@ public class CinemachineControls : MonoBehaviour
         CCam = GetComponent<CinemachineVirtualCamera>();
         CamID.CMController = this;
         noise = CCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        GameInfo.ZoomOffset = ZoomOffset.transform;
     }
 
     // Update is called once per frame

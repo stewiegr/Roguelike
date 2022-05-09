@@ -9,16 +9,25 @@ public class InvSlot : MonoBehaviour
     ItemManagement MyItemGameObject;
     Transform MyItemGFX;
     bool dragging = false;
-    Vector3 HomePos;
+    public Vector3 HomePos;
     public ChestInventory MyChest;
-    //public PlayerInv MyInv;
+    public PlayerInventory MyInv;
     public int IndexInInv;
+
+    public enum SlotType
+    {
+        General,
+        Weapon,
+        Tome,
+        Trinket
+    }
+    public SlotType MyType; 
 
 
     private void Start()
     {
         MyItemGFX = ItemRenderer.transform;
-        HomePos = MyItemGFX.transform.position;
+        HomePos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         MyItemGameObject = GetComponentInChildren<ItemManagement>();
     }
 
@@ -35,13 +44,21 @@ public class InvSlot : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.transform.name);
-                if (hit.collider.transform == this.transform)
+                if (hit.collider.transform.tag == "ItemSlot")
                 {
-                    GameInfo.ItemInfoWindow.SetActive(true);
-                    GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
+                    if (hit.collider.transform == this.transform)
+                    {
+                        GameInfo.ItemInfoWindow.SetActive(true);
+                        GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
+                    }
+                }
+                else
+                {
+                    GameInfo.ItemInfoWindow.SetActive(false);                    
                 }
             }
+            else
+                GameInfo.ItemInfoWindow.SetActive(false);
         }
     }
     public void UpdateSlot(Item _item)
@@ -65,12 +82,12 @@ public class InvSlot : MonoBehaviour
     {
         dragging = false;
         MyItemGameObject.CancelInteract();
-        MyItemGameObject.transform.position = HomePos;
+        MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
     }
 
     void ClickListener()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !dragging)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -83,11 +100,11 @@ public class InvSlot : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && dragging)
         {
-            dragging = false;
-            InvSlot swap = MyItemGameObject.DropItem();
-            SwapItem(MyItemGameObject.DropItem());
+                    dragging = false;
+                    InvSlot swap = MyItemGameObject.DropItem();
+                    SwapItem(MyItemGameObject.DropItem());       
         }
     }
 
@@ -95,6 +112,8 @@ public class InvSlot : MonoBehaviour
     {
         if (MyChest != null)
             MyChest.MyItems[IndexInInv] = GameItem;
+        if (MyInv != null)
+            MyInv.MyItems[IndexInInv] = GameItem;
     }
 
     void SwapItem(InvSlot _swapWith)
@@ -121,13 +140,13 @@ public class InvSlot : MonoBehaviour
 
                 ClearSlot();
             }
-            MyItemGameObject.transform.position = HomePos;
+            this.MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z-1);
         }
-        MyItemGameObject.transform.position = HomePos;
+        this.MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
 
 
         UpdateParentInv();
         _swapWith.UpdateParentInv();
-            
+
     }
 }
