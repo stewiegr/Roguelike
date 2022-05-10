@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: King's Cloak
   ItemDescription: 
-  MoveSpeed: 5
+  MoveSpeed: 1
   RateOfFire: 0
+  EnergyRegen: 0
   Damage: 0
   Range: 0
-  ShotSpeed: 0
   Luck: 3
   ItemGFX: {fileID: 1885457200, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  ItemType: 2
+  ItemType: 3

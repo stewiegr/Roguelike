@@ -13,6 +13,10 @@ public class CinemachineControls : MonoBehaviour
     public GameObject ZoomOffset;
     public GameObject NormalTarg;
 
+    public Color32 Fade;
+    public Color32 Norm;
+    public SpriteRenderer Fader;
+
     float ShakeDur = 0;
     
     // Start is called before the first frame update
@@ -64,6 +68,8 @@ public class CinemachineControls : MonoBehaviour
         {
             PPCam.assetsPPU += 1;
         }
+        if (Fader.color != Fade)
+            Fader.color = Color32.Lerp(Fader.color, Fade, .1f);
     }
 
     void DoZoomOut()
@@ -72,6 +78,8 @@ public class CinemachineControls : MonoBehaviour
         {
             PPCam.assetsPPU -= 1;
         }
+        if (Fader.color != Norm)
+            Fader.color = Color32.Lerp(Fader.color, Norm, .1f);
     }
 
     public void ShakeScreen(float _amp, float _dur)

@@ -16,9 +16,9 @@ MonoBehaviour:
   ItemDescription: You could try poking with the pointy end too.
   MoveSpeed: 0
   RateOfFire: 1
+  EnergyRegen: 0
   Damage: 2
   Range: 0
-  ShotSpeed: 0
   Luck: 0
   ItemGFX: {fileID: 2128331597, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  ItemType: 0
+  ItemType: 1

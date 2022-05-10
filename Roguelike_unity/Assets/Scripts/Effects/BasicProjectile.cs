@@ -9,7 +9,7 @@ public class BasicProjectile : MonoBehaviour
     public int dmg = 1;
     public GameObject myExplosion;
 
-    float life = 75;
+    public float life = 25;
     private void Update()
     {
         if (life > 0)

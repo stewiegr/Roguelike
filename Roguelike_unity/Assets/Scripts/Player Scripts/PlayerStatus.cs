@@ -8,6 +8,23 @@ public class PlayerStatus : MonoBehaviour
     public int MaxLife = 8;
     public int CurrentLife = 8;
     public float RunSpeed;
+    public float AttackDamage;
+    public float AttackRange;
+    public float AttackSpeed;
+    public float Luck;
+
+    public float BaseRunSpeed;
+    public float BaseAttackDamage;
+    public float BaseAttackRange;
+    public float BaseAttackSpeed;
+    public float BaseLuck;
+
+    public float RunSpeedBonus;
+    public float AttackDamageBonus;
+    public float AttackRangeBonus;
+    public float AttackSpeedBonus;
+    public float LuckBonus;
+
     public bool Alive = true;
     float iFrames = 60;
     int activeHearts = 0;
@@ -16,16 +33,20 @@ public class PlayerStatus : MonoBehaviour
     float heartAnimDel = 20;
     public List<HeartAnim> Hearts;
     Animator MyAnim;
+     PlayerInventory MyInv;
 
     private void Awake()
     {
         GameInfo.PlayerStatus = this;
+        MyInv = GetComponent<PlayerInventory>();
     }
     void Start()
     {
         heartLife = CurrentLife;
         ActivateHearts();
         MyAnim = GetComponent<Animator>();
+        MyInv = GetComponent<PlayerInventory>();
+        UpdatePlayerStats();
     }
 
     // Update is called once per frame
@@ -126,5 +147,20 @@ public class PlayerStatus : MonoBehaviour
             index++;
         }
         activeHearts = index;
+    }
+
+    public void UpdatePlayerStats()
+    {
+        RunSpeedBonus = MyInv.CalcSpeed();
+        AttackDamageBonus = MyInv.CalcDmg();
+        AttackRangeBonus = MyInv.CalcRange();
+        AttackSpeedBonus = MyInv.CalcROF();
+        LuckBonus = MyInv.CalcLuck();
+
+        RunSpeed = RunSpeedBonus + BaseRunSpeed;
+        AttackDamage = AttackDamageBonus + BaseAttackDamage;
+        AttackRange = AttackRangeBonus + BaseAttackRange;
+        AttackSpeed = AttackSpeedBonus + BaseAttackSpeed;
+        Luck = LuckBonus + BaseLuck;
     }
 }

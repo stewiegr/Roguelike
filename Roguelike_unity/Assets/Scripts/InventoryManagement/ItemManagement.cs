@@ -17,7 +17,6 @@ public class ItemManagement : MonoBehaviour
         {
 
             CurrentDestination = collision.transform.GetComponent<InvSlot>();
-            Debug.Log("Swap With: " + CurrentDestination.transform.name);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

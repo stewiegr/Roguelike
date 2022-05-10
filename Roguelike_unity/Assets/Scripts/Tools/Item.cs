@@ -17,9 +17,7 @@ public class Item : ScriptableObject
 
     public Sprite ItemGFX;
 
-    public enum ItemSlotType
-    {Weapon, Tome, Trinket}
 
-    public ItemSlotType ItemType;
+    public InvSlot.SlotType ItemType;
 
 }

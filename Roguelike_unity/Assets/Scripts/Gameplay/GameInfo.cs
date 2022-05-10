@@ -21,7 +21,7 @@ public static class GameInfo
         Inv.transform.position = new Vector3(ZoomOffset.position.x + 2, ZoomOffset.position.y, Inv.position.z);
         for (int i = 0; i <= 15; i++)
         {
-            inv.Squares[i].HomePos = inv.Squares[i].transform.localPosition;
+            //inv.Squares[i].HomePos = inv.Squares[i].transform.localPosition;
         }
     }
 }

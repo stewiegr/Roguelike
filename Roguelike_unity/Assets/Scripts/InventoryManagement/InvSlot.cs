@@ -21,7 +21,7 @@ public class InvSlot : MonoBehaviour
         Tome,
         Trinket
     }
-    public SlotType MyType; 
+    public SlotType MyType;
 
 
     private void Start()
@@ -54,7 +54,7 @@ public class InvSlot : MonoBehaviour
                 }
                 else
                 {
-                    GameInfo.ItemInfoWindow.SetActive(false);                    
+                    GameInfo.ItemInfoWindow.SetActive(false);
                 }
             }
             else
@@ -93,7 +93,6 @@ public class InvSlot : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.transform.name);
                 if (hit.collider.transform == this.transform)
                 {
                     dragging = true;
@@ -102,9 +101,9 @@ public class InvSlot : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) && dragging)
         {
-                    dragging = false;
-                    InvSlot swap = MyItemGameObject.DropItem();
-                    SwapItem(MyItemGameObject.DropItem());       
+            dragging = false;
+            InvSlot swap = MyItemGameObject.DropItem();
+            SwapItem(MyItemGameObject.DropItem());
         }
     }
 
@@ -119,7 +118,15 @@ public class InvSlot : MonoBehaviour
     void SwapItem(InvSlot _swapWith)
     {
         Item ItemPH = GameItem;
-        if (_swapWith.transform.name != this.transform.name)
+        InvSlot.SlotType DestinationItem;
+        InvSlot.SlotType DestinationSlot = _swapWith.MyType;
+        if (_swapWith.GameItem != null)
+            DestinationItem = _swapWith.GameItem.ItemType;
+        else
+            DestinationItem = InvSlot.SlotType.General;
+
+
+        if (_swapWith.transform.name != this.transform.name && ((DestinationSlot == InvSlot.SlotType.General || _swapWith.MyType == ItemPH.ItemType)) && (MyType==InvSlot.SlotType.General || MyType==DestinationItem || DestinationItem == InvSlot.SlotType.General))
         {
             if (_swapWith.GameItem != null)
             {
@@ -140,13 +147,13 @@ public class InvSlot : MonoBehaviour
 
                 ClearSlot();
             }
-            this.MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z-1);
+            this.MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         }
         this.MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
 
 
         UpdateParentInv();
         _swapWith.UpdateParentInv();
-
+        GameInfo.PlayerStatus.UpdatePlayerStats();
     }
 }

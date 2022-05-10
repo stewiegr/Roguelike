@@ -21,4 +21,4 @@ MonoBehaviour:
   Range: 0
   Luck: 0
   ItemGFX: {fileID: -67297090, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  ItemType: 0
+  ItemType: 1

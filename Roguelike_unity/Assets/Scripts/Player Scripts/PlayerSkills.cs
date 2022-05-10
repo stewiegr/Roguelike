@@ -10,7 +10,7 @@ public class PlayerSkills : MonoBehaviour
     public GameObject NearCircle;
     public GameObject BasicProjectile;
     List<GameObject> Targets = new List<GameObject>(0);
-    float atkDly = 20;
+    float atkDly = 30;
     PlayerStatus MyStatus;
     void Start()
     {
@@ -27,7 +27,7 @@ public class PlayerSkills : MonoBehaviour
         {
             if (Input.GetMouseButton(0) && atkDly<=0)// || (Gamepad.current.rightTrigger.wasPressedThisFrame))
             {
-                atkDly = 15;
+                atkDly = 30-MyStatus.AttackSpeed;
                 myAnim.Play("PlayerAttack");
                 DoBasicProjectile();
             }
@@ -36,13 +36,14 @@ public class PlayerSkills : MonoBehaviour
 
     void DoBasicProjectile()
     {
-        GameObject proj = Instantiate(BasicProjectile, transform.position + (transform.right * .1f) + Vector3.up*.15f, transform.localRotation);
+        GameObject proj = Instantiate(BasicProjectile, transform.position + Vector3.up*.35f, transform.localRotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
+        BP.life = BP.life * MyStatus.AttackRange;
         BP.TargetEnemy = true;
-        BP.dmg = 1;
+        BP.dmg = (int)MyStatus.AttackDamage;
 
 
-        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 7.5f;
+        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * (5.5f + MyStatus.RunSpeed);
 
 
     }
