@@ -43,7 +43,7 @@ public class PlayerSkills : MonoBehaviour
         BP.dmg = (int)MyStatus.AttackDamage;
 
 
-        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * (5.5f + MyStatus.RunSpeed);
+        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 10.5f;
 
 
     }

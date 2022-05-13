@@ -20,7 +20,7 @@ public class InvID : MonoBehaviour
 
     private void Update()
     {
-        transform.position = (Vector2)Pos.position + Vector2.right * 2;
+        transform.position = Vector2.Lerp((Vector2)transform.position,(Vector2)Pos.position + Vector2.right * 2, GameInfo.PlayerStatus.RunSpeed*Time.deltaTime);
 
         DmgTxt.text = GameInfo.PlayerStatus.AttackDamage.ToString();
         MoveSpeedTxt.text = GameInfo.PlayerStatus.RunSpeed.ToString();

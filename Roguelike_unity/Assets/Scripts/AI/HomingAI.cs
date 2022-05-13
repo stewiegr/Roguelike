@@ -11,7 +11,7 @@ public class HomingAI : MonoBehaviour
     Rigidbody2D MyRB;
     public float SpeedMod = .35f;
     public float SpeedModRandomize = .15f;
-    float locateDel = 60;
+    public float locateDel = 60;
     Vector2 desiredPos;
     Vector2 LastPos;
     Vector2 forcedVector;
@@ -35,7 +35,7 @@ public class HomingAI : MonoBehaviour
         MyStatus = GetComponent<NPCStatus>();
         MyRB = GetComponent<Rigidbody2D>();
         MySpr = GetComponent<SpriteRenderer>();
-        SpeedMod += Random.Range(-SpeedModRandomize, SpeedModRandomize);
+        //SpeedMod += Random.Range(-SpeedModRandomize, SpeedModRandomize);
 
         desiredPos.x = Random.Range(-.1f, .1f);
         desiredPos.y = Random.Range(-.1f, .1f);
@@ -82,7 +82,10 @@ public class HomingAI : MonoBehaviour
 
     void DoMovement()
     {
+        if(forcedVector==Vector2.zero)
         MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
+        else
+            MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
     }
 
     void LaunchMath()
@@ -198,7 +201,7 @@ public class HomingAI : MonoBehaviour
     }
     public void ForceVector(float x, float y)
     {
-        locateDel = 2;
+        locateDel = 1;
         forcedVector.x = x;
         forcedVector.y = y;
     }
