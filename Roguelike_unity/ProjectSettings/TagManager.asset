@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - WorldObject
   - ItemSlot
+  - NavObject
   layers:
   - Default
   - TransparentFX

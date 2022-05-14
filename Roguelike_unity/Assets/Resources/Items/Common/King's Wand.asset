@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemName: King's Wand
   ItemDescription: 
   MoveSpeed: 0
-  RateOfFire: 50
+  RateOfFire: 12
   EnergyRegen: 0
   Damage: 1
   Range: 0

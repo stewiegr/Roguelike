@@ -6,14 +6,14 @@ public class ChestInventory : MonoBehaviour
 {
 
     public List<Item> MyItems;
-    int ItemCount;
+    public int MaxItemCountUpTo9;
     
     // Start is called before the first frame update
     void Start()
     {
-        ItemCount = Random.Range(0, 6);
+        MaxItemCountUpTo9 = Random.Range(2, MaxItemCountUpTo9);
 
-        for(int i = 0; i <=ItemCount; i++)
+        for(int i = 0; i <=MaxItemCountUpTo9; i++)
         {
             MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Common.Length)]);
         }

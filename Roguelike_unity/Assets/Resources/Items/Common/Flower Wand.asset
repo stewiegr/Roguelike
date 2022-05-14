@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemName: Flower Wand
   ItemDescription: A flowery wand. It smells good.
   MoveSpeed: 0
-  RateOfFire: 50
+  RateOfFire: 10
   EnergyRegen: 0
   Damage: 1
   Range: 0

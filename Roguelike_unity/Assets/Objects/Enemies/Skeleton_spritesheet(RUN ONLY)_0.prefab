@@ -152,7 +152,7 @@ MonoBehaviour:
   - {fileID: 8216181987080717360, guid: 21ae6317846ad3a4598b64d4eb688f71, type: 3}
   - {fileID: 3491742006542195160, guid: f52f8c1e8fd800a48b9f568fa069ed13, type: 3}
   - {fileID: 6954091987368322368, guid: 53f53b558a0eac74ebd70eb45423c8d8, type: 3}
-  RunSpeed: 3
+  RunSpeed: 6.25
   GM: {fileID: 0}
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedMod: 0.35
   SpeedModRandomize: 0.15
+  locateDel: 60
   InAtkRange: 0
   FreeMove: 1
 --- !u!50 &-1758737721101815025

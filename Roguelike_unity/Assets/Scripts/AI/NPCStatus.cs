@@ -35,11 +35,14 @@ public class NPCStatus : MonoBehaviour
 
     public void TakeDmg(int _dmg, float _knockback)
     {
-        MyAnim.SetTrigger("Hurt");
+
         Life -= _dmg;
         if (Life > 0)
+        {
             MyNav.Knockback(_knockback);
-        else if(Alive)
+            MyAnim.SetTrigger("Hurt");
+        }
+        else if (Alive)
         {
             Die();
         }

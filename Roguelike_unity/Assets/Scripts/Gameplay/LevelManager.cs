@@ -20,9 +20,9 @@ public class LevelManager : MonoBehaviour
     public float WaveModifier=1.25f;
 
     [Tooltip("Upper Left Limit of Spawn Area")]
-    public Vector2 SpawnBounds1;
+    public Transform UpperLeftBounds;
     [Tooltip("Lower Right Limit of Spawn Area")]
-    public Vector2 SpawnBounds2;
+    public Transform LowerRightBounds;
     [Tooltip("PLACEHOLDER - spawn a chest when done")]
     public GameObject RewardChest;
 
@@ -34,6 +34,8 @@ public class LevelManager : MonoBehaviour
     float delay;
     bool treasureWave = false;
     bool chestUp = false;
+    [Tooltip("1.5-5 is a good range")]
+    public float ForcedDistanceFromPlayer = 1.5f;
 
     private void Start()
     {
@@ -47,7 +49,7 @@ public class LevelManager : MonoBehaviour
         {
             InitWave();
         }
-        else if(waveStarted && GM.currentKillsThisWave<setSpawnNumber-20)
+        else if(waveStarted && GM.currentKillsThisWave<setSpawnNumber-4)
         {
             if (spawnedSoFar <= setSpawnNumber)
             {
@@ -61,13 +63,14 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
-        if(GM.currentKillsThisWave>=setSpawnNumber - 20)
+        if(GM.currentKillsThisWave>=setSpawnNumber)
         {
             waveStarted = false;
         }
         if(currentWave>=Waves && GM.LivingEnemies<=0 && !chestUp)
         {
             chestUp = true;
+            RewardChest.transform.position = GameInfo.PlayerPos + new Vector2(Random.Range(1f, 2f), Random.Range(1f, 2f));
             RewardChest.gameObject.SetActive(true);
             //CamID.Cam.ShakeScreen(2, 5);
         }
@@ -77,8 +80,10 @@ public class LevelManager : MonoBehaviour
     {
         Vector2 pos;
         do
-            pos = new Vector2(Random.Range(SpawnBounds1.x, SpawnBounds2.x), Random.Range(SpawnBounds1.y, SpawnBounds2.y));
-        while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < 1.5f);
+        {
+            pos = new Vector2(Random.Range(UpperLeftBounds.position.x, LowerRightBounds.position.x), Random.Range(UpperLeftBounds.position.y, LowerRightBounds.position.y));
+        }
+        while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < ForcedDistanceFromPlayer || Physics2D.OverlapCircleAll(pos, 2).Length != 0);
 
         GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos, transform.rotation);
         NPC.GetComponent<NPCStatus>().GM = GM;

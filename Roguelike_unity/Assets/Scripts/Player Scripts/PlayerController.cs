@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             movement = Vector2.zero;
+            MyRB.velocity = Vector2.zero;
 
         }
     }

@@ -82,10 +82,10 @@ public class HomingAI : MonoBehaviour
 
     void DoMovement()
     {
-        if(forcedVector==Vector2.zero)
+       // if(forcedVector==Vector2.zero)
         MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
-        else
-            MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
+      //  else
+       //     MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
     }
 
     void LaunchMath()
@@ -155,7 +155,7 @@ public class HomingAI : MonoBehaviour
     void LocatePlayer()
     {
 
-        locateDel = Random.Range(10, 30);
+        locateDel = Random.Range(1, 5);
         locateDel *= Mathf.Abs(Vector2.Distance(transform.position, GameInfo.PlayerPos));
 
         if (Mathf.Abs(Vector2.Distance(transform.position, GameInfo.PlayerPos)) < MyStatus.AtkRange)
