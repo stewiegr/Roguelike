@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Thief's Cloak
   ItemDescription: It was grandmas, now it's yours.
-  MoveSpeed: 1
+  MoveSpeed: 25
   RateOfFire: 0
   EnergyRegen: 0
   Damage: 0
