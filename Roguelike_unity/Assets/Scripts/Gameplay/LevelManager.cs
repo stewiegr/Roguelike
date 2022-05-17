@@ -58,7 +58,12 @@ public class LevelManager : MonoBehaviour
                     delay -= 60 * Time.deltaTime;
                     if (delay <= 0)
                     {
-                        SpawnMonster();
+                        if(spawnedSoFar<50)
+                        SpawnMonster(1);
+                        else
+                        {
+                            SpawnMonster(Random.Range(15,30));
+                        }
                     }
                 }
             }
@@ -67,7 +72,7 @@ public class LevelManager : MonoBehaviour
         {
             waveStarted = false;
         }
-        if(currentWave>=Waves && GM.LivingEnemies<=0 && !chestUp)
+        if (currentWave >= Waves && GM.LivingEnemies <= 0 && !chestUp && GM.currentKillsThisWave>0)
         {
             chestUp = true;
             RewardChest.transform.position = GameInfo.PlayerPos + new Vector2(Random.Range(1f, 2f), Random.Range(1f, 2f));
@@ -76,7 +81,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void SpawnMonster()
+    void SpawnMonster(int _amt)
     {
         Vector2 pos;
         do
@@ -85,12 +90,21 @@ public class LevelManager : MonoBehaviour
         }
         while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < ForcedDistanceFromPlayer || Physics2D.OverlapCircleAll(pos, 2).Length != 0);
 
-        GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos, transform.rotation);
-        NPC.GetComponent<NPCStatus>().GM = GM;
-        delay = SpawnDelay;
-        spawnedSoFar++;
-        GM.LivingEnemies++;
+        for (int i = 0; i < _amt; i++)
+        {
+            if (spawnedSoFar <= setSpawnNumber)
+            {
+                GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos + new Vector2(Random.Range(-1,1),Random.Range(-1,1)), transform.rotation);
+                NPC.GetComponent<NPCStatus>().GM = GM;
+                spawnedSoFar++;
+                GM.LivingEnemies++;
+            }
+        }
+        delay = SpawnDelay + (_amt * 15);
+
     }
+
+    
 
     void InitWave()
     {
