@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 64052
+  controlID: 70325
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 63975
+  controlID: 70326
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 63976
+  controlID: 70327
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 376
     height: 661
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -223,9 +223,9 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 72560000
-      m_LastClickedID: 22130
+      scrollPos: {x: 0, y: 64}
+      m_SelectedIDs: d69fd9ff
+      m_LastClickedID: -2514986
       m_ExpandedIDs: 4626d9ff0efbffff54570000625a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -526,9 +526,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.9712467, y: 0.57224834, z: -0.053426538}
+    m_Target: {x: -3.9335208, y: -0.44484565, z: 0.0076404917}
     speed: 2
-    m_Value: {x: -0.9712467, y: 0.57224834, z: -0.053426538}
+    m_Value: {x: -3.9335208, y: -0.44484565, z: 0.0076404917}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -579,9 +579,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 13.433259
+    m_Target: 7.326349
     speed: 2
-    m_Value: 13.433259
+    m_Value: 7.326349
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1099,21 +1099,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Art/SpriteSheets
+    - Assets/Art/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Art/SpriteSheets
+  - Assets/Art/UI
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\lazyl\OneDrive\Desktop\Unity Project\Roguelike\Roguelike_unity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 025f0000
-    m_LastClickedID: 24322
+    m_SelectedIDs: 085f0000
+    m_LastClickedID: 24328
     m_ExpandedIDs: 00000000ce5e0000d05e0000d25e0000d45e0000d65e0000d85e0000da5e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1167,8 +1167,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 72560000
-    m_LastClickedInstanceID: 22130
+    m_SelectedInstanceIDs: d69fd9ff
+    m_LastClickedInstanceID: -2514986
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000aa7c0000c07c0000421b0000e85500004e1b0000681d00007a9000000000000046590000981c0000646e0000ea7d0000d2240000
     m_RenameOverlay:
