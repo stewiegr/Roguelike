@@ -68,6 +68,10 @@ public class CinemachineControls : MonoBehaviour
         {
             PPCam.assetsPPU += 1;
         }
+        if (PPCam.assetsPPU > 32)
+        {
+            PPCam.assetsPPU -= 1;
+        }
         if (Fader.color != Fade)
             Fader.color = Color32.Lerp(Fader.color, Fade, .1f);
     }
@@ -77,6 +81,10 @@ public class CinemachineControls : MonoBehaviour
         if (PPCam.assetsPPU > 16)
         {
             PPCam.assetsPPU -= 1;
+        }
+        if (PPCam.assetsPPU < 16)
+        {
+            PPCam.assetsPPU += 1;
         }
         if (Fader.color != Norm)
             Fader.color = Color32.Lerp(Fader.color, Norm, .1f);

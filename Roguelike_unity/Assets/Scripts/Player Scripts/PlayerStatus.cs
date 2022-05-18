@@ -31,7 +31,9 @@ public class PlayerStatus : MonoBehaviour
     int updateHeart = 0;
     int heartLife;
     float heartAnimDel = 20;
-    public List<HeartAnim> Hearts;
+    public List<HeartAnim> UIHearts;
+    public List<HeartAnim> GameHearts;
+    public GameObject GameHeartParent;
     Animator MyAnim;
      PlayerInventory MyInv;
 
@@ -56,9 +58,17 @@ public class PlayerStatus : MonoBehaviour
         {
             iFrames -= 60 * Time.deltaTime;
         }
+        else
+        {
+           // if (GameHeartParent.activeSelf)
+            //    GameHeartParent.SetActive(false);
+        }
 
         if (heartLife != CurrentLife)
+        {
             UpdateHeartGFX();
+         //   UpdateGameHeartGFX();
+        }
 
         if (Input.GetKeyDown(KeyCode.K))
             DamagePlayer(1);
@@ -68,6 +78,7 @@ public class PlayerStatus : MonoBehaviour
 
     void UpdateHeartGFX()
     {
+       
         if (heartAnimDel > 0)
             heartAnimDel -= 60 * Time.deltaTime;
         else
@@ -75,14 +86,20 @@ public class PlayerStatus : MonoBehaviour
             if (heartLife < CurrentLife)
             {
                 updateHeart = Mathf.CeilToInt((((float)heartLife+ 1)/2)-1);
-                if (Hearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
+                if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
                     heartAnimDel = 1;
                 else
                 {
-                    if (Hearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
-                        Hearts[updateHeart].HalfHeart();
-                    else if (Hearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
-                        Hearts[updateHeart].FullHeart();
+                    if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
+                    {
+                        UIHearts[updateHeart].HalfHeart();
+                        GameHearts[updateHeart].HalfHeart();
+                    }
+                    else if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
+                    {
+                        UIHearts[updateHeart].FullHeart();
+                        GameHearts[updateHeart].FullHeart();
+                    }
                     heartLife += 1;
                     heartAnimDel = 20;
                 }
@@ -90,20 +107,27 @@ public class PlayerStatus : MonoBehaviour
             if (heartLife > CurrentLife)
             {
                 updateHeart = Mathf.CeilToInt((float)heartLife / 2f) - 1;
-                if (Hearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
+                if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
                     heartAnimDel = 1;
                 else
                 {
-                    if (Hearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
-                        Hearts[updateHeart].HalfHeart();
-                    else if (Hearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
-                        Hearts[updateHeart].EmptyHeart();
+                    if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
+                    {
+                        UIHearts[updateHeart].HalfHeart();
+                        GameHearts[updateHeart].HalfHeart();
+                    }
+                    else if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
+                    {
+                        UIHearts[updateHeart].EmptyHeart();
+                        GameHearts[updateHeart].EmptyHeart();
+                    }
                     heartLife -= 1;
                     heartAnimDel = 20;
                 }
 
 
             }
+         
         }
     }
 
@@ -115,9 +139,9 @@ public class PlayerStatus : MonoBehaviour
             MyAnim.SetTrigger("Hurt");
             CurrentLife -= _dmg;
             iFrames = 60;
-            //CamID.Cam.JarScreen(new Vector3(Random.Range(-.06f, .06f), Random.Range(-.06f, .06f),-10f));]
-            //CamID.Cam.ZoomScreen(.05f);
-           // CamID.Cam.DamageFlash(25);
+            GameHeartParent.SetActive(true);
+            CamID.CMController.PPCam.assetsPPU += 2;
+
         }
         if (CurrentLife<=0 && Alive)
         {
@@ -141,12 +165,16 @@ public class PlayerStatus : MonoBehaviour
     void ActivateHearts()
     {
         int index = 0;
+        GameHeartParent.SetActive(true);
         for (int i = 2; i <= MaxLife; i += 2)
         {
-            Hearts[index].gameObject.SetActive(true);
+            UIHearts[index].gameObject.SetActive(true);
+            GameHearts[index].gameObject.SetActive(true);
             index++;
         }
         activeHearts = index;
+        GameHeartParent.transform.localPosition = new Vector3(GameHeartParent.transform.localPosition.x + (.8f * (5 - MaxLife / 2)), GameHeartParent.transform.localPosition.y); ;
+        GameHeartParent.SetActive(false);
     }
 
     public void UpdatePlayerStats()
@@ -162,5 +190,47 @@ public class PlayerStatus : MonoBehaviour
         AttackRange = AttackRangeBonus + BaseAttackRange;
         AttackSpeed = AttackSpeedBonus + BaseAttackSpeed;
         Luck = LuckBonus + BaseLuck;
+    }
+
+    void UpdateGameHeartGFX()
+    {
+        if (heartAnimDel > 0)
+            heartAnimDel -= 60 * Time.deltaTime;
+        else
+        {
+            if (heartLife < CurrentLife)
+            {
+                updateHeart = Mathf.CeilToInt((((float)heartLife + 1) / 2) - 1);
+                if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
+                    heartAnimDel = 1;
+                else
+                {
+                    if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
+                        GameHearts[updateHeart].HalfHeart();
+                    else if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
+                        GameHearts[updateHeart].FullHeart();
+                    heartLife += 1;
+                    heartAnimDel = 20;
+                }
+            }
+            if (heartLife > CurrentLife)
+            {
+                updateHeart = Mathf.CeilToInt((float)heartLife / 2f) - 1;
+                if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
+                    heartAnimDel = 1;
+                else
+                {
+                    if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
+                        GameHearts[updateHeart].HalfHeart();
+                    else if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
+                        GameHearts[updateHeart].EmptyHeart();
+                    heartLife -= 1;
+                    heartAnimDel = 20;
+                }
+
+
+            }
+            
+        }
     }
 }

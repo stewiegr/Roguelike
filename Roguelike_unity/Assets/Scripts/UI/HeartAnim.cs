@@ -11,7 +11,8 @@ public class HeartAnim : MonoBehaviour
     public bool destroyOnEnd = false;
 
     private int index = 0;
-    private Image image;
+    public Image image;
+    public SpriteRenderer SprRend;
     private float frame = 0;
 
     bool GoToHalf;
@@ -29,7 +30,10 @@ public class HeartAnim : MonoBehaviour
 
     void Awake()
     {
+        if(GetComponent<Image>()!=null)
         image = GetComponent<Image>();
+        if (GetComponent<SpriteRenderer>() != null)
+            SprRend = GetComponent<SpriteRenderer>();
     }
 
     public void EmptyHeart()
@@ -66,7 +70,10 @@ public class HeartAnim : MonoBehaviour
                     if (frame >= spritePerFrame)
                     {
                         index++;
+                        if(image!=null)
                         image.sprite = sprites[index];
+                        if (SprRend != null)
+                            SprRend.sprite = sprites[index];
                         frame = 0;
                     }
                 }
@@ -79,7 +86,10 @@ public class HeartAnim : MonoBehaviour
                     if (frame >= spritePerFrame)
                     {
                         index--;
-                        image.sprite = sprites[index];
+                        if (image != null)
+                            image.sprite = sprites[index];
+                        if (SprRend != null)
+                            SprRend.sprite = sprites[index];
                         frame = 0;
                     }
                 }
@@ -95,7 +105,10 @@ public class HeartAnim : MonoBehaviour
                     if (frame >= spritePerFrame)
                     {
                         index++;
-                        image.sprite = sprites[index];
+                        if (image != null)
+                            image.sprite = sprites[index];
+                        if (SprRend != null)
+                            SprRend.sprite = sprites[index];
                         frame = 0;
                     }
                 }
@@ -111,7 +124,10 @@ public class HeartAnim : MonoBehaviour
                     if (frame >= spritePerFrame)
                     {
                         index--;
-                        image.sprite = sprites[index];
+                        if (image != null)
+                            image.sprite = sprites[index];
+                        if (SprRend != null)
+                            SprRend.sprite = sprites[index];
                         frame = 0;
                     }
                 }

@@ -29,7 +29,7 @@ public class ChestInteract : MonoBehaviour
         {
             if(Prompt.gameObject.activeSelf)
             {
-                transform.root.GetComponent<Animator>().Play("WoodChestOpen");
+                transform.root.GetComponent<Animator>().Play("ChestOpen");
                 GameInfo.PlayerInMenu = true;
                 GameInfo.GM.InventoryWindow.SetActive(true);
                 GameInfo.PositionInv();
@@ -111,7 +111,7 @@ public class ChestInteract : MonoBehaviour
             Squares[i].SetActive(false);
         }
         allOpen = false;
-        transform.root.GetComponent<Animator>().Play("WoodChestClosed");
+        transform.root.GetComponent<Animator>().Play("ChestClosed");
         GameInfo.PlayerInMenu = false;
         GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
         GameInfo.GM.InventoryWindow.SetActive(false);
