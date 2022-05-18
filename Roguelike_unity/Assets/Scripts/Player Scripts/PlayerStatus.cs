@@ -60,8 +60,8 @@ public class PlayerStatus : MonoBehaviour
         }
         else
         {
-           // if (GameHeartParent.activeSelf)
-            //    GameHeartParent.SetActive(false);
+            if (GameHeartParent.activeSelf)
+               GameHeartParent.SetActive(false);
         }
 
         if (heartLife != CurrentLife)
