@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemName: Loominaire Wand
   ItemDescription: You could try poking with the pointy end too.
   MoveSpeed: 0
-  RateOfFire: 1
+  RateOfFire: 30
   EnergyRegen: 0
   Damage: 2
   Range: 0
