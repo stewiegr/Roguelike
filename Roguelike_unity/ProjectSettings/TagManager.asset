@@ -19,7 +19,7 @@ TagManager:
   - NavOnly
   - Projectile
   - Obstacle
-  - 
+  - CamBoundaries
   - 
   - 
   - 

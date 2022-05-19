@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2827822839696255047}
   - component: {fileID: 2827822839696255034}
   m_Layer: 0
-  m_Name: PurpleChest
+  m_Name: UniqueChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1124684469, guid: b547de4f2d751724db33500a7908ceb2, type: 3}
+  m_Sprite: {fileID: -658955784, guid: b52e15eca51213742800e080786e6f8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +134,7 @@ Animator:
   m_GameObject: {fileID: 809632007948634188}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d844f78ec814c3d45b8a5f4de93e29a5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 39cfaedfe972c27439bd49fe8ae87d91, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -157,7 +157,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyItems: []
-  MaxItemCountUpTo9: 0
+  MaxItemCountUpTo9: 6
+  ChanceOfRare: 90
+  ChanceOfUnique: 75
+  ChanceOfLegendary: 0
 --- !u!1 &2827822837983107411
 GameObject:
   m_ObjectHideFlags: 0

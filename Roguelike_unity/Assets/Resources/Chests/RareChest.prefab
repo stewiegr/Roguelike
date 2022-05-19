@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2827822839696255047}
   - component: {fileID: 2827822839696255034}
   m_Layer: 0
-  m_Name: WoodChest
+  m_Name: RareChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 573312809, guid: 81d80e2d62c5cb34d99afc46e5ec5575, type: 3}
+  m_Sprite: {fileID: -748378027, guid: 47acca5fb3aed4a448fbdba6e391be11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +134,7 @@ Animator:
   m_GameObject: {fileID: 809632007948634188}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9147ab77fb72ac940bec77975ed4bb7c, type: 2}
+  m_Controller: {fileID: 9100000, guid: e486e6e69f6fc384a94b1af4f5c39e21, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -157,6 +157,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyItems: []
+  MaxItemCountUpTo9: 6
+  ChanceOfRare: 75
+  ChanceOfUnique: 5
+  ChanceOfLegendary: 0
 --- !u!1 &2827822837983107411
 GameObject:
   m_ObjectHideFlags: 0

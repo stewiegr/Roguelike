@@ -16,12 +16,14 @@ public class CinemachineControls : MonoBehaviour
     public Color32 Fade;
     public Color32 Norm;
     public SpriteRenderer Fader;
+    public bool dead = false;
+    public GameObject GameArea;
 
     float ShakeDur = 0;
-    
+
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         CCam = GetComponent<CinemachineVirtualCamera>();
         CamID.CMController = this;
         noise = CCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -31,10 +33,10 @@ public class CinemachineControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ShakeDur>0)
+        if (ShakeDur > 0)
         {
             ShakeDur -= 60 * Time.deltaTime;
-            if(ShakeDur<=0)
+            if (ShakeDur <= 0)
             {
                 noise.m_AmplitudeGain = 0;
             }
@@ -56,15 +58,27 @@ public class CinemachineControls : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (zoom)
-            DoZoomIn();
+        if (!dead)
+        {
+            if (!GameArea.activeSelf)
+                GameArea.SetActive(true);
+
+            if (zoom)
+                DoZoomIn();
+            else
+                DoZoomOut();
+        }
         else
-            DoZoomOut();
+        {
+
+            //GameArea.SetActive(false);
+            DoDead();
+        }
     }
 
-    void DoZoomIn()
+    void DoDead()
     {
-        if(PPCam.assetsPPU<32)
+        if (PPCam.assetsPPU < 32)
         {
             PPCam.assetsPPU += 1;
         }
@@ -74,6 +88,20 @@ public class CinemachineControls : MonoBehaviour
         }
         if (Fader.color != Fade)
             Fader.color = Color32.Lerp(Fader.color, Fade, .1f);
+    }
+
+    void DoZoomIn()
+    {
+        if (PPCam.assetsPPU < 32)
+        {
+            PPCam.assetsPPU += 1;
+        }
+        if (PPCam.assetsPPU > 32)
+        {
+            PPCam.assetsPPU -= 1;
+        }
+        //if (Fader.color != Fade)
+        //     Fader.color = Color32.Lerp(Fader.color, Fade, .1f);
     }
 
     void DoZoomOut()

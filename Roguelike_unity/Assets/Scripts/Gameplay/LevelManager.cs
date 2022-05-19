@@ -9,30 +9,41 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Monsters that can spawn")]
     public List<GameObject> Monsters;
     [Tooltip("Delay in frames between each monster spawn")]
-    public float SpawnDelay=10;
+    public float SpawnDelay = 10;
     [Tooltip("How many waves in this level")]
-    public int Waves=3;
+    public int Waves = 3;
     [Tooltip("Maximum number of monsters that could be in a wave")]
-    public int MaxPerWave=200;
+    public int MaxPerWave = 200;
     [Tooltip("Minimum number of monsters that could be in a wave")]
-    public int MinPerWave=120;
+    public int MinPerWave = 120;
     [Tooltip("Multiplier - can more monsters spawn in each wave?")]
-    public float WaveModifier=1.25f;
+    public float WaveModifier = 1.25f;
 
     [Tooltip("Upper Left Limit of Spawn Area")]
     public Transform UpperLeftBounds;
     [Tooltip("Lower Right Limit of Spawn Area")]
     public Transform LowerRightBounds;
     [Tooltip("PLACEHOLDER - spawn a chest when done")]
-    public GameObject RewardChest;
+
+    public float ChanceOfRareChest = 0;
+    public float ChanceOfUniqueChest = 0;
+    public float ChanceOfLegendaryChest = 0;
+
+    private GameObject RewardChest;
+
+    private GameObject CommonChest;
+    private GameObject RareChest;
+    private GameObject UniqueChest;
+    private GameObject LegendaryChest;
+
 
     int spawnedSoFar = 0;
     int setSpawnNumber;
     bool waveStarted = false;
-    int enemiesKilled = 0;
-    public int currentWave = 0;
+    //int enemiesKilled = 0;
+    private int currentWave = 0;
     float delay;
-    bool treasureWave = false;
+   // bool treasureWave = false;
     bool chestUp = false;
     [Tooltip("1.5-5 is a good range")]
     public float ForcedDistanceFromPlayer = 1.5f;
@@ -40,16 +51,20 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        CommonChest = Resources.Load<GameObject>("Chests/CommonChest");
+        RareChest = Resources.Load<GameObject>("Chests/RareChest");
+        UniqueChest = Resources.Load<GameObject>("Chests/UniqueChest");
+        LegendaryChest = Resources.Load<GameObject>("Chests/LegendaryChest");
         delay = SpawnDelay;
     }
     // Update is called once per frame
     void Update()
     {
-        if(!waveStarted && currentWave<Waves)
+        if (!waveStarted && currentWave < Waves)
         {
             InitWave();
         }
-        else if(waveStarted && GM.currentKillsThisWave<setSpawnNumber-4)
+        else if (waveStarted && GM.currentKillsThisWave < setSpawnNumber - 4)
         {
             if (spawnedSoFar <= setSpawnNumber)
             {
@@ -58,25 +73,23 @@ public class LevelManager : MonoBehaviour
                     delay -= 60 * Time.deltaTime;
                     if (delay <= 0)
                     {
-                        if(spawnedSoFar<50)
-                        SpawnMonster(1);
+                        if (spawnedSoFar < 50)
+                            SpawnMonster(1);
                         else
                         {
-                            SpawnMonster(Random.Range(15,30));
+                            SpawnMonster(Random.Range(15, 30));
                         }
                     }
                 }
             }
         }
-        if(GM.currentKillsThisWave>=setSpawnNumber)
+        if (GM.currentKillsThisWave >= setSpawnNumber)
         {
             waveStarted = false;
         }
-        if (currentWave >= Waves && GM.LivingEnemies <= 0 && !chestUp && GM.currentKillsThisWave>0)
+        if (currentWave >= Waves && GM.LivingEnemies <= 0 && !chestUp && GM.currentKillsThisWave >= setSpawnNumber)
         {
-            chestUp = true;
-            RewardChest.transform.position = GameInfo.PlayerPos + new Vector2(Random.Range(1f, 2f), Random.Range(1f, 2f));
-            RewardChest.gameObject.SetActive(true);
+            DoChestSpawn();
             //CamID.Cam.ShakeScreen(2, 5);
         }
     }
@@ -94,7 +107,7 @@ public class LevelManager : MonoBehaviour
         {
             if (spawnedSoFar <= setSpawnNumber)
             {
-                GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos + new Vector2(Random.Range(-1,1),Random.Range(-1,1)), transform.rotation);
+                GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), transform.rotation);
                 NPC.GetComponent<NPCStatus>().GM = GM;
                 spawnedSoFar++;
                 GM.LivingEnemies++;
@@ -104,7 +117,25 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    
+    void DoChestSpawn()
+    {
+        chestUp = true;
+        float chest = Random.Range(0f, 100f);
+        if (chest > 100 - ChanceOfLegendaryChest)
+            RewardChest = LegendaryChest;
+        else if (chest > 100 - ChanceOfUniqueChest)
+            RewardChest = UniqueChest;
+        else if (chest > 100 - ChanceOfRareChest)
+            RewardChest = RareChest;
+        else
+            RewardChest = CommonChest;
+
+        RewardChest = Instantiate(RewardChest);
+        RewardChest.transform.position = GameInfo.PlayerPos + new Vector2(Random.Range(1f, 2f), Random.Range(1f, 2f));
+        RewardChest.gameObject.SetActive(true);
+    }
+
+
 
     void InitWave()
     {

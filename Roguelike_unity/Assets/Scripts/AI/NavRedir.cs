@@ -26,7 +26,7 @@ public class NavRedir : MonoBehaviour
             if (pulse <= 0)
             {
                 MyTrigger.enabled = !MyTrigger.enabled;
-                pulse = 20;
+                pulse = Random.Range(20,40);
             }
 
         }

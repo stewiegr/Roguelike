@@ -145,6 +145,7 @@ public class PlayerStatus : MonoBehaviour
         }
         if (CurrentLife<=0 && Alive)
         {
+            CamID.CMController.dead = true;
             Alive = false;
             MyAnim.SetBool("Dead", true);
         }
