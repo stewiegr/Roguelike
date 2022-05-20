@@ -36,6 +36,7 @@ public class LevelManager : MonoBehaviour
     private GameObject UniqueChest;
     private GameObject LegendaryChest;
 
+    List<GameObject> SpawnedMonsters = new List<GameObject>();
 
     int spawnedSoFar = 0;
     int setSpawnNumber;
@@ -66,7 +67,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (waveStarted && GM.currentKillsThisWave < setSpawnNumber - 4)
         {
-            if (spawnedSoFar <= setSpawnNumber)
+            if (spawnedSoFar <= setSpawnNumber && GameInfo.PlayerStatus.Alive)
             {
                 if (delay > 0)
                 {
@@ -109,12 +110,39 @@ public class LevelManager : MonoBehaviour
             {
                 GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), transform.rotation);
                 NPC.GetComponent<NPCStatus>().GM = GM;
+                SpawnedMonsters.Add(NPC.gameObject);
                 spawnedSoFar++;
                 GM.LivingEnemies++;
             }
         }
         delay = SpawnDelay + (_amt * 15);
 
+    }
+
+    public void ResetLevel()
+    {
+        currentWave = 0;
+        spawnedSoFar = 0;
+        GM.currentKillsThisWave = 0;
+        waveStarted = false;
+        for(int i=SpawnedMonsters.Count-1; i>=0; i--)
+        {
+            if (SpawnedMonsters[i] != null)
+                GameObject.Destroy(SpawnedMonsters[i]);
+        }
+        for (int i = GM.TemporaryDebris.Count - 1; i >= 0; i--)
+        {
+            if (GM.TemporaryDebris[i] != null)
+                GameObject.Destroy(GM.TemporaryDebris[i]);
+        }
+        GameInfo.Player.transform.position = Vector2.zero;
+        GameInfo.PlayerStatus.Alive = true;
+        GameInfo.PlayerStatus.CurrentLife = GameInfo.PlayerStatus.MaxLife;
+        CamID.CMController.dead = false;
+        GameInfo.PlayerStatus.RetryButton.SetActive(false);
+        GameInfo.Player.GetComponent<Animator>().SetBool("Dead", false);
+        GM.LivingEnemies = 0;
+        delay = 90;
     }
 
     void DoChestSpawn()

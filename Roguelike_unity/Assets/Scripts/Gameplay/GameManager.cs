@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     public int currentKillsThisWave = 0;
     public int LivingEnemies = 0;
     public GameObject InventoryWindow;
+
+    public List<LevelManager> Levels;
+    public LevelManager CurrentLevel;
+    public List<GameObject> TemporaryDebris = new List<GameObject>();
     private void Start()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
@@ -31,5 +35,10 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResetLevel()
+    {
+        CurrentLevel.ResetLevel();
     }
 }

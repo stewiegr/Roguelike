@@ -16,17 +16,24 @@ public class ChestInventory : MonoBehaviour
     {
         MaxItemCountUpTo9 = Random.Range(2, MaxItemCountUpTo9);
 
-        for (int i = 0; i <= MaxItemCountUpTo9; i++)
+        for (int i = 0; i < 9; i++)
         {
             float loot = Random.Range(0f, 100f);
-            if (loot > 100 - ChanceOfLegendary)
-                MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Legendary.Length)]);
-            else if (loot > 100 - ChanceOfUnique)
-                MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Unique.Length)]);
-            else if (loot > 100 - ChanceOfRare)
-                MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Rare.Length)]);
+            if (i <= MaxItemCountUpTo9)
+            {
+                if (loot > 100 - ChanceOfLegendary)
+                    MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Legendary.Length)]);
+                else if (loot > 100 - ChanceOfUnique)
+                    MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Unique.Length)]);
+                else if (loot > 100 - ChanceOfRare)
+                    MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Rare.Length)]);
+                else
+                    MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Common.Length)]);
+            }
             else
-                MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Common.Length)]);
+            {
+                MyItems.Add(GameInfo.ItemDB.Empty);
+            }
         }
     }
 

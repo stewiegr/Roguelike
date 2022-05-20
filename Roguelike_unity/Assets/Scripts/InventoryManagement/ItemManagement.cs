@@ -15,7 +15,6 @@ public class ItemManagement : MonoBehaviour
     {
         if(collision.transform.tag=="ItemSlot")
         {
-
             CurrentDestination = collision.transform.GetComponent<InvSlot>();
         }
     }

@@ -26,6 +26,7 @@ public class NPCStatus : MonoBehaviour
             {
                 Gibs[i] = Instantiate(Gibs[i]);
                 Gibs[i].SetActive(false);
+                GM.TemporaryDebris.Add(Gibs[i]);
             }
         }
 

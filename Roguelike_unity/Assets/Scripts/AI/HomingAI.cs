@@ -83,7 +83,7 @@ public class HomingAI : MonoBehaviour
     void DoMovement()
     {
        // if(forcedVector==Vector2.zero)
-        MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
+        MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed * SpeedMod));// * Time.deltaTime;     
       //  else
        //     MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
     }
@@ -181,11 +181,19 @@ public class HomingAI : MonoBehaviour
                 movement.y = 0;
         }
 
-        movement.x *= SpeedMod;
-        movement.y *= SpeedMod;
 
 
         LastPos = transform.position;
+
+
+
+        if (!GameInfo.PlayerStatus.Alive)
+            movement *= -Vector2.one;
+        else
+        {
+            if (InAtkRange)
+                movement = Vector2.zero;
+        }
 
         if (movement != Vector2.zero)
             DoMovement();

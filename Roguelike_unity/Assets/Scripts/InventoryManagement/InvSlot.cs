@@ -37,18 +37,20 @@ public class InvSlot : MonoBehaviour
         if (dragging)
         {
             MyItemGFX.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -6);
+            ItemRenderer.sortingOrder = 16;
         }
         else
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
+            ItemRenderer.sortingOrder = 15;
             if (hit.collider != null)
             {
                 if (hit.collider.transform.tag == "ItemSlot")
                 {
-                    if (hit.collider.transform == this.transform)
+                    if (hit.collider.transform == this.transform && !Input.GetMouseButton(0))
                     {
                         GameInfo.ItemInfoWindow.SetActive(true);
+                        GameInfo.ItemInfoWindow.transform.position = (Vector2)MyItemGFX.position - new Vector2(2, 2);
                         GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
                     }
                 }
@@ -87,7 +89,7 @@ public class InvSlot : MonoBehaviour
 
     void ClickListener()
     {
-        if (Input.GetMouseButtonDown(0) && !dragging)
+        if (Input.GetMouseButtonDown(0) && !dragging && GameItem.ItemName!="Empty Slot")
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 

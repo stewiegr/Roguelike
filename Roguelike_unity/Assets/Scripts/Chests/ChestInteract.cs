@@ -12,6 +12,8 @@ public class ChestInteract : MonoBehaviour
     public List<GameObject> Squares;
     public List<Vector2> SquareCoords = new List<Vector2>();
     bool allOpen = false;
+    bool allAssigned = false;
+    bool delayClose = false;
 
     ChestInventory Inv;
 
@@ -30,9 +32,6 @@ public class ChestInteract : MonoBehaviour
             if(Prompt.gameObject.activeSelf)
             {
                 transform.root.GetComponent<Animator>().Play("ChestOpen");
-                GameInfo.PlayerInMenu = true;
-                GameInfo.GM.InventoryWindow.SetActive(true);
-                GameInfo.PositionInv();
                 OpenChest();
             }
         }
@@ -50,7 +49,9 @@ public class ChestInteract : MonoBehaviour
                         Squares[i].GetComponent<InvSlot>().IndexInInv = i;
                     }
                     allOpen = true;
-
+                    GameInfo.PlayerInMenu = true;
+                    GameInfo.GM.InventoryWindow.SetActive(true);
+                    GameInfo.PositionInv();
                     AssignItems();
                 }
             }
@@ -62,6 +63,11 @@ public class ChestInteract : MonoBehaviour
                         Squares[Random.Range(0, 9)].SetActive(true);
                     }             
             }
+        }
+        if(delayClose)
+        {
+            if (allAssigned)
+                CloseChest();
         }
 
         if(open)
@@ -93,6 +99,7 @@ public class ChestInteract : MonoBehaviour
                 Inv.MyItems.Add(null);
             }
         }
+        allAssigned = true;
     }
     void OpenChest()
     {
@@ -104,18 +111,28 @@ public class ChestInteract : MonoBehaviour
 
     void CloseChest()
     {
-        open = false;
-        for (int i = 0; i <= 8; i++)
+        if (allAssigned)
         {
-            Squares[i].GetComponent<InvSlot>().ReturnHome();
-            Squares[i].SetActive(false);
+            delayClose = false;
+            allAssigned = false;
+            open = false;
+            for (int i = 0; i <= 8; i++)
+            {
+                Squares[i].GetComponent<InvSlot>().ReturnHome();
+                Squares[i].SetActive(false);
+            }
+            allOpen = false;
+            transform.root.GetComponent<Animator>().Play("ChestClosed");
+            GameInfo.PlayerInMenu = false;
+            GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
+            GameInfo.GM.InventoryWindow.SetActive(false);
+            GameInfo.ItemInfoWindow.SetActive(false);
+            
         }
-        allOpen = false;
-        transform.root.GetComponent<Animator>().Play("ChestClosed");
-        GameInfo.PlayerInMenu = false;
-        GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
-        GameInfo.GM.InventoryWindow.SetActive(false);
-        GameInfo.ItemInfoWindow.SetActive(false);
+        else
+        {
+            delayClose = true;
+        }
     }
 
 
@@ -129,7 +146,7 @@ public class ChestInteract : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.tag == "Player" && !open)
         {
             Prompt.gameObject.SetActive(false);
         }

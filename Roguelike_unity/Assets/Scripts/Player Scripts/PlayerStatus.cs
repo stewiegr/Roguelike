@@ -30,12 +30,14 @@ public class PlayerStatus : MonoBehaviour
     int activeHearts = 0;
     int updateHeart = 0;
     int heartLife;
-    float heartAnimDel = 20;
+    float heartAnimDel = 1;
     public List<HeartAnim> UIHearts;
     public List<HeartAnim> GameHearts;
     public GameObject GameHeartParent;
     Animator MyAnim;
      PlayerInventory MyInv;
+
+    public GameObject RetryButton;
 
     private void Awake()
     {
@@ -101,7 +103,7 @@ public class PlayerStatus : MonoBehaviour
                         GameHearts[updateHeart].FullHeart();
                     }
                     heartLife += 1;
-                    heartAnimDel = 20;
+                    heartAnimDel = 1;
                 }
             }
             if (heartLife > CurrentLife)
@@ -122,7 +124,7 @@ public class PlayerStatus : MonoBehaviour
                         GameHearts[updateHeart].EmptyHeart();
                     }
                     heartLife -= 1;
-                    heartAnimDel = 20;
+                    heartAnimDel = 1;
                 }
 
 
@@ -148,6 +150,7 @@ public class PlayerStatus : MonoBehaviour
             CamID.CMController.dead = true;
             Alive = false;
             MyAnim.SetBool("Dead", true);
+            RetryButton.SetActive(true);
         }
     }
 
@@ -211,7 +214,7 @@ public class PlayerStatus : MonoBehaviour
                     else if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
                         GameHearts[updateHeart].FullHeart();
                     heartLife += 1;
-                    heartAnimDel = 20;
+                    //heartAnimDel = 10;
                 }
             }
             if (heartLife > CurrentLife)
@@ -226,7 +229,7 @@ public class PlayerStatus : MonoBehaviour
                     else if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
                         GameHearts[updateHeart].EmptyHeart();
                     heartLife -= 1;
-                    heartAnimDel = 20;
+                    //heartAnimDel = 10;
                 }
 
 

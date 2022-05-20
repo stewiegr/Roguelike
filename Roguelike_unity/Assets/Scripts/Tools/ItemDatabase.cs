@@ -8,6 +8,7 @@ public class ItemDatabase : MonoBehaviour
     public Item[] Rare;
     public Item[] Unique;
     public Item[] Legendary;
+    public Item Empty;
 
     private void Awake()
     {

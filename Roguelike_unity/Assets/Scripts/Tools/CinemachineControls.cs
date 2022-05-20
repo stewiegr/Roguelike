@@ -70,8 +70,7 @@ public class CinemachineControls : MonoBehaviour
         }
         else
         {
-
-            //GameArea.SetActive(false);
+            GameArea.SetActive(false);
             DoDead();
         }
     }
