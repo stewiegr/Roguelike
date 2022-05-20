@@ -70379,8 +70379,8 @@ MonoBehaviour:
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   SpawnDelay: 10
   Waves: 2
-  MaxPerWave: 100
-  MinPerWave: 75
+  MaxPerWave: 20
+  MinPerWave: 15
   WaveModifier: 1.25
   UpperLeftBounds: {fileID: 1379510627}
   LowerRightBounds: {fileID: 349172271}
