@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: '[RELIC] Apple'
   m_EditorClassIdentifier: 
   ItemName: Apple
-  ItemDescription: While im in your inventory
+  ItemDescription: While im in your inventory, gain 1 red heart.
   MoveSpeed: 0
   RateOfFire: 0
   EnergyRegen: 0
