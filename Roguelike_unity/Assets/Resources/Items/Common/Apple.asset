@@ -21,7 +21,6 @@ MonoBehaviour:
   Range: 0
   Luck: 0
   ItemGFX: {fileID: 1680684790, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: For each apple in your inventory, up to 5 apples, gain one additional
-    red heart.
+  RelicDesc: 'Gain one additional red heart per apple held. (Max 3 apples) '
   ItemType: 4
   RelicEffect: 1
