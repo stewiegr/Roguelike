@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
-  m_Name: '[RELIC] Wooden Shield'
+  m_Name: Apple
   m_EditorClassIdentifier: 
-  ItemName: Wooden Shield
-  ItemDescription: 
+  ItemName: Apple
+  ItemDescription: Place item in any inventory slot for effect
   MoveSpeed: 0
   RateOfFire: 0
   EnergyRegen: 0
   Damage: 0
   Range: 0
   Luck: 0
-  ItemGFX: {fileID: -1946180243, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  ItemType: 3
+  ItemGFX: {fileID: 1680684790, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: For each apple in your inventory, up to 5 apples, gain one additional
+    red heart.
+  ItemType: 4
+  RelicEffect: 1

@@ -14,6 +14,7 @@ public class ItemDesc : MonoBehaviour
     public TextMeshPro ItemEnergy;
     public TextMeshPro ItemLuck;
     public TextMeshPro ItemLore;
+    public TextMeshPro RelicDesc;
     public SpriteRenderer ItemSprite;
 
 
@@ -27,13 +28,28 @@ public class ItemDesc : MonoBehaviour
         if (_item != null)
         {
             ItemName.text = _item.ItemName;
-            MoveSpeed.text = "Move Speed: " + _item.MoveSpeed.ToString();
-            ItemDMG.text = "Damage: " + _item.Damage.ToString();
-            ItemShotSpeed.text = "Shot Speed: " + _item.RateOfFire.ToString();
-            ItemRange.text = "Range: " + _item.Range.ToString();
-            ItemEnergy.text = "Energy: " + _item.EnergyRegen.ToString();
-            ItemLuck.text = "Luck: " + _item.Luck.ToString();
             ItemLore.text = _item.ItemDescription;
+            if (_item.ItemType != InvSlot.SlotType.Relic)
+            {
+                MoveSpeed.text = "Move Speed: " + _item.MoveSpeed.ToString();
+                ItemDMG.text = "Damage: " + _item.Damage.ToString();
+                ItemShotSpeed.text = "Shot Speed: " + _item.RateOfFire.ToString();
+                ItemRange.text = "Range: " + _item.Range.ToString();
+                ItemEnergy.text = "Energy: " + _item.EnergyRegen.ToString();
+                ItemLuck.text = "Luck: " + _item.Luck.ToString();
+                RelicDesc.text = "";
+            }
+            else
+            {
+                MoveSpeed.text = "";
+                ItemDMG.text = "";
+                ItemShotSpeed.text = "";
+                ItemRange.text = "";
+                ItemEnergy.text = "";
+                ItemLuck.text = "";
+                RelicDesc.text = _item.RelicDesc;
+            }
+
             ItemSprite.sprite = _item.ItemGFX;
         }
         else

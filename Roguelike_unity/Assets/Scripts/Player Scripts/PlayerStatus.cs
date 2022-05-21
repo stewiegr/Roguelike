@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int MaxLife = 8;
-    public int CurrentLife = 8;
+    public int MaxLife = 4;
+    public int CurrentLife = 4;
     public float RunSpeed;
     public float AttackDamage;
     public float AttackRange;
     public float AttackSpeed;
     public float Luck;
 
+    public int BaseMaxLife=4;
     public float BaseRunSpeed;
     public float BaseAttackDamage;
     public float BaseAttackRange;
@@ -38,19 +39,23 @@ public class PlayerStatus : MonoBehaviour
      PlayerInventory MyInv;
 
     public GameObject RetryButton;
+    public RelicBonuses Relics;
 
     private void Awake()
     {
         GameInfo.PlayerStatus = this;
+        Relics = GetComponent<RelicBonuses>();
         MyInv = GetComponent<PlayerInventory>();
     }
     void Start()
     {
-        heartLife = CurrentLife;
+        CurrentLife = MaxLife;
+        UpdatePlayerStats();
+        heartLife = MaxLife;
         ActivateHearts();
         MyAnim = GetComponent<Animator>();
         MyInv = GetComponent<PlayerInventory>();
-        UpdatePlayerStats();
+
     }
 
     // Update is called once per frame
@@ -138,11 +143,14 @@ public class PlayerStatus : MonoBehaviour
 
         if (CurrentLife > 0 && iFrames<=0)
         {
-            MyAnim.SetTrigger("Hurt");
-            CurrentLife -= _dmg;
-            iFrames = 60;
-            GameHeartParent.SetActive(true);
-            CamID.CMController.PPCam.assetsPPU += 2;
+            if ((Relics.ShieldBonus && Random.Range(0, 100) < 90 || !Relics.ShieldBonus))
+            {
+                MyAnim.SetTrigger("Hurt");
+                CurrentLife -= _dmg;
+                iFrames = 60;
+                GameHeartParent.SetActive(true);
+                CamID.CMController.PPCam.assetsPPU += 2;
+            }
 
         }
         if (CurrentLife<=0 && Alive)
@@ -166,7 +174,7 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    void ActivateHearts()
+    public void ActivateHearts()
     {
         int index = 0;
         GameHeartParent.SetActive(true);
@@ -176,8 +184,17 @@ public class PlayerStatus : MonoBehaviour
             GameHearts[index].gameObject.SetActive(true);
             index++;
         }
-        activeHearts = index;
-        GameHeartParent.transform.localPosition = new Vector3(GameHeartParent.transform.localPosition.x + (.8f * (5 - MaxLife / 2)), GameHeartParent.transform.localPosition.y); ;
+        activeHearts = index-1;
+        GameHeartParent.transform.localPosition = new Vector3(-1.22f + (.8f * (5 - MaxLife / 2)), GameHeartParent.transform.localPosition.y); 
+        if(index<5)
+        {
+            for(int i=index; i<=4; i++)
+            {
+                UIHearts[i].gameObject.SetActive(false);
+                GameHearts[i].gameObject.SetActive(false);
+            }
+        }
+        UpdateHeartGFX();
         GameHeartParent.SetActive(false);
     }
 
@@ -189,6 +206,7 @@ public class PlayerStatus : MonoBehaviour
         AttackSpeedBonus = MyInv.CalcROF();
         LuckBonus = MyInv.CalcLuck();
 
+        DoApples(Relics.ApplesHeld);
         RunSpeed = RunSpeedBonus + BaseRunSpeed;
         AttackDamage = AttackDamageBonus + BaseAttackDamage;
         AttackRange = AttackRangeBonus + BaseAttackRange;
@@ -236,5 +254,15 @@ public class PlayerStatus : MonoBehaviour
             }
             
         }
+    }
+
+    public void DoApples(int _apples)
+    {
+        MaxLife = BaseMaxLife + 2 * _apples;
+        ActivateHearts();
+        UpdateHeartGFX();
+        if (CurrentLife > MaxLife)
+            CurrentLife = MaxLife;
+
     }
 }

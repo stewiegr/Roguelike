@@ -8,6 +8,7 @@ public class BasicProjectile : MonoBehaviour
     public bool TargetEnemy;
     public int dmg = 1;
     public GameObject myExplosion;
+    public int Penetrations = 0;
 
     public float life = 25;
     private void Update()
@@ -15,7 +16,10 @@ public class BasicProjectile : MonoBehaviour
         if (life > 0)
             life -= 60 * Time.deltaTime;
         if (life <= 0)
-            CreateExplosion(TargetPlayer,TargetEnemy);
+        {
+            CreateExplosion(TargetPlayer, TargetEnemy);
+            GameObject.Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,11 +28,19 @@ public class BasicProjectile : MonoBehaviour
             if ((TargetEnemy && collision.transform.tag == "Enemy" || TargetPlayer &&  collision.transform.tag == "Player"))
             {
                 CreateExplosion(TargetPlayer, TargetEnemy);
-                GameObject.Destroy(this.gameObject);
+                if (Penetrations <= 0)
+                {
+                    GameObject.Destroy(this.gameObject);
+                }
+                else
+                {
+                    Penetrations--;
+                }
             }
             if(collision.transform.tag=="WorldObject")
             {
                 CreateExplosion(TargetPlayer, TargetEnemy);
+                GameObject.Destroy(this.gameObject);
             }
         }
     }
@@ -40,7 +52,7 @@ public class BasicProjectile : MonoBehaviour
         AE.Dmg = dmg;
         AE.HitPlayer = _player;
         AE.HitNPC = _enemy;
-        GameObject.Destroy(this.gameObject);
+
     }
 
 

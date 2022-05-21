@@ -41,9 +41,9 @@ public class PlayerSkills : MonoBehaviour
         BP.life = BP.life * MyStatus.AttackRange;
         BP.TargetEnemy = true;
         BP.dmg = (int)MyStatus.AttackDamage;
-
-
         proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 10.5f;
+        if (MyStatus.Relics.PenetratingProjectile)
+            BP.Penetrations = Random.Range(3, 5);
 
 
     }

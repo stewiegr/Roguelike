@@ -16,8 +16,26 @@ public class Item : ScriptableObject
     public float Luck;
 
     public Sprite ItemGFX;
-
+    public string RelicDesc;
 
     public InvSlot.SlotType ItemType;
+
+    public enum RelicBonus
+    {
+        None,
+        AppleEffect,
+        ShieldBonus,
+        PenetratingProjectile,
+        TripleShot,
+        TrackingShots,
+        LifeSteal,
+        Lifeline,
+        Forcefield,
+        TeleportExplosion,
+        FlamingFootprints,
+        KnockbackBonus
+    }
+
+    public RelicBonus RelicEffect;
 
 }
