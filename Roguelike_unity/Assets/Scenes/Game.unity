@@ -60781,9 +60781,9 @@ MonoBehaviour:
   m_RefResolutionY: 540
   m_UpscaleRT: 0
   m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72937,7 +72937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PPCam: {fileID: 519420034}
-  zoom: 0
+  zoom: 1
   ZoomOffset: {fileID: 193796277}
   NormalTarg: {fileID: 1856694942}
   Fade:

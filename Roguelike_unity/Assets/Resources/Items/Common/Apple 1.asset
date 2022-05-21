@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
-  m_Name: Giant's Tooth
+  m_Name: Apple 1
   m_EditorClassIdentifier: 
-  ItemName: Giant's Tooth
+  ItemName: 'Need a hand? '
   ItemDescription: Place item in any inventory slot for effect
   MoveSpeed: 0
   RateOfFire: 0
@@ -20,8 +20,7 @@ MonoBehaviour:
   Damage: 0
   Range: 0
   Luck: 0
-  ItemGFX: {fileID: 33048400, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: Your normal projectiles will penetrate multiple targets, dealing full
-    damage to each target.
+  ItemGFX: {fileID: -1386132941, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: Triple shot
   ItemType: 4
-  RelicEffect: 3
+  RelicEffect: 4
