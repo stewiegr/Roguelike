@@ -27,6 +27,7 @@ public class PlayerStatus : MonoBehaviour
     public float LuckBonus;
 
     public bool Alive = true;
+    int LifelineInProgress = 0;
     float iFrames = 60;
     int activeHearts = 0;
     int updateHeart = 0;
@@ -40,6 +41,8 @@ public class PlayerStatus : MonoBehaviour
 
     public GameObject RetryButton;
     public RelicBonuses Relics;
+    public GameObject LifelineImg;
+    public FlashFade ScrFlash;
 
     private void Awake()
     {
@@ -81,6 +84,14 @@ public class PlayerStatus : MonoBehaviour
             DamagePlayer(1);
         if (Input.GetKeyDown(KeyCode.L))
             HealPlayer(1);
+
+        if(!Alive)
+        {
+            if(Relics.Lifeline)
+            {
+                DoLifeline();
+            }
+        }
     }
 
     void UpdateHeartGFX()
@@ -158,6 +169,7 @@ public class PlayerStatus : MonoBehaviour
             CamID.CMController.dead = true;
             Alive = false;
             MyAnim.SetBool("Dead", true);
+            if(!Relics.Lifeline)
             RetryButton.SetActive(true);
         }
     }
@@ -212,6 +224,8 @@ public class PlayerStatus : MonoBehaviour
         AttackRange = AttackRangeBonus + BaseAttackRange;
         AttackSpeed = AttackSpeedBonus + BaseAttackSpeed;
         Luck = LuckBonus + BaseLuck;
+
+        Relics.DetermineCurrentBonuses(MyInv.MyItems);
     }
 
     void UpdateGameHeartGFX()
@@ -253,6 +267,33 @@ public class PlayerStatus : MonoBehaviour
 
             }
             
+        }
+    }
+
+    void DoLifeline()
+    {
+        if(LifelineInProgress==0)
+        {
+            LifelineInProgress = 1;
+            LifelineImg.SetActive(true);
+            LifelineImg.transform.position = transform.root.position+new Vector3(0,2,0);
+        }
+        if (LifelineImg.transform.position.y > transform.root.position.y + .5f)
+        {
+            LifelineImg.transform.position = Vector2.Lerp(LifelineImg.transform.position, transform.root.position, Time.deltaTime);
+        }
+        else if(LifelineInProgress == 1)
+        {
+            LifelineInProgress = 2;
+            ScrFlash.GetComponent<SpriteRenderer>().color = ScrFlash.FlashScr;
+            Alive = true;
+            CurrentLife = MaxLife;
+            LifelineInProgress = 0;
+            CamID.CMController.dead = false;
+            MyAnim.SetBool("Dead", false);
+            LifelineImg.SetActive(false);
+            MyInv.FindAndRemove(Item.RelicBonus.Lifeline);
+
         }
     }
 

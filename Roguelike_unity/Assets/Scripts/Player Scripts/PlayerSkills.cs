@@ -45,6 +45,28 @@ public class PlayerSkills : MonoBehaviour
         if (MyStatus.Relics.PenetratingProjectile)
             BP.Penetrations = Random.Range(3, 5);
 
+        if(MyStatus.Relics.TripleShot)
+        {
+            GameObject proj1 = Instantiate(BasicProjectile, transform.position + Vector3.up * .35f, transform.localRotation);
+            proj1.transform.Rotate(0, 0, 25);
+            BP = proj1.GetComponent<BasicProjectile>();
+            BP.life = BP.life * MyStatus.AttackRange;
+            BP.TargetEnemy = true;
+            BP.dmg = (int)MyStatus.AttackDamage;
+            if (MyStatus.Relics.PenetratingProjectile)
+                BP.Penetrations = Random.Range(3, 5);
+            proj1.GetComponent<Rigidbody2D>().velocity = proj1.transform.right * 10.5f;
+            GameObject proj2 = Instantiate(BasicProjectile, transform.position + Vector3.up * .35f, transform.localRotation);
+            proj2.transform.Rotate(0, 0, -25);
+            BP = proj2.GetComponent<BasicProjectile>();
+            BP.life = BP.life * MyStatus.AttackRange;
+            BP.TargetEnemy = true;
+            BP.dmg = (int)MyStatus.AttackDamage;
+            if (MyStatus.Relics.PenetratingProjectile)
+                BP.Penetrations = Random.Range(3, 5);
+            proj2.GetComponent<Rigidbody2D>().velocity = proj2.transform.right * 10.5f;
+        }
+
 
     }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
-  m_Name: Sharkt's Tooth
+  m_Name: Shark's Tooth
   m_EditorClassIdentifier: 
   ItemName: Shark's Tooth
   ItemDescription: Place item in any inventory slot for effect

@@ -13,10 +13,15 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
-        for(int i=0; i<=15; i++)
+        for(int i=0; i<=19; i++)
         {
             MyItems.Add(null);
-            Squares[i].IndexInInv = i;
+            if (i <= 15)
+                Squares[i].IndexInInv = i;
+            else if (i == 16) Weapon.IndexInInv = i;
+            else if (i == 17) Tome.IndexInInv = i;
+            else if (i == 18) Trinket1.IndexInInv = i;
+            else if (i == 19) Trinket2.IndexInInv = i;
         }
     }
 
@@ -25,6 +30,18 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i <= 15; i++)
         {
             Squares[i].GetComponent<InvSlot>().ReturnHome();
+        }
+    }
+
+    public void FindAndRemove(Item.RelicBonus _relic)
+    {
+        for(int i=0; i<=15; i++)
+        {
+            if (Squares[i].GameItem.RelicEffect == _relic)
+            {
+                Squares[i].ClearSlot();
+                MyItems[i] = null;
+            }
         }
     }
 

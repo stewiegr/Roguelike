@@ -7,13 +7,16 @@ public class RelicBonuses : MonoBehaviour
     public bool ShieldBonus;
     public bool PenetratingProjectile;
     public int ApplesHeld;
+    public bool Lifeline;
+    public bool FlamingFootprints;
+    public bool TripleShot;
 
 
 
-    public void DetermineCurrentBonuses(PlayerInventory _inv)
+    public void DetermineCurrentBonuses(List<Item> _inv)
     {
         WipeBonusesForRecount();
-        foreach(Item item in _inv.MyItems)
+        foreach(Item item in _inv)
         {
             if (item != null)
             {
@@ -31,6 +34,17 @@ public class RelicBonuses : MonoBehaviour
                         case Item.RelicBonus.ShieldBonus:
                             ShieldBonus = true;
                             break;
+                        case Item.RelicBonus.Lifeline:
+                            Lifeline = true;
+                            break;
+                        case Item.RelicBonus.FlamingFootprints:
+                            FlamingFootprints = true;
+                            break;
+                        case Item.RelicBonus.TripleShot:
+                            TripleShot = true;
+                            break;
+
+
                     }
                 }
             }
@@ -43,6 +57,9 @@ public class RelicBonuses : MonoBehaviour
         ShieldBonus = false;
         PenetratingProjectile = false;
         ApplesHeld = 0;
+        Lifeline = false;
+        TripleShot = false;
+        FlamingFootprints=false;
     }
 }
 

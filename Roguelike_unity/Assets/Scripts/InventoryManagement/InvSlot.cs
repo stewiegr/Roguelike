@@ -77,7 +77,7 @@ public class InvSlot : MonoBehaviour
 
     public void ClearSlot()
     {
-        GameItem = null;
+        GameItem = GameInfo.GM.GetComponent<ItemDatabase>().Empty;
         ItemRenderer.sprite = null;
     }
 
@@ -107,7 +107,6 @@ public class InvSlot : MonoBehaviour
             dragging = false;
             InvSlot swap = MyItemGameObject.DropItem();
             SwapItem(MyItemGameObject.DropItem());
-            GameInfo.Player.GetComponent<RelicBonuses>().DetermineCurrentBonuses(GameInfo.Player.GetComponent<PlayerInventory>());
         }
     }
 
