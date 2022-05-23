@@ -293,6 +293,7 @@ public class PlayerStatus : MonoBehaviour
             MyAnim.SetBool("Dead", false);
             LifelineImg.SetActive(false);
             MyInv.FindAndRemove(Item.RelicBonus.Lifeline);
+            Relics.DetermineCurrentBonuses(MyInv.MyItems);
 
         }
     }
