@@ -14,6 +14,7 @@ public static class GameInfo
     public static GameObject ItemInfoWindow;
     public static Transform ZoomOffset;
     public static Transform Inv;
+    public static EffectsDB EffectsDB;
 
     public static void PositionInv()
     {

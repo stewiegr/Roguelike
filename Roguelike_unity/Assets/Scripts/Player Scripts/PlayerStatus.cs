@@ -37,7 +37,7 @@ public class PlayerStatus : MonoBehaviour
     public List<HeartAnim> GameHearts;
     public GameObject GameHeartParent;
     Animator MyAnim;
-     PlayerInventory MyInv;
+    PlayerInventory MyInv;
 
     public GameObject RetryButton;
     public RelicBonuses Relics;

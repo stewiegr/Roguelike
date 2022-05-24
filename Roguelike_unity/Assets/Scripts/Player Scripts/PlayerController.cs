@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer MySpr;
     Animator myAnim;
     PlayerStatus MyStatus;
+    
 
     Vector2 mouseLast;
 
     public GameObject GamepadCH;
     public Transform AttackHandler;
     float PosUpdate = 20;
+    float FootprintUpdate = 30;
     Rigidbody2D MyRB;
     bool CanMove = true;
 
@@ -61,7 +63,6 @@ public class PlayerController : MonoBehaviour
         {
             movement = Vector2.zero;
             MyRB.velocity = Vector2.zero;
-
         }
     }
 
@@ -86,7 +87,11 @@ public class PlayerController : MonoBehaviour
         }
 
         if (movement != Vector2.zero)
+        {
             myAnim.SetBool("Running", true);
+            if (MyStatus.Relics.FlamingFootprints)
+                DoFlamingFootprint();
+        }
         else
             myAnim.SetBool("Running", false);
     }
@@ -137,5 +142,18 @@ public class PlayerController : MonoBehaviour
             movement.y = -MyStatus.RunSpeed;
         else
             movement.y = 0;
+    }
+
+    void DoFlamingFootprint()
+    {
+        if(FootprintUpdate>0)
+        {
+            FootprintUpdate -= 60 * Time.deltaTime;
+            if(FootprintUpdate<=0)
+            {
+                Instantiate(GameInfo.EffectsDB.SmallFlame, (Vector2)transform.position + Vector2.up * .5f, transform.rotation);
+                FootprintUpdate = 15;
+            }
+        }
     }
 }

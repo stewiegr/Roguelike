@@ -56,4 +56,77 @@ public class ItemDesc : MonoBehaviour
             gameObject.SetActive(false);
     }
 
+    public void EmptySlotInfo(InvSlot.SlotType _type, int _ind)
+    {
+        ItemSprite.sprite = null;
+        if (_ind < 16)
+        {
+            
+            if (_type == InvSlot.SlotType.Relic)
+            {
+                ItemName.text = "EMPTY RELIC SLOT";
+                MoveSpeed.text = "";
+                ItemDMG.text = "";
+                ItemShotSpeed.text = "";
+                ItemRange.text = "";
+                ItemEnergy.text = "";
+                ItemLuck.text = "";
+                RelicDesc.text = "Place a RELIC ITEM in this slot to activate its effects.";
+                ItemLore.text = "";
+                
+            }
+            else
+            {
+                ItemName.text = "EMPTY NORMAL SLOT";
+                MoveSpeed.text = "";
+                ItemDMG.text = "";
+                ItemShotSpeed.text = "";
+                ItemRange.text = "";
+                ItemEnergy.text = "";
+                ItemLuck.text = "";
+                RelicDesc.text = "Store CONSUMABLES or EQUIPMENT ITEMS in this slot.";
+                ItemLore.text = "";
+            }
+        }
+        else
+        {
+            if(_ind==16)
+            {
+                ItemName.text = "STAFF SLOT";
+                MoveSpeed.text = "";
+                ItemDMG.text = "";
+                ItemShotSpeed.text = "";
+                ItemRange.text = "";
+                ItemEnergy.text = "";
+                ItemLuck.text = "";
+                RelicDesc.text = "Put a STAFF in this slot to change your attack";
+                ItemLore.text = "pew pew";
+            }
+            if (_ind == 17)
+            {
+                ItemName.text = "TOME SLOT";
+                MoveSpeed.text = "";
+                ItemDMG.text = "";
+                ItemShotSpeed.text = "";
+                ItemRange.text = "";
+                ItemEnergy.text = "";
+                ItemLuck.text = "";
+                RelicDesc.text = "Put a TOME in this slot to change your active spell";
+                ItemLore.text = "ew... bookworms.";
+            }
+            if (_ind >17)
+            {
+                ItemName.text = "TRINKET SLOT";
+                MoveSpeed.text = "";
+                ItemDMG.text = "";
+                ItemShotSpeed.text = "";
+                ItemRange.text = "";
+                ItemEnergy.text = "";
+                ItemLuck.text = "";
+                RelicDesc.text = "Put a TRINKET in this slot to gain its bonus stats";
+                ItemLore.text = "";
+            }
+        }
+    }
+
 }

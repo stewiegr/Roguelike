@@ -18,7 +18,10 @@ public class Item : ScriptableObject
     public Sprite ItemGFX;
     public string RelicDesc;
 
+    public GameObject StaffProjectile;
+
     public InvSlot.SlotType ItemType;
+
 
     public enum RelicBonus
     {

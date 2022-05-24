@@ -22,5 +22,6 @@ MonoBehaviour:
   Luck: 0
   ItemGFX: {fileID: -1912514208, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
   RelicDesc: Heal 1 red heart.
-  ItemType: 4
+  StaffProjectile: {fileID: 0}
+  ItemType: 0
   RelicEffect: 0

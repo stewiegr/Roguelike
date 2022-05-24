@@ -22,5 +22,6 @@ MonoBehaviour:
   Luck: 0
   ItemGFX: {fileID: 54989146, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
   RelicDesc: 'Gain one additional red heart per apple held. (Max 3 apples) '
+  StaffProjectile: {fileID: 4848307892858330393, guid: 8683bcd3ea4d7f7409d95227354d4342, type: 3}
   ItemType: 1
   RelicEffect: 0

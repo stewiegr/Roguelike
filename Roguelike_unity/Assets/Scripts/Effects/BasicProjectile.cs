@@ -9,6 +9,8 @@ public class BasicProjectile : MonoBehaviour
     public int dmg = 1;
     public GameObject myExplosion;
     public int Penetrations = 0;
+    public int PenetrationMultiplier = 1;
+    public float DefaultVel;
 
     public float life = 25;
     private void Update()

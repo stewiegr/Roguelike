@@ -48,11 +48,14 @@ public class InvSlot : MonoBehaviour
             {
                 if (hit.collider.transform.tag == "ItemSlot")
                 {
-                    if (hit.collider.transform == this.transform && !Input.GetMouseButton(0))
+                    if (hit.collider.transform == this.transform && !Input.GetMouseButton(0) && GameItem!=null)
                     {
                         GameInfo.ItemInfoWindow.SetActive(true);
                         GameInfo.ItemInfoWindow.transform.position = (Vector2)MyItemGFX.position - new Vector2(2, 2);
+                        if(GameItem.ItemName!="Empty Slot")
                         GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
+                        else
+                            GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().EmptySlotInfo(MyType, IndexInInv);
                     }
                 }
                 else
@@ -129,7 +132,7 @@ public class InvSlot : MonoBehaviour
             DestinationItem = InvSlot.SlotType.General;
 
 
-        if (_swapWith.transform.name != this.transform.name && ((DestinationSlot == InvSlot.SlotType.General || _swapWith.MyType == ItemPH.ItemType)) && (MyType==InvSlot.SlotType.General || MyType==DestinationItem || DestinationItem == InvSlot.SlotType.General))
+        if (_swapWith.transform.name != this.transform.name && (((DestinationSlot == InvSlot.SlotType.General && ItemPH.ItemType!=InvSlot.SlotType.Relic) || _swapWith.MyType == ItemPH.ItemType)) && ((MyType == InvSlot.SlotType.General && DestinationItem!=InvSlot.SlotType.Relic) || MyType == DestinationItem || DestinationItem == InvSlot.SlotType.General && DestinationItem !=InvSlot.SlotType.Relic))
         {
             if (_swapWith.GameItem != null)
             {
