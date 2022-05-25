@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bubble Staff
   m_EditorClassIdentifier: 
   ItemName: Bubble Staff
-  ItemDescription: Blow some bubbles
+  ItemDescription: Blow some bubbles!
   MoveSpeed: 0
   RateOfFire: -10
   EnergyRegen: 0

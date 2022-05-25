@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3064419744887775197}
   - component: {fileID: -1058236326798848937}
   - component: {fileID: -1758737721101815025}
-  - component: {fileID: 952994781760852485}
+  - component: {fileID: 3802565858475825433}
   m_Layer: 6
   m_Name: Skeleton_spritesheet(RUN ONLY)_0
   m_TagString: Enemy
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnim: {fileID: 3296787891474627488}
   MyNav: {fileID: -1058236326798848937}
-  Life: 3
+  Life: 5
   AtkDmg: 2
   AtkRange: 1.25
   AtkDly: 65
@@ -152,7 +152,7 @@ MonoBehaviour:
   - {fileID: 8216181987080717360, guid: 21ae6317846ad3a4598b64d4eb688f71, type: 3}
   - {fileID: 3491742006542195160, guid: f52f8c1e8fd800a48b9f568fa069ed13, type: 3}
   - {fileID: 6954091987368322368, guid: 53f53b558a0eac74ebd70eb45423c8d8, type: 3}
-  RunSpeed: 6.25
+  RunSpeed: 7
   GM: {fileID: 0}
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
@@ -192,8 +192,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &952994781760852485
-BoxCollider2D:
+--- !u!58 &3802565858475825433
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -205,16 +205,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011250645, y: 0.5717007}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.1409564}
   serializedVersion: 2
-  m_Size: {x: 0.58499366, y: 0.75799644}
-  m_EdgeRadius: 0
+  m_Radius: 0.2656487
