@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Enemies Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+    - {fileID: 21300000, guid: 4d1b8131531844f468bdb76d67c030f1, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 4d1b8131531844f468bdb76d67c030f1, type: 3}
+  - {fileID: 7391406905980376525, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 8524840640945146352, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 8789788686320337716, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 8534823799636805793, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 759326357181410699, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -4997998807358271069, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 2632758266009276535, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 1756237632453264457, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 6868329856877179557, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -4386190882497593793, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 8299596438430939813, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 697259877059595323, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -561255533857145746, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -5466261403707487564, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -4565685055246508593, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 6978846355812079825, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 549350388886048348, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -5103170770279925142, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 1520943338682147364, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -1821638055960865622, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -1882826473100406115, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Skeleton_new
+  - Skeleton_spritesheet(FINISHED)_5
+  - Skeleton_spritesheet(FINISHED)_4
+  - Skeleton_spritesheet(FINISHED)_7
+  - Skeleton_spritesheet(FINISHED)_6
+  - Skeleton_spritesheet(FINISHED)_1
+  - Skeleton_spritesheet(FINISHED)_0
+  - Skeleton_spritesheet(FINISHED)_3
+  - Skeleton_spritesheet(FINISHED)_2
+  - Skeleton_spritesheet(FINISHED)_18
+  - Skeleton_spritesheet(FINISHED)_19
+  - Skeleton_spritesheet(FINISHED)_9
+  - Skeleton_spritesheet(FINISHED)_8
+  - Skeleton_spritesheet(FINISHED)_14
+  - Skeleton_spritesheet(FINISHED)_15
+  - Skeleton_spritesheet(FINISHED)_16
+  - Skeleton_spritesheet(FINISHED)_17
+  - Skeleton_spritesheet(FINISHED)_10
+  - Skeleton_spritesheet(FINISHED)_11
+  - Skeleton_spritesheet(FINISHED)_12
+  - Skeleton_spritesheet(FINISHED)_13
+  - Skeleton_spritesheet(FINISHED)_20
+  m_RenderDataMap: {}
+  m_Tag: Enemies Atlas
+  m_IsVariant: 0
