@@ -90,4 +90,8 @@ public class PlayerSkills : MonoBehaviour
     {
 
     }
+    public void AtkDlySet(float _frames)
+    {
+        atkDly = _frames;
+    }
 }

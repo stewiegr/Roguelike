@@ -103,13 +103,14 @@ public class ChestInteract : MonoBehaviour
     }
     void OpenChest()
     {
+        GameInfo.CurrentChest = this;
         open = true;
         Prompt.gameObject.SetActive(false);
         animDel = 20;
 
     }
 
-    void CloseChest()
+    public void CloseChest()
     {
         if (allAssigned)
         {
@@ -127,7 +128,8 @@ public class ChestInteract : MonoBehaviour
             GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
             GameInfo.GM.InventoryWindow.SetActive(false);
             GameInfo.ItemInfoWindow.SetActive(false);
-            
+            GameInfo.CurrentChest = null;
+
         }
         else
         {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Abaddon's boots
   m_EditorClassIdentifier: 
   ItemName: Abaddon's boots
-  ItemDescription: Place item in any inventory slot for effect
+  ItemDescription: RELIC ITEM
   MoveSpeed: 0
   RateOfFire: 0
   EnergyRegen: 0
@@ -22,5 +22,6 @@ MonoBehaviour:
   Luck: 0
   ItemGFX: {fileID: 1092593786, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
   RelicDesc: Leave behind a damaging trail of fire.
+  StaffProjectile: {fileID: 0}
   ItemType: 4
   RelicEffect: 10

@@ -20,7 +20,8 @@ public class InvSlot : MonoBehaviour
         Weapon,
         Tome,
         Trinket,
-        Relic
+        Relic,
+        Universal
     }
     public SlotType MyType;
 
@@ -50,10 +51,12 @@ public class InvSlot : MonoBehaviour
                 {
                     if (hit.collider.transform == this.transform && !Input.GetMouseButton(0) && GameItem!=null)
                     {
-                        GameInfo.ItemInfoWindow.SetActive(true);
-                        GameInfo.ItemInfoWindow.transform.position = (Vector2)MyItemGFX.position - new Vector2(2, 2);
-                        if(GameItem.ItemName!="Empty Slot")
-                        GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
+                        if (GameItem.ItemName != "Empty Slot")
+                        {
+                            GameInfo.ItemInfoWindow.SetActive(true);
+                            GameInfo.ItemInfoWindow.transform.position = (Vector2)MyItemGFX.position - new Vector2(2, 2);
+                            GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
+                        }
                         else
                             GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().EmptySlotInfo(MyType, IndexInInv);
                     }
@@ -132,7 +135,7 @@ public class InvSlot : MonoBehaviour
             DestinationItem = InvSlot.SlotType.General;
 
 
-        if (_swapWith.transform.name != this.transform.name && (((DestinationSlot == InvSlot.SlotType.General && ItemPH.ItemType!=InvSlot.SlotType.Relic) || _swapWith.MyType == ItemPH.ItemType)) && ((MyType == InvSlot.SlotType.General && DestinationItem!=InvSlot.SlotType.Relic) || MyType == DestinationItem || DestinationItem == InvSlot.SlotType.General && DestinationItem !=InvSlot.SlotType.Relic))
+        if (_swapWith.transform.name != this.transform.name && ((DestinationSlot == InvSlot.SlotType.Universal) || (DestinationSlot == GameItem.ItemType) || DestinationSlot==InvSlot.SlotType.General && GameItem.ItemType!=InvSlot.SlotType.Relic) && ((MyType==InvSlot.SlotType.Universal) || DestinationItem == MyType || (DestinationItem!=InvSlot.SlotType.Relic && MyType==InvSlot.SlotType.General) || DestinationItem==InvSlot.SlotType.Universal))
         {
             if (_swapWith.GameItem != null)
             {
@@ -163,3 +166,4 @@ public class InvSlot : MonoBehaviour
         GameInfo.PlayerStatus.UpdatePlayerStats();
     }
 }
+//((DestinationSlot == InvSlot.SlotType.Universal || (DestinationSlot == InvSlot.SlotType.General && ItemPH.ItemType!=InvSlot.SlotType.Relic) || _swapWith.MyType == ItemPH.ItemType)) && ((MyType == InvSlot.SlotType.General && DestinationItem!=InvSlot.SlotType.Relic) || MyType == DestinationItem || DestinationItem == InvSlot.SlotType.General && DestinationItem !=InvSlot.SlotType.Relic || DestinationItem==InvSlot.SlotType.Universal))

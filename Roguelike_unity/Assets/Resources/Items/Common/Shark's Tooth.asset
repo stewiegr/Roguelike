@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shark's Tooth
   m_EditorClassIdentifier: 
   ItemName: Shark's Tooth
-  ItemDescription: Place item in any inventory slot for effect
+  ItemDescription: RELIC ITEM
   MoveSpeed: 0
   RateOfFire: 0
   EnergyRegen: 0
@@ -23,5 +23,6 @@ MonoBehaviour:
   ItemGFX: {fileID: 33048400, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
   RelicDesc: Your normal projectiles will penetrate multiple targets, dealing full
     damage to each target.
+  StaffProjectile: {fileID: 0}
   ItemType: 4
   RelicEffect: 3

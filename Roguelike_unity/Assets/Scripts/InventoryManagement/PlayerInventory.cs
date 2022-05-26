@@ -41,6 +41,7 @@ public class PlayerInventory : MonoBehaviour
             {
                 Squares[i].ClearSlot();
                 MyItems[i] = null;
+                break;
             }
         }
     }

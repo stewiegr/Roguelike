@@ -15,6 +15,7 @@ public static class GameInfo
     public static Transform ZoomOffset;
     public static Transform Inv;
     public static EffectsDB EffectsDB;
+    public static ChestInteract CurrentChest;
 
     public static void PositionInv()
     {
@@ -23,6 +24,21 @@ public static class GameInfo
         for (int i = 0; i <= 15; i++)
         {
             //inv.Squares[i].HomePos = inv.Squares[i].transform.localPosition;
+        }
+    }
+
+    public static void ForceCloseInv()
+    {
+        if (GM.InventoryWindow.activeSelf)
+        {
+            Player.GetComponent<PlayerInventory>().CloseInv();
+            PlayerInMenu = false;
+            ItemInfoWindow.SetActive(false);
+            GM.InventoryWindow.SetActive(false);
+        }
+        if(CurrentChest!=null)
+        {
+            CurrentChest.CloseChest();
         }
     }
 }

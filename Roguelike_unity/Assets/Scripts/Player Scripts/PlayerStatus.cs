@@ -119,7 +119,7 @@ public class PlayerStatus : MonoBehaviour
                         GameHearts[updateHeart].FullHeart();
                     }
                     heartLife += 1;
-                    heartAnimDel = 1;
+                    heartAnimDel = 20;
                 }
             }
             if (heartLife > CurrentLife)
@@ -166,6 +166,7 @@ public class PlayerStatus : MonoBehaviour
         }
         if (CurrentLife<=0 && Alive)
         {
+            GameInfo.ForceCloseInv();
             CamID.CMController.dead = true;
             Alive = false;
             MyAnim.SetBool("Dead", true);
@@ -179,6 +180,8 @@ public class PlayerStatus : MonoBehaviour
         if (CurrentLife + _amt <= MaxLife)
         {
             CurrentLife += _amt;
+            iFrames = 60;
+            GameHeartParent.SetActive(true);
         }
         else
         {
@@ -197,7 +200,7 @@ public class PlayerStatus : MonoBehaviour
             index++;
         }
         activeHearts = index-1;
-        GameHeartParent.transform.localPosition = new Vector3(-1.22f + (.8f * (5 - MaxLife / 2)), GameHeartParent.transform.localPosition.y); 
+        GameHeartParent.transform.localPosition = new Vector3(1.2f - ((activeHearts-1) * .4f), GameHeartParent.transform.localPosition.y); 
         if(index<5)
         {
             for(int i=index; i<=4; i++)
@@ -228,7 +231,7 @@ public class PlayerStatus : MonoBehaviour
         Relics.DetermineCurrentBonuses(MyInv.MyItems);
     }
 
-    void UpdateGameHeartGFX()
+   /* void UpdateGameHeartGFX()
     {
         if (heartAnimDel > 0)
             heartAnimDel -= 60 * Time.deltaTime;
@@ -246,7 +249,7 @@ public class PlayerStatus : MonoBehaviour
                     else if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
                         GameHearts[updateHeart].FullHeart();
                     heartLife += 1;
-                    //heartAnimDel = 10;
+                    heartAnimDel = 20;
                 }
             }
             if (heartLife > CurrentLife)
@@ -261,14 +264,14 @@ public class PlayerStatus : MonoBehaviour
                     else if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
                         GameHearts[updateHeart].EmptyHeart();
                     heartLife -= 1;
-                    //heartAnimDel = 10;
+                    heartAnimDel = 10;
                 }
 
 
             }
             
         }
-    }
+    }*/
 
     void DoLifeline()
     {
@@ -284,16 +287,20 @@ public class PlayerStatus : MonoBehaviour
         }
         else if(LifelineInProgress == 1)
         {
+
             LifelineInProgress = 2;
             ScrFlash.GetComponent<SpriteRenderer>().color = ScrFlash.FlashScr;
             Alive = true;
             CurrentLife = MaxLife;
+
             LifelineInProgress = 0;
             CamID.CMController.dead = false;
             MyAnim.SetBool("Dead", false);
             LifelineImg.SetActive(false);
             MyInv.FindAndRemove(Item.RelicBonus.Lifeline);
             Relics.DetermineCurrentBonuses(MyInv.MyItems);
+            iFrames = 60 * activeHearts;
+            GameHeartParent.SetActive(true);
 
         }
     }

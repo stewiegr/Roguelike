@@ -121,9 +121,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0070106536, y: -0.01239267}
+  m_Offset: {x: -0.03503561, y: -0.028878033}
   serializedVersion: 2
-  m_Radius: 0.14304443
+  m_Radius: 0.24360538
 --- !u!114 &6654324995488010261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +140,7 @@ MonoBehaviour:
   TargetEnemy: 0
   dmg: 1
   myExplosion: {fileID: 4849497849845511185, guid: 91544c5e90d9bc445ab68de61ab87ba1, type: 3}
+  Penetrations: 0
+  PenetrationMultiplier: 1
+  DefaultVel: 0
+  life: 25

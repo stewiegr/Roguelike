@@ -137,6 +137,7 @@ public class LevelManager : MonoBehaviour
         }
         GameInfo.Player.transform.position = Vector2.zero;
         GameInfo.PlayerStatus.Alive = true;
+        GameInfo.Player.GetComponentInChildren<PlayerSkills>().AtkDlySet(20);
         GameInfo.PlayerStatus.CurrentLife = GameInfo.PlayerStatus.MaxLife;
         CamID.CMController.dead = false;
         GameInfo.PlayerStatus.RetryButton.SetActive(false);

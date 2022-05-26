@@ -903,7 +903,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822838374498380
 Rigidbody2D:
   serializedVersion: 4
@@ -1205,7 +1205,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822838771595291
 Rigidbody2D:
   serializedVersion: 4
@@ -1591,7 +1591,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822838935429923
 Rigidbody2D:
   serializedVersion: 4
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822839305663562
 Rigidbody2D:
   serializedVersion: 4
@@ -2131,7 +2131,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822839669883976
 Rigidbody2D:
   serializedVersion: 4
@@ -2285,7 +2285,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822839714769151
 Rigidbody2D:
   serializedVersion: 4
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822839785345498
 Rigidbody2D:
   serializedVersion: 4
@@ -2593,7 +2593,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822839997785000
 Rigidbody2D:
   serializedVersion: 4
@@ -2747,7 +2747,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 0}
   IndexInInv: 0
-  MyType: 0
+  MyType: 5
 --- !u!50 &2827822840025956241
 Rigidbody2D:
   serializedVersion: 4
