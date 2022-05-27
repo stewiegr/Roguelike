@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
-  m_Name: Need a hand
+  m_Name: Heart of bone
   m_EditorClassIdentifier: 
-  ItemName: Phantom Hand
+  ItemName: Heart of bone
   ItemDescription: RELIC ITEM
   MoveSpeed: 0
   RateOfFire: 0
@@ -20,8 +20,8 @@ MonoBehaviour:
   Damage: 0
   Range: 0
   Luck: 0
-  ItemGFX: {fileID: -1386132941, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: Spells gain a 3-shot spread pattern.
+  ItemGFX: {fileID: -969820178, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: You feel protected
   StaffProjectile: {fileID: 0}
   ItemType: 4
-  RelicEffect: 4
+  RelicEffect: 0

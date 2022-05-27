@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Thief's Cloak
   m_EditorClassIdentifier: 
   ItemName: Thief's Cloak
-  ItemDescription: It was grandmas, now it's yours.
-  MoveSpeed: 5
+  ItemDescription: ACCESSORY
+  MoveSpeed: 2
   RateOfFire: 0
   EnergyRegen: 0
   Damage: 0
   Range: 0
   Luck: 0
   ItemGFX: {fileID: 1114353484, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: 
+  StaffProjectile: {fileID: 0}
   ItemType: 3
+  RelicEffect: 0

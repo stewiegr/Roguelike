@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: King's Wand
   m_EditorClassIdentifier: 
   ItemName: King's Wand
-  ItemDescription: 
+  ItemDescription: WEAPON
   MoveSpeed: 0
   RateOfFire: 3
   EnergyRegen: 0
-  Damage: 1
+  Damage: 3
   Range: 0
   Luck: 0
   ItemGFX: {fileID: -67297090, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}

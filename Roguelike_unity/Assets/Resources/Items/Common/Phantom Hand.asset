@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
-  m_Name: Loominarie Wand
+  m_Name: Phantom Hand
   m_EditorClassIdentifier: 
-  ItemName: Loominaire Wand
-  ItemDescription: WEAPON
+  ItemName: Phantom Hand
+  ItemDescription: RELIC ITEM
   MoveSpeed: 0
-  RateOfFire: 7
+  RateOfFire: 0
   EnergyRegen: 0
-  Damage: 1
+  Damage: 0
   Range: 0
   Luck: 0
-  ItemGFX: {fileID: 2128331597, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: 
-  StaffProjectile: {fileID: 4848307892858330393, guid: 8683bcd3ea4d7f7409d95227354d4342, type: 3}
-  ItemType: 1
-  RelicEffect: 0
+  ItemGFX: {fileID: -1386132941, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: Spells gain a 3-shot spread pattern.
+  StaffProjectile: {fileID: 0}
+  ItemType: 4
+  RelicEffect: 4

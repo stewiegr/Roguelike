@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Heavy Belt
   m_EditorClassIdentifier: 
   ItemName: Heavy Belt
-  ItemDescription: Place item in any inventory slot for effect
-  MoveSpeed: 0
-  RateOfFire: 0
+  ItemDescription: ACCESSORY
+  MoveSpeed: -1
+  RateOfFire: 20
   EnergyRegen: 0
   Damage: 0
   Range: 0
-  Luck: 0
+  Luck: 1
   ItemGFX: {fileID: -1905111199, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
   RelicDesc: 'Gain one additional red heart per apple held. (Max 3 apples) '
+  StaffProjectile: {fileID: 0}
   ItemType: 3
   RelicEffect: 0

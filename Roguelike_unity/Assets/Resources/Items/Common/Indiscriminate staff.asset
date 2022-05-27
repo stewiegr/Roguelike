@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Indiscriminate staff
   m_EditorClassIdentifier: 
   ItemName: Indiscriminate staff
-  ItemDescription: From the heart of the volcano.
+  ItemDescription: WEAPON
   MoveSpeed: 0
-  RateOfFire: 0
+  RateOfFire: 10
   EnergyRegen: 0
-  Damage: 0
+  Damage: 2
   Range: 0
   Luck: 0
   ItemGFX: {fileID: 54989146, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}

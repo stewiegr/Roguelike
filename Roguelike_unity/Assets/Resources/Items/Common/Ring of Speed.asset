@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Ring of Speed
   m_EditorClassIdentifier: 
   ItemName: Ring of Speed
-  ItemDescription: Your feet feel itchy, but in a good way.
-  MoveSpeed: 2
+  ItemDescription: ACCESSORY
+  MoveSpeed: 3
   RateOfFire: 0
   EnergyRegen: 0
   Damage: 0
   Range: 0
   Luck: 0
   ItemGFX: {fileID: 488342955, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: 
+  StaffProjectile: {fileID: 0}
   ItemType: 3
+  RelicEffect: 0

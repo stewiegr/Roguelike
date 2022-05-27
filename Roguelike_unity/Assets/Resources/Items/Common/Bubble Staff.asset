@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Bubble Staff
   m_EditorClassIdentifier: 
   ItemName: Bubble Staff
-  ItemDescription: Blow some bubbles!
+  ItemDescription: WEAPON
   MoveSpeed: 0
   RateOfFire: -10
   EnergyRegen: 0
-  Damage: 0
+  Damage: 1
   Range: 0
   Luck: 0
   ItemGFX: {fileID: 1198485251, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}

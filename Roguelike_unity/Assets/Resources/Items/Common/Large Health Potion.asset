@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Large Health Potion
   m_EditorClassIdentifier: 
   ItemName: Large Health Potion
-  ItemDescription: Consumable
+  ItemDescription: CONSUMABLE
   MoveSpeed: 0
   RateOfFire: 0
   EnergyRegen: 0

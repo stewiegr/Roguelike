@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Bloodstone Ring
   m_EditorClassIdentifier: 
   ItemName: Bloodstone Ring
-  ItemDescription: You feel stronger, and a bit more significant.
-  MoveSpeed: 0
+  ItemDescription: ACCESSORY
+  MoveSpeed: 1
   RateOfFire: 0
   EnergyRegen: 0
-  Damage: 1
+  Damage: 5
   Range: 0
   Luck: 0
   ItemGFX: {fileID: -380688802, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: 
+  StaffProjectile: {fileID: 0}
   ItemType: 3
+  RelicEffect: 0

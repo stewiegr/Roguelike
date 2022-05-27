@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: King's Crown
   m_EditorClassIdentifier: 
   ItemName: King's Crown
-  ItemDescription: It says 'Prom 2022' on the back.
-  MoveSpeed: 0
-  RateOfFire: 0
+  ItemDescription: ACCESSORY
+  MoveSpeed: 1
+  RateOfFire: 3
   EnergyRegen: 0
-  Damage: 0
+  Damage: 2
   Range: 0
   Luck: 3
   ItemGFX: {fileID: 425629547, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: 
+  StaffProjectile: {fileID: 0}
   ItemType: 3
+  RelicEffect: 0
