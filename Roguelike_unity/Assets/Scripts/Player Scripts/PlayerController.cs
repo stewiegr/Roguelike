@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 
 
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer MySpr;
     Animator myAnim;
     PlayerStatus MyStatus;
-    
+
 
     Vector2 mouseLast;
 
@@ -27,7 +28,10 @@ public class PlayerController : MonoBehaviour
     float PosUpdate = 20;
     float FootprintUpdate = 30;
     Rigidbody2D MyRB;
-    bool CanMove = true;
+    public bool CanMove = true;
+    float TPDel = 0;
+    float TPCD = 0;
+    Vector3 TPPos;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,7 +50,9 @@ public class PlayerController : MonoBehaviour
     {
         if (MyStatus.Alive)
         {
-            GetInput();
+            if (CanMove)
+                GetInput();
+
             DoMovement();
 
             if (PosUpdate >= 0)
@@ -63,6 +69,19 @@ public class PlayerController : MonoBehaviour
         {
             movement = Vector2.zero;
             MyRB.velocity = Vector2.zero;
+        }
+        if(TPDel>0)
+        {
+            TPDel -= 60 * Time.deltaTime;
+            if(TPDel<=0)
+            {
+                myAnim.SetTrigger("EndTeleport");
+                EndTeleport();
+            }
+        }
+        if(TPCD>0)
+        {
+            TPCD -= 60 * Time.deltaTime;
         }
     }
 
@@ -99,7 +118,35 @@ public class PlayerController : MonoBehaviour
     void GetInput()
     {
         CheckKeyboard();
+        CheckTeleport();
         //CheckGamepad();
+    }
+    void EndTeleport()
+    {
+        transform.position = new Vector3(TPPos.x, TPPos.y, 0);
+        myAnim.SetTrigger("EndTeleport");
+        CanMove = true;
+    }
+
+    void CheckTeleport()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && TPCD<=0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            if (hit.collider == null)
+            {
+                myAnim.SetTrigger("Teleport");
+                CanMove = false;
+                movement = Vector2.zero;
+                TPDel = 20;
+                TPCD = 60;
+                MyStatus.SetIFrames(25);
+                CamID.CMController.PauseFollow(40);
+                TPPos = CamID.Cam.ScreenToWorldPoint(Input.mousePosition);
+            }         
+
+        }
     }
 
     void CheckGamepad()
@@ -146,10 +193,10 @@ public class PlayerController : MonoBehaviour
 
     void DoFlamingFootprint()
     {
-        if(FootprintUpdate>0)
+        if (FootprintUpdate > 0)
         {
             FootprintUpdate -= 60 * Time.deltaTime;
-            if(FootprintUpdate<=0)
+            if (FootprintUpdate <= 0)
             {
                 Instantiate(GameInfo.EffectsDB.SmallFlame, (Vector2)transform.position + Vector2.up * .5f, transform.rotation);
                 FootprintUpdate = 15;

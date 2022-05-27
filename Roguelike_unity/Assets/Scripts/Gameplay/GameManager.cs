@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             InventoryWindow.SetActive(!InventoryWindow.activeSelf);
             if(InventoryWindow.activeSelf)

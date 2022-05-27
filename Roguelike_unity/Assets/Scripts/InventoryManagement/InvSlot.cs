@@ -90,8 +90,11 @@ public class InvSlot : MonoBehaviour
     public void ReturnHome()
     {
         dragging = false;
-        MyItemGameObject.CancelInteract();
-        MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+        if (MyItemGameObject != null)
+        {
+            MyItemGameObject.CancelInteract();
+            MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+        }
     }
 
     void ClickListener()

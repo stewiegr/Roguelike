@@ -20,6 +20,7 @@ public class CinemachineControls : MonoBehaviour
     public GameObject GameArea;
 
     float ShakeDur = 0;
+    float pauseFollow = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class CinemachineControls : MonoBehaviour
         CamID.CMController = this;
         noise = CCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         GameInfo.ZoomOffset = ZoomOffset.transform;
+        CamID.Cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -42,18 +44,31 @@ public class CinemachineControls : MonoBehaviour
             }
         }
 
-        if (GameInfo.PlayerInMenu)
+        if (pauseFollow <= 0)
         {
-            zoom = true;
-            CCam.Follow = ZoomOffset.transform;
+            if (GameInfo.PlayerInMenu)
+            {
+                zoom = true;
+                CCam.Follow = ZoomOffset.transform;
+            }
+            else
+            {
+                zoom = false;
+                CCam.Follow = NormalTarg.transform;
+            }
         }
         else
         {
-            zoom = false;
-            CCam.Follow = NormalTarg.transform;
+            pauseFollow -= 60 * Time.deltaTime;
+            CCam.Follow = null;
         }
 
 
+    }
+
+    public void PauseFollow(float _frames)
+    {
+        pauseFollow = _frames;
     }
 
     private void FixedUpdate()

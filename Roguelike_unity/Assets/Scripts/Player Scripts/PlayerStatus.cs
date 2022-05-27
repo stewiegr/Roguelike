@@ -305,6 +305,11 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
+    public void SetIFrames(float _frames)
+    {
+        iFrames = _frames;
+    }
+
     public void DoApples(int _apples)
     {
         MaxLife = BaseMaxLife + 2 * _apples;

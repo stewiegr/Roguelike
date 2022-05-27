@@ -8,6 +8,7 @@ TagManager:
   - WorldObject
   - ItemSlot
   - NavObject
+  - Restrict
   layers:
   - Default
   - TransparentFX
