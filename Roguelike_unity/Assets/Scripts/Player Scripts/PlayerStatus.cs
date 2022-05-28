@@ -43,6 +43,9 @@ public class PlayerStatus : MonoBehaviour
     public RelicBonuses Relics;
     public GameObject LifelineImg;
     public FlashFade ScrFlash;
+    public Sprite ShieldSpr;
+    public Sprite MushroomSpr;
+    public Sprite ScytheSpr;
 
     private void Awake()
     {
@@ -72,6 +75,8 @@ public class PlayerStatus : MonoBehaviour
         {
             if (GameHeartParent.activeSelf)
                GameHeartParent.SetActive(false);
+            if (LifelineImg.activeSelf && Alive)
+                LifelineImg.SetActive(false);
         }
 
         if (heartLife != CurrentLife)
@@ -161,6 +166,12 @@ public class PlayerStatus : MonoBehaviour
                 iFrames = 60;
                 GameHeartParent.SetActive(true);
                 CamID.CMController.PPCam.assetsPPU += 2;
+            }
+            else
+            {
+                LifelineImg.SetActive(true);
+                LifelineImg.GetComponent<SpriteRenderer>().sprite = ShieldSpr;
+                iFrames = 120;
             }
 
         }
@@ -279,6 +290,7 @@ public class PlayerStatus : MonoBehaviour
         {
             LifelineInProgress = 1;
             LifelineImg.SetActive(true);
+            LifelineImg.GetComponent<SpriteRenderer>().sprite = MushroomSpr;
             LifelineImg.transform.position = transform.root.position+new Vector3(0,2,0);
         }
         if (LifelineImg.transform.position.y > transform.root.position.y + .5f)

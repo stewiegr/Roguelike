@@ -58,6 +58,11 @@ public class LevelManager : MonoBehaviour
         LegendaryChest = Resources.Load<GameObject>("Chests/LegendaryChest");
         delay = SpawnDelay;
     }
+
+    public List<GameObject> GetActiveEnemies()
+    {
+        return SpawnedMonsters;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -95,6 +100,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void RemoveMe(GameObject remove)
+    {
+        SpawnedMonsters.Remove(remove);
+    }
     void SpawnMonster(int _amt)
     {
         Vector2 pos;

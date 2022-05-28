@@ -10,7 +10,8 @@ public class RelicBonuses : MonoBehaviour
     public bool Lifeline;
     public bool FlamingFootprints;
     public bool TripleShot;
-
+    public bool Lifesteal;
+    public bool TrackingShots;
 
 
     public void DetermineCurrentBonuses(List<Item> _inv)
@@ -43,7 +44,12 @@ public class RelicBonuses : MonoBehaviour
                         case Item.RelicBonus.TripleShot:
                             TripleShot = true;
                             break;
-
+                        case Item.RelicBonus.LifeSteal:
+                            Lifesteal = true;
+                            break;
+                        case Item.RelicBonus.TrackingShots:
+                            TrackingShots = true;
+                            break;
 
                     }
                 }
@@ -60,6 +66,8 @@ public class RelicBonuses : MonoBehaviour
         Lifeline = false;
         TripleShot = false;
         FlamingFootprints=false;
+        Lifesteal = false;
+        TrackingShots = false;
     }
 }
 

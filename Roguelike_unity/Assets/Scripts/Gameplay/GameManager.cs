@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
                 {
                     GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
                     GameInfo.PlayerInMenu = false;
+                    if (GameInfo.CurrentChest != null)
+                        GameInfo.CurrentChest.CloseChest();
                     GameInfo.ItemInfoWindow.SetActive(false);
                 }
             }

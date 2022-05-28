@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
     void EndTeleport()
     {
         transform.position = new Vector3(TPPos.x, TPPos.y, 0);
-        myAnim.SetTrigger("EndTeleport");
+        myAnim.Play("PlayerTeleportEnd");
         CanMove = true;
     }
 

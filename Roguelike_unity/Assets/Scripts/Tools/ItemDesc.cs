@@ -17,6 +17,8 @@ public class ItemDesc : MonoBehaviour
     public TextMeshPro RelicDesc;
     public SpriteRenderer ItemSprite;
 
+    public Color GreenCol;
+
 
     private void Start()
     {
@@ -28,15 +30,39 @@ public class ItemDesc : MonoBehaviour
         if (_item != null)
         {
             ItemName.text = _item.ItemName;
-            ItemLore.text = _item.ItemDescription;
+            switch(_item.ItemType)
+            {
+                case InvSlot.SlotType.Weapon:
+                    ItemLore.text = "EQUIPMENT: WEAPON";
+                    break;
+                case InvSlot.SlotType.Tome:
+                    ItemLore.text = "EQUIPMENT: TOME";
+                    break;
+                case InvSlot.SlotType.Trinket:
+                    ItemLore.text = "EQUIPMENT: TRINKET";
+                    break;
+                case InvSlot.SlotType.Relic:
+                    ItemLore.text = "RELIC ITEM";
+                    break;
+                case InvSlot.SlotType.General:
+                    ItemLore.text = "CONSUMABLE";
+                    break;
+
+            }
             if (_item.ItemType != InvSlot.SlotType.Relic)
             {
                 MoveSpeed.text = "Move Speed: " + _item.MoveSpeed.ToString();
+                MoveSpeed.color = ColorText((int)_item.MoveSpeed);
                 ItemDMG.text = "Damage: " + _item.Damage.ToString();
+                ItemDMG.color = ColorText((int)_item.Damage);
                 ItemShotSpeed.text = "Shot Speed: " + _item.RateOfFire.ToString();
+                ItemShotSpeed.color = ColorText((int)_item.RateOfFire);
                 ItemRange.text = "Range: " + _item.Range.ToString();
+                ItemRange.color = ColorText((int)_item.Range);
                 ItemEnergy.text = "Energy: " + _item.EnergyRegen.ToString();
+                ItemEnergy.color = ColorText((int)_item.EnergyRegen);
                 ItemLuck.text = "Luck: " + _item.Luck.ToString();
+                ItemLuck.color = ColorText((int)_item.Luck);
                 RelicDesc.text = "";
             }
             else
@@ -127,6 +153,19 @@ public class ItemDesc : MonoBehaviour
                 ItemLore.text = "";
             }
         }
+    }
+
+    Color ColorText(int value)
+    {
+        if (value < 0)
+            return Color.red;
+        if (value > 0)
+            return GreenCol;
+        if (value == 0)
+            return Color.black;
+        else
+            return Color.black;
+
     }
 
 }

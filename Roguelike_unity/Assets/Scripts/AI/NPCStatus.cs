@@ -47,6 +47,17 @@ public class NPCStatus : MonoBehaviour
         {
             Die();
         }
+
+        if(GameInfo.PlayerStatus.Relics.Lifesteal)
+        {
+            if(Random.Range(0,100)>98)
+            {
+                GameInfo.PlayerStatus.LifelineImg.SetActive(true);
+                GameInfo.PlayerStatus.LifelineImg.GetComponent<SpriteRenderer>().sprite = GameInfo.PlayerStatus.ScytheSpr;
+                GameInfo.PlayerStatus.HealPlayer(1);
+            }
+        }
+
     }
 
     void Die()
@@ -69,12 +80,19 @@ public class NPCStatus : MonoBehaviour
                 }
             }
             gameObject.SetActive(false);
+            GM.CurrentLevel.RemoveMe(this.gameObject);
            // GameObject.Destroy(this.gameObject);
             CamID.CMController.ShakeScreen(1, 4);
         }
         else
         {
+            GM.CurrentLevel.RemoveMe(this.gameObject);
             MyAnim.SetTrigger("Die");
         }
+    }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 }
