@@ -99,23 +99,26 @@ public class InvSlot : MonoBehaviour
 
     void ClickListener()
     {
-        if (Input.GetMouseButtonDown(0) && !dragging && GameItem.ItemName!="Empty Slot")
+        if (GameItem != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-            if (hit.collider != null)
+            if (Input.GetMouseButtonDown(0) && !dragging && GameItem.ItemName != "Empty Slot")
             {
-                if (hit.collider.transform == this.transform)
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+                if (hit.collider != null)
                 {
-                    dragging = true;
+                    if (hit.collider.transform == this.transform)
+                    {
+                        dragging = true;
+                    }
                 }
             }
-        }
-        if (Input.GetMouseButtonUp(0) && dragging)
-        {
-            dragging = false;
-            InvSlot swap = MyItemGameObject.DropItem();
-            SwapItem(MyItemGameObject.DropItem());
+            if (Input.GetMouseButtonUp(0) && dragging)
+            {
+                dragging = false;
+                InvSlot swap = MyItemGameObject.DropItem();
+                SwapItem(MyItemGameObject.DropItem());
+            }
         }
     }
 
