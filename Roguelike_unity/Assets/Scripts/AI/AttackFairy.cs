@@ -11,35 +11,48 @@ public class AttackFairy : MonoBehaviour
     Transform homingTarg;
     float navCD = 20;
     Vector2 offset;
+    SpriteRenderer MySpr;
+    Animator MyAnim;
 
+    private void Start()
+    {
+        MySpr = GetComponent<SpriteRenderer>();
+        MyAnim = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
         if (attackCD > 0)
         {
-            attackCD -= 60 * Time.deltaTime;
+            attackCD -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
             if (attackCD <= 0)
             {
                 AcquireTarget();
-                attackCD = 20;
+                attackCD = 60;
 
                 if (homingTarg != null)
                     DoAttack();
             }
         }
-      
 
-        Nav();
-        if (navCD>0)
+        if (GameInfo.GM.GameSpeed == 1)
         {
-            navCD -= 60 * Time.deltaTime;
-            if(navCD<=0)
+            Nav();
+            MyAnim.speed = 1;
+        }
+        else
+        {
+            MyAnim.speed = 0;
+        }
+        if (navCD > 0)
+        {
+            navCD -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+            if (navCD <= 0)
             {
-                offset = new Vector2(Random.Range(-2, 2), Random.Range(-2, 2));
+                offset = new Vector2(Random.Range(-2, 2), Random.Range(-2, 4));
                 navCD = Random.Range(30, 60);
+                MySpr.flipX = !!MySpr.flipX;
             }
-                
-                        
         }
     }
 
@@ -55,13 +68,14 @@ public class AttackFairy : MonoBehaviour
         BP.TargetEnemy = true;
         BP.dmg = 6;
         proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 15.5f;
-       // BP.Homing = true;
-       // BP.AcquireTarget();
+        // BP.Homing = true;
+        // BP.AcquireTarget();
     }
 
     void Nav()
     {
-        transform.position = (Vector2.Lerp((Vector2)transform.position, (Vector2)Player.transform.position + offset, .75f * GameInfo.PlayerStatus.RunSpeed * Time.deltaTime));
+        
+        transform.position = (Vector2.Lerp((Vector2)transform.position, (Vector2)Player.transform.position + offset, .75f * GameInfo.PlayerStatus.RunSpeed * Time.deltaTime * GameInfo.GM.GameSpeed));
     }
 
     public void AcquireTarget()

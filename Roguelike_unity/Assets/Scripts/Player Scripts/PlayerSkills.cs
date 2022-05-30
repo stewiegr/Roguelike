@@ -23,9 +23,9 @@ public class PlayerSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (atkDly > 0)
-            atkDly -= 60 * Time.deltaTime;
-        if (MyStatus.Alive && !GameInfo.PlayerInMenu)
+        if (atkDly > 0) 
+            atkDly -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+        if (MyStatus.Alive && !GameInfo.PlayerInMenu && GameInfo.GM.GameSpeed!=0)
         {
             if (Input.GetMouseButton(0) && atkDly <= 0)// || (Gamepad.current.rightTrigger.wasPressedThisFrame))
             {

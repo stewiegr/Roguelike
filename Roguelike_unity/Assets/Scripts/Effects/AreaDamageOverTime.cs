@@ -11,17 +11,23 @@ public class AreaDamageOverTime : MonoBehaviour
     public PlayerStatus AffectPlayer = null;
     public bool HitPlayer = false;
     public bool HitNPC = false;
+    public Animator MyAnim;
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if (Dur >= 0)
         {
-            Dur -= 60 * Time.deltaTime;
+            Dur -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
             if (Dur < 0)
             {
                 DestroyOnComplete();
             }
+
+            if (MyAnim != null)
+                MyAnim.speed = GameInfo.GM.GameSpeed;
+            else
+                MyAnim = GetComponent<Animator>();
         }
     }
 

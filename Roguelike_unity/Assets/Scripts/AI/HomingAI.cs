@@ -47,35 +47,46 @@ public class HomingAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MyStatus.Alive)
+        if (GameInfo.GM.GameSpeed == 1)
         {
-            if (locateDel > 0)
-                locateDel -= 60 * Time.deltaTime;
-            else
-                LocatePlayer();
+            if (MyStatus.MyAnim.speed == 0)
+                MyStatus.MyAnim.speed = 1;
 
-            DoKnockback();
-            DoSpriteFlip();
+            if (MyStatus.Alive)
+            {
+                if (locateDel > 0)
+                    locateDel -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+                else
+                    LocatePlayer();
+
+                DoKnockback();
+                DoSpriteFlip();
+            }
+            else
+            {
+                if (!launch)
+                {
+                    StopMovement();
+                    if (rotTimer > 0)
+                    {
+                        rotTimer -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
+                        if (rotTimer <= 0)
+                        {
+                            gameObject.SetActive(false);
+                        }
+                    }
+                }
+                if (launch)
+                {
+                    LaunchMath();
+                }
+
+            }
         }
         else
         {
-            if (!launch)
-            {
-                StopMovement();
-                if (rotTimer > 0)
-                {
-                    rotTimer -= 60 * Time.deltaTime;
-                    if (rotTimer <= 0)
-                    {
-                        gameObject.SetActive(false);
-                    }
-                }
-            }
-            if(launch)
-            {
-                LaunchMath();
-            }
-
+            MyRB.velocity = Vector2.zero;
+            MyStatus.MyAnim.speed = 0;
         }
 
     }

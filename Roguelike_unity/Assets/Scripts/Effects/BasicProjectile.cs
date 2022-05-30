@@ -15,6 +15,7 @@ public class BasicProjectile : MonoBehaviour
 
     public float life = 25;
     public bool Homing = false;
+    Vector2 holdSpd;
     Transform homingTarg = null;
     Rigidbody2D myRB;
 
@@ -25,14 +26,14 @@ public class BasicProjectile : MonoBehaviour
     private void Update()
     {
         if (life > 0)
-            life -= 60 * Time.deltaTime;
+            life -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         if (life <= 0)
         {
             CreateExplosion(TargetPlayer, TargetEnemy);
             GameObject.Destroy(this.gameObject);
         }
 
-        if(Homing)
+        if(Homing && GameInfo.GM.GameSpeed==1)
         {
             if(homingTarg!=null)
             {
@@ -45,6 +46,20 @@ public class BasicProjectile : MonoBehaviour
             {
                 AcquireTarget();
             }
+        }
+
+        if(GameInfo.GM.GameSpeed==0)
+        {
+            if (myRB.velocity != Vector2.zero)
+            {
+                holdSpd = myRB.velocity;
+                myRB.velocity = Vector2.zero;
+            }
+        }
+        else
+        {
+            if (myRB.velocity == Vector2.zero)
+                myRB.velocity = holdSpd;
         }
 
     }

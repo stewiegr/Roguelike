@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6812415355374165312}
   - component: {fileID: 4799296338346120334}
   - component: {fileID: 2565793957594255}
-  - component: {fileID: -7849718260689894781}
+  - component: {fileID: 794601371510880905}
   m_Layer: 0
   m_Name: AttackFairy
   m_TagString: Untagged
@@ -100,18 +100,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyProjectile: {fileID: 4848307892858330393, guid: cfd8577b27347fd4ebd7fa6b843ea4d8, type: 3}
   Player: {fileID: 0}
---- !u!111 &-7849718260689894781
-Animation:
+--- !u!95 &794601371510880905
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6841929094444452982}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09af79461f3bd454997ebfcfe2f0bc8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

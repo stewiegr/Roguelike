@@ -69,7 +69,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if(iFrames>=0)
         {
-            iFrames -= 60 * Time.deltaTime;
+            iFrames -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         }
         else
         {
@@ -105,7 +105,7 @@ public class PlayerStatus : MonoBehaviour
     {
        
         if (heartAnimDel > 0)
-            heartAnimDel -= 60 * Time.deltaTime;
+            heartAnimDel -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         else
         {
             if (heartLife < CurrentLife)
@@ -298,6 +298,7 @@ public class PlayerStatus : MonoBehaviour
         }
         if (LifelineImg.transform.position.y > transform.root.position.y + .5f)
         {
+            if(GameInfo.GM.GameSpeed==1)
             LifelineImg.transform.position = Vector2.Lerp(LifelineImg.transform.position, transform.root.position, Time.deltaTime);
         }
         else if(LifelineInProgress == 1)

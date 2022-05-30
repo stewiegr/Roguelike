@@ -15,7 +15,7 @@ public class SkeletonAI : MonoBehaviour
     {
         if (MyStatus.AtkDly > 0)
         {
-            atkDly -= 60 * Time.deltaTime;
+            atkDly -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         }
         if (MyNav.InAtkRange && MyStatus.Alive)
         {

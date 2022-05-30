@@ -107,6 +107,7 @@ MonoBehaviour:
   AffectPlayer: {fileID: 0}
   HitPlayer: 0
   HitNPC: 0
+  MyAnim: {fileID: -1692471092944370014}
 --- !u!50 &3883940841009068528
 Rigidbody2D:
   serializedVersion: 4

@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MyStatus.Alive)
+        if (MyStatus.Alive && GameInfo.GM.GameSpeed==1)
         {
             if (CanMove)
                 GetInput();
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         }
         if(TPDel>0)
         {
-            TPDel -= 60 * Time.deltaTime;
+            TPDel -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
             if(TPDel<=0)
             {
                 myAnim.SetTrigger("EndTeleport");
@@ -81,8 +81,9 @@ public class PlayerController : MonoBehaviour
         }
         if(TPCD>0)
         {
-            TPCD -= 60 * Time.deltaTime;
+            TPCD -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         }
+        myAnim.speed = GameInfo.GM.GameSpeed;
     }
 
     void DoMovement()

@@ -13,11 +13,13 @@ public class LevelManager : MonoBehaviour
     [Tooltip("How many waves in this level")]
     public int Waves = 3;
     [Tooltip("Maximum number of monsters that could be in a wave")]
-    public int MaxPerWave = 200;
+    public int MaxPerWave = 500;
     [Tooltip("Minimum number of monsters that could be in a wave")]
-    public int MinPerWave = 120;
+    public int MinPerWave = 400;
     [Tooltip("Multiplier - can more monsters spawn in each wave?")]
     public float WaveModifier = 1.25f;
+    [Tooltip("Cap on monsters at one time")]
+    public float MaxAliveAtOnce = 300;
 
     [Tooltip("Upper Left Limit of Spawn Area")]
     public Transform UpperLeftBounds;
@@ -72,11 +74,11 @@ public class LevelManager : MonoBehaviour
         }
         else if (waveStarted && GM.currentKillsThisWave < setSpawnNumber - 4)
         {
-            if (spawnedSoFar <= setSpawnNumber && GameInfo.PlayerStatus.Alive)
+            if (spawnedSoFar <= setSpawnNumber &&  GM.LivingEnemies < MaxAliveAtOnce && GameInfo.PlayerStatus.Alive)
             {
                 if (delay > 0)
                 {
-                    delay -= 60 * Time.deltaTime;
+                    delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
                     if (delay <= 0)
                     {
                         if (spawnedSoFar < 50)

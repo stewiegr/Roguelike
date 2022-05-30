@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public List<LevelManager> Levels;
     public LevelManager CurrentLevel;
     public List<GameObject> TemporaryDebris = new List<GameObject>();
-    private void Start()
+    public float GameSpeed = 1;
+    private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
         GameInfo.GM = this;
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && GameSpeed==1)
         {
             InventoryWindow.SetActive(!InventoryWindow.activeSelf);
             if(InventoryWindow.activeSelf)
@@ -36,6 +37,13 @@ public class GameManager : MonoBehaviour
                     GameInfo.ItemInfoWindow.SetActive(false);
                 }
             }
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameSpeed == 1)
+                GameSpeed = 0;
+            else
+                GameSpeed = 1;
         }
     }
 
