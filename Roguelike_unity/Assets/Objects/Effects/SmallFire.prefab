@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5945893046358370893}
   - component: {fileID: 584037783408839222}
   - component: {fileID: -5059297334052118092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

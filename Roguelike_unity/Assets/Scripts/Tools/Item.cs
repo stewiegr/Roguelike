@@ -37,6 +37,7 @@ public class Item : ScriptableObject
         TeleportExplosion,
         FlamingFootprints,
         KnockbackBonus,
+        AttackFairy
     }
 
     public RelicBonus RelicEffect;

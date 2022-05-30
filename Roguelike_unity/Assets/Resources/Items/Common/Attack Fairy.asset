@@ -24,4 +24,4 @@ MonoBehaviour:
   RelicDesc: Gain a fairy follower
   StaffProjectile: {fileID: 0}
   ItemType: 4
-  RelicEffect: 0
+  RelicEffect: 12

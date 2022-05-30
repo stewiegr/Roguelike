@@ -53,6 +53,7 @@ public class NPCStatus : MonoBehaviour
             if(Random.Range(0,100)>98)
             {
                 GameInfo.PlayerStatus.LifelineImg.SetActive(true);
+                GameInfo.PlayerStatus.LifelineImg.transform.position = GameInfo.PlayerPos;
                 GameInfo.PlayerStatus.LifelineImg.GetComponent<SpriteRenderer>().sprite = GameInfo.PlayerStatus.ScytheSpr;
                 GameInfo.PlayerStatus.HealPlayer(1);
             }

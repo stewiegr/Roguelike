@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
             if (FootprintUpdate <= 0)
             {
                 Instantiate(GameInfo.EffectsDB.SmallFlame, (Vector2)transform.position + Vector2.up * .5f, transform.rotation);
-                FootprintUpdate = 15;
+                FootprintUpdate = 19 - GameInfo.PlayerStatus.RunSpeed;
             }
         }
     }

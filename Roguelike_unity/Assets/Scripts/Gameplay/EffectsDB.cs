@@ -5,6 +5,7 @@ using UnityEngine;
 public class EffectsDB : MonoBehaviour
 {
     public GameObject SmallFlame;
+    public GameObject AttackFairy;
 
     private void Start()
     {

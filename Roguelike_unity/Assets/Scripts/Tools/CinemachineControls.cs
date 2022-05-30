@@ -50,6 +50,7 @@ public class CinemachineControls : MonoBehaviour
             {
                 zoom = true;
                 CCam.Follow = ZoomOffset.transform;
+                
             }
             else
             {

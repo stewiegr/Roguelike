@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -9119331019088766974}
   - component: {fileID: 6654324995488010261}
   m_Layer: 8
-  m_Name: Proj
+  m_Name: FairyProj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 773655905, guid: 0871acad7e6b88b45becc1389b8c7207, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6537456, g: 1, b: 0.5235849, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   TargetPlayer: 0
   TargetEnemy: 0
   dmg: 1
-  myExplosion: {fileID: 4849497849845511185, guid: 91544c5e90d9bc445ab68de61ab87ba1, type: 3}
+  myExplosion: {fileID: 4849497849845511185, guid: 6c8333a3c6428d94a9e4951f9fb21495, type: 3}
   Penetrations: 0
   PenetrationMultiplier: 1
   DefaultVel: 10.5

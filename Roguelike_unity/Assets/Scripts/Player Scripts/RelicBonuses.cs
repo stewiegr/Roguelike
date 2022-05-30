@@ -12,6 +12,8 @@ public class RelicBonuses : MonoBehaviour
     public bool TripleShot;
     public bool Lifesteal;
     public bool TrackingShots;
+    public int AttackFairyCount;
+    public List<GameObject> AttackFairy;
 
 
     public void DetermineCurrentBonuses(List<Item> _inv)
@@ -50,16 +52,22 @@ public class RelicBonuses : MonoBehaviour
                         case Item.RelicBonus.TrackingShots:
                             TrackingShots = true;
                             break;
+                        case Item.RelicBonus.AttackFairy:
+                            AttackFairyCount++;
+                            break;
 
                     }
                 }
             }
         }
         GameInfo.PlayerStatus.DoApples(ApplesHeld);
+        DoAttackFairies();
+            
     }
 
     void WipeBonusesForRecount()
     {
+        AttackFairyCount = 0;
         ShieldBonus = false;
         PenetratingProjectile = false;
         ApplesHeld = 0;
@@ -68,6 +76,21 @@ public class RelicBonuses : MonoBehaviour
         FlamingFootprints=false;
         Lifesteal = false;
         TrackingShots = false;
+    }
+
+    void DoAttackFairies()
+    {
+        if(AttackFairy.Count < AttackFairyCount)
+        {
+            GameObject Atk = (Instantiate(GameInfo.EffectsDB.AttackFairy, transform.position, transform.rotation));
+            AttackFairy.Add(Atk);
+            Atk.GetComponent<AttackFairy>().Player = GameInfo.Player;
+        }
+        if(AttackFairy.Count > AttackFairyCount)
+        {
+            GameObject.Destroy(AttackFairy[AttackFairyCount]);
+            AttackFairy.RemoveAt(AttackFairyCount);
+        }
     }
 }
 

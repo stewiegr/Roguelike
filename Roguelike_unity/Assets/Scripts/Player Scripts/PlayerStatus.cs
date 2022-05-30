@@ -97,6 +97,8 @@ public class PlayerStatus : MonoBehaviour
                 DoLifeline();
             }
         }
+
+        ProcImgHandler();
     }
 
     void UpdateHeartGFX()
@@ -170,6 +172,7 @@ public class PlayerStatus : MonoBehaviour
             else
             {
                 LifelineImg.SetActive(true);
+                LifelineImg.transform.position = transform.position;
                 LifelineImg.GetComponent<SpriteRenderer>().sprite = ShieldSpr;
                 iFrames = 120;
             }
@@ -291,7 +294,7 @@ public class PlayerStatus : MonoBehaviour
             LifelineInProgress = 1;
             LifelineImg.SetActive(true);
             LifelineImg.GetComponent<SpriteRenderer>().sprite = MushroomSpr;
-            LifelineImg.transform.position = transform.root.position+new Vector3(0,2,0);
+            LifelineImg.transform.position = transform.root.position+new Vector3(0,3,0);
         }
         if (LifelineImg.transform.position.y > transform.root.position.y + .5f)
         {
@@ -304,10 +307,10 @@ public class PlayerStatus : MonoBehaviour
             ScrFlash.GetComponent<SpriteRenderer>().color = ScrFlash.FlashScr;
             Alive = true;
             CurrentLife = MaxLife;
-
             LifelineInProgress = 0;
             CamID.CMController.dead = false;
             MyAnim.SetBool("Dead", false);
+            LifelineImg.transform.position = transform.root.position + new Vector3(0, 3, 0);
             LifelineImg.SetActive(false);
             MyInv.FindAndRemove(Item.RelicBonus.Lifeline);
             Relics.DetermineCurrentBonuses(MyInv.MyItems);
@@ -330,5 +333,14 @@ public class PlayerStatus : MonoBehaviour
         if (CurrentLife > MaxLife)
             CurrentLife = MaxLife;
 
+    }
+
+    void ProcImgHandler()
+    {
+        if (Alive && LifelineImg.activeSelf)
+        {
+            if (LifelineImg.transform.position.y < transform.root.position.y + 4f)
+                LifelineImg.transform.position = Vector2.Lerp(LifelineImg.transform.position, transform.root.position + new Vector3(0, 6, 0), Time.deltaTime);
+        }
     }
 }
