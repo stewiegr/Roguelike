@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6812415355374165312}
   - component: {fileID: 4799296338346120334}
   - component: {fileID: 2565793957594255}
+  - component: {fileID: -7849718260689894781}
   m_Layer: 0
   m_Name: AttackFairy
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1958800784, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  m_Sprite: {fileID: -417611923, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,3 +100,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyProjectile: {fileID: 4848307892858330393, guid: cfd8577b27347fd4ebd7fa6b843ea4d8, type: 3}
   Player: {fileID: 0}
+--- !u!111 &-7849718260689894781
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841929094444452982}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
