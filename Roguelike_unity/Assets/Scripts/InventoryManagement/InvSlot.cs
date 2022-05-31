@@ -35,40 +35,42 @@ public class InvSlot : MonoBehaviour
 
     private void Update()
     {
-        ClickListener();
-        if (dragging)
-        {
-            MyItemGFX.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -6);
-            ItemRenderer.sortingOrder = 16;
-        }
-        else
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            ItemRenderer.sortingOrder = 15;
-            if (hit.collider != null)
+
+            ClickListener();
+            if (dragging)
             {
-                if (hit.collider.transform.tag == "ItemSlot")
+                MyItemGFX.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -6);
+                ItemRenderer.sortingOrder = 16;
+            }
+            else
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                ItemRenderer.sortingOrder = 15;
+                if (hit.collider != null)
                 {
-                    if (hit.collider.transform == this.transform && !Input.GetMouseButton(0) && GameItem!=null)
+                    if (hit.collider.transform.tag == "ItemSlot")
                     {
-                        if (GameItem.ItemName != "Empty Slot")
+                        if (hit.collider.transform == this.transform && !Input.GetMouseButton(0) && GameItem != null)
                         {
-                            GameInfo.ItemInfoWindow.SetActive(true);
-                            GameInfo.ItemInfoWindow.transform.position = (Vector2)MyItemGFX.position - new Vector2(2, 2);
-                            GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
+                            if (GameItem.ItemName != "Empty Slot")
+                            {
+                                GameInfo.ItemInfoWindow.SetActive(true);
+                                GameInfo.ItemInfoWindow.transform.position = (Vector2)MyItemGFX.position - new Vector2(2, 2);
+                                GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().SetFields(GameItem);
+                            }
+                            else
+                                GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().EmptySlotInfo(MyType, IndexInInv);
                         }
-                        else
-                            GameInfo.ItemInfoWindow.GetComponent<ItemDesc>().EmptySlotInfo(MyType, IndexInInv);
+                    }
+                    else
+                    {
+                        GameInfo.ItemInfoWindow.SetActive(false);
                     }
                 }
                 else
-                {
                     GameInfo.ItemInfoWindow.SetActive(false);
-                }
             }
-            else
-                GameInfo.ItemInfoWindow.SetActive(false);
-        }
+        
     }
     public void UpdateSlot(Item _item)
     {
@@ -101,7 +103,7 @@ public class InvSlot : MonoBehaviour
     {
         if (GameItem != null)
         {
-            if (Input.GetMouseButtonDown(0) && !dragging && GameItem.ItemName != "Empty Slot")
+            if (Input.GetMouseButtonDown(0) && !dragging && GameItem.ItemName != "Empty Slot" && GameInfo.GM.GameSpeed==1)
             {
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -113,7 +115,7 @@ public class InvSlot : MonoBehaviour
                     }
                 }
             }
-            if (Input.GetMouseButtonUp(0) && dragging)
+            if (Input.GetMouseButtonUp(0) && dragging || GameInfo.GM.GameSpeed == 0)
             {
                 dragging = false;
                 InvSlot swap = MyItemGameObject.DropItem();

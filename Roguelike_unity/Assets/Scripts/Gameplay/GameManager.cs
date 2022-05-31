@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public LevelManager CurrentLevel;
     public List<GameObject> TemporaryDebris = new List<GameObject>();
     public float GameSpeed = 1;
+    public GameObject PauseFade;
     private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
@@ -41,9 +42,15 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameSpeed == 1)
+            {
                 GameSpeed = 0;
+                PauseFade.SetActive(true);
+            }
             else
+            {
                 GameSpeed = 1;
+                PauseFade.SetActive(false);
+            }
         }
     }
 

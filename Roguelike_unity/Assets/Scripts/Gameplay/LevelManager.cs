@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     GameManager GM;
+    float DelayWave = 360;
 
     [Tooltip("Monsters that can spawn")]
     public List<GameObject> Monsters;
@@ -20,7 +21,6 @@ public class LevelManager : MonoBehaviour
     public float WaveModifier = 1.25f;
     [Tooltip("Cap on monsters at one time")]
     public float MaxAliveAtOnce = 300;
-
     [Tooltip("Upper Left Limit of Spawn Area")]
     public Transform UpperLeftBounds;
     [Tooltip("Lower Right Limit of Spawn Area")]
@@ -68,7 +68,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!waveStarted && currentWave < Waves)
+        if (!waveStarted && currentWave < Waves && DelayWave<=0)
         {
             InitWave();
         }
@@ -100,6 +100,9 @@ public class LevelManager : MonoBehaviour
             DoChestSpawn();
             //CamID.Cam.ShakeScreen(2, 5);
         }
+
+        if (DelayWave > 0)
+            DelayWave -= 60 * Time.deltaTime;
     }
 
     public void RemoveMe(GameObject remove)
@@ -132,6 +135,7 @@ public class LevelManager : MonoBehaviour
 
     public void ResetLevel()
     {
+        DelayWave = 360;
         currentWave = 0;
         spawnedSoFar = 0;
         GM.currentKillsThisWave = 0;

@@ -13,7 +13,9 @@ public class RelicBonuses : MonoBehaviour
     public bool Lifesteal;
     public bool TrackingShots;
     public int AttackFairyCount;
+    public bool Forcefield;
     public List<GameObject> AttackFairy;
+    public GameObject FField;
 
 
     public void DetermineCurrentBonuses(List<Item> _inv)
@@ -55,6 +57,9 @@ public class RelicBonuses : MonoBehaviour
                         case Item.RelicBonus.AttackFairy:
                             AttackFairyCount++;
                             break;
+                        case Item.RelicBonus.Forcefield:
+                            Forcefield = true;
+                            break;
 
                     }
                 }
@@ -76,6 +81,7 @@ public class RelicBonuses : MonoBehaviour
         FlamingFootprints=false;
         Lifesteal = false;
         TrackingShots = false;
+        Forcefield = false;
     }
 
     void DoAttackFairies()

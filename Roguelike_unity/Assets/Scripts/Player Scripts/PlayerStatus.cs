@@ -161,20 +161,30 @@ public class PlayerStatus : MonoBehaviour
 
         if (CurrentLife > 0 && iFrames<=0)
         {
-            if ((Relics.ShieldBonus && Random.Range(0, 100) < 90 || !Relics.ShieldBonus))
+            if (!Relics.Forcefield)
             {
-                MyAnim.SetTrigger("Hurt");
-                CurrentLife -= _dmg;
-                iFrames = 60;
-                GameHeartParent.SetActive(true);
-                CamID.CMController.PPCam.assetsPPU += 2;
+                if ((Relics.ShieldBonus && Random.Range(0, 100) < 90 || !Relics.ShieldBonus))
+                {
+                    MyAnim.SetTrigger("Hurt");
+                    CurrentLife -= _dmg;
+                    iFrames = 60;
+                    GameHeartParent.SetActive(true);
+                    CamID.CMController.PPCam.assetsPPU += 2;
+                }
+                else
+                {
+                    LifelineImg.SetActive(true);
+                    LifelineImg.transform.position = transform.position;
+                    LifelineImg.GetComponent<SpriteRenderer>().sprite = ShieldSpr;
+                    iFrames = 120;
+                }
             }
             else
             {
-                LifelineImg.SetActive(true);
-                LifelineImg.transform.position = transform.position;
-                LifelineImg.GetComponent<SpriteRenderer>().sprite = ShieldSpr;
-                iFrames = 120;
+                Relics.FField.SetActive(true);
+                Relics.FField.GetComponent<AreaDamage>().Dmg = (int)AttackDamage * 3;
+                MyInv.FindAndRemove(Item.RelicBonus.Forcefield);
+                Relics.DetermineCurrentBonuses(MyInv.MyItems);
             }
 
         }

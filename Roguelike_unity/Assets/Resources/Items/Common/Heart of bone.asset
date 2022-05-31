@@ -21,7 +21,8 @@ MonoBehaviour:
   Range: 0
   Luck: 0
   ItemGFX: {fileID: -969820178, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: You feel protected
+  RelicDesc: 'Absorbs a hit and self destructs - heavily damages everything around
+    you. '
   StaffProjectile: {fileID: 0}
   ItemType: 4
-  RelicEffect: 0
+  RelicEffect: 8

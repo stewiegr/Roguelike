@@ -51,7 +51,7 @@ public class AttackFairy : MonoBehaviour
             {
                 offset = new Vector2(Random.Range(-2, 2), Random.Range(-2, 4));
                 navCD = Random.Range(30, 60);
-                MySpr.flipX = !!MySpr.flipX;
+                MySpr.flipX = !MySpr.flipX;
             }
         }
     }

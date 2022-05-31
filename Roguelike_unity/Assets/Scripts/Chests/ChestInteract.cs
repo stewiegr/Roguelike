@@ -36,6 +36,16 @@ public class ChestInteract : MonoBehaviour
             }
         }
 
+        //DEBUG
+        if(allOpen)
+        {
+            if(Input.GetKeyDown(KeyCode.F1))
+            {
+                Inv.ShuffleLoot();
+                AssignItems();
+            }
+        }
+
         if(open)
         {
             if (animDel <= 0)

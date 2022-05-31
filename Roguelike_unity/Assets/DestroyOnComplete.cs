@@ -6,7 +6,10 @@ public class DestroyOnComplete : StateMachineBehaviour
 {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Destroy(animator.gameObject, stateInfo.length);
+        if (animator.gameObject.GetComponent<AreaDamage>() != null)
+            animator.gameObject.GetComponent<AreaDamage>().DestroyOnComplete();// stateInfo.length;
+        else
+            Destroy(animator.gameObject, stateInfo.length);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -12,6 +12,7 @@ public class AreaDamage : MonoBehaviour
     public bool HitPlayer = false;
     public bool HitNPC = false;
     public Animator MyAnim;
+    public bool DeactivateDontDestroy;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -59,6 +60,15 @@ public class AreaDamage : MonoBehaviour
 
     public void DestroyOnComplete()
     {
-        GameObject.Destroy(this.gameObject);
+        if (!DeactivateDontDestroy)
+            GameObject.Destroy(this.gameObject);
+        else
+        {
+            Dur = 3;
+            AffectNPCs.Clear();
+            AffectPlayer = null;
+            gameObject.SetActive(false);
+            
+        }
     }
 }
