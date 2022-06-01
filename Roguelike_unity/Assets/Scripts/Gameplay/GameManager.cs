@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> TemporaryDebris = new List<GameObject>();
     public float GameSpeed = 1;
     public GameObject PauseFade;
+    public List<BoxCollider2D> Abyss;
     private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);

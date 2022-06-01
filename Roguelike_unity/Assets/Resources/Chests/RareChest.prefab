@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyItems: []
   MaxItemCountUpTo9: 6
-  ChanceOfRare: 75
+  ChanceOfRare: 50
   ChanceOfUnique: 5
   ChanceOfLegendary: 0
 --- !u!1 &2827822837983107411

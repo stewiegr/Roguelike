@@ -158,9 +158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyItems: []
   MaxItemCountUpTo9: 6
-  ChanceOfRare: 90
-  ChanceOfUnique: 75
-  ChanceOfLegendary: 0
+  ChanceOfRare: 25
+  ChanceOfUnique: 45
+  ChanceOfLegendary: 15
 --- !u!1 &2827822837983107411
 GameObject:
   m_ObjectHideFlags: 0

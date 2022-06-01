@@ -1,30 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     GameManager GM;
-    float DelayWave = 360;
+    float DelayWave = 1;
+    public TextMeshProUGUI WaveWarn;
 
     [Tooltip("Monsters that can spawn")]
     public List<GameObject> Monsters;
     [Tooltip("Delay in frames between each monster spawn")]
     public float SpawnDelay = 10;
     [Tooltip("How many waves in this level")]
-    public int Waves = 3;
-    [Tooltip("Maximum number of monsters that could be in a wave")]
-    public int MaxPerWave = 500;
+    public List<int> Waves;
     [Tooltip("Minimum number of monsters that could be in a wave")]
     public int MinPerWave = 400;
     [Tooltip("Multiplier - can more monsters spawn in each wave?")]
     public float WaveModifier = 1.25f;
     [Tooltip("Cap on monsters at one time")]
     public float MaxAliveAtOnce = 300;
-    [Tooltip("Upper Left Limit of Spawn Area")]
-    public Transform UpperLeftBounds;
-    [Tooltip("Lower Right Limit of Spawn Area")]
-    public Transform LowerRightBounds;
     [Tooltip("PLACEHOLDER - spawn a chest when done")]
 
     public float ChanceOfRareChest = 0;
@@ -53,6 +49,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        WaveWarn = GameObject.Find("WaveWarning").GetComponent<TextMeshProUGUI>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         CommonChest = Resources.Load<GameObject>("Chests/CommonChest");
         RareChest = Resources.Load<GameObject>("Chests/RareChest");
@@ -68,41 +65,46 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!waveStarted && currentWave < Waves && DelayWave<=0)
+        if (DelayWave <= 0)
         {
-            InitWave();
-        }
-        else if (waveStarted && GM.currentKillsThisWave < setSpawnNumber - 4)
-        {
-            if (spawnedSoFar <= setSpawnNumber &&  GM.LivingEnemies < MaxAliveAtOnce && GameInfo.PlayerStatus.Alive)
+            if (!waveStarted && currentWave < Waves.Count - 1)
             {
-                if (delay > 0)
+                InitWave();
+            }
+            else if (waveStarted && GM.currentKillsThisWave < setSpawnNumber - 4)
+            {
+                if (spawnedSoFar <= setSpawnNumber && GM.LivingEnemies < MaxAliveAtOnce && GameInfo.PlayerStatus.Alive)
                 {
-                    delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
-                    if (delay <= 0)
+                    if (delay > 0)
                     {
-                        if (spawnedSoFar < 50)
-                            SpawnMonster(1);
-                        else
+                        delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
+                        if (delay <= 0)
                         {
-                            SpawnMonster(Random.Range(15, 30));
+                            if (spawnedSoFar < 50)
+                                SpawnMonster(Random.Range(1,5));
+                            else
+                            {
+                                SpawnMonster(Random.Range(15, 30));
+                            }
                         }
                     }
                 }
             }
         }
-        if (GM.currentKillsThisWave >= setSpawnNumber)
+        if (GM.currentKillsThisWave > setSpawnNumber && GM.currentKillsThisWave >= spawnedSoFar && waveStarted)
         {
+            currentWave++;
             waveStarted = false;
-        }
-        if (currentWave >= Waves && GM.LivingEnemies <= 0 && !chestUp && GM.currentKillsThisWave >= setSpawnNumber)
-        {
             DoChestSpawn();
-            //CamID.Cam.ShakeScreen(2, 5);
         }
 
         if (DelayWave > 0)
+        {
             DelayWave -= 60 * Time.deltaTime;
+            WaveWarn.text = "Next Wave In: " + (int)(DelayWave / 60);
+        }
+        else
+            WaveWarn.text = "";
     }
 
     public void RemoveMe(GameObject remove)
@@ -114,9 +116,13 @@ public class LevelManager : MonoBehaviour
         Vector2 pos;
         do
         {
-            pos = new Vector2(Random.Range(UpperLeftBounds.position.x, LowerRightBounds.position.x), Random.Range(UpperLeftBounds.position.y, LowerRightBounds.position.y));
+            int index = Random.Range(0, GM.Abyss.Count);
+            Vector2 colliderPos = (Vector2)GM.Abyss[index].transform.position + GM.Abyss[index].offset;
+            float randomPosX = Random.Range(colliderPos.x - (GM.Abyss[index].size.x * GM.Abyss[index].transform.localScale.x) / 2, colliderPos.x + (GM.Abyss[index].size.x * GM.Abyss[index].transform.localScale.x) / 2);
+            float randomPosY = Random.Range(colliderPos.y - (GM.Abyss[index].size.y * GM.Abyss[index].transform.localScale.y) / 2, colliderPos.y + (GM.Abyss[index].size.y * GM.Abyss[index].transform.localScale.y) / 2);
+            pos = new Vector3(randomPosX, randomPosY, 0);
         }
-        while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < ForcedDistanceFromPlayer || Physics2D.OverlapCircleAll(pos, 2).Length != 0);
+        while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < ForcedDistanceFromPlayer);
 
         for (int i = 0; i < _amt; i++)
         {
@@ -129,13 +135,15 @@ public class LevelManager : MonoBehaviour
                 GM.LivingEnemies++;
             }
         }
-        delay = SpawnDelay + (_amt * 15);
+        delay = SpawnDelay;
 
     }
 
+ 
+
     public void ResetLevel()
     {
-        DelayWave = 360;
+        DelayWave = 600;
         currentWave = 0;
         spawnedSoFar = 0;
         GM.currentKillsThisWave = 0;
@@ -165,11 +173,11 @@ public class LevelManager : MonoBehaviour
     {
         chestUp = true;
         float chest = Random.Range(0f, 100f);
-        if (chest > 100 - ChanceOfLegendaryChest)
+        if (chest > 100 - ChanceOfLegendaryChest * currentWave)
             RewardChest = LegendaryChest;
-        else if (chest > 100 - ChanceOfUniqueChest)
+        else if (chest > 100 - ChanceOfUniqueChest * currentWave)
             RewardChest = UniqueChest;
-        else if (chest > 100 - ChanceOfRareChest)
+        else if (chest > 100 - ChanceOfRareChest * currentWave)
             RewardChest = RareChest;
         else
             RewardChest = CommonChest;
@@ -183,10 +191,23 @@ public class LevelManager : MonoBehaviour
 
     void InitWave()
     {
-        currentWave++;
-        GM.currentKillsThisWave = 0;
-        setSpawnNumber = Random.Range(MinPerWave, MaxPerWave) * (int)(currentWave * WaveModifier);
+        DelayWave = 600;
         spawnedSoFar = 0;
+        setSpawnNumber = Waves[currentWave];
+        GM.currentKillsThisWave = 0;
         waveStarted = true;
+        for (int i = SpawnedMonsters.Count - 1; i >= 0; i--)
+        {
+            if (SpawnedMonsters[i] != null)
+                GameObject.Destroy(SpawnedMonsters[i]);
+        }
+        for (int i = GM.TemporaryDebris.Count - 1; i >= 0; i--)
+        {
+            if (GM.TemporaryDebris[i] != null)
+                GameObject.Destroy(GM.TemporaryDebris[i]);
+        }
+        GM.LivingEnemies = 0;
+        delay = 60;
+        chestUp = false;
     }
 }
