@@ -46646,9 +46646,9 @@ MonoBehaviour:
   MinPerWave: 25
   WaveModifier: 1.25
   MaxAliveAtOnce: 450
-  ChanceOfRareChest: 10
-  ChanceOfUniqueChest: 3
-  ChanceOfLegendaryChest: 1
+  ChanceOfRareChest: 0
+  ChanceOfUniqueChest: 0
+  ChanceOfLegendaryChest: 0
   ForcedDistanceFromPlayer: 25
 --- !u!1001 &1119738830
 PrefabInstance:
