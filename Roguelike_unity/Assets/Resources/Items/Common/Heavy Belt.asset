@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemName: Heavy Belt
   ItemDescription: ACCESSORY
   MoveSpeed: -1
-  RateOfFire: 20
+  RateOfFire: 6
   EnergyRegen: 0
   Damage: 0
   Range: 0
