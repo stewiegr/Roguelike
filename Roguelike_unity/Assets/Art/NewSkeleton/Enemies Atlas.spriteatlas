@@ -45,13 +45,44 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
-    - {fileID: 21300000, guid: 4d1b8131531844f468bdb76d67c030f1, type: 3}
+    - {fileID: 2800000, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 4d1b8131531844f468bdb76d67c030f1, type: 3}
+  - {fileID: 705654713, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1667713256, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 729855286, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -2032763155, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -1679872370, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -62701178, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 676071691, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 21473260, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1812527367, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -1440855088, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -7466713, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1340930029, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 2146970261, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1228609389, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -732949869, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 413469382, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -1310084665, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1803595389, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -710458848, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -1181254824, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -1675399007, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1126343196, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -1712156406, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1124858646, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1593643016, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -277822224, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -1090694681, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -469134971, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1817192769, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: -2137255258, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 535796914, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+  - {fileID: 1587381901, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
   - {fileID: 7391406905980376525, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
   - {fileID: 8524840640945146352, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
   - {fileID: 8789788686320337716, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
@@ -85,7 +116,38 @@ SpriteAtlas:
   - {fileID: 647605810, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
   - {fileID: -1654166772, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Skeleton_new
+  - Ranged_Mushroom_20
+  - Ranged_Mushroom_21
+  - Ranged_Mushroom_22
+  - Ranged_Mushroom_23
+  - Ranged_Mushroom_24
+  - Ranged_Mushroom_25
+  - Ranged_Mushroom_31
+  - Ranged_Mushroom_26
+  - Ranged_Mushroom_30
+  - Ranged_Mushroom_27
+  - Ranged_Mushroom_28
+  - Ranged_Mushroom_29
+  - Ranged_Mushroom_19
+  - Ranged_Mushroom_18
+  - Ranged_Mushroom_11
+  - Ranged_Mushroom_10
+  - Ranged_Mushroom_13
+  - Ranged_Mushroom_12
+  - Ranged_Mushroom_15
+  - Ranged_Mushroom_14
+  - Ranged_Mushroom_17
+  - Ranged_Mushroom_2
+  - Ranged_Mushroom_16
+  - Ranged_Mushroom_3
+  - Ranged_Mushroom_0
+  - Ranged_Mushroom_1
+  - Ranged_Mushroom_6
+  - Ranged_Mushroom_7
+  - Ranged_Mushroom_4
+  - Ranged_Mushroom_5
+  - Ranged_Mushroom_8
+  - Ranged_Mushroom_9
   - Skeleton_spritesheet(FINISHED)_5
   - Skeleton_spritesheet(FINISHED)_4
   - Skeleton_spritesheet(FINISHED)_7

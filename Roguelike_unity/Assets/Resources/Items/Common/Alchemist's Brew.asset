@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
-  m_Name: Heart of bone
+  m_Name: Alchemist's Brew
   m_EditorClassIdentifier: 
-  ItemName: Heart of bone
+  ItemName: Alchemist's Brew
   ItemDescription: RELIC ITEM
   MoveSpeed: 0
   RateOfFire: 0
