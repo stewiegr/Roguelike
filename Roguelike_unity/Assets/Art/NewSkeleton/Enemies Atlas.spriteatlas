@@ -72,7 +72,18 @@ SpriteAtlas:
   - {fileID: -5103170770279925142, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
   - {fileID: 1520943338682147364, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
   - {fileID: -1821638055960865622, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 1578144632, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -1845970023, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 746043232, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 1279770766, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 659359725, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 2026810949, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -1927278507, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
   - {fileID: -1882826473100406115, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 115936556, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -1436891838, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: 647605810, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+  - {fileID: -1654166772, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
   m_PackedSpriteNamesToIndex:
   - Skeleton_new
   - Skeleton_spritesheet(FINISHED)_5
@@ -95,7 +106,18 @@ SpriteAtlas:
   - Skeleton_spritesheet(FINISHED)_11
   - Skeleton_spritesheet(FINISHED)_12
   - Skeleton_spritesheet(FINISHED)_13
+  - Skeleton_spritesheet(FINISHED)_30
+  - Skeleton_spritesheet(FINISHED)_31
+  - Skeleton_spritesheet(FINISHED)_25
+  - Skeleton_spritesheet(FINISHED)_24
+  - Skeleton_spritesheet(FINISHED)_27
+  - Skeleton_spritesheet(FINISHED)_26
+  - Skeleton_spritesheet(FINISHED)_21
   - Skeleton_spritesheet(FINISHED)_20
+  - Skeleton_spritesheet(FINISHED)_23
+  - Skeleton_spritesheet(FINISHED)_22
+  - Skeleton_spritesheet(FINISHED)_29
+  - Skeleton_spritesheet(FINISHED)_28
   m_RenderDataMap: {}
   m_Tag: Enemies Atlas
   m_IsVariant: 0

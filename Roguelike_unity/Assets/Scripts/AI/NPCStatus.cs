@@ -10,8 +10,8 @@ public class NPCStatus : MonoBehaviour
 
     public int Life;
     public int AtkDmg;
-    public float AtkRange;
-    public float AtkDly = 20;
+    //public float AtkRange;
+    public float AtkDly = 60;
     public float preventAtk = 0;
     public bool Alive = true;
     public List<GameObject> Gibs;

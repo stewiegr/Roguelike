@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeletonHurt
+  m_Name: RangeShroomHurt
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 697259877059595323, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+      value: {fileID: 535796914, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
     - time: 0.083333336
-      value: {fileID: 8299596438430939813, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+      value: {fileID: 1587381901, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
     - time: 0.16666667
-      value: {fileID: 549350388886048348, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+      value: {fileID: 413469382, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 697259877059595323, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
-    - {fileID: 8299596438430939813, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
-    - {fileID: 549350388886048348, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
+    - {fileID: 535796914, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+    - {fileID: 1587381901, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
+    - {fileID: 413469382, guid: 1af134734a78749418bb0c9fb2acb254, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

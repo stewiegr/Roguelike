@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1758737721101815025}
   - component: {fileID: 3802565858475825433}
   m_Layer: 6
-  m_Name: Skeleton_spritesheet(RUN ONLY)_0
+  m_Name: MeleeShroom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c98d33c9213bcb54e8cff39db5289e71, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   MyStatus: {fileID: 3064419744887775197}
   MyNav: {fileID: -1058236326798848937}
   MyAnim: {fileID: 3296787891474627488}
+  AtkRange: 1
   MyDmg: 1
 --- !u!114 &3064419744887775197
 MonoBehaviour:
@@ -142,7 +143,6 @@ MonoBehaviour:
   MyNav: {fileID: -1058236326798848937}
   Life: 5
   AtkDmg: 2
-  AtkRange: 1.25
   AtkDly: 65
   preventAtk: 0
   Alive: 1
@@ -205,6 +205,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.045660228, y: 0.19006494}
+  m_Offset: {x: 0.31102479, y: 0.6718017}
   serializedVersion: 2
-  m_Radius: 0.36023065
+  m_Radius: 0.4445384

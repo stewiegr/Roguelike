@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonAI : MonoBehaviour
+public class MeleeAI : MonoBehaviour
 {
     public NPCStatus MyStatus;
     public HomingAI MyNav;
     public Animator MyAnim;
+    public float AtkRange;
+
+    private void Start()
+    {
+        GetComponent<HomingAI>().SetAtkRange(AtkRange);
+    }
 
     float atkDly = 30;
     public int MyDmg = 1;

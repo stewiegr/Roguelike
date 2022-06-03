@@ -191,7 +191,7 @@ public class LevelManager : MonoBehaviour
 
     void InitWave()
     {
-        DelayWave = 600;
+        DelayWave = 200;
         spawnedSoFar = 0;
         setSpawnNumber = Waves[currentWave];
         GM.currentKillsThisWave = 0;

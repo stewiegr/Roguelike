@@ -17,6 +17,7 @@ public class HomingAI : MonoBehaviour
     Vector2 forcedVector;
     float KnockbackDur = 0;
     float rotTimer = 120;
+    float AtkRange = 0;
 
     public bool InAtkRange = false;
     public bool FreeMove = true;
@@ -169,7 +170,7 @@ public class HomingAI : MonoBehaviour
         locateDel = Random.Range(1, 5);
         locateDel *= Mathf.Abs(Vector2.Distance(transform.position, GameInfo.PlayerPos));
 
-        if (Mathf.Abs(Vector2.Distance(transform.position, GameInfo.PlayerPos)) < MyStatus.AtkRange)
+        if (Mathf.Abs(Vector2.Distance(transform.position, GameInfo.PlayerPos)) < AtkRange)
             InAtkRange = true;
         else
             InAtkRange = false;
@@ -230,5 +231,10 @@ public class HomingAI : MonoBehaviour
         movement = Vector2.zero;
         MyRB.velocity = Vector2.zero;
     }
+
+    public void SetAtkRange(float _range)
+    {
+        AtkRange = _range;
+    }    
 
 }
