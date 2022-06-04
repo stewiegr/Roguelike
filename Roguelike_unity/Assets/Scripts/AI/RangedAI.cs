@@ -26,6 +26,7 @@ public class RangedAI : MonoBehaviour
         }
         if (MyNav.InAtkRange && MyStatus.Alive)
         {
+            MyAnim.SetBool("Idle", true);
             if(atkDly<=0 && MyNav.FreeMove)
             {
                 MyAnim.SetTrigger("Attack");
@@ -33,6 +34,8 @@ public class RangedAI : MonoBehaviour
                 //SpawnProjectile();
             }
         }
+        else if(!MyNav.InAtkRange)
+            MyAnim.SetBool("Idle", false);
     }
 
     public void SpawnProjectile()
