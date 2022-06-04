@@ -13,6 +13,7 @@ public class PlayerSkills : MonoBehaviour
     float atkDly = 30;
     PlayerStatus MyStatus;
     PlayerInventory MyInv;
+    public bool ShakeOnFire = true;
     void Start()
     {
         myAnim = transform.root.GetComponent<Animator>();
@@ -38,6 +39,11 @@ public class PlayerSkills : MonoBehaviour
 
     void DoBasicProjectile()
     {
+        if (ShakeOnFire)
+        {
+            //CamID.CMController.PPCam.assetsPPU += 1;
+            CamID.CMController.ShakeScreen(.75f, 1);
+        }
         GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.localRotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.life = BP.life * MyStatus.AttackRange;

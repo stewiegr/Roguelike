@@ -158,7 +158,7 @@ MonoBehaviour:
   MyNav: {fileID: -1058236326798848937}
   MyAnim: {fileID: 3296787891474627488}
   MyDmg: 1
-  AtkRange: 18
+  AtkRange: 14
   MyProjectile: {fileID: 4848307892858330393, guid: c9f1791e5c8c8b148975943bfae84f6f, type: 3}
   LaunchPointPosition: {fileID: 5817386276907773627}
 --- !u!114 &3064419744887775197
@@ -177,7 +177,7 @@ MonoBehaviour:
   MyNav: {fileID: -1058236326798848937}
   Life: 5
   AtkDmg: 2
-  AtkDly: 65
+  AtkDly: 150
   preventAtk: 0
   Alive: 1
   Gibs: []

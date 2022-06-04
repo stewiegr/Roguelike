@@ -80,11 +80,14 @@ public class LevelManager : MonoBehaviour
                         delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
                         if (delay <= 0)
                         {
-                            if (spawnedSoFar < 50)
-                                SpawnMonster(Random.Range(1,5));
+                            if (spawnedSoFar < 20)
+                                SpawnMonster(1);
                             else
                             {
-                                SpawnMonster(Random.Range(15, 30));
+                                if (Random.Range(0, 10) > 6)
+                                    SpawnMonster(Random.Range(20, 30));
+                                else
+                                    SpawnMonster(Random.Range(5, 15));
                             }
                         }
                     }
@@ -114,21 +117,21 @@ public class LevelManager : MonoBehaviour
     void SpawnMonster(int _amt)
     {
         Vector2 pos;
-        do
-        {
+       // do
+       // {
             int index = Random.Range(0, GM.Abyss.Count);
             Vector2 colliderPos = (Vector2)GM.Abyss[index].transform.position + GM.Abyss[index].offset;
             float randomPosX = Random.Range(colliderPos.x - (GM.Abyss[index].size.x * GM.Abyss[index].transform.localScale.x) / 2, colliderPos.x + (GM.Abyss[index].size.x * GM.Abyss[index].transform.localScale.x) / 2);
             float randomPosY = Random.Range(colliderPos.y - (GM.Abyss[index].size.y * GM.Abyss[index].transform.localScale.y) / 2, colliderPos.y + (GM.Abyss[index].size.y * GM.Abyss[index].transform.localScale.y) / 2);
             pos = new Vector3(randomPosX, randomPosY, 0);
-        }
-        while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < ForcedDistanceFromPlayer);
+      //  }
+       // while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < ForcedDistanceFromPlayer);
 
         for (int i = 0; i < _amt; i++)
         {
             if (spawnedSoFar <= setSpawnNumber)
             {
-                GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos + new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)), transform.rotation);
+                GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
                 NPC.GetComponent<NPCStatus>().GM = GM;
                 SpawnedMonsters.Add(NPC.gameObject);
                 spawnedSoFar++;
