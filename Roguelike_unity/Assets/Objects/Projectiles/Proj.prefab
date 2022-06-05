@@ -142,7 +142,7 @@ MonoBehaviour:
   myExplosion: {fileID: 4849497849845511185, guid: 91544c5e90d9bc445ab68de61ab87ba1, type: 3}
   Penetrations: 0
   PenetrationMultiplier: 1
-  DefaultVel: 11
+  DefaultVel: 15
   Vel: 0
   life: 25
   Homing: 0
