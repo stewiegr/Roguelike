@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class GameManager : MonoBehaviour
     public float GameSpeed = 1;
     public GameObject PauseFade;
     public List<BoxCollider2D> Abyss;
+    public TextMeshProUGUI GoldUI;
+    public int Gold = 0;
     private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
@@ -58,5 +62,11 @@ public class GameManager : MonoBehaviour
     public void ResetLevel()
     {
         CurrentLevel.ResetLevel();
+    }
+
+    public void AddGold(int _amt)
+    {
+        Gold += _amt;
+        GoldUI.text = "Gold: " + Gold.ToString();
     }
 }

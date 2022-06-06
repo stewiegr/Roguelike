@@ -14,13 +14,48 @@ public class NPCStatus : MonoBehaviour
     public float AtkDly = 60;
     public float preventAtk = 0;
     public bool Alive = true;
-    public List<GameObject> Gibs;
+    public List<GameObject> Currency;
     public float RunSpeed;
     public GameManager GM;
 
+    public Vector2 CurrencyDropLowerUpper;
+    int CurrencyActual;
+
     private void Start()
     {
-        if(Gibs.Count>0)
+        GameObject PHCur;
+        int spawnedCur = 0;
+        CurrencyActual = (int)Random.Range(CurrencyDropLowerUpper.x, CurrencyDropLowerUpper.y);
+        if (CurrencyActual > 0)
+        {
+            do
+            {
+                if (CurrencyActual - spawnedCur >= 10)
+                {
+                    PHCur = (Instantiate(GameInfo.ItemDB.CoinBag));
+                    Currency.Add(PHCur);
+                    PHCur.SetActive(false);
+                    spawnedCur += 10;
+                }
+                else if (CurrencyActual - spawnedCur >= 5)
+                {
+                    PHCur = (Instantiate(GameInfo.ItemDB.CoinStack));
+                    Currency.Add(PHCur);
+                    PHCur.SetActive(false);
+                    spawnedCur += 5;
+                }
+                else if (CurrencyActual - spawnedCur >= 1)
+                {
+                    PHCur = (Instantiate(GameInfo.ItemDB.Coin));
+                    Currency.Add(PHCur);
+                    PHCur.SetActive(false);
+                    spawnedCur += 1;
+                }
+            }
+            while (spawnedCur < CurrencyActual);
+        }
+
+        /*if(Gibs.Count>0)
         {
             for(int i =0; i<Gibs.Count; i++)
             {
@@ -28,7 +63,7 @@ public class NPCStatus : MonoBehaviour
                 Gibs[i].SetActive(false);
                 GM.TemporaryDebris.Add(Gibs[i]);
             }
-        }
+        }*/
 
         if (Random.Range(0, 30) > 28)
             RunSpeed = 6;
@@ -48,9 +83,9 @@ public class NPCStatus : MonoBehaviour
             Die();
         }
 
-        if(GameInfo.PlayerStatus.Relics.Lifesteal)
+        if (GameInfo.PlayerStatus.Relics.Lifesteal)
         {
-            if(Random.Range(0,100)>98)
+            if (Random.Range(0, 100) > 98)
             {
                 GameInfo.PlayerStatus.LifelineImg.SetActive(true);
                 GameInfo.PlayerStatus.LifelineImg.transform.position = GameInfo.PlayerPos;
@@ -67,22 +102,29 @@ public class NPCStatus : MonoBehaviour
         GM.currentKillsThisWave++;
         GM.LivingEnemies--;
         GetComponent<Collider2D>().enabled = false;
-
+        if (Currency.Count > 0)
+        {
+            for (int i = 0; i < Currency.Count; i++)
+            {
+                Currency[i].transform.position = this.transform.position;
+                Currency[i].SetActive(true);
+            }
+        }
         if (Random.Range(0, 10) > 7)
         {
-            if(Gibs.Count>0)
-            {
-                for(int i = 0; i < Gibs.Count; i++)
-                {
-                    Gibs[i].transform.position = this.transform.position;
-                    Gibs[i].SetActive(true);
-                    Gibs[i].GetComponent<LaunchObject>().LaunchMe(new Vector2(Random.Range(-2, 2), Random.Range(-1, 3)),true);
-                    Gibs[i].GetComponent<SpriteRenderer>().sortingLayerName = "Top Down";
-                }
-            }
+            /* if(Gibs.Count>0)
+             {
+                 for(int i = 0; i < Gibs.Count; i++)
+                 {
+                     Gibs[i].transform.position = this.transform.position;
+                     Gibs[i].SetActive(true);
+                     Gibs[i].GetComponent<LaunchObject>().LaunchMe(new Vector2(Random.Range(-2, 2), Random.Range(-1, 3)),true);
+                     Gibs[i].GetComponent<SpriteRenderer>().sortingLayerName = "Top Down";
+                 }
+             }*/
             gameObject.SetActive(false);
             GM.CurrentLevel.RemoveMe(this.gameObject);
-           // GameObject.Destroy(this.gameObject);
+            // GameObject.Destroy(this.gameObject);
             CamID.CMController.ShakeScreen(1, 4);
         }
         else

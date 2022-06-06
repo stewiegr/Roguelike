@@ -10,6 +10,11 @@ public class ItemDatabase : MonoBehaviour
     public Item[] Legendary;
     public Item Empty;
 
+    public GameObject Coin;
+    public GameObject CoinStack;
+    public GameObject CoinBag;
+    
+
     private void Awake()
     {
         GameInfo.ItemDB = this;

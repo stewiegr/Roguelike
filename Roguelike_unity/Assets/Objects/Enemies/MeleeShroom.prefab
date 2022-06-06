@@ -154,6 +154,7 @@ MonoBehaviour:
   - {fileID: 6954091987368322368, guid: 53f53b558a0eac74ebd70eb45423c8d8, type: 3}
   RunSpeed: 7
   GM: {fileID: 0}
+  CurrencyDropLowerUpper: {x: -2, y: 4}
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0

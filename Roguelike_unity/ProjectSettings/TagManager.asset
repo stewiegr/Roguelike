@@ -9,6 +9,7 @@ TagManager:
   - ItemSlot
   - NavObject
   - Restrict
+  - Currency
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Projectile
   - Obstacle
   - CamBoundaries
-  - 
-  - 
+  - CurrencyVac
+  - Currency
   - 
   - 
   - 
