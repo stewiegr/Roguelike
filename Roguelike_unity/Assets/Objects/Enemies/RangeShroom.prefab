@@ -177,12 +177,13 @@ MonoBehaviour:
   MyNav: {fileID: -1058236326798848937}
   Life: 5
   AtkDmg: 2
-  AtkDly: 150
+  AtkDly: 300
   preventAtk: 0
   Alive: 1
-  Gibs: []
+  Currency: []
   RunSpeed: 7
   GM: {fileID: 0}
+  CurrencyDropLowerUpper: {x: 0, y: 11}
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
