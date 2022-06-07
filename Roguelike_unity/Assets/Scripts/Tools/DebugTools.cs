@@ -43,17 +43,18 @@ public class DebugTools : MonoBehaviour
 
     private void Update()
     {
-        if (FPSupd > 0)
+       
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            FPSupd -= 60 * Time.deltaTime;
-
-            if (FPSupd <= 0)
-            {
-                FPSupd = 60;
-                deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-                float fps = 1.0f / deltaTime;
-                FPS.text = "FPS: " + Mathf.Ceil(fps).ToString();
-            }
+            Instantiate(GameInfo.ItemDB.RelicBagA, GameInfo.PlayerPos, GameInfo.Player.transform.rotation);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Instantiate(GameInfo.ItemDB.RelicBagB, GameInfo.PlayerPos, GameInfo.Player.transform.rotation);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Instantiate(GameInfo.ItemDB.RelicBagC, GameInfo.PlayerPos, GameInfo.Player.transform.rotation);
         }
 
         if (Input.GetKeyDown(KeyCode.F3))
@@ -86,10 +87,10 @@ public class DebugTools : MonoBehaviour
             }
         }
 
-        if(Screen.fullScreen)
-        Res.text = "(F2) Res: " + Screen.currentResolution.width + " x " + Screen.currentResolution.height + " x " + Screen.currentResolution.refreshRate + "hz" ;
-        else
-            Res.text = "(F2) Res: " + Screen.width + " x " + Screen.height + " x " + Screen.currentResolution.refreshRate + "hz";
-        Wind.text = "(F3) Full Screen: " + Screen.fullScreenMode.ToString();
+        //if(Screen.fullScreen)
+       // Res.text = "(F2) Res: " + Screen.currentResolution.width + " x " + Screen.currentResolution.height + " x " + Screen.currentResolution.refreshRate + "hz" ;
+      //  else
+       //     Res.text = "(F2) Res: " + Screen.width + " x " + Screen.height + " x " + Screen.currentResolution.refreshRate + "hz";
+      //  Wind.text = "(F3) Full Screen: " + Screen.fullScreenMode.ToString();
     }
 }

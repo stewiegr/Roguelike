@@ -11,7 +11,7 @@ public class PlayerInventory : MonoBehaviour
     public InvSlot Trinket1;
     public InvSlot Trinket2;
 
-    private void Start()
+    private void Awake()
     {
         for(int i=0; i<=19; i++)
         {
@@ -44,6 +44,24 @@ public class PlayerInventory : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public int EmptySlotAvail()
+    {
+        for(int i=0; i<=7; i++)
+        {
+            if(MyItems[i]==GameInfo.ItemDB.Empty || MyItems[i]==null)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void AddItem(Item _item, int _slot)
+    {
+        MyItems[_slot] = _item;
+        Squares[_slot].UpdateSlot(_item);
     }
 
     public float CalcDmg()

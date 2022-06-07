@@ -21,13 +21,13 @@ public class RelicBonuses : MonoBehaviour
     public void DetermineCurrentBonuses(List<Item> _inv)
     {
         WipeBonusesForRecount();
-        foreach(Item item in _inv)
+        for(int i=8; i<=15; i++)
         {
-            if (item != null)
+            if (_inv[i] != null)
             {
-                if (item.ItemType == InvSlot.SlotType.Relic)
+                if (_inv[i].ItemType == InvSlot.SlotType.Relic)
                 {
-                    switch (item.RelicEffect)
+                    switch (_inv[i].RelicEffect)
                     {
                         case Item.RelicBonus.AppleEffect:
                             if(ApplesHeld<3)

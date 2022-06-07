@@ -41,5 +41,8 @@ public class Item : ScriptableObject
     }
 
     public RelicBonus RelicEffect;
+    public bool RelicBagA = false;
+    public bool RelicBagB = false;
+    public bool RelicBagC = false;
 
 }

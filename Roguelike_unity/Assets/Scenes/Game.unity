@@ -25908,6 +25908,7 @@ GameObject:
   - component: {fileID: 879764299}
   - component: {fileID: 879764301}
   - component: {fileID: 879764302}
+  - component: {fileID: 879764303}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -25974,10 +25975,16 @@ MonoBehaviour:
   Rare: []
   Unique: []
   Legendary: []
+  RelicA: []
+  RelicB: []
+  RelicC: []
   Empty: {fileID: 11400000, guid: eaa541bb56f155e4195a620b6ff7aa84, type: 2}
   Coin: {fileID: 1511510664246005193, guid: 646ee55edfd9d2a439d5cbe38fd350e3, type: 3}
   CoinStack: {fileID: 1511510664246005193, guid: ab727b6a92afa684e8fc328481b63cf8, type: 3}
   CoinBag: {fileID: 1511510664246005193, guid: cd5eb5860e0f04345af18f36822c7aa7, type: 3}
+  RelicBagA: {fileID: 1511510664246005193, guid: 9baf717daa207b54d85aec7394043fb2, type: 3}
+  RelicBagB: {fileID: 1511510664246005193, guid: 92c614b769a8bf041930d75d7eb76211, type: 3}
+  RelicBagC: {fileID: 1511510664246005193, guid: 34e4247ad59a6164184422a1f528ae6c, type: 3}
 --- !u!114 &879764302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25992,6 +25999,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmallFlame: {fileID: 5419122835509756225, guid: c1ef78cb0aa37834d988949cca70bbb7, type: 3}
   AttackFairy: {fileID: 6841929094444452982, guid: 49a95e4a14622cb4795f5997ba5b1da2, type: 3}
+--- !u!114 &879764303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879764298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f3acdce13afb940aa4f646f8e2fdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies: {fileID: 0}
+  Ct: {fileID: 0}
+  FPS: {fileID: 0}
+  Res: {fileID: 0}
+  Wind: {fileID: 0}
+  deltaTime: 0
 --- !u!1 &882359792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5891125764407357871, guid: dc247643142a41f4a803c934a33bac7d, type: 3}
@@ -32532,7 +32557,7 @@ MonoBehaviour:
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   - {fileID: 8602976545583975059, guid: 51401b1a09e297f4da739285e99ce68b, type: 3}
   SpawnDelay: 1
-  Waves: e803000028000000780000002c010000ee020000e8030000b80b0000
+  Waves: 1400000028000000780000002c010000ee020000e8030000b80b0000
   MinPerWave: 1
   WaveModifier: 1.25
   MaxAliveAtOnce: 125

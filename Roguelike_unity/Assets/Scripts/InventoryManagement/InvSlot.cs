@@ -121,6 +121,35 @@ public class InvSlot : MonoBehaviour
                 InvSlot swap = MyItemGameObject.DropItem();
                 SwapItem(MyItemGameObject.DropItem());
             }
+            if(Input.GetMouseButtonDown(1) && !dragging && GameItem.ItemName!="Empty Slot" && GameInfo.GM.GameSpeed==1)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit.collider != null)
+                {
+                    if (hit.collider.transform == this.transform)
+                    {
+                        if (GameItem.RelicBagA)
+                            MyInv.AddItem(GameInfo.ItemDB.RelicA[Random.Range(0, GameInfo.ItemDB.RelicA.Length)], IndexInInv);
+                        if (GameItem.RelicBagB)
+                            MyInv.AddItem(GameInfo.ItemDB.RelicB[Random.Range(0, GameInfo.ItemDB.RelicB.Length)], IndexInInv);
+                        if (GameItem.RelicBagC)
+                            MyInv.AddItem(GameInfo.ItemDB.RelicC[Random.Range(0, GameInfo.ItemDB.RelicC.Length)], IndexInInv);
+                    }
+                }
+
+            }
+            if (Input.GetMouseButtonDown(2) && !dragging && GameItem.ItemName != "Empty Slot" && GameInfo.GM.GameSpeed == 1)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit.collider != null)
+                {
+                    if (hit.collider.transform == this.transform)
+                    {
+                        ClearSlot();
+                    }
+                }
+
+            }
         }
     }
 
@@ -143,7 +172,7 @@ public class InvSlot : MonoBehaviour
             DestinationItem = InvSlot.SlotType.General;
 
 
-        if (_swapWith.transform.name != this.transform.name && ((DestinationSlot == InvSlot.SlotType.Universal) || (DestinationSlot == GameItem.ItemType) || DestinationSlot==InvSlot.SlotType.General && GameItem.ItemType!=InvSlot.SlotType.Relic) && ((MyType==InvSlot.SlotType.Universal) || DestinationItem == MyType || (DestinationItem!=InvSlot.SlotType.Relic && MyType==InvSlot.SlotType.General) || DestinationItem==InvSlot.SlotType.Universal))
+        if (_swapWith.transform.name != this.transform.name && ((DestinationSlot == InvSlot.SlotType.Universal || DestinationSlot==InvSlot.SlotType.General) || (DestinationSlot == GameItem.ItemType) || DestinationSlot==InvSlot.SlotType.General && GameItem.ItemType!=InvSlot.SlotType.Relic) && ((MyType==InvSlot.SlotType.Universal || MyType==InvSlot.SlotType.General) || DestinationItem == MyType ||/* (DestinationItem!=InvSlot.SlotType.Relic && MyType==InvSlot.SlotType.General) ||*/ DestinationItem==InvSlot.SlotType.Universal))
         {
             if (_swapWith.GameItem != null)
             {

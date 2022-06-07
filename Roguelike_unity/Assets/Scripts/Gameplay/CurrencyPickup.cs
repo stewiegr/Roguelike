@@ -10,7 +10,8 @@ public class CurrencyPickup : MonoBehaviour
     Vector2 initialVector;
     float settleTime = 30;
 
-    public int value;
+    public int value = 0;
+    public Item ItemToAdd = null;
 
     private void Start()
     {
@@ -38,27 +39,44 @@ public class CurrencyPickup : MonoBehaviour
             if (settleTime <= 0)
                 readyForPickup = true;
         }
-      /*  if(readyForPickup && !pickup)
-        {
-            if(Vector2.Distance(transform.position, GameInfo.PlayerPos) < 3)
-            {
-                pickup = true;             
-            }
-        }*/
         if(pickup)
         {
-            if (Vector2.Distance(transform.position, GameInfo.PlayerPos) > .5f)
-                transform.position = Vector2.MoveTowards(transform.position, GameInfo.PlayerPos, 20 * Time.deltaTime);
-            else
+            if (readyForPickup)
             {
-                GameObject.Destroy(this.gameObject);
-                GameInfo.GM.AddGold(value);
+                if (Vector2.Distance(transform.position, GameInfo.PlayerPos + Vector2.up * .5f) > .5f)
+                    transform.position = Vector2.MoveTowards(transform.position, GameInfo.PlayerPos + Vector2.up * .5f, 20 * Time.deltaTime);
+                else
+                {
+
+                    if (value != 0)
+                    {
+                        GameInfo.GM.AddGold(value);
+                        GameObject.Destroy(this.gameObject);
+                    }
+                    if (ItemToAdd != null)
+                    {
+                        int slot = GameInfo.Player.GetComponent<PlayerInventory>().EmptySlotAvail();
+                        if (slot != -1)
+                        {
+                            GameInfo.Player.GetComponent<PlayerInventory>().AddItem(ItemToAdd, slot);
+                            GameObject.Destroy(this.gameObject);
+                        }
+                        else
+                        {
+                            pickup = false;
+                            readyForPickup = false;
+                            inPosition = false;
+                        }
+                    }
+
+                }
             }
         }
     }
 
     public void PickedUp()
     {
+       
         pickup = true;
     }
 }

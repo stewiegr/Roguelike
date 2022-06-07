@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
+  m_Name: Eldrich Relic Bag
+  m_EditorClassIdentifier: 
+  ItemName: Eldrich Relic Bag
+  ItemDescription: CONSUMABLE
+  MoveSpeed: 0
+  RateOfFire: 0
+  EnergyRegen: 0
+  Damage: 0
+  Range: 0
+  Luck: 0
+  ItemGFX: {fileID: 1345246088, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: Right Click to Open...
+  StaffProjectile: {fileID: 0}
+  ItemType: 0
+  RelicEffect: 0
+  RelicBagA: 1
+  RelicBagB: 0
+  RelicBagC: 0

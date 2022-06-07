@@ -49,7 +49,7 @@ public class ItemDesc : MonoBehaviour
                     break;
 
             }
-            if (_item.ItemType != InvSlot.SlotType.Relic)
+            if (_item.ItemType != InvSlot.SlotType.Relic && _item.ItemType!=InvSlot.SlotType.General)
             {
                 MoveSpeed.text = "Move Speed: " + _item.MoveSpeed.ToString();
                 MoveSpeed.color = ColorText((int)_item.MoveSpeed);
