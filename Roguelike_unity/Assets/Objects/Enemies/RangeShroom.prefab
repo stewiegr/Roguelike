@@ -183,7 +183,7 @@ MonoBehaviour:
   Currency: []
   RunSpeed: 7
   GM: {fileID: 0}
-  CurrencyDropLowerUpper: {x: -11, y: 11}
+  CurrencyDropLowerUpper: {x: 1, y: 11}
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
