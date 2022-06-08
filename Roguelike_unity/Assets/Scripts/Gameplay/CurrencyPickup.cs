@@ -47,7 +47,7 @@ public class CurrencyPickup : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, GameInfo.PlayerPos + Vector2.up * .5f, 20 * Time.deltaTime);
                 else
                 {
-
+                    GameInfo.PlayAudio(1);
                     if (value != 0)
                     {
                         GameInfo.GM.AddGold(value);

@@ -18,6 +18,9 @@ public class NPCStatus : MonoBehaviour
     public float RunSpeed;
     public GameManager GM;
 
+    public int DmgSfxIndex;
+    public int DeadSfxIndex;
+
     public Vector2 CurrencyDropLowerUpper;
     int CurrencyActual;
 
@@ -71,7 +74,7 @@ public class NPCStatus : MonoBehaviour
 
     public void TakeDmg(int _dmg, float _knockback)
     {
-
+        GameInfo.PlayAudio(DmgSfxIndex);
         Life -= _dmg;
         if (Life > 0)
         {
@@ -98,6 +101,7 @@ public class NPCStatus : MonoBehaviour
 
     void Die()
     {
+        GameInfo.PlayAudio(DeadSfxIndex);
         Alive = false;
         GM.currentKillsThisWave++;
         GM.LivingEnemies--;

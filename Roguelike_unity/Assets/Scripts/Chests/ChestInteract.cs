@@ -31,6 +31,7 @@ public class ChestInteract : MonoBehaviour
         {
             if(Prompt.gameObject.activeSelf)
             {
+                GameInfo.PlayAudio(4);
                 transform.root.GetComponent<Animator>().Play("ChestOpen");
                 OpenChest();
             }

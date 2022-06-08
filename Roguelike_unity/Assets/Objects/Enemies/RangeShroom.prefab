@@ -161,6 +161,7 @@ MonoBehaviour:
   AtkRange: 14
   MyProjectile: {fileID: 4848307892858330393, guid: c9f1791e5c8c8b148975943bfae84f6f, type: 3}
   LaunchPointPosition: {fileID: 5817386276907773627}
+  AtkSfxIndex: 6
 --- !u!114 &3064419744887775197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +184,8 @@ MonoBehaviour:
   Currency: []
   RunSpeed: 7
   GM: {fileID: 0}
+  DmgSfxIndex: 3
+  DeadSfxIndex: 2
   CurrencyDropLowerUpper: {x: 1, y: 11}
 --- !u!114 &-1058236326798848937
 MonoBehaviour:

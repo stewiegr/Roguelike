@@ -14,6 +14,7 @@ public class RangedAI : MonoBehaviour
     public GameObject MyProjectile;
     public Transform LaunchPointPosition;
 
+    public int AtkSfxIndex;
     private void Start()
     {
         GetComponent<HomingAI>().SetAtkRange(AtkRange);
@@ -40,6 +41,7 @@ public class RangedAI : MonoBehaviour
 
     public void SpawnProjectile()
     {
+        GameInfo.PlayAudio(AtkSfxIndex);
         Vector2 direction = GameInfo.Player.position - transform.position;
         float angle = Vector2.SignedAngle(Vector2.right, direction);
         //transform.eulerAngles = new Vector3(0, 0, angle);

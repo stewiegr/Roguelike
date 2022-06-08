@@ -44,6 +44,8 @@ public class PlayerSkills : MonoBehaviour
             //CamID.CMController.PPCam.assetsPPU += 1;
             CamID.CMController.ShakeScreen(.75f, 1);
         }
+
+        GameInfo.PlayAudio(5);
         GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.localRotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.life = BP.life * MyStatus.AttackRange;

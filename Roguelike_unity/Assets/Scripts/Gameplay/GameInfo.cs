@@ -16,6 +16,7 @@ public static class GameInfo
     public static Transform Inv;
     public static EffectsDB EffectsDB;
     public static ChestInteract CurrentChest;
+    public static SFXHandler SFX;
 
     public static void PositionInv()
     {
@@ -40,5 +41,10 @@ public static class GameInfo
         {
             CurrentChest.CloseChest();
         }
+    }
+
+    public static void PlayAudio(int index)
+    {
+        SFX.PlayAudioClip(index);
     }
 }

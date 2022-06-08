@@ -8,6 +8,7 @@ public class MeleeAI : MonoBehaviour
     public HomingAI MyNav;
     public Animator MyAnim;
     public float AtkRange;
+    public int AtkSfxIndex;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class MeleeAI : MonoBehaviour
         {
             if(atkDly<=0 && MyNav.FreeMove)
             {
+                GameInfo.PlayAudio(AtkSfxIndex);
                 MyAnim.SetTrigger("Attack");
                 atkDly = MyStatus.AtkDly;
                 GameInfo.PlayerStatus.DamagePlayer(MyDmg);
