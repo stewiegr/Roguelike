@@ -23,6 +23,9 @@ public class NPCStatus : MonoBehaviour
 
     public Vector2 CurrencyDropLowerUpper;
     int CurrencyActual;
+    public float ChanceToDropRelic;
+    public float ChanceToDropRareRelic;
+    public float ChanceToDropLegendaryRelic;
 
     private void Start()
     {
@@ -106,6 +109,24 @@ public class NPCStatus : MonoBehaviour
         GM.currentKillsThisWave++;
         GM.LivingEnemies--;
         GetComponent<Collider2D>().enabled = false;
+
+        DoCurrencyDrop();
+        DoRelicDrop();
+
+        GM.CurrentLevel.RemoveMe(this.gameObject);
+        CamID.CMController.ShakeScreen(1, 4);
+        MyAnim.SetTrigger("Die");
+
+
+    }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void DoCurrencyDrop()
+    {
         if (Currency.Count > 0)
         {
             for (int i = 0; i < Currency.Count; i++)
@@ -114,32 +135,27 @@ public class NPCStatus : MonoBehaviour
                 Currency[i].SetActive(true);
             }
         }
-        if (Random.Range(0, 10) > 7)
-        {
-            /* if(Gibs.Count>0)
-             {
-                 for(int i = 0; i < Gibs.Count; i++)
-                 {
-                     Gibs[i].transform.position = this.transform.position;
-                     Gibs[i].SetActive(true);
-                     Gibs[i].GetComponent<LaunchObject>().LaunchMe(new Vector2(Random.Range(-2, 2), Random.Range(-1, 3)),true);
-                     Gibs[i].GetComponent<SpriteRenderer>().sortingLayerName = "Top Down";
-                 }
-             }*/
-            gameObject.SetActive(false);
-            GM.CurrentLevel.RemoveMe(this.gameObject);
-            // GameObject.Destroy(this.gameObject);
-            CamID.CMController.ShakeScreen(1, 4);
-        }
-        else
-        {
-            GM.CurrentLevel.RemoveMe(this.gameObject);
-            MyAnim.SetTrigger("Die");
-        }
     }
 
-    public void Deactivate()
+    void DoRelicDrop()
     {
-        gameObject.SetActive(false);
+        if(ChanceToDropRelic>0 || ChanceToDropRareRelic > 0 || ChanceToDropLegendaryRelic >  0)
+        {
+            int roll = Random.Range(0, 101);
+
+            if(roll > 100 - ChanceToDropLegendaryRelic)
+            {
+                Instantiate(GameInfo.ItemDB.RelicBagA, transform.position, transform.rotation);
+            }
+            else if (roll > 100 - ChanceToDropRareRelic)
+            {
+                Instantiate(GameInfo.ItemDB.RelicBagB, transform.position, transform.rotation);
+            }
+            else if (roll > 100 - ChanceToDropRelic)
+            {
+                Instantiate(GameInfo.ItemDB.RelicBagC, transform.position, transform.rotation);
+            }
+
+        }
     }
 }

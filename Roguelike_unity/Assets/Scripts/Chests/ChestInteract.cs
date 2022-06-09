@@ -19,7 +19,7 @@ public class ChestInteract : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i <= 7; i++)
+        for (int i = 0; i <= 8; i++)
             SquareCoords.Add((Vector2)Squares[i].transform.position);
 
         Inv = transform.root.GetComponent<ChestInventory>();
@@ -27,9 +27,9 @@ public class ChestInteract : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if(Prompt.gameObject.activeSelf)
+            if (Prompt.gameObject.activeSelf)
             {
                 GameInfo.PlayAudio(4);
                 transform.root.GetComponent<Animator>().Play("ChestOpen");
@@ -38,52 +38,84 @@ public class ChestInteract : MonoBehaviour
         }
 
         //DEBUG
-        if(allOpen)
+        if (allOpen)
         {
-            if(Input.GetKeyDown(KeyCode.F1))
+            if (Input.GetKeyDown(KeyCode.F1))
             {
                 Inv.ShuffleLoot();
                 AssignItems();
             }
         }
 
-        if(open)
+        if (open)
         {
-            if (animDel <= 0)
+            #region OldChestOpen
+            /* if (animDel <= 0)
+             {
+                 if(!allOpen)
+                 {
+                     for (int i = 0; i <= 8; i++)
+                     {
+                         Squares[i].SetActive(true);
+                         Squares[i].GetComponent<InvSlot>().MyChest = Inv;
+                         Squares[i].GetComponent<InvSlot>().IndexInInv = i;
+                     }
+                     allOpen = true;
+                     GameInfo.PlayerInMenu = true;
+                     GameInfo.GM.InventoryWindow.SetActive(true);
+                     GameInfo.PositionInv();
+                     AssignItems();
+                 }
+             }
+             else
+             {
+                     animDel -= 60 * Time.deltaTime;
+                     if (Random.Range(0, 20) > animDel)
+                     {
+                         Squares[Random.Range(0, 9)].SetActive(true);
+                     }             
+             }*/
+            #endregion
+            if (!allOpen)
             {
-                if(!allOpen)
+                int open = 0;
+                for (int i = 0; i <= 8; i++)
+                {
+                    if (Vector2.Distance(Squares[i].transform.position, SquareCoords[i]) > .2f)
+                    {
+                        Squares[i].transform.position = Vector2.MoveTowards(Squares[i].transform.position, SquareCoords[i], 20 * Time.deltaTime);
+                    }
+                    else
+                    {
+                        Squares[i].transform.position = SquareCoords[i];
+                        open++;
+                    }
+                }
+                if (open == 9)
                 {
                     for (int i = 0; i <= 8; i++)
                     {
-                        Squares[i].SetActive(true);
                         Squares[i].GetComponent<InvSlot>().MyChest = Inv;
                         Squares[i].GetComponent<InvSlot>().IndexInInv = i;
                     }
-                    allOpen = true;
                     GameInfo.PlayerInMenu = true;
                     GameInfo.GM.InventoryWindow.SetActive(true);
                     GameInfo.PositionInv();
+                    allOpen = true;
                     AssignItems();
                 }
             }
-            else
-            {
-                    animDel -= 60 * Time.deltaTime;
-                    if (Random.Range(0, 20) > animDel)
-                    {
-                        Squares[Random.Range(0, 9)].SetActive(true);
-                    }             
-            }
+
         }
-        if(delayClose)
+        if (delayClose)
         {
             if (allAssigned)
                 CloseChest();
         }
 
-        if(open)
+        if (open)
         {
-            if(Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.I))
             {
                 GameInfo.PlayerInMenu = false;
                 GameInfo.GM.InventoryWindow.SetActive(false);
@@ -97,14 +129,14 @@ public class ChestInteract : MonoBehaviour
     void AssignItems()
     {
         int index = 0;
-        foreach(Item item in Inv.MyItems)
+        foreach (Item item in Inv.MyItems)
         {
             Squares[index].GetComponent<InvSlot>().UpdateSlot(item);
             index++;
         }
-        if(index<9)
+        if (index < 9)
         {
-            for(int i = index; i<9; i++)
+            for (int i = index; i < 9; i++)
             {
                 Squares[index].GetComponent<InvSlot>().ClearSlot();
                 Inv.MyItems.Add(null);
@@ -118,6 +150,11 @@ public class ChestInteract : MonoBehaviour
         open = true;
         Prompt.gameObject.SetActive(false);
         animDel = 20;
+        for (int i = 0; i <= 8; i++)
+        {
+            Squares[i].transform.position = transform.position;
+            Squares[i].SetActive(true);
+        }
 
     }
 
@@ -151,7 +188,7 @@ public class ChestInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag=="Player" && !open)
+        if (collision.transform.tag == "Player" && !open)
         {
             Prompt.gameObject.SetActive(true);
         }

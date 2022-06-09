@@ -2083,7 +2083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 809632007948634194, guid: bb322b51617974b4aba6504cb02ba324, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.916893
+      value: -4.54
       objectReference: {fileID: 0}
     - target: {fileID: 809632007948634194, guid: bb322b51617974b4aba6504cb02ba324, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22757,7 +22757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760047764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 999}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32606,7 +32606,14 @@ MonoBehaviour:
   - {fileID: 8602976545583975059, guid: 51401b1a09e297f4da739285e99ce68b, type: 3}
   SpawnDelay: 1
   Waves: 1400000028000000780000002c010000ee020000e8030000b80b0000
-  MinPerWave: 1
+  RelicEnemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8602976545583975059, guid: 90771a6f3ea21bf48b670a5a5581d9d7, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   WaveModifier: 1.25
   MaxAliveAtOnce: 125
   ChanceOfRareChest: 0
@@ -47416,7 +47423,7 @@ GameObject:
   - component: {fileID: 1805620642}
   - component: {fileID: 1805620645}
   - component: {fileID: 1805620644}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Boss_scrabble
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -102,12 +102,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dur: 3
   Dmg: 1
-  force: 10
+  force: 14
   AffectNPCs: []
   AffectPlayer: {fileID: 0}
   HitPlayer: 0
   HitNPC: 0
   MyAnim: {fileID: -1692471092944370014}
+  DeactivateDontDestroy: 0
 --- !u!50 &3883940841009068528
 Rigidbody2D:
   serializedVersion: 4

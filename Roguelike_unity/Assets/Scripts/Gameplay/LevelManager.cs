@@ -15,13 +15,15 @@ public class LevelManager : MonoBehaviour
     public float SpawnDelay = 10;
     [Tooltip("How many waves in this level")]
     public List<int> Waves;
-    [Tooltip("Minimum number of monsters that could be in a wave")]
-    public int MinPerWave = 400;
     [Tooltip("Multiplier - can more monsters spawn in each wave?")]
+    public List<GameObject> RelicEnemies;
+    [Tooltip("List Length must match WAVES list length. Leave null unless that wave should spawn a unique enemy")]
     public float WaveModifier = 1.25f;
     [Tooltip("Cap on monsters at one time")]
     public float MaxAliveAtOnce = 300;
     [Tooltip("PLACEHOLDER - spawn a chest when done")]
+
+    bool relicEnemyThisWave = false;
 
     public float ChanceOfRareChest = 0;
     public float ChanceOfUniqueChest = 0;
@@ -42,7 +44,7 @@ public class LevelManager : MonoBehaviour
     //int enemiesKilled = 0;
     private int currentWave = 0;
     float delay;
-   // bool treasureWave = false;
+    // bool treasureWave = false;
     bool chestUp = false;
     [Tooltip("1.5-5 is a good range")]
     public float ForcedDistanceFromPlayer = 1.5f;
@@ -117,15 +119,16 @@ public class LevelManager : MonoBehaviour
     void SpawnMonster(int _amt)
     {
         Vector2 pos;
-       // do
-       // {
-            int index = Random.Range(0, GM.Abyss.Count);
-            Vector2 colliderPos = (Vector2)GM.Abyss[index].transform.position + GM.Abyss[index].offset;
-            float randomPosX = Random.Range(colliderPos.x - (GM.Abyss[index].size.x * GM.Abyss[index].transform.localScale.x) / 2, colliderPos.x + (GM.Abyss[index].size.x * GM.Abyss[index].transform.localScale.x) / 2);
-            float randomPosY = Random.Range(colliderPos.y - (GM.Abyss[index].size.y * GM.Abyss[index].transform.localScale.y) / 2, colliderPos.y + (GM.Abyss[index].size.y * GM.Abyss[index].transform.localScale.y) / 2);
-            pos = new Vector3(randomPosX, randomPosY, 0);
-      //  }
-       // while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < ForcedDistanceFromPlayer);
+        int random = Random.Range(0, setSpawnNumber);
+        // do
+        // {
+        int index = Random.Range(0, GM.Abyss.Count);
+        Vector2 colliderPos = (Vector2)GM.Abyss[index].transform.position + GM.Abyss[index].offset;
+        float randomPosX = Random.Range(colliderPos.x - (GM.Abyss[index].size.x * GM.Abyss[index].transform.localScale.x) / 2, colliderPos.x + (GM.Abyss[index].size.x * GM.Abyss[index].transform.localScale.x) / 2);
+        float randomPosY = Random.Range(colliderPos.y - (GM.Abyss[index].size.y * GM.Abyss[index].transform.localScale.y) / 2, colliderPos.y + (GM.Abyss[index].size.y * GM.Abyss[index].transform.localScale.y) / 2);
+        pos = new Vector3(randomPosX, randomPosY, 0);
+        //  }
+        // while (Mathf.Abs(Vector2.Distance(GameInfo.PlayerPos, pos)) < ForcedDistanceFromPlayer);
 
         for (int i = 0; i < _amt; i++)
         {
@@ -138,20 +141,35 @@ public class LevelManager : MonoBehaviour
                 GM.LivingEnemies++;
             }
         }
+
+        if (RelicEnemies[currentWave] != null && relicEnemyThisWave == false)
+        {
+            if (random <= spawnedSoFar)
+            {
+                GameObject NPC = Instantiate(RelicEnemies[currentWave], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
+                NPC.GetComponent<NPCStatus>().GM = GM;
+                SpawnedMonsters.Add(NPC.gameObject);
+                spawnedSoFar++;
+                GM.LivingEnemies++;
+                relicEnemyThisWave = true;
+            }
+        }
+
         delay = SpawnDelay;
 
     }
 
- 
+
 
     public void ResetLevel()
     {
+        relicEnemyThisWave = false;
         DelayWave = 600;
         currentWave = 0;
         spawnedSoFar = 0;
         GM.currentKillsThisWave = 0;
         waveStarted = false;
-        for(int i=SpawnedMonsters.Count-1; i>=0; i--)
+        for (int i = SpawnedMonsters.Count - 1; i >= 0; i--)
         {
             if (SpawnedMonsters[i] != null)
                 GameObject.Destroy(SpawnedMonsters[i]);
@@ -194,6 +212,7 @@ public class LevelManager : MonoBehaviour
 
     void InitWave()
     {
+        relicEnemyThisWave = false;
         DelayWave = 200;
         spawnedSoFar = 0;
         setSpawnNumber = Waves[currentWave];
