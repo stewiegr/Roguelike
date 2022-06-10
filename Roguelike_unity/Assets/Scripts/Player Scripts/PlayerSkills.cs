@@ -46,7 +46,7 @@ public class PlayerSkills : MonoBehaviour
         }
 
         GameInfo.PlayAudio(5);
-        GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.localRotation);
+        GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f + transform.right * .85f, transform.localRotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.life = BP.life * MyStatus.AttackRange;
         BP.TargetEnemy = true;

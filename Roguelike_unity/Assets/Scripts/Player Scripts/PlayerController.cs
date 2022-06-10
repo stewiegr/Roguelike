@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using TMPro;
 
 
 
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     float TPDel = 0;
     float TPCD = 0;
     Vector3 TPPos;
+    public TextMeshPro CDAlert;
 
     // Start is called before the first frame update
     void Awake()
@@ -131,22 +133,30 @@ public class PlayerController : MonoBehaviour
 
     void CheckTeleport()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && TPCD<=0)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-            if (hit.collider == null)
+            if (TPCD <= 0)
             {
-                myAnim.SetTrigger("Teleport");
-                CanMove = false;
-                movement = Vector2.zero;
-                TPDel = 20;
-                TPCD = 60;
-                MyStatus.SetIFrames(25);
-                CamID.CMController.PauseFollow(40);
-                TPPos = CamID.Cam.ScreenToWorldPoint(Input.mousePosition);
-            }         
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
+                if (hit.collider == null)
+                {
+                    myAnim.SetTrigger("Teleport");
+                    CanMove = false;
+                    movement = Vector2.zero;
+                    TPDel = 20;
+                    TPCD = 60 * MyStatus.BaseTPCoolDownSeconds;
+                    MyStatus.SetIFrames(25);
+                    CamID.CMController.PauseFollow(40);
+                    TPPos = CamID.Cam.ScreenToWorldPoint(Input.mousePosition);
+                }
+            }
+            else
+            {
+                CDAlert.gameObject.SetActive(true);
+                CDAlert.GetComponent<AutoDisableObject>().ActivateObj(90);
+                CDAlert.text = (TPCD / 60f).ToString("F1") + "s";
+            }
         }
     }
 

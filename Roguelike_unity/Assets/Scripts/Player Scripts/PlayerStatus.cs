@@ -13,18 +13,20 @@ public class PlayerStatus : MonoBehaviour
     public float AttackSpeed;
     public float Luck;
 
-    public int BaseMaxLife=4;
+    public int BaseMaxLife = 4;
     public float BaseRunSpeed;
     public float BaseAttackDamage;
     public float BaseAttackRange;
     public float BaseAttackSpeed;
     public float BaseLuck;
+    public float BaseTPCoolDownSeconds;
 
     public float RunSpeedBonus;
     public float AttackDamageBonus;
     public float AttackRangeBonus;
     public float AttackSpeedBonus;
     public float LuckBonus;
+
 
     public bool Alive = true;
     int LifelineInProgress = 0;
@@ -67,14 +69,14 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(iFrames>=0)
+        if (iFrames >= 0)
         {
             iFrames -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         }
         else
         {
             if (GameHeartParent.activeSelf)
-               GameHeartParent.SetActive(false);
+                GameHeartParent.SetActive(false);
             if (LifelineImg.activeSelf && Alive)
                 LifelineImg.SetActive(false);
         }
@@ -82,7 +84,7 @@ public class PlayerStatus : MonoBehaviour
         if (heartLife != CurrentLife)
         {
             UpdateHeartGFX();
-         //   UpdateGameHeartGFX();
+            //   UpdateGameHeartGFX();
         }
 
         if (Input.GetKeyDown(KeyCode.K))
@@ -90,9 +92,9 @@ public class PlayerStatus : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
             HealPlayer(1);
 
-        if(!Alive)
+        if (!Alive)
         {
-            if(Relics.Lifeline)
+            if (Relics.Lifeline)
             {
                 DoLifeline();
             }
@@ -103,14 +105,14 @@ public class PlayerStatus : MonoBehaviour
 
     void UpdateHeartGFX()
     {
-       
+
         if (heartAnimDel > 0)
             heartAnimDel -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         else
         {
             if (heartLife < CurrentLife)
             {
-                updateHeart = Mathf.CeilToInt((((float)heartLife+ 1)/2)-1);
+                updateHeart = Mathf.CeilToInt((((float)heartLife + 1) / 2) - 1);
                 if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
                     heartAnimDel = 1;
                 else
@@ -152,14 +154,14 @@ public class PlayerStatus : MonoBehaviour
 
 
             }
-         
+
         }
     }
 
     public void DamagePlayer(int _dmg)
     {
 
-        if (CurrentLife > 0 && iFrames<=0)
+        if (CurrentLife > 0 && iFrames <= 0)
         {
             if (!Relics.Forcefield)
             {
@@ -188,14 +190,14 @@ public class PlayerStatus : MonoBehaviour
             }
 
         }
-        if (CurrentLife<=0 && Alive)
+        if (CurrentLife <= 0 && Alive)
         {
             GameInfo.ForceCloseInv();
             CamID.CMController.dead = true;
             Alive = false;
             MyAnim.SetBool("Dead", true);
-            if(!Relics.Lifeline)
-            RetryButton.SetActive(true);
+            if (!Relics.Lifeline)
+                RetryButton.SetActive(true);
         }
     }
 
@@ -223,11 +225,11 @@ public class PlayerStatus : MonoBehaviour
             GameHearts[index].gameObject.SetActive(true);
             index++;
         }
-        activeHearts = index-1;
-        GameHeartParent.transform.localPosition = new Vector3(1.2f - ((activeHearts-1) * .4f), GameHeartParent.transform.localPosition.y); 
-        if(index<5)
+        activeHearts = index - 1;
+        GameHeartParent.transform.localPosition = new Vector3(1.2f - ((activeHearts - 1) * .4f), GameHeartParent.transform.localPosition.y);
+        if (index < 5)
         {
-            for(int i=index; i<=4; i++)
+            for (int i = index; i <= 4; i++)
             {
                 UIHearts[i].gameObject.SetActive(false);
                 GameHearts[i].gameObject.SetActive(false);
@@ -255,63 +257,63 @@ public class PlayerStatus : MonoBehaviour
         Relics.DetermineCurrentBonuses(MyInv.MyItems);
     }
 
-   /* void UpdateGameHeartGFX()
-    {
-        if (heartAnimDel > 0)
-            heartAnimDel -= 60 * Time.deltaTime;
-        else
-        {
-            if (heartLife < CurrentLife)
-            {
-                updateHeart = Mathf.CeilToInt((((float)heartLife + 1) / 2) - 1);
-                if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
-                    heartAnimDel = 1;
-                else
-                {
-                    if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
-                        GameHearts[updateHeart].HalfHeart();
-                    else if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
-                        GameHearts[updateHeart].FullHeart();
-                    heartLife += 1;
-                    heartAnimDel = 20;
-                }
-            }
-            if (heartLife > CurrentLife)
-            {
-                updateHeart = Mathf.CeilToInt((float)heartLife / 2f) - 1;
-                if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
-                    heartAnimDel = 1;
-                else
-                {
-                    if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
-                        GameHearts[updateHeart].HalfHeart();
-                    else if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
-                        GameHearts[updateHeart].EmptyHeart();
-                    heartLife -= 1;
-                    heartAnimDel = 10;
-                }
+    /* void UpdateGameHeartGFX()
+     {
+         if (heartAnimDel > 0)
+             heartAnimDel -= 60 * Time.deltaTime;
+         else
+         {
+             if (heartLife < CurrentLife)
+             {
+                 updateHeart = Mathf.CeilToInt((((float)heartLife + 1) / 2) - 1);
+                 if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
+                     heartAnimDel = 1;
+                 else
+                 {
+                     if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
+                         GameHearts[updateHeart].HalfHeart();
+                     else if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
+                         GameHearts[updateHeart].FullHeart();
+                     heartLife += 1;
+                     heartAnimDel = 20;
+                 }
+             }
+             if (heartLife > CurrentLife)
+             {
+                 updateHeart = Mathf.CeilToInt((float)heartLife / 2f) - 1;
+                 if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
+                     heartAnimDel = 1;
+                 else
+                 {
+                     if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
+                         GameHearts[updateHeart].HalfHeart();
+                     else if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
+                         GameHearts[updateHeart].EmptyHeart();
+                     heartLife -= 1;
+                     heartAnimDel = 10;
+                 }
 
 
-            }
-            
-        }
-    }*/
+             }
+
+         }
+     }*/
 
     void DoLifeline()
     {
-        if(LifelineInProgress==0)
+        if (LifelineInProgress == 0)
         {
             LifelineInProgress = 1;
             LifelineImg.SetActive(true);
             LifelineImg.GetComponent<SpriteRenderer>().sprite = MushroomSpr;
-            LifelineImg.transform.position = transform.root.position+new Vector3(0,3,0);
+            LifelineImg.transform.position = transform.root.position + new Vector3(0, 3, 0);
         }
         if (LifelineImg.transform.position.y > transform.root.position.y + .5f)
         {
-            if(GameInfo.GM.GameSpeed==1)
-            LifelineImg.transform.position = Vector2.Lerp(LifelineImg.transform.position, transform.root.position, Time.deltaTime);
+            if (GameInfo.GM.GameSpeed == 1)
+                LifelineImg.transform.position = Vector2.Lerp(LifelineImg.transform.position, transform.root.position, Time.deltaTime);
         }
-        else if(LifelineInProgress == 1)
+        else if (LifelineInProgress == 1)
         {
 
             LifelineInProgress = 2;

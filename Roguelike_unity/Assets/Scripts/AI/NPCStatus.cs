@@ -114,6 +114,7 @@ public class NPCStatus : MonoBehaviour
         DoRelicDrop();
 
         GM.CurrentLevel.RemoveMe(this.gameObject);
+        if(Random.Range(0,10) > 7)
         CamID.CMController.ShakeScreen(1, 4);
         MyAnim.SetTrigger("Die");
 
