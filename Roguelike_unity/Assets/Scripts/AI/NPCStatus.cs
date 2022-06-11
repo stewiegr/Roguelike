@@ -9,6 +9,7 @@ public class NPCStatus : MonoBehaviour
     // Start is called before the first frame update
 
     public int Life;
+    int maxLife;
     public int AtkDmg;
     //public float AtkRange;
     public float AtkDly = 60;
@@ -27,8 +28,11 @@ public class NPCStatus : MonoBehaviour
     public float ChanceToDropRareRelic;
     public float ChanceToDropLegendaryRelic;
 
+    public BossHealthbar BossHealthBar;
+
     private void Start()
     {
+        maxLife = Life;
         GameObject PHCur;
         int spawnedCur = 0;
         CurrencyActual = (int)Random.Range(CurrencyDropLowerUpper.x, CurrencyDropLowerUpper.y);
@@ -79,10 +83,16 @@ public class NPCStatus : MonoBehaviour
     {
         GameInfo.PlayAudio(DmgSfxIndex);
         Life -= _dmg;
+        if (BossHealthBar != null)
+        {
+            BossHealthBar.SetHealthBar(Life, maxLife);
+        }
+
         if (Life > 0)
         {
             MyNav.Knockback(_knockback);
             MyAnim.SetTrigger("Hurt");
+
         }
         else if (Alive)
         {
@@ -114,8 +124,8 @@ public class NPCStatus : MonoBehaviour
         DoRelicDrop();
 
         GM.CurrentLevel.RemoveMe(this.gameObject);
-        if(Random.Range(0,10) > 7)
-        CamID.CMController.ShakeScreen(1, 4);
+        if (Random.Range(0, 10) > 7)
+            CamID.CMController.ShakeScreen(1, 4);
         MyAnim.SetTrigger("Die");
 
 
@@ -140,11 +150,11 @@ public class NPCStatus : MonoBehaviour
 
     void DoRelicDrop()
     {
-        if(ChanceToDropRelic>0 || ChanceToDropRareRelic > 0 || ChanceToDropLegendaryRelic >  0)
+        if (ChanceToDropRelic > 0 || ChanceToDropRareRelic > 0 || ChanceToDropLegendaryRelic > 0)
         {
             int roll = Random.Range(0, 101);
 
-            if(roll > 100 - ChanceToDropLegendaryRelic)
+            if (roll > 100 - ChanceToDropLegendaryRelic)
             {
                 Instantiate(GameInfo.ItemDB.RelicBagA, transform.position, transform.rotation);
             }

@@ -34,7 +34,8 @@ Transform:
   m_LocalPosition: {x: -0.642, y: -0.019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4721770413692804132}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
@@ -156,6 +157,7 @@ MonoBehaviour:
   ChanceToDropRelic: 100
   ChanceToDropRareRelic: 10
   ChanceToDropLegendaryRelic: 3
+  BossHealthBar: {fileID: 3903193084205052293}
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,3 +212,88 @@ CircleCollider2D:
   m_Offset: {x: 0.31102479, y: 0.6718017}
   serializedVersion: 2
   m_Radius: 0.4445384
+--- !u!1001 &741060074896512715
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4701112756763521439}
+    m_Modifications:
+    - target: {fileID: 5462830178511457005, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_Name
+      value: BossHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+--- !u!4 &4721770413692804132 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+  m_PrefabInstance: {fileID: 741060074896512715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4721770413692804134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5462830178511457005, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+  m_PrefabInstance: {fileID: 741060074896512715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3903193084205052293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4721770413692804134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021570756b8c03c47a1e8ed80682c8db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthBar: {fileID: 4889784178422637520}
+--- !u!4 &4889784178422637520 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5302081445586187547, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+  m_PrefabInstance: {fileID: 741060074896512715}
+  m_PrefabAsset: {fileID: 0}
