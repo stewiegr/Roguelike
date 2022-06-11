@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 8602976545583975059}
   m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
   m_LocalPosition: {x: -0.642, y: -0.019, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4997998807358271069, guid: c4b166f35b8ee1445864333a16f59dc9, type: 3}
-  m_Color: {r: 1, g: 0.9320468, b: 0, a: 1}
+  m_Sprite: {fileID: -218662301, guid: 3467639588672f54bbde005441069996, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -142,13 +142,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnim: {fileID: 3296787891474627488}
   MyNav: {fileID: -1058236326798848937}
-  Life: 25
+  Life: 2000
   AtkDmg: 2
   AtkDly: 65
   preventAtk: 0
   Alive: 1
   Currency: []
-  RunSpeed: 21
+  RunSpeed: 13
   GM: {fileID: 0}
   DmgSfxIndex: 3
   DeadSfxIndex: 2
