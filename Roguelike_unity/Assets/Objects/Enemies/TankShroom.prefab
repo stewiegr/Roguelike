@@ -143,13 +143,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnim: {fileID: 3296787891474627488}
   MyNav: {fileID: -1058236326798848937}
-  Life: 2000
+  Life: 800
   AtkDmg: 2
   AtkDly: 65
   preventAtk: 0
   Alive: 1
   Currency: []
-  RunSpeed: 13
+  RunSpeed: 3
   GM: {fileID: 0}
   DmgSfxIndex: 3
   DeadSfxIndex: 2
