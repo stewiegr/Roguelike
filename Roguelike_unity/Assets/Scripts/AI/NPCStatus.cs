@@ -8,6 +8,7 @@ public class NPCStatus : MonoBehaviour
     public HomingAI MyNav;
     // Start is called before the first frame update
 
+    public bool NoKnockback;
     public int Life;
     int maxLife;
     public int AtkDmg;
@@ -87,15 +88,17 @@ public class NPCStatus : MonoBehaviour
         {
             BossHealthBar.SetHealthBar(Life, maxLife);
         }
-
+        
         if (Life > 0)
         {
-            MyNav.Knockback(_knockback);
             MyAnim.SetTrigger("Hurt");
+            if(!NoKnockback)
+            MyNav.Knockback(_knockback);
 
         }
         else if (Alive)
         {
+            MyNav.StopMovement();
             Die();
         }
 

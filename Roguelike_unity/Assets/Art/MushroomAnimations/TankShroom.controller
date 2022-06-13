@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e7759b873d09dc3428120c0dd1af18b6, type: 2}
+  m_Motion: {fileID: 7400000, guid: e17f986254346c6449923029a6f7a5a6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -85,7 +85,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0786ab8f2edc6db4c89bf258ad9f66c6, type: 2}
+  m_Motion: {fileID: 7400000, guid: 33bb274f87fa70946b4b50f7855f073e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -130,7 +130,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MeleeShroomAnimController
+  m_Name: TankShroom
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Hurt
@@ -306,7 +306,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 36b5bac495c87034b90fe6ff9382fcd2, type: 2}
+  m_Motion: {fileID: 7400000, guid: a5e776abdf342de4387a4ec187246350, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

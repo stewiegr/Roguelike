@@ -19,6 +19,8 @@ public class ItemDesc : MonoBehaviour
 
     public Color GreenCol;
 
+    public List<TextMeshPro> TextFields;
+
 
     private void Start()
     {
@@ -51,6 +53,48 @@ public class ItemDesc : MonoBehaviour
             }
             if (_item.ItemType != InvSlot.SlotType.Relic && _item.ItemType!=InvSlot.SlotType.General)
             {
+                foreach(TextMeshPro tx in TextFields)
+                {
+                    tx.text = "";
+                }
+
+                int index = 0;
+                if(_item.MoveSpeed!=0)
+                {
+                    TextFields[index].text = "Move Speed: "+_item.MoveSpeed.ToString();
+                    TextFields[index].color = ColorText((int)_item.MoveSpeed);
+                    index++;
+                }
+                if(_item.Damage!=0)
+                {
+                    TextFields[index].text = "Damage: " + _item.Damage.ToString();
+                    TextFields[index].color = ColorText((int)_item.Damage);
+                    index++;
+                }
+                if(_item.RateOfFire!=0)
+                {
+                    TextFields[index].text = "Shot Speed: " + _item.RateOfFire.ToString();
+                    TextFields[index].color = ColorText((int)_item.RateOfFire);
+                    index++;
+                }
+                if(_item.Range!=0)
+                {
+                    TextFields[index].text = "Range: " + _item.Range.ToString();
+                    TextFields[index].color = ColorText((int)_item.Range);
+                    index++;
+                }
+                if(_item.EnergyRegen!=0)
+                {
+                    TextFields[index].text = "Energy: " + _item.EnergyRegen.ToString();
+                    TextFields[index].color = ColorText((int)_item.EnergyRegen);
+                    index++;
+                }
+                if(_item.Luck!=0)
+                {
+                    TextFields[index].text = "Luck: " + _item.Luck.ToString();
+                    TextFields[index].color = ColorText((int)_item.Luck);
+                }
+                /*
                 MoveSpeed.text = "Move Speed: " + _item.MoveSpeed.ToString();
                 MoveSpeed.color = ColorText((int)_item.MoveSpeed);
                 ItemDMG.text = "Damage: " + _item.Damage.ToString();
@@ -63,6 +107,7 @@ public class ItemDesc : MonoBehaviour
                 ItemEnergy.color = ColorText((int)_item.EnergyRegen);
                 ItemLuck.text = "Luck: " + _item.Luck.ToString();
                 ItemLuck.color = ColorText((int)_item.Luck);
+                */
                 RelicDesc.text = "";
             }
             else

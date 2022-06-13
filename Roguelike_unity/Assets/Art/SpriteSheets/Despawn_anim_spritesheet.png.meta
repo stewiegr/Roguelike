@@ -262,6 +262,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Despawn_anim_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094f4ef803c51d1419c708a420a8b0b0
+      internalID: -1998994369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -276,6 +297,7 @@ TextureImporter:
       Despawn_anim_spritesheet_4: -7265711930847351415
       Despawn_anim_spritesheet_5: -893990468046744161
       Despawn_anim_spritesheet_0: 2582388242363297581
+      Despawn_anim_spritesheet_6: -1998994369
       Despawn_anim_spritesheet_2: 7929388346908973451
       Despawn_anim_spritesheet_3: -5562606378732836683
       Despawn_anim_spritesheet_1: -5100029968625708320

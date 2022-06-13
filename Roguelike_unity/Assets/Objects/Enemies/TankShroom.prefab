@@ -101,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 8602976545583975059}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c98d33c9213bcb54e8cff39db5289e71, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2c841400166419444bc5282046800fc0, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnim: {fileID: 3296787891474627488}
   MyNav: {fileID: -1058236326798848937}
+  NoKnockback: 1
   Life: 800
   AtkDmg: 2
   AtkDly: 65
@@ -219,6 +220,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4701112756763521439}
     m_Modifications:
+    - target: {fileID: 5019384009270420629, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019384009270420629, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019384009270420629, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5462830178511457005, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
       propertyPath: m_Name
       value: BossHealth
@@ -229,15 +242,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6
+      value: 2.26
       objectReference: {fileID: 0}
     - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.24
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5462830178511457007, guid: 063ae4c5738733c4e82fba1efda712ef, type: 3}
       propertyPath: m_LocalRotation.w

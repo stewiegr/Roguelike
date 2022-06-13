@@ -11,30 +11,62 @@ public class PlayerSkills : MonoBehaviour
     public GameObject BasicProjectile;
     List<GameObject> Targets = new List<GameObject>(0);
     float atkDly = 30;
+    float autofireDetect = 0;
     PlayerStatus MyStatus;
+    PlayerController MyController;
     PlayerInventory MyInv;
     public bool ShakeOnFire = true;
+    bool autoFire = false;
+
     void Start()
     {
         myAnim = transform.root.GetComponent<Animator>();
         MyStatus = transform.root.GetComponent<PlayerStatus>();
+        MyController = transform.root.GetComponent<PlayerController>();
         MyInv = transform.root.GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (atkDly > 0) 
+        if (atkDly > 0)
             atkDly -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
-        if (MyStatus.Alive && !GameInfo.PlayerInMenu && GameInfo.GM.GameSpeed!=0)
+        if (MyStatus.Alive && !GameInfo.PlayerInMenu && GameInfo.GM.GameSpeed != 0)
         {
-            if (Input.GetMouseButton(0) && atkDly <= 0)// || (Gamepad.current.rightTrigger.wasPressedThisFrame))
+            if ((Input.GetMouseButton(0) || autoFire) && atkDly <= 0)// || (Gamepad.current.rightTrigger.wasPressedThisFrame))
             {
-                atkDly = 40 - (20 * (MyStatus.AttackSpeed/10));
+                atkDly = 40 - (20 * (MyStatus.AttackSpeed / 10));
                 myAnim.Play("PlayerAttack");
                 DoBasicProjectile();
             }
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (autofireDetect > 0)
+            {
+                autoFire = true;
+                MyController.CDAlert.gameObject.SetActive(true);
+                MyController.CDAlert.GetComponent<AutoDisableObject>().ActivateObj(90);
+                MyController.CDAlert.text = "Autofire ON";
+                
+            }
+            else if (!autoFire)
+                autofireDetect = 20;
+        }
+        if (autofireDetect > 0)
+            autofireDetect -= 60 * Time.deltaTime;
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (autofireDetect <= 0 && autoFire)
+            {
+                autoFire = false;
+                MyController.CDAlert.gameObject.SetActive(true);
+                MyController.CDAlert.GetComponent<AutoDisableObject>().ActivateObj(90);
+                MyController.CDAlert.text = "Autofire OFF";
+            }
+            }
+
+
     }
 
     void DoBasicProjectile()
@@ -58,7 +90,7 @@ public class PlayerSkills : MonoBehaviour
         if (MyStatus.Relics.PenetratingProjectile)
             BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
 
-        if(MyStatus.Relics.TrackingShots)
+        if (MyStatus.Relics.TrackingShots)
         {
             BP.AcquireTarget();
         }
@@ -73,7 +105,7 @@ public class PlayerSkills : MonoBehaviour
             BP.TargetEnemy = true;
             BP.dmg = (int)MyStatus.AttackDamage;
             if (MyStatus.Relics.PenetratingProjectile)
-                BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier; 
+                BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
             if (BP.DefaultVel == 0)
                 proj1.GetComponent<Rigidbody2D>().velocity = proj1.transform.right * 10.5f;
             else
@@ -91,7 +123,7 @@ public class PlayerSkills : MonoBehaviour
             BP.TargetEnemy = true;
             BP.dmg = (int)MyStatus.AttackDamage;
             if (MyStatus.Relics.PenetratingProjectile)
-                BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier; 
+                BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
             if (BP.DefaultVel == 0)
                 proj2.GetComponent<Rigidbody2D>().velocity = proj2.transform.right * 10.5f;
             else
