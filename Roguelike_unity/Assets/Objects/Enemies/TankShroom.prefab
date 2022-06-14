@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 4701112756763521439}
   - component: {fileID: 360700256579284617}
   - component: {fileID: 3296787891474627488}
-  - component: {fileID: 3323584503678555387}
   - component: {fileID: 3064419744887775197}
   - component: {fileID: -1058236326798848937}
   - component: {fileID: -1758737721101815025}
   - component: {fileID: 3802565858475825433}
+  - component: {fileID: -6795095324516381944}
   m_Layer: 6
   m_Name: TankShroom
   m_TagString: Enemy
@@ -111,24 +111,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3323584503678555387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8602976545583975059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3fcd5e2b2b16c24681352143f972f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MyStatus: {fileID: 3064419744887775197}
-  MyNav: {fileID: -1058236326798848937}
-  MyAnim: {fileID: 3296787891474627488}
-  AtkRange: 1.5
-  AtkSfxIndex: 7
-  MyDmg: 1
 --- !u!114 &3064419744887775197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +132,7 @@ MonoBehaviour:
   preventAtk: 0
   Alive: 1
   Currency: []
-  RunSpeed: 3
+  RunSpeed: 6
   GM: {fileID: 0}
   DmgSfxIndex: 3
   DeadSfxIndex: 2
@@ -159,6 +141,7 @@ MonoBehaviour:
   ChanceToDropRareRelic: 10
   ChanceToDropLegendaryRelic: 3
   BossHealthBar: {fileID: 3903193084205052293}
+  Shielded: 0
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +196,25 @@ CircleCollider2D:
   m_Offset: {x: 0.31102479, y: 0.6718017}
   serializedVersion: 2
   m_Radius: 0.4445384
+--- !u!114 &-6795095324516381944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602976545583975059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0026a93b0cbb1854e97610455c360e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyStatus: {fileID: 3064419744887775197}
+  MyNav: {fileID: -1058236326798848937}
+  MyAnim: {fileID: 3296787891474627488}
+  MyDmg: 1
+  AtkRange: 16
+  offspring: {fileID: 8602976545583975059, guid: 89bed632e8639ad418fc01b691019e9d, type: 3}
+  AtkSfxIndex: 0
 --- !u!1001 &741060074896512715
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class HomingAI : MonoBehaviour
 
     public bool InAtkRange = false;
     public bool FreeMove = true;
+    bool stopAllMovement = false;
 
     bool launch = false;
     Vector2 launchTraj;
@@ -94,8 +95,11 @@ public class HomingAI : MonoBehaviour
 
     void DoMovement()
     {
-       // if(forcedVector==Vector2.zero)
-        MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed * SpeedMod));// * Time.deltaTime;     
+        // if(forcedVector==Vector2.zero)
+        if (!stopAllMovement)
+            MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed * SpeedMod));
+        else
+            MyRB.velocity = Vector2.zero;
       //  else
        //     MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
     }
@@ -230,6 +234,11 @@ public class HomingAI : MonoBehaviour
     {
         movement = Vector2.zero;
         MyRB.velocity = Vector2.zero;
+    }
+
+    public void PauseMovement(bool _pause)
+    {
+        stopAllMovement = _pause;
     }
 
     public void SetAtkRange(float _range)

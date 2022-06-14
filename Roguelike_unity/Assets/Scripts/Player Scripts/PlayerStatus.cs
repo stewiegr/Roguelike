@@ -40,6 +40,7 @@ public class PlayerStatus : MonoBehaviour
     public GameObject GameHeartParent;
     Animator MyAnim;
     PlayerInventory MyInv;
+    public bool Shielded = false;
 
     public GameObject RetryButton;
     public RelicBonuses Relics;
@@ -169,6 +170,8 @@ public class PlayerStatus : MonoBehaviour
                 {
                     MyAnim.SetTrigger("Hurt");
                     CurrentLife -= _dmg;
+                    if (CurrentLife < 0)
+                        CurrentLife = 0;
                     iFrames = 60;
                     GameHeartParent.SetActive(true);
                     CamID.CMController.PPCam.assetsPPU += 2;
@@ -192,6 +195,8 @@ public class PlayerStatus : MonoBehaviour
         }
         if (CurrentLife <= 0 && Alive)
         {
+            if (CurrentLife < 0)
+                CurrentLife = 0;
             GameInfo.ForceCloseInv();
             CamID.CMController.dead = true;
             Alive = false;

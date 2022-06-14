@@ -39,7 +39,7 @@ public class BasicProjectile : MonoBehaviour
             {
                 float angle = Mathf.Atan2(homingTarg.position.y - transform.position.y, homingTarg.position.x - transform.position.x) * Mathf.Rad2Deg;
                 Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 720 * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, DefaultVel * 2 * Time.deltaTime);
                 myRB.velocity = DefaultVel * transform.right;
             }
             else
@@ -96,17 +96,47 @@ public class BasicProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        bool breakout = false;
         {
             if ((TargetEnemy && collision.transform.tag == "Enemy" || TargetPlayer &&  collision.transform.tag == "Player"))
             {
-                CreateExplosion(TargetPlayer, TargetEnemy);
-                if (Penetrations <= 0)
+                if(TargetEnemy)
                 {
-                    GameObject.Destroy(this.gameObject);
+                    if(collision.GetComponent<NPCStatus>().Shielded && !breakout)
+                    {
+                        myRB.velocity = new Vector2(myRB.velocity.x * -.7f, myRB.velocity.y * -.7f);
+                        life = 90;
+                        Homing = false;
+                        TargetPlayer = true;
+                        TargetEnemy = false;
+                        GetComponent<SpriteRenderer>().color = Color.red;
+                        breakout = true;
+                    }
                 }
-                else
+                if (TargetPlayer && !breakout)
                 {
-                    Penetrations--;
+                    if(collision.GetComponent<PlayerStatus>().Shielded)
+                    {
+                        myRB.velocity = new Vector2(myRB.velocity.x * -1, myRB.velocity.y * -1);
+                        TargetPlayer = false;
+                        life = 90;
+                        Homing = false;
+                        TargetEnemy = true;
+                        GetComponent<SpriteRenderer>().color = Color.green;
+                        breakout = true;
+                    }
+                }
+                if (!breakout)
+                {
+                    CreateExplosion(TargetPlayer, TargetEnemy);
+                    if (Penetrations <= 0)
+                    {
+                        GameObject.Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        Penetrations--;
+                    }
                 }
             }
             if(collision.transform.tag=="WorldObject")

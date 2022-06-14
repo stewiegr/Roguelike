@@ -8,6 +8,7 @@ public class NPCStatus : MonoBehaviour
     public HomingAI MyNav;
     // Start is called before the first frame update
 
+    public bool IgnoreGMCounts = false;
     public bool NoKnockback;
     public int Life;
     int maxLife;
@@ -30,6 +31,8 @@ public class NPCStatus : MonoBehaviour
     public float ChanceToDropLegendaryRelic;
 
     public BossHealthbar BossHealthBar;
+
+    public bool Shielded = false;
 
     private void Start()
     {
@@ -119,14 +122,17 @@ public class NPCStatus : MonoBehaviour
     {
         GameInfo.PlayAudio(DeadSfxIndex);
         Alive = false;
-        GM.currentKillsThisWave++;
-        GM.LivingEnemies--;
+        if (!IgnoreGMCounts)
+        {
+            GM.currentKillsThisWave++;
+            GM.LivingEnemies--;
+            GM.CurrentLevel.RemoveMe(this.gameObject);
+        }
         GetComponent<Collider2D>().enabled = false;
-
         DoCurrencyDrop();
         DoRelicDrop();
 
-        GM.CurrentLevel.RemoveMe(this.gameObject);
+        
         if (Random.Range(0, 10) > 7)
             CamID.CMController.ShakeScreen(1, 4);
         MyAnim.SetTrigger("Die");

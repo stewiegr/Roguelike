@@ -8643,6 +8643,7 @@ MonoBehaviour:
   - {fileID: 726163395}
   - {fileID: 73338528}
   GameHeartParent: {fileID: 123473217}
+  Shielded: 0
   RetryButton: {fileID: 885639502}
   Relics: {fileID: 0}
   LifelineImg: {fileID: 869015719}
@@ -31782,7 +31783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MuteSFX: 0
-  MuteMusic: 0
+  MuteMusic: 1
 --- !u!4 &1010885871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6726443324542657302, guid: 54114800b2aedad4bb0ccc169877ef4b, type: 3}
