@@ -33,7 +33,7 @@ public class BomberAI : MonoBehaviour
         }
         if(forceFuse>0)
         {
-            forceFuse -= 60 * Time.deltaTime;
+            forceFuse -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
             if (forceFuse <= 0)
                 fuse = ExplodeDelay;
         }
@@ -41,7 +41,7 @@ public class BomberAI : MonoBehaviour
         if(fuse>0)
         {
             MyNav.PauseMovement(true);
-            fuse -= 60 * Time.deltaTime;
+            fuse -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
             MyAnim.SetTrigger("Attack");
             if(fuse<=0)
             {

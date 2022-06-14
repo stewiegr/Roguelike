@@ -132,7 +132,7 @@ MonoBehaviour:
   preventAtk: 0
   Alive: 1
   Currency: []
-  RunSpeed: 15
+  RunSpeed: 20
   GM: {fileID: 0}
   DmgSfxIndex: 3
   DeadSfxIndex: 2

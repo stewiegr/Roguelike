@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnim: {fileID: 3296787891474627488}
   MyNav: {fileID: -1058236326798848937}
+  IgnoreGMCounts: 0
   NoKnockback: 1
   Life: 800
   AtkDmg: 2
@@ -193,9 +194,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.31102479, y: 0.6718017}
+  m_Offset: {x: 0.0103423, y: 0.9962698}
   serializedVersion: 2
-  m_Radius: 0.4445384
+  m_Radius: 0.52722615
 --- !u!114 &-6795095324516381944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +213,7 @@ MonoBehaviour:
   MyNav: {fileID: -1058236326798848937}
   MyAnim: {fileID: 3296787891474627488}
   MyDmg: 1
-  AtkRange: 16
+  AtkRange: 7
   offspring: {fileID: 8602976545583975059, guid: 89bed632e8639ad418fc01b691019e9d, type: 3}
   AtkSfxIndex: 0
 --- !u!1001 &741060074896512715

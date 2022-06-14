@@ -41,13 +41,16 @@ public class TankShroomAI : MonoBehaviour
             }
         }
 
-        if(offspringSpawnTime>0 && !MyStatus.Shielded && MyNav.InAtkRange)
+        if(offspringSpawnTime>0 && !MyStatus.Shielded)
         {
             offspringSpawnTime -= 60 * Time.deltaTime;
             if(offspringSpawnTime<=0)
-            {
+            {     
                 Spawned.Add(Instantiate(offspring, transform.position, transform.rotation));
-                offspringSpawnTime = 60;
+                if (MyNav.InAtkRange)
+                    offspringSpawnTime = 40;
+                else
+                    offspringSpawnTime = 180;
             }
         }
 
