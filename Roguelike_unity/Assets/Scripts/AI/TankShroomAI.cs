@@ -43,7 +43,7 @@ public class TankShroomAI : MonoBehaviour
 
         if(offspringSpawnTime>0 && !MyStatus.Shielded)
         {
-            offspringSpawnTime -= 60 * Time.deltaTime;
+            offspringSpawnTime -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
             if(offspringSpawnTime<=0)
             {     
                 Spawned.Add(Instantiate(offspring, transform.position, transform.rotation));
