@@ -40,7 +40,7 @@ public class PlayerSkills : MonoBehaviour
                 DoBasicProjectile();
             }
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             if (autofireDetect > 0)
             {
@@ -51,7 +51,7 @@ public class PlayerSkills : MonoBehaviour
                 
             }
             else if (!autoFire)
-                autofireDetect = 20;
+                autofireDetect = 10;
         }
         if (autofireDetect > 0)
             autofireDetect -= 60 * Time.deltaTime;

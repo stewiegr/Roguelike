@@ -18,6 +18,7 @@ public class BomberAI : MonoBehaviour
     {
         forceFuse = ExplodeDelay * 6;
         GetComponent<HomingAI>().SetAtkRange(AtkRange);
+        MyNav.Relentless(true);
     }
 
     public int MyDmg = 1;

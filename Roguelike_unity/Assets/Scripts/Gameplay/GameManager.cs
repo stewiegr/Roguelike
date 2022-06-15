@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject PauseFade;
     public List<BoxCollider2D> Abyss;
     public TextMeshProUGUI GoldUI;
+    public GameObject WorldObjects;
     public int Gold = 0;
     private void Awake()
     {
@@ -50,11 +51,13 @@ public class GameManager : MonoBehaviour
             {
                 GameSpeed = 0;
                 PauseFade.SetActive(true);
+                WorldObjects.transform.position += new Vector3(0, 0, 99);
             }
             else
             {
                 GameSpeed = 1;
                 PauseFade.SetActive(false);
+                WorldObjects.transform.position += new Vector3(0, 0, -99);
             }
         }
     }

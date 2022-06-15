@@ -79,7 +79,7 @@ public class LevelManager : MonoBehaviour
                 {
                     if (delay > 0)
                     {
-                        delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
+                        delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; 
                         if (delay <= 0)
                         {
                             if (spawnedSoFar < 20)
@@ -105,7 +105,7 @@ public class LevelManager : MonoBehaviour
 
         if (DelayWave > 0)
         {
-            DelayWave -= 60 * Time.deltaTime;
+            DelayWave -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; 
             WaveWarn.text = "Next Wave In: " + (int)(DelayWave / 60);
         }
         else

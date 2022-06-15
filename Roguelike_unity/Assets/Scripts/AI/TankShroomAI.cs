@@ -61,13 +61,12 @@ public class TankShroomAI : MonoBehaviour
             {
                 MyAnim.SetBool("Shielding",true);
                 MyNav.PauseMovement(true);
-                MyStatus.Shielded = true;
-                MyDmg = (int)GameInfo.PlayerStatus.AttackDamage;
                 shieldDly = 180;
             }
         }
         else if (!MyNav.InAtkRange)
             MyAnim.SetBool("Idle", false);
+
     }
 
 

@@ -29,6 +29,8 @@ public class HomingAI : MonoBehaviour
     float UpTraj = 0;
     float rotAmt;
 
+    bool relentlessPursuit = false;
+
     bool xOb = false;
     bool yOb = false;
 
@@ -172,6 +174,7 @@ public class HomingAI : MonoBehaviour
     {
 
         locateDel = Random.Range(1, 5);
+        if(!relentlessPursuit)
         locateDel *= Mathf.Abs(Vector2.Distance(transform.position, GameInfo.PlayerPos));
 
         if (Mathf.Abs(Vector2.Distance(transform.position, GameInfo.PlayerPos)) < AtkRange)
@@ -217,6 +220,11 @@ public class HomingAI : MonoBehaviour
             MyRB.velocity = Vector2.zero;
 
 
+    }
+
+    public void Relentless(bool _relentless)
+    {
+        relentlessPursuit = _relentless;
     }
 
     public Vector2 GiveMovementVector()

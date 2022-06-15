@@ -106,6 +106,7 @@ public class BasicProjectile : MonoBehaviour
                     {
                         myRB.velocity = new Vector2(myRB.velocity.x * -.7f, myRB.velocity.y * -.7f);
                         life = 90;
+                        dmg = 1;
                         Homing = false;
                         TargetPlayer = true;
                         TargetEnemy = false;
