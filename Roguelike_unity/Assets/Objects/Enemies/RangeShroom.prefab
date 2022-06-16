@@ -176,6 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnim: {fileID: 3296787891474627488}
   MyNav: {fileID: -1058236326798848937}
+  IgnoreGMCounts: 0
+  NoKnockback: 0
   Life: 5
   AtkDmg: 2
   AtkDly: 300
@@ -187,6 +189,11 @@ MonoBehaviour:
   DmgSfxIndex: 3
   DeadSfxIndex: 2
   CurrencyDropLowerUpper: {x: 1, y: 11}
+  ChanceToDropRelic: 0
+  ChanceToDropRareRelic: 0
+  ChanceToDropLegendaryRelic: 0
+  BossHealthBar: {fileID: 0}
+  Shielded: 0
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +223,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

@@ -214,7 +214,7 @@ public class HomingAI : MonoBehaviour
                 movement = Vector2.zero;
         }
 
-        if (movement != Vector2.zero)
+        if (movement != Vector2.zero && !stopAllMovement)
             DoMovement();
         else
             MyRB.velocity = Vector2.zero;
@@ -241,6 +241,7 @@ public class HomingAI : MonoBehaviour
     public void StopMovement()
     {
         movement = Vector2.zero;
+        if(MyRB!=null)
         MyRB.velocity = Vector2.zero;
     }
 

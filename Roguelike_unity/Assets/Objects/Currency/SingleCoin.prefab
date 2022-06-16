@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
+  ItemToAdd: {fileID: 0}
+  relicLevel: -1
 --- !u!50 &-6845628582797249999
 Rigidbody2D:
   serializedVersion: 4

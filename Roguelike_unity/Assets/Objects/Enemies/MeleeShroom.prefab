@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 8602976545583975059}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c98d33c9213bcb54e8cff39db5289e71, type: 2}
+  m_Controller: {fileID: 9100000, guid: 41fe2d7a16466134388c7532cd03192b, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -142,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnim: {fileID: 3296787891474627488}
   MyNav: {fileID: -1058236326798848937}
+  IgnoreGMCounts: 0
+  NoKnockback: 0
   Life: 5
   AtkDmg: 2
   AtkDly: 65
@@ -153,6 +155,11 @@ MonoBehaviour:
   DmgSfxIndex: 3
   DeadSfxIndex: 2
   CurrencyDropLowerUpper: {x: 1, y: 11}
+  ChanceToDropRelic: 0
+  ChanceToDropRareRelic: 0
+  ChanceToDropLegendaryRelic: 0
+  BossHealthBar: {fileID: 0}
+  Shielded: 0
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +189,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -204,6 +211,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.31102479, y: 0.6718017}
+  m_Offset: {x: 0.30109462, y: 0.6718016}
   serializedVersion: 2
-  m_Radius: 0.4445384
+  m_Radius: 0.43460837

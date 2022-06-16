@@ -10,13 +10,14 @@ public class BomberAI : MonoBehaviour
     public float AtkRange;
     public int AtkSfxIndex;
     public float ExplodeDelay = 90;
-    float fuse = 0;
+    float fuse = 600;
     float forceFuse;
+    bool fuseSet = false;
     public GameObject ExplosionSpawn;
 
     private void Start()
     {
-        forceFuse = ExplodeDelay * 6;
+
         GetComponent<HomingAI>().SetAtkRange(AtkRange);
         MyNav.Relentless(true);
     }
@@ -27,37 +28,35 @@ public class BomberAI : MonoBehaviour
     {
         if (MyNav.InAtkRange && MyStatus.Alive)
         {
-            if(MyNav.FreeMove)
+            if(MyNav.FreeMove && !fuseSet)
             {
-                fuse = ExplodeDelay;
+                MyAnim.SetTrigger("Attack");
+                MyNav.PauseMovement(true);
+                fuseSet = true;
             }
-        }
-        if(forceFuse>0)
-        {
-            forceFuse -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
-            if (forceFuse <= 0)
-                fuse = ExplodeDelay;
         }
 
         if(fuse>0)
         {
-            MyNav.PauseMovement(true);
-            fuse -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; ;
-            MyAnim.SetTrigger("Attack");
-            if(fuse<=0)
+            
+            fuse -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;            
+            if(fuse<=0 && !fuseSet)
             {
-                CreateExplosion(true, true);
-                GameObject.Destroy(this.gameObject);
+                fuseSet = true;
+                MyNav.PauseMovement(true);
+                MyAnim.SetTrigger("Attack");
             }
+            
         }
     }
 
-    void CreateExplosion(bool _player, bool _enemy)
+    public void CreateExplosion(bool _player, bool _enemy)
     {
         AreaDamage AE = Instantiate(ExplosionSpawn, transform.position, transform.rotation).GetComponent<AreaDamage>();
         AE.Dmg = MyStatus.AtkDmg;
         AE.HitPlayer = _player;
         AE.HitNPC = _enemy;
+        
 
     }
 

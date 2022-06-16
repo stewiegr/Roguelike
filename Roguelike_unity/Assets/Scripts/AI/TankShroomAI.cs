@@ -15,7 +15,7 @@ public class TankShroomAI : MonoBehaviour
 
     public GameObject offspring;
     List<GameObject> Spawned = new List<GameObject>();
-    float offspringSpawnTime = 60;
+    float offspringSpawnTime = 80;
 
     public int AtkSfxIndex;
     private void Start()
@@ -41,14 +41,14 @@ public class TankShroomAI : MonoBehaviour
             }
         }
 
-        if(offspringSpawnTime>0 && !MyStatus.Shielded)
+        if(offspringSpawnTime>0)
         {
             offspringSpawnTime -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
             if(offspringSpawnTime<=0)
             {     
                 Spawned.Add(Instantiate(offspring, transform.position, transform.rotation));
                 if (MyNav.InAtkRange)
-                    offspringSpawnTime = 40;
+                    offspringSpawnTime = 65;
                 else
                     offspringSpawnTime = 180;
             }

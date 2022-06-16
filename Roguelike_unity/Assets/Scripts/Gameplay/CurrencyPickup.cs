@@ -12,10 +12,15 @@ public class CurrencyPickup : MonoBehaviour
 
     public int value = 0;
     public Item ItemToAdd = null;
+    public int relicLevel = -1;
 
     private void Start()
     {
         initialVector = new Vector2(Random.Range(-4, 4), Random.Range(10, 15));
+        if(relicLevel!=-1)
+        AnimateMe();
+
+        
     }
 
     // Update is called once per frame
@@ -78,5 +83,22 @@ public class CurrencyPickup : MonoBehaviour
     {
        
         pickup = true;
+    }
+
+    public void AnimateMe()
+    {
+        switch(relicLevel)
+        {
+            case 0:
+                GetComponentInChildren<Animator>().SetBool("Rare", true);
+                break;
+            case 1:
+                GetComponentInChildren<Animator>().SetBool("Unique", true);
+                break;
+            case 2:
+                GetComponentInChildren<Animator>().SetBool("Legend", true);
+                break;
+
+        }
     }
 }
