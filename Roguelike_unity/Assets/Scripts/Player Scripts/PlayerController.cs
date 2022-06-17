@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         if (movement != Vector2.zero)
         {
             myAnim.SetBool("Running", true);
-            if (MyStatus.Relics.FlamingFootprints)
+            if (MyStatus.Relics.FlamingFootprints>0)
                 DoFlamingFootprint();
         }
         else

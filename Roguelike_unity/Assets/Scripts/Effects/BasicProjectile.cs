@@ -37,9 +37,9 @@ public class BasicProjectile : MonoBehaviour
         {
             if(homingTarg!=null)
             {
-                float angle = Mathf.Atan2(homingTarg.position.y - transform.position.y, homingTarg.position.x - transform.position.x) * Mathf.Rad2Deg;
+                float angle = Mathf.Atan2((homingTarg.position.y + .45f) - transform.position.y, homingTarg.position.x - transform.position.x) * Mathf.Rad2Deg;
                 Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, DefaultVel * 2 * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, DefaultVel * 7 * Time.deltaTime);
                 myRB.velocity = DefaultVel * transform.right;
             }
             else

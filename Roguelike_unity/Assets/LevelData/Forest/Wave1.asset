@@ -15,7 +15,7 @@ MonoBehaviour:
   AvailableMonsters:
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  SpawnHowMany: 20
+  SpawnHowMany: 15
   DelayBetweenSpawns: 1
   RelicEnemiesToSpawn: []
   MaxAliveAtOnce: 125

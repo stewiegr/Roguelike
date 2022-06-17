@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 0
   ItemToAdd: {fileID: 11400000, guid: 5ebb482ea6d4f2748bc0d04475c9af93, type: 2}
-  relicLevel: 0
+  relicLevel: 1
 --- !u!50 &2202934978075199437
 Rigidbody2D:
   serializedVersion: 4

@@ -105,9 +105,9 @@ public class NPCStatus : MonoBehaviour
             Die();
         }
 
-        if (GameInfo.PlayerStatus.Relics.Lifesteal)
+        if (GameInfo.PlayerStatus.Relics.Lifesteal>0)
         {
-            if (Random.Range(0, 100) > 98)
+            if (GameInfo.PlayerStatus.Relics.CheckLifestealChance() > 98)
             {
                 GameInfo.PlayerStatus.LifelineImg.SetActive(true);
                 GameInfo.PlayerStatus.LifelineImg.transform.position = GameInfo.PlayerPos;

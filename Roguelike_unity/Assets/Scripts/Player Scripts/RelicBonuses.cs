@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class RelicBonuses : MonoBehaviour
 {
-    public bool ShieldBonus;
-    public bool PenetratingProjectile;
+    public int ShieldBonus;
+    public int PenetratingProjectile;
     public int ApplesHeld;
-    public bool Lifeline;
-    public bool FlamingFootprints;
-    public bool TripleShot;
-    public bool Lifesteal;
-    public bool TrackingShots;
+    public int Lifeline;
+    public int FlamingFootprints;
+    public int TripleShot;
+    public int Lifesteal;
+    public int TrackingShots;
     public int AttackFairyCount;
-    public bool Forcefield;
+    public int Forcefield;
     public List<GameObject> AttackFairy;
     public GameObject FField;
 
@@ -34,31 +34,31 @@ public class RelicBonuses : MonoBehaviour
                             ApplesHeld++;
                             break;
                         case Item.RelicBonus.PenetratingProjectile:
-                            PenetratingProjectile = true;
+                            PenetratingProjectile++;
                             break;
                         case Item.RelicBonus.ShieldBonus:
-                            ShieldBonus = true;
+                            ShieldBonus++;
                             break;
                         case Item.RelicBonus.Lifeline:
-                            Lifeline = true;
+                            Lifeline++;
                             break;
                         case Item.RelicBonus.FlamingFootprints:
-                            FlamingFootprints = true;
+                            FlamingFootprints++;
                             break;
                         case Item.RelicBonus.TripleShot:
-                            TripleShot = true;
+                            TripleShot++;
                             break;
                         case Item.RelicBonus.LifeSteal:
-                            Lifesteal = true;
+                            Lifesteal++;
                             break;
                         case Item.RelicBonus.TrackingShots:
-                            TrackingShots = true;
+                            TrackingShots++;
                             break;
                         case Item.RelicBonus.AttackFairy:
                             AttackFairyCount++;
                             break;
                         case Item.RelicBonus.Forcefield:
-                            Forcefield = true;
+                            Forcefield++;
                             break;
 
                     }
@@ -73,15 +73,15 @@ public class RelicBonuses : MonoBehaviour
     void WipeBonusesForRecount()
     {
         AttackFairyCount = 0;
-        ShieldBonus = false;
-        PenetratingProjectile = false;
+        ShieldBonus = 0;
+        PenetratingProjectile = 0;
         ApplesHeld = 0;
-        Lifeline = false;
-        TripleShot = false;
-        FlamingFootprints=false;
-        Lifesteal = false;
-        TrackingShots = false;
-        Forcefield = false;
+        Lifeline = 0;
+        TripleShot = 0;
+        FlamingFootprints=0;
+        Lifesteal = 0;
+        TrackingShots = 0;
+        Forcefield = 0;
     }
 
     void DoAttackFairies()
@@ -97,6 +97,27 @@ public class RelicBonuses : MonoBehaviour
             GameObject.Destroy(AttackFairy[AttackFairyCount]);
             AttackFairy.RemoveAt(AttackFairyCount);
         }
+    }
+
+    public int SetProjectilePenetrations()
+    {
+        return Random.Range(3 + PenetratingProjectile, 5 + PenetratingProjectile);
+    }
+
+    public int CheckShieldBonus()
+    {
+        int bonus = Random.Range(0, 100 + ShieldBonus * 3);
+        return bonus;
+    }
+
+    public int CalculateForcefieldDmg()
+    {
+        return 3;
+    }
+
+    public int CheckLifestealChance()
+    {
+        return Random.Range(0, 100 + Lifesteal * 5);
     }
 }
 

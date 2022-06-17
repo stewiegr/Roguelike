@@ -9,34 +9,16 @@ public class LevelManager : MonoBehaviour
     float DelayWave = 1;
     public TextMeshProUGUI WaveWarn;
 
-    [Tooltip("Monsters that can spawn")]
-    public List<GameObject> Monsters;
-    [Tooltip("Delay in frames between each monster spawn")]
-    public float SpawnDelay = 10;
-    [Tooltip("How many waves in this level")]
-    public List<int> Waves;
-    [Tooltip("Multiplier - can more monsters spawn in each wave?")]
-    public List<GameObject> RelicEnemies;
-    [Tooltip("List Length must match WAVES list length. Leave null unless that wave should spawn a unique enemy")]
-    public float WaveModifier = 1.25f;
-    [Tooltip("Cap on monsters at one time")]
-    public float MaxAliveAtOnce = 300;
-    [Tooltip("PLACEHOLDER - spawn a chest when done")]
-
-    bool relicEnemyThisWave = false;
-
-    public float ChanceOfRareChest = 0;
-    public float ChanceOfUniqueChest = 0;
-    public float ChanceOfLegendaryChest = 0;
+    public List<WaveData> Waves;
 
     private GameObject RewardChest;
-
     private GameObject CommonChest;
     private GameObject RareChest;
     private GameObject UniqueChest;
     private GameObject LegendaryChest;
 
     List<GameObject> SpawnedMonsters = new List<GameObject>();
+    List<GameObject> RelicEnemies = new List<GameObject>();
 
     int spawnedSoFar = 0;
     int setSpawnNumber;
@@ -57,7 +39,7 @@ public class LevelManager : MonoBehaviour
         RareChest = Resources.Load<GameObject>("Chests/RareChest");
         UniqueChest = Resources.Load<GameObject>("Chests/UniqueChest");
         LegendaryChest = Resources.Load<GameObject>("Chests/LegendaryChest");
-        delay = SpawnDelay;
+        delay = Waves[0].DelayBetweenSpawns;
     }
 
     public List<GameObject> GetActiveEnemies()
@@ -75,7 +57,7 @@ public class LevelManager : MonoBehaviour
             }
             else if (waveStarted && GM.currentKillsThisWave < setSpawnNumber - 4)
             {
-                if (spawnedSoFar <= setSpawnNumber && GM.LivingEnemies < MaxAliveAtOnce && GameInfo.PlayerStatus.Alive)
+                if (spawnedSoFar <= setSpawnNumber && GM.LivingEnemies < Waves[currentWave].MaxAliveAtOnce && GameInfo.PlayerStatus.Alive)
                 {
                     if (delay > 0)
                     {
@@ -97,10 +79,10 @@ public class LevelManager : MonoBehaviour
             }
         }
         if (GM.currentKillsThisWave > setSpawnNumber && GM.currentKillsThisWave >= spawnedSoFar && waveStarted)
-        {
-            currentWave++;
+        {       
             waveStarted = false;
             DoChestSpawn();
+            currentWave++;
         }
 
         if (DelayWave > 0)
@@ -134,7 +116,7 @@ public class LevelManager : MonoBehaviour
         {
             if (spawnedSoFar <= setSpawnNumber)
             {
-                GameObject NPC = Instantiate(Monsters[Random.Range(0, Monsters.Count)], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
+                GameObject NPC = Instantiate(Waves[currentWave].AvailableMonsters[Random.Range(0, Waves[currentWave].AvailableMonsters.Count)], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
                 NPC.GetComponent<NPCStatus>().GM = GM;
                 SpawnedMonsters.Add(NPC.gameObject);
                 spawnedSoFar++;
@@ -142,20 +124,20 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        if (RelicEnemies[currentWave] != null && relicEnemyThisWave == false)
+        if (Waves[currentWave].RelicEnemiesToSpawn.Count>0)
         {
-            if (random <= spawnedSoFar)
-            {
-                GameObject NPC = Instantiate(RelicEnemies[currentWave], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
+       //     if (random <= spawnedSoFar)
+        //    {
+                GameObject NPC = Instantiate(Waves[currentWave].RelicEnemiesToSpawn[Waves[currentWave].RelicEnemiesToSpawn.Count-1], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
                 NPC.GetComponent<NPCStatus>().GM = GM;
                 SpawnedMonsters.Add(NPC.gameObject);
                 spawnedSoFar++;
                 GM.LivingEnemies++;
-                relicEnemyThisWave = true;
-            }
+                Waves[currentWave].RelicEnemiesToSpawn.RemoveAt(Waves[currentWave].RelicEnemiesToSpawn.Count-1);
+        //    }
         }
 
-        delay = SpawnDelay;
+        delay = Waves[currentWave].DelayBetweenSpawns;
 
     }
 
@@ -163,7 +145,7 @@ public class LevelManager : MonoBehaviour
 
     public void ResetLevel()
     {
-        relicEnemyThisWave = false;
+        RelicEnemies = Waves[currentWave].RelicEnemiesToSpawn;
         DelayWave = 600;
         currentWave = 0;
         spawnedSoFar = 0;
@@ -194,11 +176,11 @@ public class LevelManager : MonoBehaviour
     {
         chestUp = true;
         float chest = Random.Range(0f, 100f);
-        if (chest > 100 - ChanceOfLegendaryChest * currentWave)
+        if (chest > 100 - Waves[currentWave].ChanceOfLegendaryChest * currentWave)
             RewardChest = LegendaryChest;
-        else if (chest > 100 - ChanceOfUniqueChest * currentWave)
+        else if (chest > 100 - Waves[currentWave].ChanceOfUniqueChest * currentWave)
             RewardChest = UniqueChest;
-        else if (chest > 100 - ChanceOfRareChest * currentWave)
+        else if (chest > 100 - Waves[currentWave].ChanceOfRareChest * currentWave)
             RewardChest = RareChest;
         else
             RewardChest = CommonChest;
@@ -212,10 +194,10 @@ public class LevelManager : MonoBehaviour
 
     void InitWave()
     {
-        relicEnemyThisWave = false;
+        RelicEnemies = Waves[currentWave].RelicEnemiesToSpawn;
         DelayWave = 200;
         spawnedSoFar = 0;
-        setSpawnNumber = Waves[currentWave];
+        setSpawnNumber = Waves[currentWave].SpawnHowMany;
         GM.currentKillsThisWave = 0;
         waveStarted = true;
         for (int i = SpawnedMonsters.Count - 1; i >= 0; i--)

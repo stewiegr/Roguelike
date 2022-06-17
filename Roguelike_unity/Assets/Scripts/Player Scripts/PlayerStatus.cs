@@ -95,7 +95,7 @@ public class PlayerStatus : MonoBehaviour
 
         if (!Alive)
         {
-            if (Relics.Lifeline)
+            if (Relics.Lifeline>0)
             {
                 DoLifeline();
             }
@@ -164,9 +164,9 @@ public class PlayerStatus : MonoBehaviour
 
         if (CurrentLife > 0 && iFrames <= 0)
         {
-            if (!Relics.Forcefield)
+            if (Relics.Forcefield<=0)
             {
-                if ((Relics.ShieldBonus && Random.Range(0, 100) < 90 || !Relics.ShieldBonus))
+                if ((Relics.ShieldBonus>0 && Relics.CheckShieldBonus() < 90 || Relics.ShieldBonus<=0))
                 {
                     MyAnim.SetTrigger("Hurt");
                     CurrentLife -= _dmg;
@@ -187,7 +187,7 @@ public class PlayerStatus : MonoBehaviour
             else
             {
                 Relics.FField.SetActive(true);
-                Relics.FField.GetComponent<AreaDamage>().Dmg = (int)AttackDamage * 3;
+                Relics.FField.GetComponent<AreaDamage>().Dmg = (int)AttackDamage * Relics.CalculateForcefieldDmg();
                 MyInv.FindAndRemove(Item.RelicBonus.Forcefield);
                 Relics.DetermineCurrentBonuses(MyInv.MyItems);
             }
@@ -201,7 +201,7 @@ public class PlayerStatus : MonoBehaviour
             CamID.CMController.dead = true;
             Alive = false;
             MyAnim.SetBool("Dead", true);
-            if (!Relics.Lifeline)
+            if (Relics.Lifeline<=0)
                 RetryButton.SetActive(true);
         }
     }
@@ -262,48 +262,7 @@ public class PlayerStatus : MonoBehaviour
         Relics.DetermineCurrentBonuses(MyInv.MyItems);
     }
 
-    /* void UpdateGameHeartGFX()
-     {
-         if (heartAnimDel > 0)
-             heartAnimDel -= 60 * Time.deltaTime;
-         else
-         {
-             if (heartLife < CurrentLife)
-             {
-                 updateHeart = Mathf.CeilToInt((((float)heartLife + 1) / 2) - 1);
-                 if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
-                     heartAnimDel = 1;
-                 else
-                 {
-                     if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
-                         GameHearts[updateHeart].HalfHeart();
-                     else if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
-                         GameHearts[updateHeart].FullHeart();
-                     heartLife += 1;
-                     heartAnimDel = 20;
-                 }
-             }
-             if (heartLife > CurrentLife)
-             {
-                 updateHeart = Mathf.CeilToInt((float)heartLife / 2f) - 1;
-                 if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Empty)
-                     heartAnimDel = 1;
-                 else
-                 {
-                     if (GameHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Full)
-                         GameHearts[updateHeart].HalfHeart();
-                     else if (UIHearts[updateHeart].HeartFilled == HeartAnim.HeartStatus.Half)
-                         GameHearts[updateHeart].EmptyHeart();
-                     heartLife -= 1;
-                     heartAnimDel = 10;
-                 }
-
-
-             }
-
-         }
-     }*/
-
+  
     void DoLifeline()
     {
         if (LifelineInProgress == 0)

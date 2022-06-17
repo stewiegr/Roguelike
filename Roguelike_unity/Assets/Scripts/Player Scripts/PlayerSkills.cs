@@ -73,7 +73,6 @@ public class PlayerSkills : MonoBehaviour
     {
         if (ShakeOnFire)
         {
-            //CamID.CMController.PPCam.assetsPPU += 1;
             CamID.CMController.ShakeScreen(.75f, 1);
         }
 
@@ -87,16 +86,16 @@ public class PlayerSkills : MonoBehaviour
             proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 10.5f;
         else
             proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * BP.DefaultVel;
-        if (MyStatus.Relics.PenetratingProjectile)
-            BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
+        if (MyStatus.Relics.PenetratingProjectile>0)
+            BP.Penetrations = MyStatus.Relics.SetProjectilePenetrations() * BP.PenetrationMultiplier;
 
-        if (MyStatus.Relics.TrackingShots)
+        if (MyStatus.Relics.TrackingShots>0)
         {
             BP.AcquireTarget();
         }
 
 
-        if (MyStatus.Relics.TripleShot)
+        if (MyStatus.Relics.TripleShot>0)
         {
             GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.localRotation);
             proj1.transform.Rotate(0, 0, 25);
@@ -104,14 +103,14 @@ public class PlayerSkills : MonoBehaviour
             BP.life = BP.life * MyStatus.AttackRange;
             BP.TargetEnemy = true;
             BP.dmg = (int)MyStatus.AttackDamage;
-            if (MyStatus.Relics.PenetratingProjectile)
+            if (MyStatus.Relics.PenetratingProjectile>0)
                 BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
             if (BP.DefaultVel == 0)
                 proj1.GetComponent<Rigidbody2D>().velocity = proj1.transform.right * 10.5f;
             else
                 proj1.GetComponent<Rigidbody2D>().velocity = proj1.transform.right * BP.DefaultVel;
 
-            if (MyStatus.Relics.TrackingShots)
+            if (MyStatus.Relics.TrackingShots>0)
             {
                 BP.AcquireTarget();
             }
@@ -122,14 +121,14 @@ public class PlayerSkills : MonoBehaviour
             BP.life = BP.life * MyStatus.AttackRange;
             BP.TargetEnemy = true;
             BP.dmg = (int)MyStatus.AttackDamage;
-            if (MyStatus.Relics.PenetratingProjectile)
+            if (MyStatus.Relics.PenetratingProjectile>0)
                 BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
             if (BP.DefaultVel == 0)
                 proj2.GetComponent<Rigidbody2D>().velocity = proj2.transform.right * 10.5f;
             else
                 proj2.GetComponent<Rigidbody2D>().velocity = proj2.transform.right * BP.DefaultVel;
 
-            if (MyStatus.Relics.TrackingShots)
+            if (MyStatus.Relics.TrackingShots>0)
             {
                 BP.AcquireTarget();
             }

@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 8602976545583975059, guid: 51401b1a09e297f4da739285e99ce68b, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  SpawnHowMany: 40
+  SpawnHowMany: 30
   DelayBetweenSpawns: 1
   RelicEnemiesToSpawn: []
   MaxAliveAtOnce: 125

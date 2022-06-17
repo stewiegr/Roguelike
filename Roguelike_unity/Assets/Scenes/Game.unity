@@ -44753,26 +44753,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveWarn: {fileID: 0}
-  Monsters:
-  - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  - {fileID: 8602976545583975059, guid: 51401b1a09e297f4da739285e99ce68b, type: 3}
-  SpawnDelay: 1
-  Waves: 1400000028000000780000002c010000ee020000e8030000b80b0000
-  RelicEnemies:
-  - {fileID: 8602976545583975059, guid: 90771a6f3ea21bf48b670a5a5581d9d7, type: 3}
-  - {fileID: 0}
-  - {fileID: 8602976545583975059, guid: 90771a6f3ea21bf48b670a5a5581d9d7, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  WaveModifier: 1.25
-  MaxAliveAtOnce: 125
-  ChanceOfRareChest: 0
-  ChanceOfUniqueChest: 0
-  ChanceOfLegendaryChest: 0
+  Waves:
+  - {fileID: 11400000, guid: cf702c6234fe3ce4e992653e7266c3e0, type: 2}
+  - {fileID: 11400000, guid: a87b63d253ed1de4f965a00d23f630db, type: 2}
+  - {fileID: 11400000, guid: 03a209e6e2959944f9f512d0eb2cce9c, type: 2}
   ForcedDistanceFromPlayer: 25
 --- !u!1001 &1119738830
 PrefabInstance:
