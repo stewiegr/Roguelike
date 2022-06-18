@@ -17176,12 +17176,12 @@ MonoBehaviour:
   MyStatus: {fileID: 327981699}
   MyRB: {fileID: 327981701}
   MyAnim: {fileID: 327981700}
-  PreferredDistanceAway: 12
+  PreferredDistanceAway: 18
   PreferredDistanceClose: 6
-  StrayMaxFromCenter: 22
-  MaxDashStrength: 17
-  MaxTimeBetweenDash: 60
-  MinTimeBetweenDash: 120
+  StrayMaxFromCenter: 17
+  MaxDashStrength: 10
+  MaxTimeBetweenDash: 0
+  MinTimeBetweenDash: 0
 --- !u!1 &338661862
 GameObject:
   m_ObjectHideFlags: 0
