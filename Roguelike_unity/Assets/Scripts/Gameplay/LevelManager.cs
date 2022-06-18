@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
     {
         if (DelayWave <= 0)
         {
-            if (!waveStarted && currentWave < Waves.Count - 1)
+            if (!waveStarted && currentWave < Waves.Count)
             {
                 InitWave();
             }

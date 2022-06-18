@@ -95,12 +95,13 @@ public class NPCStatus : MonoBehaviour
         if (Life > 0)
         {
             MyAnim.SetTrigger("Hurt");
-            if(!NoKnockback)
+            if(!NoKnockback && MyNav!=null)
             MyNav.Knockback(_knockback);
 
         }
         else if (Alive)
         {
+            if(MyNav!=null)
             MyNav.StopMovement();
             Die();
         }

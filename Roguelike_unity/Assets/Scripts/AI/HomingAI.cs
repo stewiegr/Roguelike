@@ -5,6 +5,7 @@ using UnityEngine;
 public class HomingAI : MonoBehaviour
 {
     // Start is called before the first frame update
+    public bool OverrideMovementAI;
     SpriteRenderer MySpr;
     NPCStatus MyStatus;
     Vector2 movement;
@@ -56,7 +57,7 @@ public class HomingAI : MonoBehaviour
             if (MyStatus.MyAnim.speed == 0)
                 MyStatus.MyAnim.speed = 1;
 
-            if (MyStatus.Alive)
+            if (MyStatus.Alive && !OverrideMovementAI)
             {
                 if (locateDel > 0)
                     locateDel -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
@@ -66,7 +67,7 @@ public class HomingAI : MonoBehaviour
                 DoKnockback();
                 DoSpriteFlip();
             }
-            else
+            else if(!OverrideMovementAI)
             {
                 if (!launch)
                 {
