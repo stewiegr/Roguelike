@@ -17202,7 +17202,7 @@ MonoBehaviour:
   MyNav: {fileID: 327981703}
   MyAnim: {fileID: 327981700}
   BigAtkDelay: 200
-  MyDmg: 1
+  MyDmg: 0
   AtkRange: 15
   MyProjectile: {fileID: 4848307892858330393, guid: a125d29b624caa84388b2f74e6692e25, type: 3}
   LaunchPointPositionR: {fileID: 1426911022}
