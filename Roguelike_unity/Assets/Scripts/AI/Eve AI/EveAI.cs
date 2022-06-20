@@ -167,7 +167,7 @@ public class EveAI : MonoBehaviour
         BP.life = 400;
         BP.TargetEnemy = false;
         BP.TargetPlayer = true;
-        BP.dmg = 1;
+        BP.dmg = MyDmg;
         proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 17f;
     }
 
@@ -196,7 +196,7 @@ public class EveAI : MonoBehaviour
             BP.life = 400;
             BP.TargetEnemy = false;
             BP.TargetPlayer = true;
-            BP.dmg = 1;
+            BP.dmg = MyDmg;
             proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 17f;
         }
     }
@@ -215,7 +215,7 @@ public class EveAI : MonoBehaviour
         BP.life = 400;
         BP.TargetEnemy = false;
         BP.TargetPlayer = true;
-        BP.dmg = 1;
+        BP.dmg = MyDmg;
         proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 17f;
     }
 
