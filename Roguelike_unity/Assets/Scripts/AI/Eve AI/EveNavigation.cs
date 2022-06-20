@@ -16,6 +16,8 @@ public class EveNavigation : MonoBehaviour
     public float MinTimeBetweenDash;
     float DashStrength;
     float MovementCD = 0;
+    bool dashing = false;
+    public bool StopToAttack;
 
     enum DirectionToDash
     {
@@ -30,14 +32,23 @@ public class EveNavigation : MonoBehaviour
     {
         if (MyStatus.Alive)
         {
-            if (MovementCD <= 0)
-                MaintainDistance();
+            if (!StopToAttack)
+            {
+                if (MovementCD <= 0)
+                {
+                    dashing = false;
+                    MaintainDistance();
+
+                }
+                else
+                {
+                    MovementCD -= 60 * Time.deltaTime;
+                }
+            }
             else
             {
-                MovementCD -= 60 * Time.deltaTime;
-
+                MyRB.velocity = Vector2.zero;
             }
-
 
             }
     }
@@ -46,29 +57,52 @@ public class EveNavigation : MonoBehaviour
     {
         PlayerPos = GameInfo.PlayerPos;
         FacePlayer();
+        if(dashing)
         DashAtrophy();
     }
 
 
     void MaintainDistance()
     {
-        if (Vector2.Distance(transform.position, Vector2.zero) < StrayMaxFromCenter)
+        if (Random.Range(0, 10) > 6)
         {
-            if (Vector2.Distance(transform.position, PlayerPos) > PreferredDistanceAway)
+            if (Vector2.Distance(transform.position, Vector2.zero) < StrayMaxFromCenter)
             {
-                Dash(DirectionToDash.Away);
+                if (Vector2.Distance(transform.position, PlayerPos) > PreferredDistanceAway)
+                {
+                    Dash(DirectionToDash.Away);
+                }
+                if (Vector2.Distance(transform.position, PlayerPos) < PreferredDistanceClose)
+                {
+                    Dash(DirectionToDash.Toward);
+                }
             }
-            if (Vector2.Distance(transform.position, PlayerPos) < PreferredDistanceClose)
-            {
-                Dash(DirectionToDash.Toward);
-            }
+            else
+                Dash(DirectionToDash.Center);
         }
         else
-            Dash(DirectionToDash.Center);
+        {
+            if (Vector2.Distance(transform.position, Vector2.zero) > StrayMaxFromCenter)
+            {
+                Move(DirectionToDash.Center);
+            }
+            else
+            {
+                if (Vector2.Distance(transform.position, PlayerPos) > PreferredDistanceAway)
+                {
+                    Move(DirectionToDash.Away);
+                }
+                if (Vector2.Distance(transform.position, PlayerPos) < PreferredDistanceClose)
+                {
+                    Move(DirectionToDash.Toward);
+                }
+            }
+        }
     }
 
     void Dash(DirectionToDash _dashWhere)
     {
+        dashing = true;
         DashStrength = Random.Range(MaxDashStrength / 1.5f, MaxDashStrength);
         switch(_dashWhere)
         {
@@ -84,8 +118,25 @@ public class EveNavigation : MonoBehaviour
         }
         MovementCD = Random.Range(MinTimeBetweenDash, MaxTimeBetweenDash);
     }
+    void Move(DirectionToDash _moveWhere)
+    {
+        dashing = false;
+        switch (_moveWhere)
+        {
+            case DirectionToDash.Away:
+                MyRB.velocity = (GameInfo.PlayerPos + new Vector2(Random.Range(-6,6), Random.Range(-6,6)) - (Vector2)transform.position).normalized * Random.Range(3,7);
+                break;
+            case DirectionToDash.Toward:
+                MyRB.velocity = ((Vector2)transform.position + new Vector2(Random.Range(-6, 6), Random.Range(-6, 6)) - GameInfo.PlayerPos).normalized * Random.Range(3, 7); 
+                break;
+            case DirectionToDash.Center:
+                MyRB.velocity = (Vector2.zero - (Vector2)transform.position).normalized * Random.Range(3, 7); 
+                break;
+        }
+        MovementCD = Random.Range(MinTimeBetweenDash, MaxTimeBetweenDash);
+    }
 
-   void DashAtrophy()
+    void DashAtrophy()
     {
             MyRB.velocity *= Vector2.one * .98f;     
     }

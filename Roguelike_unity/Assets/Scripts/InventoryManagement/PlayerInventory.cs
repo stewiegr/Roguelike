@@ -35,7 +35,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void FindAndRemove(Item.RelicBonus _relic)
     {
-        for(int i=0; i<=15; i++)
+        for(int i=8; i<=15; i++)
         {
             if (Squares[i].GameItem.RelicEffect == _relic)
             {
