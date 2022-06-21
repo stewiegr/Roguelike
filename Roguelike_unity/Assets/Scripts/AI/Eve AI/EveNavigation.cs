@@ -56,7 +56,16 @@ public class EveNavigation : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerPos = GameInfo.PlayerPos;
+        if(!StopToAttack)
         FacePlayer();
+        else
+        {
+            MyAnim.SetBool("Down", true);
+            MyAnim.SetBool("Up", false);
+            MyAnim.SetBool("Left", false);
+            MyAnim.SetBool("Right", false);
+        }
+
         if(dashing)
         DashAtrophy();
     }

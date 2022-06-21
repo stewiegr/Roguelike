@@ -20,10 +20,19 @@ public class EveAI : MonoBehaviour
     Transform LaunchPoint;
     public int AtkSfxIndex;
 
+    public Color RedZoneWarn;
+    public Color RedZoneHurt;
+    public GameObject RingOfFire;
+
     bool DoAtk1;
-    int Atk1Shots = 0;
     float Atk1Angle;
     float Atk1ShotDelay = 20;
+    int Atk1Stage = 0;
+    int Atk1Shots = 0;
+    float atk1StageDelay = 0;
+    Vector2 TPPos;
+    public List<SpriteRenderer> Atk1RedZone;
+    public List<Vector2> Atk1RedZoneFullScale = new List<Vector2>();
 
     bool DoAtk2;
     int Atk2Shots = 0;
@@ -33,7 +42,11 @@ public class EveAI : MonoBehaviour
 
     private void Start()
     {
-        //GetComponent<EveNavigation>();
+        foreach (SpriteRenderer spr in Atk1RedZone)
+        {
+            Atk1RedZoneFullScale.Add(spr.transform.localScale);
+            spr.transform.localScale = Vector2.zero;
+        }
 
     }
     void Update()
@@ -45,7 +58,20 @@ public class EveAI : MonoBehaviour
         if (BigAtkDelay > 0)
         {
             BigAtkDelay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+            if (BigAtkDelay <= 60)
+                MyNav.StopToAttack = true;
         }
+        if(atk1StageDelay>0)
+        {
+            atk1StageDelay -= 60 * Time.deltaTime;
+            if (atk1StageDelay <= 0)
+                Atk1Stage++;
+        }
+        if(Atk1ShotDelay>0)
+        {
+            Atk1ShotDelay -= 60 * Time.deltaTime;
+        }
+
         if (MyStatus.Alive)
         {
             MyAnim.SetBool("Idle", true);
@@ -57,156 +83,106 @@ public class EveAI : MonoBehaviour
             {
                 BigAtk1();
             }
-            if (DoAtk2)
-            {
-                BigAtk2();
-            }
         }
     }
 
-    void BigAtk2()
-    {
-        atkDly = 180;
-        if (Atk2Shots <= 12)
-        {
-            if (Atk2ShotDelay <= 0)
-            {
-                Atk2ShotDelay = 10;
-                SpawnMultipleProjectileWithVariation(Random.Range(5,30));
-                Atk2Angle += 10;
-                Atk2Shots++;
-            }
-            else
-            {
-                Atk2ShotDelay -= 60 * Time.deltaTime;
-            }
-        }
-        else
-        {
-            DoAtk2 = false;
-            MyNav.StopToAttack = false;
-            atkDly = 30;
-            BigAtkDelay = Random.Range(300, 600);
-            Atk2Shots = 0;
-        }
-    }
 
     void BigAtk1()
     {
-        atkDly = 180;
-        if (Atk1Shots <= 128)
+        if (Atk1ShotDelay > 0)
         {
-            if (Atk1ShotDelay <= 0)
+            Atk1ShotDelay -= 60 * Time.deltaTime;
+        }
+        if (Atk1ShotDelay <= 0 && Atk1Stage == 1)
+        {
+            Atk1Stage = 2;
+            transform.position = TPPos + Vector2.up * 2;
+        }
+        if (Atk1Stage == 2)
+        {
+            foreach (SpriteRenderer spr in Atk1RedZone)
             {
-                Atk1ShotDelay = 1;
-                ProjectileWithAngle(Atk1Angle);
-                Atk1Angle += Random.Range(8,13);
+                spr.color = RedZoneWarn;
+            }
+            Atk1Stage = 3;
+        }
+        if (Atk1Stage == 3)
+        {
+            int done = 0;
+            int i = 0;
+            foreach (SpriteRenderer spr in Atk1RedZone)
+            {
+                if (Vector2.Distance(Atk1RedZoneFullScale[i], spr.transform.localScale) > .02f)
+                {
+                    spr.transform.localScale = Vector2.Lerp(spr.transform.localScale, Atk1RedZoneFullScale[i], 5 * Time.deltaTime);
+                }
+                else
+                {
+                    done++;
+                    spr.transform.localScale = Atk1RedZoneFullScale[i];
+                }
+                i++;
+            }
+            if (done >= Atk1RedZone.Count - 1)
+            {
+                Atk1Stage = 4;
+                atk1StageDelay = 60;
+            }
+        }
+        if (Atk1Stage == 4)
+        {
+            foreach (SpriteRenderer spr in Atk1RedZone)
+            {
+                spr.color = Color.Lerp(spr.color, RedZoneHurt, .5f * Time.deltaTime);                            
+            }
+        }
+        if(Atk1Stage==5)
+        {
+            if(Atk1ShotDelay<=0)
+            {
+                ProjectileWithAngle(0-90);
+                ProjectileWithAngle(60-90);
+                ProjectileWithAngle(-60-90);
+                Atk1ShotDelay = 10;
                 Atk1Shots++;
             }
-            else
+            if(Atk1Shots>=20)
             {
-                Atk1ShotDelay -= 60 * Time.deltaTime;
+                DoAtk1 = false;
+                Atk1Stage = 0;
+                Atk1Shots = 0;
+                foreach (SpriteRenderer spr in Atk1RedZone)
+                {
+                    Atk1RedZoneFullScale.Add(spr.transform.localScale);
+                    spr.color = RedZoneWarn;
+                    spr.transform.localScale = Vector2.zero;
+                }
+                BigAtkDelay = 500;
+                MyNav.StopToAttack = false;
+
             }
         }
-        else
-        {
-            DoAtk1 = false;
-            MyNav.StopToAttack = false;
-            atkDly = 30;
-            BigAtkDelay = Random.Range(300, 600);
-            Atk1Shots = 0;
-        }
+
     }
 
     void AttackHandler()
     {
-        if (BigAtkDelay > 0)
+        if (BigAtkDelay <= 0 && !DoAtk1)
         {
-            if (Random.Range(0, 10) > 5)
-            {
-                MyAnim.SetTrigger("Attack");
-                if (Random.Range(0, 10) < 7)
-                    atkDly = MyStatus.AtkDly;
-                else
-                    atkDly = 25;
-                SpawnProjectile(LaunchPointPositionR);
-            }
-        }
-        else
-        {
-            if (Random.Range(0, 10) > 5)
-            {
-                Atk1ShotDelay = 60;
-                MyNav.StopToAttack = true;
-                DoAtk1 = true;
-                Atk1Angle = Random.Range(0, 360);
-
-            }
-            else
-            {
-                Atk2ShotDelay = 60;
-                DoAtk2 = true;
-            }
+            Atk1Stage = 1;
+            transform.position = new Vector2(-999, -999);
+            TPPos = GameInfo.PlayerPos;
+            Instantiate(RingOfFire, GameInfo.PlayerPos, transform.rotation);
+            Atk1ShotDelay = 60;
+            MyNav.StopToAttack = true;
+            DoAtk1 = true;
         }
     }
 
-    public void SpawnProjectile(Transform LaunchPos)
-    {
-        if (LaunchPoint == LaunchPointPositionL)
-            LaunchPoint = LaunchPointPositionR;
-        else
-            LaunchPoint = LaunchPointPositionL;
-        GameInfo.PlayAudio(AtkSfxIndex);
-
-        //transform.eulerAngles = new Vector3(0, 0, angle);
-        GameObject proj = Instantiate(MyProjectile, LaunchPoint.position, transform.localRotation);
-        Vector2 direction = GameInfo.Player.position - (proj.transform.position);
-        float angle = Vector2.SignedAngle(Vector2.right, direction);
-        proj.transform.eulerAngles = new Vector3(0, 0, angle);
-        BasicProjectile BP = proj.GetComponent<BasicProjectile>();
-        BP.life = 400;
-        BP.TargetEnemy = false;
-        BP.TargetPlayer = true;
-        BP.dmg = MyDmg;
-        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 17f;
-    }
-
-    public void SpawnMultipleProjectileWithVariation(float variation)
-    {
-        if (LaunchPoint == LaunchPointPositionL)
-            LaunchPoint = LaunchPointPositionR;
-        else
-            LaunchPoint = LaunchPointPositionL;
-        GameInfo.PlayAudio(AtkSfxIndex);
-
-        //transform.eulerAngles = new Vector3(0, 0, angle);
-
-        for (int i = 0; i <= 2; i++)
-        {
-            GameObject proj = Instantiate(MyProjectile, LaunchPoint.position, transform.localRotation);
-            Vector2 direction = GameInfo.Player.position - (proj.transform.position);
-            float angle = Vector2.SignedAngle(Vector2.right, direction);
-            if (i == 0)
-                proj.transform.eulerAngles = new Vector3(0, 0, angle);
-            if (i == 1)
-                proj.transform.eulerAngles = new Vector3(0, 0, angle+variation);
-            if (i == 2)
-                proj.transform.eulerAngles = new Vector3(0, 0, angle - variation);
-            BasicProjectile BP = proj.GetComponent<BasicProjectile>();
-            BP.life = 400;
-            BP.TargetEnemy = false;
-            BP.TargetPlayer = true;
-            BP.dmg = MyDmg;
-            proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 17f;
-        }
-    }
 
     public void ProjectileWithAngle(float _angle)
     {
-        if (LaunchPoint == LaunchPointPositionL)
-            LaunchPoint = LaunchPointPositionR;
-        else
-            LaunchPoint = LaunchPointPositionL;
+        LaunchPoint = transform;
         GameInfo.PlayAudio(AtkSfxIndex);
         //transform.eulerAngles = new Vector3(0, 0, angle);
         GameObject proj = Instantiate(MyProjectile, LaunchPoint.position, transform.localRotation);

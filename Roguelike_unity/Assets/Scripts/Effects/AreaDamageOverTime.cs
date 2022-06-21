@@ -34,7 +34,7 @@ public class AreaDamageOverTime : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (HitPlayer && collision.transform.tag == "Player")
-            AffectPlayer.DamagePlayer(Dmg);
+            collision.GetComponent<PlayerStatus>().DamagePlayer(Dmg);
         if (HitNPC && collision.transform.tag == "Enemy")
         {
             collision.GetComponent<NPCStatus>().TakeDmg(Dmg, 0);
