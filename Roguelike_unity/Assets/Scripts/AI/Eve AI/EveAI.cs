@@ -33,6 +33,7 @@ public class EveAI : MonoBehaviour
     Vector2 TPPos;
     public List<SpriteRenderer> Atk1RedZone;
     public List<Vector2> Atk1RedZoneFullScale = new List<Vector2>();
+    public GameObject Bombs;
 
     bool DoAtk2;
     int Atk2Shots = 0;
@@ -51,26 +52,7 @@ public class EveAI : MonoBehaviour
     }
     void Update()
     {
-        if (atkDly > 0)
-        {
-            atkDly -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
-        }
-        if (BigAtkDelay > 0)
-        {
-            BigAtkDelay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
-            if (BigAtkDelay <= 60)
-                MyNav.StopToAttack = true;
-        }
-        if(atk1StageDelay>0)
-        {
-            atk1StageDelay -= 60 * Time.deltaTime;
-            if (atk1StageDelay <= 0)
-                Atk1Stage++;
-        }
-        if(Atk1ShotDelay>0)
-        {
-            Atk1ShotDelay -= 60 * Time.deltaTime;
-        }
+        DoCounters();
 
         if (MyStatus.Alive)
         {
@@ -140,23 +122,19 @@ public class EveAI : MonoBehaviour
         {
             if(Atk1ShotDelay<=0)
             {
-                ProjectileWithAngle(0-90);
-                ProjectileWithAngle(60-90);
-                ProjectileWithAngle(-60-90);
+                ProjectileWithAngle(0-90, Atk1RedZone[0].transform.position);
+                ProjectileWithAngle(60-90, Atk1RedZone[1].transform.position);
+                ProjectileWithAngle(-60-90, Atk1RedZone[2].transform.position);
                 Atk1ShotDelay = 10;
                 Atk1Shots++;
+
             }
             if(Atk1Shots>=20)
             {
                 DoAtk1 = false;
                 Atk1Stage = 0;
                 Atk1Shots = 0;
-                foreach (SpriteRenderer spr in Atk1RedZone)
-                {
-                    Atk1RedZoneFullScale.Add(spr.transform.localScale);
-                    spr.color = RedZoneWarn;
-                    spr.transform.localScale = Vector2.zero;
-                }
+
                 BigAtkDelay = 500;
                 MyNav.StopToAttack = false;
 
@@ -164,6 +142,8 @@ public class EveAI : MonoBehaviour
         }
 
     }
+
+   
 
     void AttackHandler()
     {
@@ -180,12 +160,12 @@ public class EveAI : MonoBehaviour
     }
 
 
-    public void ProjectileWithAngle(float _angle)
+    public void ProjectileWithAngle(float _angle, Vector2 _startPos)
     {
         LaunchPoint = transform;
         GameInfo.PlayAudio(AtkSfxIndex);
         //transform.eulerAngles = new Vector3(0, 0, angle);
-        GameObject proj = Instantiate(MyProjectile, LaunchPoint.position, transform.localRotation);
+        GameObject proj = Instantiate(MyProjectile, _startPos, transform.localRotation);
         proj.transform.eulerAngles = new Vector3(0, 0, _angle);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.life = 400;
@@ -195,5 +175,52 @@ public class EveAI : MonoBehaviour
         proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 17f;
     }
 
+    void DoCounters()
+    {
+        if (atkDly > 0)
+        {
+            atkDly -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+        }
+        if (BigAtkDelay > 0)
+        {
+            BigAtkDelay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+            if (BigAtkDelay <= 60)
+                MyNav.StopToAttack = true;
+        }
+        if (atk1StageDelay > 0)
+        {
+            atk1StageDelay -= 60 * Time.deltaTime;
+            if (atk1StageDelay <= 0)
+            {
+                Atk1Stage++;
+                if (Atk1Stage == 5)
+                {
+                    Atk1Stage5Update();
+                }
+            }
+        }
+        if (Atk1ShotDelay > 0)
+        {
+            Atk1ShotDelay -= 60 * Time.deltaTime;
+        }
+    }
+    void Atk1Stage5Update()
+    {
+        FallingBomb bomb = Instantiate(Bombs, Atk1RedZone[3].transform.position + Vector3.up * 8, transform.rotation).GetComponent<FallingBomb>();
+        bomb.Target = Atk1RedZone[3].transform;
+        bomb = Instantiate(Bombs, Atk1RedZone[4].transform.position + Vector3.up * 8, transform.rotation).GetComponent<FallingBomb>();
+        bomb.Target = Atk1RedZone[4].transform;
 
+        bomb = Instantiate(Bombs, Atk1RedZone[3].transform.position + Vector3.up * 16, transform.rotation).GetComponent<FallingBomb>();
+        bomb.Target = Atk1RedZone[3].transform;
+        bomb = Instantiate(Bombs, Atk1RedZone[4].transform.position + Vector3.up * 16, transform.rotation).GetComponent<FallingBomb>();
+        bomb.Target = Atk1RedZone[4].transform;
+
+        foreach (SpriteRenderer spr in Atk1RedZone)
+        {
+            //Atk1RedZoneFullScale.Add(spr.transform.localScale);
+            spr.color = RedZoneWarn;
+            spr.transform.localScale = Vector2.zero;
+        }
+    }
 }
