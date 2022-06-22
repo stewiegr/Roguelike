@@ -30,6 +30,7 @@ public class EveAI : MonoBehaviour
     int Atk1Stage = 0;
     int Atk1Shots = 0;
     float atk1StageDelay = 0;
+    public GameObject Atk1Slash;
     Vector2 TPPos;
     public List<SpriteRenderer> Atk1RedZone;
     public List<Vector2> Atk1RedZoneFullScale = new List<Vector2>();
@@ -120,6 +121,21 @@ public class EveAI : MonoBehaviour
         }
         if(Atk1Stage==5)
         {
+            if (!Atk1Slash.activeSelf && Atk1Shots==0)
+                Atk1Slash.SetActive(true);
+            else
+            {
+                if(Atk1Slash.transform.eulerAngles.z<125)
+                {
+                    Atk1Slash.transform.localEulerAngles += new Vector3(0, 0, 110 * Time.deltaTime);
+                }
+                else
+                {
+                    Atk1Slash.transform.localEulerAngles = Vector3.zero;
+                    Atk1Slash.SetActive(false);
+                }
+            }
+
             if(Atk1ShotDelay<=0)
             {
                 ProjectileWithAngle(0-90, Atk1RedZone[0].transform.position);

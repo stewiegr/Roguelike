@@ -5,7 +5,6 @@ using UnityEngine;
 public class AreaDamageOverTime : MonoBehaviour
 {
     public float Dur = 90;
-    public float Ticks = 30;
     public int Dmg = 1;
     public List<NPCStatus> AffectNPCs = new List<NPCStatus>();
     public PlayerStatus AffectPlayer = null;
