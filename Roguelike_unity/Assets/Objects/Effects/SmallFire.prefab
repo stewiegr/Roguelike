@@ -121,12 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dur: 240
-  Ticks: 30
   Dmg: 1
   AffectNPCs: []
   AffectPlayer: {fileID: 0}
   HitPlayer: 0
   HitNPC: 1
+  MyAnim: {fileID: 0}
 --- !u!58 &584037783408839222
 CircleCollider2D:
   m_ObjectHideFlags: 0
