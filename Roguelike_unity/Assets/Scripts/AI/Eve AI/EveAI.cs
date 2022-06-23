@@ -78,18 +78,27 @@ public class EveAI : MonoBehaviour
         }
         if (Atk1ShotDelay <= 0 && Atk1Stage == 1)
         {
+            MyAnim.SetTrigger("DoTP");
             Atk1Stage = 2;
             transform.position = TPPos + Vector2.up * 2;
+            atk1StageDelay = 60;
         }
-        if (Atk1Stage == 2)
+        if(Atk1Stage==2)
+        {
+            if(atk1StageDelay<=0)
+            {
+                Atk1Stage = 3;
+            }
+        }
+        if (Atk1Stage == 3)
         {
             foreach (SpriteRenderer spr in Atk1RedZone)
             {
                 spr.color = RedZoneWarn;
             }
-            Atk1Stage = 3;
+            Atk1Stage = 4;
         }
-        if (Atk1Stage == 3)
+        if (Atk1Stage == 4)
         {
             int done = 0;
             int i = 0;
@@ -108,18 +117,18 @@ public class EveAI : MonoBehaviour
             }
             if (done >= Atk1RedZone.Count - 1)
             {
-                Atk1Stage = 4;
+                Atk1Stage = 5;
                 atk1StageDelay = 60;
             }
         }
-        if (Atk1Stage == 4)
+        if (Atk1Stage == 5)
         {
             foreach (SpriteRenderer spr in Atk1RedZone)
             {
                 spr.color = Color.Lerp(spr.color, RedZoneHurt, .5f * Time.deltaTime);                            
             }
         }
-        if(Atk1Stage==5)
+        if(Atk1Stage==6)
         {
             if (!Atk1Slash.activeSelf && Atk1Shots==0)
                 Atk1Slash.SetActive(true);
@@ -180,15 +189,15 @@ public class EveAI : MonoBehaviour
     {
         LaunchPoint = transform;
         GameInfo.PlayAudio(AtkSfxIndex);
-        //transform.eulerAngles = new Vector3(0, 0, angle);
         GameObject proj = Instantiate(MyProjectile, _startPos, transform.localRotation);
-        proj.transform.eulerAngles = new Vector3(0, 0, _angle);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.life = 400;
         BP.TargetEnemy = false;
         BP.TargetPlayer = true;
         BP.dmg = MyDmg;
+        proj.transform.Rotate(0, 0, _angle);
         proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 17f;
+        proj.transform.Rotate(0, 0, -_angle);
     }
 
     void DoCounters()
@@ -209,9 +218,9 @@ public class EveAI : MonoBehaviour
             if (atk1StageDelay <= 0)
             {
                 Atk1Stage++;
-                if (Atk1Stage == 5)
+                if (Atk1Stage == 6)
                 {
-                    Atk1Stage5Update();
+                    Atk1Stage6Update();
                 }
             }
         }
@@ -220,7 +229,7 @@ public class EveAI : MonoBehaviour
             Atk1ShotDelay -= 60 * Time.deltaTime;
         }
     }
-    void Atk1Stage5Update()
+    void Atk1Stage6Update()
     {
         FallingBomb bomb = Instantiate(Bombs, Atk1RedZone[3].transform.position + Vector3.up * 8, transform.rotation).GetComponent<FallingBomb>();
         bomb.Target = Atk1RedZone[3].transform;

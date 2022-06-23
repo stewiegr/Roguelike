@@ -46,13 +46,13 @@ public class RangedAI : MonoBehaviour
         float angle = Vector2.SignedAngle(Vector2.right, direction);
         //transform.eulerAngles = new Vector3(0, 0, angle);
         GameObject proj = Instantiate(MyProjectile, LaunchPointPosition.position, transform.localRotation);
-        proj.transform.eulerAngles = new Vector3(0, 0, angle);
+        //proj.transform.eulerAngles = new Vector3(0, 0, angle);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.life = 400;
         BP.TargetEnemy = false;
         BP.TargetPlayer = true;
         BP.dmg = 1;
-        proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 4f;
+        proj.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(direction) * 4f;
     }
 
 

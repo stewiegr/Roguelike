@@ -77,15 +77,15 @@ public class PlayerSkills : MonoBehaviour
         }
 
         GameInfo.PlayAudio(5);
-        GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f + transform.right * .85f, transform.localRotation);
+        GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f + transform.right * .85f, transform.root.rotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.life = BP.life * MyStatus.AttackRange;
         BP.TargetEnemy = true;
         BP.dmg = (int)MyStatus.AttackDamage;
         if (BP.DefaultVel == 0)
-            proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 10.5f;
+            proj.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(transform.right) * 10.5f;
         else
-            proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * BP.DefaultVel;
+            proj.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(transform.right) * BP.DefaultVel;
         if (MyStatus.Relics.PenetratingProjectile>0)
             BP.Penetrations = MyStatus.Relics.SetProjectilePenetrations() * BP.PenetrationMultiplier;
 
@@ -97,8 +97,8 @@ public class PlayerSkills : MonoBehaviour
 
         if (MyStatus.Relics.TripleShot>0)
         {
-            GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.localRotation);
-            proj1.transform.Rotate(0, 0, 25);
+            GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.root.rotation);
+            //proj1.transform.Rotate(0, 0, 25);
             BP = proj1.GetComponent<BasicProjectile>();
             BP.life = BP.life * MyStatus.AttackRange;
             BP.TargetEnemy = true;
@@ -106,17 +106,17 @@ public class PlayerSkills : MonoBehaviour
             if (MyStatus.Relics.PenetratingProjectile>0)
                 BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
             if (BP.DefaultVel == 0)
-                proj1.GetComponent<Rigidbody2D>().velocity = proj1.transform.right * 10.5f;
+                proj1.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * 10.5f) + transform.up * 3f;
             else
-                proj1.GetComponent<Rigidbody2D>().velocity = proj1.transform.right * BP.DefaultVel;
+                proj1.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * BP.DefaultVel)  +transform.up * 3f;
 
             if (MyStatus.Relics.TrackingShots>0)
             {
                 BP.AcquireTarget();
             }
 
-            GameObject proj2 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.localRotation);
-            proj2.transform.Rotate(0, 0, -25);
+            GameObject proj2 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.root.rotation);
+           // proj2.transform.Rotate(0, 0, -25);
             BP = proj2.GetComponent<BasicProjectile>();
             BP.life = BP.life * MyStatus.AttackRange;
             BP.TargetEnemy = true;
@@ -124,9 +124,9 @@ public class PlayerSkills : MonoBehaviour
             if (MyStatus.Relics.PenetratingProjectile>0)
                 BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
             if (BP.DefaultVel == 0)
-                proj2.GetComponent<Rigidbody2D>().velocity = proj2.transform.right * 10.5f;
+                proj2.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * 10.5f) + transform.up * -3f;
             else
-                proj2.GetComponent<Rigidbody2D>().velocity = proj2.transform.right * BP.DefaultVel;
+                proj2.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * BP.DefaultVel) + transform.up * -3f;
 
             if (MyStatus.Relics.TrackingShots>0)
             {

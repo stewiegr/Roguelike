@@ -18,13 +18,21 @@ public class BasicProjectile : MonoBehaviour
     Vector2 holdSpd;
     Transform homingTarg = null;
     Rigidbody2D myRB;
+    Vector3 Direction;
+
+    public List<Sprite> EightDirections = new List<Sprite>();
+    public SpriteRenderer MySpr;
+
+    public Vector2 Velocity;
 
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        MySpr = GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
+        Velocity = myRB.velocity;
         if (life > 0)
             life -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         if (life <= 0)
@@ -37,10 +45,8 @@ public class BasicProjectile : MonoBehaviour
         {
             if(homingTarg!=null)
             {
-                float angle = Mathf.Atan2((homingTarg.position.y + .45f) - transform.position.y, homingTarg.position.x - transform.position.x) * Mathf.Rad2Deg;
-                Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, DefaultVel * 7 * Time.deltaTime);
-                myRB.velocity = DefaultVel * transform.right;
+                Direction = Vector3.Normalize(homingTarg.position - transform.position);
+                myRB.velocity = Vector3.Lerp(myRB.velocity, DefaultVel * Direction, 3 * Time.deltaTime);
             }
             else
             {
@@ -60,6 +66,11 @@ public class BasicProjectile : MonoBehaviour
         {
             if (myRB.velocity == Vector2.zero)
                 myRB.velocity = holdSpd;
+        }
+
+        if(EightDirections.Count!=0)
+        {
+            DoDirectionGraphics();
         }
 
     }
@@ -155,6 +166,38 @@ public class BasicProjectile : MonoBehaviour
         AE.Dmg = dmg;
         AE.HitPlayer = _player;
         AE.HitNPC = _enemy;
+
+    }
+
+    void DoDirectionGraphics()
+    {
+        //0 = down left
+        //1 = down
+        //2 = down right
+        //3 = right
+        //4 = right up
+        //5 = up
+        //6 = up left
+        // 7 = left
+
+
+        if (Mathf.Abs(myRB.velocity.x) < Mathf.Abs(myRB.velocity.y * .5f) && myRB.velocity.y > 0)
+            MySpr.sprite = EightDirections[5];
+        else if (Mathf.Abs(myRB.velocity.x) < Mathf.Abs(myRB.velocity.y * .5f) && myRB.velocity.y < 0)
+            MySpr.sprite = EightDirections[1];
+        else if (Mathf.Abs(myRB.velocity.y) < Mathf.Abs(myRB.velocity.x *.5f) && myRB.velocity.x < 0)
+            MySpr.sprite = EightDirections[7];
+        else if (Mathf.Abs(myRB.velocity.y) < Mathf.Abs(myRB.velocity.x * .5f) && myRB.velocity.x > 0)
+            MySpr.sprite = EightDirections[3];
+        else if (myRB.velocity.y > 0 && myRB.velocity.x > 0)
+            MySpr.sprite = EightDirections[4];
+        else if (myRB.velocity.y < 0 && myRB.velocity.x < 0)
+            MySpr.sprite = EightDirections[0];
+        else if (myRB.velocity.y > 0 && myRB.velocity.x < 0)
+            MySpr.sprite = EightDirections[6];
+        else if (myRB.velocity.y < 0 && myRB.velocity.x > 0)
+            MySpr.sprite = EightDirections[2];
+
 
     }
 
