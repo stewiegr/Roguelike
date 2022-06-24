@@ -155,3 +155,6 @@ MonoBehaviour:
   - {fileID: -1183059855, guid: 1787a0e4ca823264c9cb03caab64be19, type: 3}
   - {fileID: 50878227, guid: 1787a0e4ca823264c9cb03caab64be19, type: 3}
   - {fileID: 1016744541, guid: 1787a0e4ca823264c9cb03caab64be19, type: 3}
+  MySpr: {fileID: 0}
+  Trail: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+  Velocity: {x: 0, y: 0}

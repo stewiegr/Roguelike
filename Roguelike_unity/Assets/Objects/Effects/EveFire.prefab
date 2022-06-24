@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5945893046358370893}
   - component: {fileID: 584037783408839222}
   - component: {fileID: -5059297334052118092}
+  - component: {fileID: -2013574344022348220}
   m_Layer: 8
   m_Name: EveFire
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 5419122835509756225}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 68e207e87b285bb40aaeb757be9e3ef0, type: 2}
+  m_Controller: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -164,3 +165,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-2013574344022348220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5419122835509756225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afcd65a0da609f4ba4730d1af47932d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyRender: {fileID: 5306043896803513587}
+  DOT: {fileID: 5945893046358370893}
+  Fader:
+    serializedVersion: 2
+    rgba: 4294967295
+  TimeToFade: 160

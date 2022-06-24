@@ -142,27 +142,20 @@ public class EveAI : MonoBehaviour
                 {
                     Atk1Slash.transform.localEulerAngles = Vector3.zero;
                     Atk1Slash.SetActive(false);
+                    DoAtk1 = false;
+                    Atk1Stage = 0;
+                    Atk1Shots = 0;
+                    BigAtkDelay = 500;
+                    MyNav.StopToAttack = false;
                 }
             }
 
             if(Atk1ShotDelay<=0)
             {
-                ProjectileWithAngle(0-90, Atk1RedZone[0].transform.position);
-                ProjectileWithAngle(60-90, Atk1RedZone[1].transform.position);
-                ProjectileWithAngle(-60-90, Atk1RedZone[2].transform.position);
-                Atk1ShotDelay = 10;
-                Atk1Shots++;
-
-            }
-            if(Atk1Shots>=20)
-            {
-                DoAtk1 = false;
-                Atk1Stage = 0;
-                Atk1Shots = 0;
-
-                BigAtkDelay = 500;
-                MyNav.StopToAttack = false;
-
+                ProjectileWithAngle(0-90, Atk1RedZone[0].transform.position,60,false);
+                ProjectileWithAngle(60-90, Atk1RedZone[1].transform.position,60, false);
+                ProjectileWithAngle(-60-90, Atk1RedZone[2].transform.position,60, false);
+                Atk1ShotDelay = 300;
             }
         }
 
@@ -182,22 +175,35 @@ public class EveAI : MonoBehaviour
             MyNav.StopToAttack = true;
             DoAtk1 = true;
         }
+        else if(!DoAtk1)
+        {
+            if (BigAtkDelay > 120)
+            {
+
+                ProjectileWithAngle(-90, Atk1RedZone[2].transform.position, 200, true);
+            }
+            atkDly = 120;
+        }
     }
 
 
-    public void ProjectileWithAngle(float _angle, Vector2 _startPos)
+    public void ProjectileWithAngle(float _angle, Vector2 _startPos, float _life, bool _homing)
     {
         LaunchPoint = transform;
         GameInfo.PlayAudio(AtkSfxIndex);
         GameObject proj = Instantiate(MyProjectile, _startPos, transform.localRotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
-        BP.life = 400;
+        BP.life = _life;
         BP.TargetEnemy = false;
         BP.TargetPlayer = true;
         BP.dmg = MyDmg;
         proj.transform.Rotate(0, 0, _angle);
         proj.GetComponent<Rigidbody2D>().velocity = proj.transform.right * 17f;
         proj.transform.Rotate(0, 0, -_angle);
+        if (_homing)
+        {
+            BP.Homing = true;
+        }
     }
 
     void DoCounters()
@@ -231,15 +237,8 @@ public class EveAI : MonoBehaviour
     }
     void Atk1Stage6Update()
     {
-        FallingBomb bomb = Instantiate(Bombs, Atk1RedZone[3].transform.position + Vector3.up * 8, transform.rotation).GetComponent<FallingBomb>();
-        bomb.Target = Atk1RedZone[3].transform;
-        bomb = Instantiate(Bombs, Atk1RedZone[4].transform.position + Vector3.up * 8, transform.rotation).GetComponent<FallingBomb>();
-        bomb.Target = Atk1RedZone[4].transform;
-
-        bomb = Instantiate(Bombs, Atk1RedZone[3].transform.position + Vector3.up * 16, transform.rotation).GetComponent<FallingBomb>();
-        bomb.Target = Atk1RedZone[3].transform;
-        bomb = Instantiate(Bombs, Atk1RedZone[4].transform.position + Vector3.up * 16, transform.rotation).GetComponent<FallingBomb>();
-        bomb.Target = Atk1RedZone[4].transform;
+        Instantiate(Bombs, Atk1RedZone[3].transform.position, transform.rotation);
+        Instantiate(Bombs, Atk1RedZone[4].transform.position, transform.rotation);
 
         foreach (SpriteRenderer spr in Atk1RedZone)
         {

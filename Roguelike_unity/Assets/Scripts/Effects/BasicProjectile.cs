@@ -23,18 +23,33 @@ public class BasicProjectile : MonoBehaviour
     public List<Sprite> EightDirections = new List<Sprite>();
     public SpriteRenderer MySpr;
 
+    public GameObject Trail;
+    Vector2 LastTrailDrop;
+
     public Vector2 Velocity;
 
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
         MySpr = GetComponent<SpriteRenderer>();
+        LastTrailDrop = transform.position;
     }
     private void Update()
     {
         Velocity = myRB.velocity;
         if (life > 0)
+        {
             life -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+        }
+        if (Trail != null)
+        {
+            if (Vector2.Distance(transform.position, LastTrailDrop) >= 1)
+            {
+                LastTrailDrop = transform.position;
+                Instantiate(Trail, transform.position, transform.rotation);
+            }
+        }
+
         if (life <= 0)
         {
             CreateExplosion(TargetPlayer, TargetEnemy);
@@ -77,32 +92,36 @@ public class BasicProjectile : MonoBehaviour
 
     public void AcquireTarget()
     {
-        
-        Transform closest= null;
-        float dist=999;
-        float newDist = 999;
-        if (GameInfo.GM.LivingEnemies > 0)
+        if (TargetEnemy)
         {
-            foreach (GameObject monster in GameInfo.GM.CurrentLevel.GetActiveEnemies())
+            Transform closest = null;
+            float dist = 999;
+            float newDist = 999;
+            if (GameInfo.GM.LivingEnemies > 0)
             {
-                if (monster != null)
+                foreach (GameObject monster in GameInfo.GM.CurrentLevel.GetActiveEnemies())
                 {
-                    newDist = Vector2.Distance(monster.transform.position, transform.position);
-                    if (newDist < dist)
+                    if (monster != null)
                     {
-                        closest = monster.transform;
-                        dist = newDist;
+                        newDist = Vector2.Distance(monster.transform.position, transform.position);
+                        if (newDist < dist)
+                        {
+                            closest = monster.transform;
+                            dist = newDist;
+                        }
                     }
                 }
             }
+            if (closest != null)
+            {
+                homingTarg = closest;
+                Homing = true;
+            }
+            else
+                homingTarg = null;
         }
-        if (closest != null)
-        {
-            homingTarg = closest;
-            Homing = true;
-        }
-        else
-            homingTarg = null;
+        else if (TargetPlayer)
+            homingTarg = GameInfo.Player;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

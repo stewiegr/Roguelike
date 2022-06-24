@@ -66,6 +66,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -110,6 +114,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (26)
@@ -118,6 +126,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &2725789361994989006 stripped
@@ -132,6 +144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -176,6 +192,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (27)
@@ -184,6 +204,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &5089556135199659469 stripped
@@ -198,6 +222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -242,6 +270,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (23)
@@ -250,6 +282,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763417804706 stripped
@@ -264,6 +300,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -308,6 +348,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (5)
@@ -316,6 +360,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763718890000 stripped
@@ -330,6 +378,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -374,6 +426,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (11)
@@ -382,6 +438,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763716038518 stripped
@@ -396,6 +456,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -440,6 +504,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (9)
@@ -448,6 +516,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763732210335 stripped
@@ -462,6 +534,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -506,6 +582,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (3)
@@ -514,6 +594,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763733288649 stripped
@@ -528,6 +612,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -572,6 +660,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (6)
@@ -580,6 +672,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195762896180996 stripped
@@ -594,6 +690,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -638,6 +738,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (15)
@@ -646,6 +750,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195762967519049 stripped
@@ -660,6 +768,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -704,6 +816,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (8)
@@ -712,6 +828,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763149845303 stripped
@@ -726,6 +846,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -770,6 +894,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (13)
@@ -778,6 +906,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763085543599 stripped
@@ -792,6 +924,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -836,6 +972,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (18)
@@ -844,6 +984,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763190276180 stripped
@@ -858,6 +1002,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -902,6 +1050,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (7)
@@ -910,6 +1062,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763204857264 stripped
@@ -924,6 +1080,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -968,6 +1128,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (21)
@@ -976,6 +1140,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764421540383 stripped
@@ -990,6 +1158,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1034,6 +1206,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (1)
@@ -1042,6 +1218,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764399783428 stripped
@@ -1056,6 +1236,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -1100,6 +1284,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (24)
@@ -1108,6 +1296,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764529488984 stripped
@@ -1122,6 +1314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1166,6 +1362,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (4)
@@ -1174,6 +1374,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764753923811 stripped
@@ -1188,6 +1392,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -1232,6 +1440,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (22)
@@ -1240,6 +1452,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764681091782 stripped
@@ -1254,6 +1470,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -1298,6 +1518,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (20)
@@ -1306,6 +1530,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764673855344 stripped
@@ -1320,6 +1548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1364,6 +1596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (2)
@@ -1372,6 +1608,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764826705245 stripped
@@ -1386,6 +1626,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1430,6 +1674,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire
@@ -1438,6 +1686,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764836957667 stripped
@@ -1452,6 +1704,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -1496,6 +1752,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (19)
@@ -1504,6 +1764,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763916366175 stripped
@@ -1518,6 +1782,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -1562,6 +1830,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (17)
@@ -1570,6 +1842,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195763981774021 stripped
@@ -1584,6 +1860,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1628,6 +1908,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (10)
@@ -1636,6 +1920,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764227747628 stripped
@@ -1650,6 +1938,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1694,6 +1986,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (14)
@@ -1702,6 +1998,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764213984897 stripped
@@ -1716,6 +2016,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -1760,6 +2064,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (12)
@@ -1768,6 +2076,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764333991499 stripped
@@ -1782,6 +2094,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1826,6 +2142,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (16)
@@ -1834,6 +2154,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764307951151 stripped
@@ -1848,6 +2172,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7627062303523170054}
     m_Modifications:
+    - target: {fileID: -2013574344022348220, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: TimeToFade
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3222862922489649417, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -1892,6 +2220,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5306043896803513587, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 227363609, guid: 36bc93fa67771a4439906f9252c967c1, type: 3}
     - target: {fileID: 5419122835509756225, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
       propertyPath: m_Name
       value: EveFire (25)
@@ -1900,6 +2232,10 @@ PrefabInstance:
       propertyPath: Dur
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 7130512624638250829, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e0e8ba7ad3e4678419e44a8a1513ab6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6005cbe37197f784eb20ff44d899a1ac, type: 3}
 --- !u!4 &6275195764257258175 stripped
