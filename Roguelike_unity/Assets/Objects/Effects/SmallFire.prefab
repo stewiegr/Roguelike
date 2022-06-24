@@ -181,5 +181,5 @@ MonoBehaviour:
   DOT: {fileID: 5945893046358370893}
   Fader:
     serializedVersion: 2
-    rgba: 16777215
-  TimeToFade: 200
+    rgba: 4294967295
+  TimeToFade: 160
