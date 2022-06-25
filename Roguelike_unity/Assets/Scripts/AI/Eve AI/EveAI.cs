@@ -184,7 +184,7 @@ public class EveAI : MonoBehaviour
             if (BigAtkDelay > 120)
             {
 
-                ProjectileWithAngle(-90, Atk1RedZone[2].transform.position, 200, true);
+                ProjectileWithAngle(-90, Atk1RedZone[2].transform.position, 9999, true);
             }
             atkDly = 120;
         }
