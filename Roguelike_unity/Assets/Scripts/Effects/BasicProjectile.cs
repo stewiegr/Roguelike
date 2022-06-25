@@ -8,10 +8,12 @@ public class BasicProjectile : MonoBehaviour
     public bool TargetEnemy;
     public int dmg = 1;
     public GameObject myExplosion;
+    public GameObject SecondaryExplosion;
     public int Penetrations = 0;
     public int PenetrationMultiplier = 1;
     public float DefaultVel;
     public float Vel;
+    public bool CanBeDestroyed;
 
     public float life = 25;
     public bool Homing = false;
@@ -56,9 +58,9 @@ public class BasicProjectile : MonoBehaviour
             GameObject.Destroy(this.gameObject);
         }
 
-        if(Homing && GameInfo.GM.GameSpeed==1)
+        if (Homing && GameInfo.GM.GameSpeed == 1)
         {
-            if(homingTarg!=null)
+            if (homingTarg != null)
             {
                 Direction = Vector3.Normalize(homingTarg.position - transform.position);
                 myRB.velocity = Vector3.Lerp(myRB.velocity, DefaultVel * Direction, 3 * Time.deltaTime);
@@ -69,7 +71,7 @@ public class BasicProjectile : MonoBehaviour
             }
         }
 
-        if(GameInfo.GM.GameSpeed==0)
+        if (GameInfo.GM.GameSpeed == 0)
         {
             if (myRB.velocity != Vector2.zero)
             {
@@ -83,7 +85,7 @@ public class BasicProjectile : MonoBehaviour
                 myRB.velocity = holdSpd;
         }
 
-        if(EightDirections.Count!=0)
+        if (EightDirections.Count != 0)
         {
             DoDirectionGraphics();
         }
@@ -127,55 +129,72 @@ public class BasicProjectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         bool breakout = false;
+
+        if (CanBeDestroyed)
         {
-            if ((TargetEnemy && collision.transform.tag == "Enemy" || TargetPlayer &&  collision.transform.tag == "Player"))
+            if(collision.transform.tag=="Projectile")
             {
-                if(TargetEnemy)
+                BasicProjectile other = collision.GetComponent<BasicProjectile>();
+
+                if((TargetPlayer && other.TargetEnemy) || (TargetEnemy && other.TargetPlayer))
                 {
-                    if(collision.GetComponent<NPCStatus>().Shielded && !breakout)
-                    {
-                        myRB.velocity = new Vector2(myRB.velocity.x * -.7f, myRB.velocity.y * -.7f);
-                        life = 90;
-                        dmg = 1;
-                        Homing = false;
-                        TargetPlayer = true;
-                        TargetEnemy = false;
-                        GetComponent<SpriteRenderer>().color = Color.red;
-                        breakout = true;
-                    }
-                }
-                if (TargetPlayer && !breakout)
-                {
-                    if(collision.GetComponent<PlayerStatus>().Shielded)
-                    {
-                        myRB.velocity = new Vector2(myRB.velocity.x * -1, myRB.velocity.y * -1);
-                        TargetPlayer = false;
-                        life = 90;
-                        Homing = false;
-                        TargetEnemy = true;
-                        GetComponent<SpriteRenderer>().color = Color.green;
-                        breakout = true;
-                    }
-                }
-                if (!breakout)
-                {
+                    Penetrations = 0;
                     CreateExplosion(TargetPlayer, TargetEnemy);
-                    if (Penetrations <= 0)
-                    {
-                        GameObject.Destroy(this.gameObject);
-                    }
-                    else
-                    {
-                        Penetrations--;
-                    }
+                    GameObject.Destroy(this.gameObject);
                 }
-            }
-            if(collision.transform.tag=="WorldObject")
-            {
-                CreateExplosion(TargetPlayer, TargetEnemy);
-                GameObject.Destroy(this.gameObject);
             }
         }
+
+        if ((TargetEnemy && collision.transform.tag == "Enemy" || TargetPlayer && collision.transform.tag == "Player"))
+        {
+            if (TargetEnemy)
+            {
+                if (collision.GetComponent<NPCStatus>().Shielded && !breakout)
+                {
+                    myRB.velocity = new Vector2(myRB.velocity.x * -.7f, myRB.velocity.y * -.7f);
+                    life = 90;
+                    dmg = 1;
+                    Homing = false;
+                    TargetPlayer = true;
+                    TargetEnemy = false;
+                    GetComponent<SpriteRenderer>().color = Color.red;
+                    breakout = true;
+                }
+            }
+            if (TargetPlayer && !breakout)
+            {
+                if (collision.GetComponent<PlayerStatus>().Shielded)
+                {
+                    myRB.velocity = new Vector2(myRB.velocity.x * -1, myRB.velocity.y * -1);
+                    TargetPlayer = false;
+                    life = 90;
+                    Homing = false;
+                    TargetEnemy = true;
+                    GetComponent<SpriteRenderer>().color = Color.green;
+                    breakout = true;
+                }
+            }
+            if (!breakout)
+            {
+                CreateExplosion(TargetPlayer, TargetEnemy);
+                if (Penetrations <= 0)
+                {
+                    GameObject.Destroy(this.gameObject);
+                }
+                else
+                {
+                    Penetrations--;
+                }
+            }
+        }
+        if (collision.transform.tag == "WorldObject")
+        {
+            CreateExplosion(TargetPlayer, TargetEnemy);
+            GameObject.Destroy(this.gameObject);
+        }
+
+
+
     }
 
 
@@ -185,6 +204,10 @@ public class BasicProjectile : MonoBehaviour
         AE.Dmg = dmg;
         AE.HitPlayer = _player;
         AE.HitNPC = _enemy;
+
+        if (SecondaryExplosion != null)
+            Instantiate(SecondaryExplosion, transform.position, transform.rotation);
+
 
     }
 
@@ -204,7 +227,7 @@ public class BasicProjectile : MonoBehaviour
             MySpr.sprite = EightDirections[5];
         else if (Mathf.Abs(myRB.velocity.x) < Mathf.Abs(myRB.velocity.y * .5f) && myRB.velocity.y < 0)
             MySpr.sprite = EightDirections[1];
-        else if (Mathf.Abs(myRB.velocity.y) < Mathf.Abs(myRB.velocity.x *.5f) && myRB.velocity.x < 0)
+        else if (Mathf.Abs(myRB.velocity.y) < Mathf.Abs(myRB.velocity.x * .5f) && myRB.velocity.x < 0)
             MySpr.sprite = EightDirections[7];
         else if (Mathf.Abs(myRB.velocity.y) < Mathf.Abs(myRB.velocity.x * .5f) && myRB.velocity.x > 0)
             MySpr.sprite = EightDirections[3];

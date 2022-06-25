@@ -57,7 +57,7 @@ public class EveAI : MonoBehaviour
 
         if (MyStatus.Alive)
         {
-            MyAnim.SetBool("Idle", true);
+            //MyAnim.SetBool("Idle", true);
             if (atkDly <= 0)
             {
                 AttackHandler();
@@ -106,7 +106,7 @@ public class EveAI : MonoBehaviour
             {
                 if (Vector2.Distance(Atk1RedZoneFullScale[i], spr.transform.localScale) > .02f)
                 {
-                    spr.transform.localScale = Vector2.Lerp(spr.transform.localScale, Atk1RedZoneFullScale[i], 5 * Time.deltaTime);
+                    spr.transform.localScale = Vector2.Lerp(spr.transform.localScale, Atk1RedZoneFullScale[i], 5 * Time.deltaTime * GameInfo.GM.GameSpeed);
                 }
                 else
                 {
@@ -125,7 +125,7 @@ public class EveAI : MonoBehaviour
         {
             foreach (SpriteRenderer spr in Atk1RedZone)
             {
-                spr.color = Color.Lerp(spr.color, RedZoneHurt, .5f * Time.deltaTime);                            
+                spr.color = Color.Lerp(spr.color, RedZoneHurt, .5f * Time.deltaTime * GameInfo.GM.GameSpeed);                            
             }
         }
         if(Atk1Stage==6)
@@ -136,7 +136,7 @@ public class EveAI : MonoBehaviour
             {
                 if(Atk1Slash.transform.eulerAngles.z<125)
                 {
-                    Atk1Slash.transform.localEulerAngles += new Vector3(0, 0, 110 * Time.deltaTime);
+                    Atk1Slash.transform.localEulerAngles += new Vector3(0, 0, 110 * Time.deltaTime * GameInfo.GM.GameSpeed);
                 }
                 else
                 {
@@ -161,17 +161,21 @@ public class EveAI : MonoBehaviour
 
     }
 
-   
+   public void StartTeleport()
+    {
+        transform.position = new Vector2(-999, -999);
+    }
 
     void AttackHandler()
     {
         if (BigAtkDelay <= 0 && !DoAtk1)
         {
             Atk1Stage = 1;
-            transform.position = new Vector2(-999, -999);
+            MyAnim.SetTrigger("StartTP");
+            //Disable Collision?
             TPPos = GameInfo.PlayerPos;
             Instantiate(RingOfFire, GameInfo.PlayerPos, transform.rotation);
-            Atk1ShotDelay = 60;
+            Atk1ShotDelay = 90;
             MyNav.StopToAttack = true;
             DoAtk1 = true;
         }
@@ -220,7 +224,7 @@ public class EveAI : MonoBehaviour
         }
         if (atk1StageDelay > 0)
         {
-            atk1StageDelay -= 60 * Time.deltaTime;
+            atk1StageDelay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
             if (atk1StageDelay <= 0)
             {
                 Atk1Stage++;
@@ -232,7 +236,7 @@ public class EveAI : MonoBehaviour
         }
         if (Atk1ShotDelay > 0)
         {
-            Atk1ShotDelay -= 60 * Time.deltaTime;
+            Atk1ShotDelay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
         }
     }
     void Atk1Stage6Update()

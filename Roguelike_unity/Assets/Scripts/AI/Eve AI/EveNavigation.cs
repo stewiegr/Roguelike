@@ -32,6 +32,8 @@ public class EveNavigation : MonoBehaviour
     {
         if (MyStatus.Alive)
         {
+            MyRB.velocity *= GameInfo.GM.GameSpeed;
+            MyAnim.speed = GameInfo.GM.GameSpeed;
             if (!StopToAttack)
             {
                 if (MovementCD <= 0)
@@ -42,7 +44,7 @@ public class EveNavigation : MonoBehaviour
                 }
                 else
                 {
-                    MovementCD -= 60 * Time.deltaTime;
+                    MovementCD -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
                 }
             }
             else
@@ -50,14 +52,14 @@ public class EveNavigation : MonoBehaviour
                 MyRB.velocity = Vector2.zero;
             }
 
-            }
+        }
     }
 
     private void FixedUpdate()
     {
         PlayerPos = GameInfo.PlayerPos;
-        if(!StopToAttack)
-        FacePlayer();
+        if (!StopToAttack)
+            FacePlayer();
         else
         {
             MyAnim.SetBool("Down", true);
@@ -66,8 +68,8 @@ public class EveNavigation : MonoBehaviour
             MyAnim.SetBool("Right", false);
         }
 
-        if(dashing)
-        DashAtrophy();
+        if (dashing)
+            DashAtrophy();
     }
 
 
@@ -113,7 +115,7 @@ public class EveNavigation : MonoBehaviour
     {
         dashing = true;
         DashStrength = Random.Range(MaxDashStrength / 1.5f, MaxDashStrength);
-        switch(_dashWhere)
+        switch (_dashWhere)
         {
             case DirectionToDash.Away:
                 MyRB.velocity = (GameInfo.PlayerPos - (Vector2)transform.position).normalized * DashStrength;
@@ -133,13 +135,13 @@ public class EveNavigation : MonoBehaviour
         switch (_moveWhere)
         {
             case DirectionToDash.Away:
-                MyRB.velocity = (GameInfo.PlayerPos + new Vector2(Random.Range(-6,6), Random.Range(-6,6)) - (Vector2)transform.position).normalized * Random.Range(3,7);
+                MyRB.velocity = (GameInfo.PlayerPos + new Vector2(Random.Range(-6, 6), Random.Range(-6, 6)) - (Vector2)transform.position).normalized * Random.Range(3, 7);
                 break;
             case DirectionToDash.Toward:
-                MyRB.velocity = ((Vector2)transform.position + new Vector2(Random.Range(-6, 6), Random.Range(-6, 6)) - GameInfo.PlayerPos).normalized * Random.Range(3, 7); 
+                MyRB.velocity = ((Vector2)transform.position + new Vector2(Random.Range(-6, 6), Random.Range(-6, 6)) - GameInfo.PlayerPos).normalized * Random.Range(3, 7);
                 break;
             case DirectionToDash.Center:
-                MyRB.velocity = (Vector2.zero - (Vector2)transform.position).normalized * Random.Range(3, 7); 
+                MyRB.velocity = (Vector2.zero - (Vector2)transform.position).normalized * Random.Range(3, 7);
                 break;
         }
         MovementCD = Random.Range(MinTimeBetweenDash, MaxTimeBetweenDash);
@@ -147,7 +149,7 @@ public class EveNavigation : MonoBehaviour
 
     void DashAtrophy()
     {
-            MyRB.velocity *= Vector2.one * .98f;     
+        MyRB.velocity *= Vector2.one * .98f;
     }
 
     void FacePlayer()

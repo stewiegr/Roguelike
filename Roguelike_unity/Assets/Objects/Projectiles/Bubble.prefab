@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6654324995488010261}
   m_Layer: 8
   m_Name: Bubble
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,3 +146,7 @@ MonoBehaviour:
   Vel: 0
   life: 90
   Homing: 0
+  EightDirections: []
+  MySpr: {fileID: 0}
+  Trail: {fileID: 0}
+  Velocity: {x: 0, y: 0}
