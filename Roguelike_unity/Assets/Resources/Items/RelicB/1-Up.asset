@@ -21,7 +21,10 @@ MonoBehaviour:
   Range: 0
   Luck: 0
   ItemGFX: {fileID: 1100465221, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: Get a revive after death, mushrooms are no longer friendly.
+  RelicDesc: When you take lethal damage, revive with full health.
   StaffProjectile: {fileID: 0}
   ItemType: 4
   RelicEffect: 7
+  RelicBagA: 0
+  RelicBagB: 0
+  RelicBagC: 0
