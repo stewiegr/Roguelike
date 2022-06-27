@@ -134,13 +134,16 @@ public class BasicProjectile : MonoBehaviour
         {
             if(collision.transform.tag=="Projectile")
             {
-                BasicProjectile other = collision.GetComponent<BasicProjectile>();
-
-                if((TargetPlayer && other.TargetEnemy) || (TargetEnemy && other.TargetPlayer))
+                if (collision.GetComponent<BasicProjectile>() != null)
                 {
-                    Penetrations = 0;
-                    CreateExplosion(TargetPlayer, TargetEnemy);
-                    GameObject.Destroy(this.gameObject);
+                    BasicProjectile other = collision.GetComponent<BasicProjectile>();
+
+                    if ((TargetPlayer && other.TargetEnemy) || (TargetEnemy && other.TargetPlayer))
+                    {
+                        Penetrations = 0;
+                        CreateExplosion(TargetPlayer, TargetEnemy);
+                        GameObject.Destroy(this.gameObject);
+                    }
                 }
             }
         }

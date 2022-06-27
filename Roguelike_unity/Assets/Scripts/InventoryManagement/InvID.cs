@@ -15,6 +15,7 @@ public class InvID : MonoBehaviour
     public TextMeshPro AtkSpdTxt;
     public TextMeshPro AtkRangeTxt;
     public TextMeshPro LuckTxt;
+    public TextMeshPro Gold;
     Rigidbody2D MyRB;
     Rigidbody2D PlayerRB;
     void Awake()
@@ -37,6 +38,7 @@ public class InvID : MonoBehaviour
         AtkSpdTxt.text = GameInfo.PlayerStatus.AttackSpeed.ToString();
         AtkRangeTxt.text = GameInfo.PlayerStatus.AttackRange.ToString();
         LuckTxt.text = GameInfo.PlayerStatus.Luck.ToString();
+        Gold.text = GameInfo.GM.Gold.ToString();
 
     }
 

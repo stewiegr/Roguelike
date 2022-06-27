@@ -35,6 +35,8 @@ public class EveAI : MonoBehaviour
     public List<SpriteRenderer> Atk1RedZone;
     public List<Vector2> Atk1RedZoneFullScale = new List<Vector2>();
     public GameObject Bombs;
+    public Animator Scythe;
+    public GameObject ScytheDamageArea;
 
     bool DoAtk2;
     int Atk2Shots = 0;
@@ -83,9 +85,9 @@ public class EveAI : MonoBehaviour
             transform.position = TPPos + Vector2.up * 2;
             atk1StageDelay = 60;
         }
-        if(Atk1Stage==2)
+        if (Atk1Stage == 2)
         {
-            if(atk1StageDelay<=0)
+            if (atk1StageDelay <= 0)
             {
                 Atk1Stage = 3;
             }
@@ -119,49 +121,40 @@ public class EveAI : MonoBehaviour
             {
                 Atk1Stage = 5;
                 atk1StageDelay = 60;
+                Scythe.SetTrigger("DoScythe");
             }
         }
         if (Atk1Stage == 5)
         {
             foreach (SpriteRenderer spr in Atk1RedZone)
             {
-                spr.color = Color.Lerp(spr.color, RedZoneHurt, .5f * Time.deltaTime * GameInfo.GM.GameSpeed);                            
-            }
-        }
-        if(Atk1Stage==6)
-        {
-            if (!Atk1Slash.activeSelf && Atk1Shots==0)
-                Atk1Slash.SetActive(true);
-            else
-            {
-                if(Atk1Slash.transform.eulerAngles.z<125)
-                {
-                    Atk1Slash.transform.localEulerAngles += new Vector3(0, 0, 110 * Time.deltaTime * GameInfo.GM.GameSpeed);
-                }
-                else
-                {
-                    Atk1Slash.transform.localEulerAngles = Vector3.zero;
-                    Atk1Slash.SetActive(false);
-                    DoAtk1 = false;
-                    Atk1Stage = 0;
-                    Atk1Shots = 0;
-                    BigAtkDelay = 500;
-                    MyNav.StopToAttack = false;
-                }
+                spr.color = Color.Lerp(spr.color, RedZoneHurt, .5f * Time.deltaTime * GameInfo.GM.GameSpeed);
             }
 
-            if(Atk1ShotDelay<=0)
+        }
+        if (Atk1Stage == 6) //damage stage
+        {
+
+            if (Atk1ShotDelay <= 0)
             {
-                ProjectileWithAngle(0-90, Atk1RedZone[0].transform.position,60,false);
-                ProjectileWithAngle(60-90, Atk1RedZone[1].transform.position,60, false);
-                ProjectileWithAngle(-60-90, Atk1RedZone[2].transform.position,60, false);
+                ProjectileWithAngle(0 - 90, Atk1RedZone[0].transform.position, 60, false);
+                ProjectileWithAngle(60 - 90, Atk1RedZone[1].transform.position, 60, false);
+                ProjectileWithAngle(-60 - 90, Atk1RedZone[2].transform.position, 60, false);
+                GameObject dmgAr = Instantiate(ScytheDamageArea);
+                dmgAr.transform.position = Atk1RedZone[5].transform.position;
                 Atk1ShotDelay = 300;
+                DoAtk1 = false;
+                Atk1Stage = 0;
+                Atk1Shots = 0;
+                atkDly = 120;
+                BigAtkDelay = 500;
+                MyNav.StopToAttack = false;
             }
         }
 
     }
 
-   public void StartTeleport()
+    public void StartTeleport()
     {
         transform.position = new Vector2(-999, -999);
     }
@@ -179,7 +172,7 @@ public class EveAI : MonoBehaviour
             MyNav.StopToAttack = true;
             DoAtk1 = true;
         }
-        else if(!DoAtk1)
+        else if (!DoAtk1)
         {
             if (BigAtkDelay > 120)
             {

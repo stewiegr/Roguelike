@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public float GameSpeed = 1;
     public GameObject PauseFade;
     public List<BoxCollider2D> Abyss;
-    public TextMeshProUGUI GoldUI;
+    public TextMeshPro GoldUI;
     public GameObject WorldObjects;
     public int Gold = 0;
     private void Awake()
@@ -70,6 +70,5 @@ public class GameManager : MonoBehaviour
     public void AddGold(int _amt)
     {
         Gold += _amt;
-        GoldUI.text = "Gold: " + Gold.ToString();
     }
 }
