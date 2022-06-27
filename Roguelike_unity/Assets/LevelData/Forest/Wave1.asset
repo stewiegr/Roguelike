@@ -15,10 +15,10 @@ MonoBehaviour:
   AvailableMonsters:
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  SpawnHowMany: 15
+  SpawnHowMany: 150
   DelayBetweenSpawns: 1
   RelicEnemiesToSpawn: []
-  MaxAliveAtOnce: 125
+  MaxAliveAtOnce: 150
   ChanceOfRareChest: 0
   ChanceOfUniqueChest: 0
   ChanceOfLegendaryChest: 0
