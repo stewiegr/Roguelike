@@ -807,7 +807,8 @@ MonoBehaviour:
   MyNav: {fileID: 0}
   IgnoreGMCounts: 0
   NoKnockback: 0
-  Life: 9999
+  Life: 100
+  maxLife: 0
   AtkDmg: 0
   AtkDly: 120
   preventAtk: 0
@@ -823,6 +824,8 @@ MonoBehaviour:
   ChanceToDropLegendaryRelic: 0
   BossHealthBar: {fileID: 0}
   Shielded: 0
+  RequireBigBossHealthbar: 0
+  BossName: 
 --- !u!114 &2068041340735735120
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public static class GameInfo
     public static EffectsDB EffectsDB;
     public static ChestInteract CurrentChest;
     public static SFXHandler SFX;
+    public static UIDB UIDB;
 
     public static void PositionInv()
     {

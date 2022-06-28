@@ -7987,6 +7987,7 @@ GameObject:
   - component: {fileID: 140475477}
   - component: {fileID: 140475476}
   - component: {fileID: 140475475}
+  - component: {fileID: 140475479}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -8082,6 +8083,7 @@ RectTransform:
   - {fileID: 1606380530}
   - {fileID: 457855189}
   - {fileID: 864141802}
+  - {fileID: 356066298}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8090,6 +8092,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &140475479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140475474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca8cfb32b2ec9a48b7e63a4b1c23f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossHB: {fileID: 5465440447056776135, guid: 5d2482bcc4612bb48a3115a3d9588ad8, type: 3}
+  BossHBPos: {fileID: 356066298}
 --- !u!4 &159372887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6726443324542657302, guid: 54114800b2aedad4bb0ccc169877ef4b, type: 3}
@@ -10325,6 +10341,42 @@ Transform:
   m_Father: {fileID: 1118357572}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &356066297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356066298}
+  m_Layer: 5
+  m_Name: HB Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &356066298
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356066297}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 140475478}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -240.6}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &360597848
 GameObject:
   m_ObjectHideFlags: 0
@@ -16160,7 +16212,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Next Wave in: '
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23d30fc92b9713840ba9ba48109aa84e, type: 2}
   m_sharedMaterial: {fileID: -1930619204115572841, guid: 23d30fc92b9713840ba9ba48109aa84e, type: 2}
@@ -37056,6 +37108,14 @@ PrefabInstance:
       propertyPath: GM
       value: 
       objectReference: {fileID: 879764299}
+    - target: {fileID: 2068041340735735124, guid: 204de7e6ca347304882260f4825f6eff, type: 3}
+      propertyPath: BossName
+      value: Eve - The Duskvale Witch
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068041340735735124, guid: 204de7e6ca347304882260f4825f6eff, type: 3}
+      propertyPath: RequireBigBossHealthbar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2068041340735735126, guid: 204de7e6ca347304882260f4825f6eff, type: 3}
       propertyPath: m_RootOrder
       value: 13

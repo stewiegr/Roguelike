@@ -11,7 +11,7 @@ public class NPCStatus : MonoBehaviour
     public bool IgnoreGMCounts = false;
     public bool NoKnockback;
     public int Life;
-    int maxLife;
+    public int maxLife;
     public int AtkDmg;
     //public float AtkRange;
     public float AtkDly = 60;
@@ -33,6 +33,9 @@ public class NPCStatus : MonoBehaviour
     public BossHealthbar BossHealthBar;
 
     public bool Shielded = false;
+
+    public bool RequireBigBossHealthbar;
+    public string BossName;
 
     private void Start()
     {
@@ -81,6 +84,12 @@ public class NPCStatus : MonoBehaviour
 
         if (Random.Range(0, 30) > 28)
             RunSpeed = 6;
+
+        if(RequireBigBossHealthbar)
+        {
+            MainBossHealthBar MyHealthbar = Instantiate(GameInfo.UIDB.BossHB, GameInfo.UIDB.BossHBPos.position, transform.rotation, GameInfo.UIDB.transform).GetComponent<MainBossHealthBar>();
+            MyHealthbar.InitHealthBar(this, BossName);
+        }
     }
 
     public void TakeDmg(int _dmg, float _knockback)
