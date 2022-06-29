@@ -107,6 +107,27 @@ TextureImporter:
       name: Explosion_eve_0
       rect:
         serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa7164535906dc448b91df4c9e4e06a
+      internalID: 1116371227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_eve_1
+      rect:
+        serializedVersion: 2
         x: 32
         y: 0
         width: 32
@@ -118,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11313f6b81b4d27458c2da12fa01a32e
-      internalID: 1116371227
+      spriteID: d71b53a9783ddec428044eccb2388c0d
+      internalID: -1910529488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explosion_eve_1
+      name: Explosion_eve_2
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbdccbe1e8e261c40bc3be055283d88c
-      internalID: -1910529488
+      spriteID: 2b14efc3c43ba0945bcf59e08380e467
+      internalID: -476760481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explosion_eve_2
+      name: Explosion_eve_3
       rect:
         serializedVersion: 2
         x: 96
@@ -160,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ea71f2a4e402134a9dccf19086a8e70
-      internalID: -476760481
+      spriteID: 1a441273417b5c54e8510fe627883b26
+      internalID: -321849549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explosion_eve_3
+      name: Explosion_eve_4
       rect:
         serializedVersion: 2
         x: 128
@@ -181,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceecb3cda7da41545912825ec26d23e9
-      internalID: -321849549
+      spriteID: 1485c2882bdb0af4bbca037dfdb38751
+      internalID: 943557367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explosion_eve_4
+      name: Explosion_eve_5
       rect:
         serializedVersion: 2
         x: 160
@@ -202,8 +223,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cf13e7a51cce124ca0b9e33a3492d37
-      internalID: 943557367
+      spriteID: 4a564b81bc729d14e9e433938a772cb0
+      internalID: -1235000447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_eve_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19871b69c5c6a0d44b66071f5b1d3dd8
+      internalID: -1537830576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_eve_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d967804cd5d953a46b43fe54dcb757ef
+      internalID: 1925876023
       vertices: []
       indices: 
       edges: []
@@ -220,10 +283,13 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Explosion_eve_3: -321849549
+      Explosion_eve_5: -1235000447
       Explosion_eve_1: -1910529488
       Explosion_eve_0: 1116371227
       Explosion_eve_4: 943557367
       Explosion_eve_2: -476760481
+      Explosion_eve_6: -1537830576
+      Explosion_eve_7: 1925876023
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

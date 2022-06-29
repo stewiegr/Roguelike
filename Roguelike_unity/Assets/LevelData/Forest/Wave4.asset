@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 070cd37b8ca5a1f439b845e09b62de6f, type: 3}
-  m_Name: Wave2
+  m_Name: Wave4
   m_EditorClassIdentifier: 
   AvailableMonsters:
   - {fileID: 8602976545583975059, guid: 51401b1a09e297f4da739285e99ce68b, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  SpawnHowMany: 40
+  SpawnHowMany: 150
   DelayBetweenSpawns: 1
   RelicEnemiesToSpawn:
   - {fileID: 8602976545583975059, guid: 90771a6f3ea21bf48b670a5a5581d9d7, type: 3}
-  MaxAliveAtOnce: 40
-  ChanceOfRareChest: 5
+  - {fileID: 8602976545583975059, guid: 90771a6f3ea21bf48b670a5a5581d9d7, type: 3}
+  MaxAliveAtOnce: 125
+  ChanceOfRareChest: 10
   ChanceOfUniqueChest: 0
   ChanceOfLegendaryChest: 0

@@ -10,6 +10,7 @@ public class MainBossHealthBar : MonoBehaviour
     public Image HealthActual;
     public Image HealthLag;
     public TextMeshProUGUI BossName;
+    Rigidbody2D MyRb;
     RectTransform HBRed;
     RectTransform HBYellow;
     NPCStatus Boss;
@@ -21,6 +22,7 @@ public class MainBossHealthBar : MonoBehaviour
         HBRed = HealthActual.transform as RectTransform;
         HBYellow = HealthLag.transform as RectTransform;
         Boss = _Boss;
+        MyRb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,11 @@ public class MainBossHealthBar : MonoBehaviour
         }
         else
         {
+            if(!MyRb.IsAwake())
+            {
+                MyRb.WakeUp();
+            }
+            transform.eulerAngles += new Vector3(0, 0, .33f);
             decay -= 60 * Time.deltaTime;
             if(decay<=0)
             {

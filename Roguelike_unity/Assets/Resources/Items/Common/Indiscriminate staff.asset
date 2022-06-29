@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
   m_Name: Indiscriminate staff
   m_EditorClassIdentifier: 
-  ItemName: Indiscriminate staff
+  ItemName: Meteor Staff
   ItemDescription: WEAPON
   MoveSpeed: 0
   RateOfFire: 10
@@ -22,6 +22,9 @@ MonoBehaviour:
   Luck: 0
   ItemGFX: {fileID: 54989146, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
   RelicDesc: 'Gain one additional red heart per apple held. (Max 3 apples) '
-  StaffProjectile: {fileID: 4848307892858330393, guid: 8683bcd3ea4d7f7409d95227354d4342, type: 3}
+  StaffProjectile: {fileID: 4848307892858330393, guid: 980331293ab728b408496a733a793e83, type: 3}
   ItemType: 1
   RelicEffect: 0
+  RelicBagA: 0
+  RelicBagB: 0
+  RelicBagC: 0

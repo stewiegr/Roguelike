@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 18, y: 12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -162,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 2068041339354684845}
   m_LocalRotation: {x: 0, y: -0, z: 0.25881916, w: -0.9659258}
   m_LocalPosition: {x: 0.35, y: 0.31, z: 0}
-  m_LocalScale: {x: 0.25, y: 2.2839, z: 1}
+  m_LocalScale: {x: 0.25, y: 1.8664031, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2068041340169231255}
@@ -451,7 +451,7 @@ Transform:
   m_GameObject: {fileID: 2068041340273897355}
   m_LocalRotation: {x: 0, y: -0, z: 0.9659259, w: -0.25881898}
   m_LocalPosition: {x: 0.36, y: -0.24, z: 0}
-  m_LocalScale: {x: 0.25, y: 2.2839, z: 1}
+  m_LocalScale: {x: 0.25, y: 2.0251799, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2068041340169231255}
@@ -619,7 +619,7 @@ Transform:
   m_GameObject: {fileID: 2068041340539988827}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 1.06, y: 0.02, z: 0}
-  m_LocalScale: {x: 0.25, y: 1.2669315, z: 1}
+  m_LocalScale: {x: 0.25, y: 1.404422, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2068041340169231255}
@@ -807,7 +807,7 @@ MonoBehaviour:
   MyNav: {fileID: 0}
   IgnoreGMCounts: 0
   NoKnockback: 0
-  Life: 100
+  Life: 500
   maxLife: 0
   AtkDmg: 0
   AtkDly: 120
@@ -824,8 +824,8 @@ MonoBehaviour:
   ChanceToDropLegendaryRelic: 0
   BossHealthBar: {fileID: 0}
   Shielded: 0
-  RequireBigBossHealthbar: 0
-  BossName: 
+  RequireBigBossHealthbar: 1
+  BossName: Eve - The Duskvale Witch
 --- !u!114 &2068041340735735120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,7 +931,7 @@ MonoBehaviour:
   Atk1RedZoneFullScale: []
   Bombs: {fileID: 5517275067043869670, guid: 610165f5cb4e03c46bd40048893a444c, type: 3}
   Scythe: {fileID: 417041144}
-  ScytheDamageArea: {fileID: 0}
+  ScytheDamageArea: {fileID: 8215716905075117777, guid: d85a01dd97b74af4fa6501078c08535f, type: 3}
 --- !u!1 &7912767222829450779
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6278318490132277960}
   - component: {fileID: 908420721505873411}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,14 +956,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7912767222829450779}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.8001, y: -7.08, z: 0}
-  m_LocalScale: {x: 0.82889384, y: 3.5147557, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 5.09, y: -0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2068041340169231255}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &908420721505873411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1005,7 +1005,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3b2259df88d95a14cb5166d488a4a71f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 943e08ddf6a4ed74fadebe7d66050bce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

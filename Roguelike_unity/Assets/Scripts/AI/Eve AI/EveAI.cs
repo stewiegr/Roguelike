@@ -37,6 +37,7 @@ public class EveAI : MonoBehaviour
     public GameObject Bombs;
     public Animator Scythe;
     public GameObject ScytheDamageArea;
+    bool Atk1SkullAnim = false;
 
     bool DoAtk2;
     int Atk2Shots = 0;
@@ -130,7 +131,6 @@ public class EveAI : MonoBehaviour
             {
                 spr.color = Color.Lerp(spr.color, RedZoneHurt, .5f * Time.deltaTime * GameInfo.GM.GameSpeed);
             }
-
         }
         if (Atk1Stage == 6) //damage stage
         {
@@ -143,6 +143,7 @@ public class EveAI : MonoBehaviour
                 GameObject dmgAr = Instantiate(ScytheDamageArea);
                 dmgAr.transform.position = Atk1RedZone[5].transform.position;
                 Atk1ShotDelay = 300;
+                Atk1SkullAnim = false;
                 DoAtk1 = false;
                 Atk1Stage = 0;
                 Atk1Shots = 0;
@@ -218,6 +219,16 @@ public class EveAI : MonoBehaviour
         if (atk1StageDelay > 0)
         {
             atk1StageDelay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+
+            if(atk1StageDelay<=20)
+            {
+                if (!Atk1SkullAnim && Atk1Stage == 5)
+                {
+                    Atk1SkullAnim = true;
+                    MyAnim.SetTrigger("DownSkull");
+                }
+            }
+
             if (atk1StageDelay <= 0)
             {
                 Atk1Stage++;

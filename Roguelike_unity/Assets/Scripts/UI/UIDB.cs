@@ -7,7 +7,7 @@ public class UIDB : MonoBehaviour
     public GameObject BossHB;
     public Transform BossHBPos;
 
-    private void Start()
+    private void Awake()
     {
         GameInfo.UIDB = this;
     }

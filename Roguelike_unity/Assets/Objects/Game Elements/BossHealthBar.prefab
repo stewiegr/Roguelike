@@ -86,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5465440447056776134}
   - component: {fileID: -8897742971355765387}
+  - component: {fileID: 5444717341341960706}
   m_Layer: 5
   m_Name: BossHealthBar
   m_TagString: Untagged
@@ -132,6 +133,27 @@ MonoBehaviour:
   HealthActual: {fileID: 5465440447857595161}
   HealthLag: {fileID: 5465440448202778224}
   BossName: {fileID: 5465440448108667154}
+--- !u!50 &5444717341341960706
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465440447056776135}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 75
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 2
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5465440447857595162
 GameObject:
   m_ObjectHideFlags: 0

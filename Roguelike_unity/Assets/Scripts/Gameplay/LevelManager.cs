@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
     //int enemiesKilled = 0;
     private int currentWave = 0;
     float delay;
+    int relicEnemyIndex = 0;
     // bool treasureWave = false;
     bool chestUp = false;
     [Tooltip("1.5-5 is a good range")]
@@ -61,7 +62,7 @@ public class LevelManager : MonoBehaviour
                 {
                     if (delay > 0)
                     {
-                        delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; 
+                        delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
                         if (delay <= 0)
                         {
                             if (spawnedSoFar < 20)
@@ -79,7 +80,7 @@ public class LevelManager : MonoBehaviour
             }
         }
         if (GM.currentKillsThisWave > setSpawnNumber && GM.currentKillsThisWave >= spawnedSoFar && waveStarted)
-        {       
+        {
             waveStarted = false;
             DoChestSpawn();
             currentWave++;
@@ -87,7 +88,7 @@ public class LevelManager : MonoBehaviour
 
         if (DelayWave > 0)
         {
-            DelayWave -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed; 
+            DelayWave -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
             WaveWarn.text = "Next Wave In: " + (int)(DelayWave / 60);
         }
         else
@@ -124,17 +125,15 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        if (Waves[currentWave].RelicEnemiesToSpawn.Count>0)
+        if (Waves[currentWave].RelicEnemiesToSpawn.Count > 0 && relicEnemyIndex < Waves[currentWave].RelicEnemiesToSpawn.Count)
         {
-       //     if (random <= spawnedSoFar)
-        //    {
-                GameObject NPC = Instantiate(Waves[currentWave].RelicEnemiesToSpawn[Waves[currentWave].RelicEnemiesToSpawn.Count-1], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
-                NPC.GetComponent<NPCStatus>().GM = GM;
-                SpawnedMonsters.Add(NPC.gameObject);
-                spawnedSoFar++;
-                GM.LivingEnemies++;
-                Waves[currentWave].RelicEnemiesToSpawn.RemoveAt(Waves[currentWave].RelicEnemiesToSpawn.Count-1);
-        //    }
+            GameObject NPC = Instantiate(Waves[currentWave].RelicEnemiesToSpawn[relicEnemyIndex], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
+            relicEnemyIndex++;
+            NPC.GetComponent<NPCStatus>().GM = GM;
+            SpawnedMonsters.Add(NPC.gameObject);
+            spawnedSoFar++;
+            GM.LivingEnemies++;
+           // Waves[currentWave].RelicEnemiesToSpawn.RemoveAt(Waves[currentWave].RelicEnemiesToSpawn.Count - 1);
         }
 
         delay = Waves[currentWave].DelayBetweenSpawns;
@@ -145,6 +144,7 @@ public class LevelManager : MonoBehaviour
 
     public void ResetLevel()
     {
+        relicEnemyIndex = 0;
         RelicEnemies = Waves[currentWave].RelicEnemiesToSpawn;
         DelayWave = 600;
         currentWave = 0;
@@ -194,6 +194,7 @@ public class LevelManager : MonoBehaviour
 
     void InitWave()
     {
+        relicEnemyIndex = 0;
         RelicEnemies = Waves[currentWave].RelicEnemiesToSpawn;
         DelayWave = 200;
         spawnedSoFar = 0;
