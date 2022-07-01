@@ -16,11 +16,11 @@ MonoBehaviour:
   - {fileID: 8602976545583975059, guid: 51401b1a09e297f4da739285e99ce68b, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  SpawnHowMany: 100
+  SpawnHowMany: 1000
   DelayBetweenSpawns: 1
   RelicEnemiesToSpawn:
   - {fileID: 8602976545583975059, guid: 90771a6f3ea21bf48b670a5a5581d9d7, type: 3}
-  MaxAliveAtOnce: 125
+  MaxAliveAtOnce: 350
   ChanceOfRareChest: 10
   ChanceOfUniqueChest: 0
   ChanceOfLegendaryChest: 0
