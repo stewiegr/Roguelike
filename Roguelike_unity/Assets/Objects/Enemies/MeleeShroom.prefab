@@ -144,13 +144,14 @@ MonoBehaviour:
   MyNav: {fileID: -1058236326798848937}
   IgnoreGMCounts: 0
   NoKnockback: 0
-  Life: 5
+  Life: 2
+  maxLife: 0
   AtkDmg: 2
   AtkDly: 65
   preventAtk: 0
   Alive: 1
   Currency: []
-  RunSpeed: 7
+  RunSpeed: 5.5
   GM: {fileID: 0}
   DmgSfxIndex: 3
   DeadSfxIndex: 2
@@ -160,6 +161,8 @@ MonoBehaviour:
   ChanceToDropLegendaryRelic: 0
   BossHealthBar: {fileID: 0}
   Shielded: 0
+  RequireBigBossHealthbar: 0
+  BossName: 
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eb1e048cf149e4bbe758ca71c1ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OverrideMovementAI: 0
   SpeedMod: 0.35
   SpeedModRandomize: 0.15
   locateDel: 60

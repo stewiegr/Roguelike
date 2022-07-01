@@ -10875,12 +10875,12 @@ MonoBehaviour:
   AttackSpeed: 0
   Luck: 0
   BaseMaxLife: 4
-  BaseRunSpeed: 5
+  BaseRunSpeed: 6
   BaseAttackDamage: 2
   BaseAttackRange: 3
   BaseAttackSpeed: 3
   BaseLuck: 1
-  BaseTPCoolDownSeconds: 6
+  BaseTPCoolDownSeconds: 6.5
   RunSpeedBonus: 0
   AttackDamageBonus: 0
   AttackRangeBonus: 0
@@ -11130,7 +11130,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -11159,7 +11159,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -0.0670234, z: 0, w: 0}
+  m_margin: {x: -0.39845085, y: -0.0670234, z: 0.9577017, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
