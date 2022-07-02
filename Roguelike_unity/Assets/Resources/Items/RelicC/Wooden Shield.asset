@@ -21,7 +21,10 @@ MonoBehaviour:
   Range: 0
   Luck: 0
   ItemGFX: {fileID: -1946180243, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: 10% chance to avoid taking damage. Shield bonuses do not stack.
+  RelicDesc: 10% chance to avoid taking damage.
   StaffProjectile: {fileID: 0}
   ItemType: 4
   RelicEffect: 2
+  RelicBagA: 0
+  RelicBagB: 0
+  RelicBagC: 0

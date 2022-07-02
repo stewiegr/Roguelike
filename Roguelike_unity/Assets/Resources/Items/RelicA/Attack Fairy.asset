@@ -21,7 +21,10 @@ MonoBehaviour:
   Range: 0
   Luck: 0
   ItemGFX: {fileID: -417611923, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: Gain a fairy follower to aid you in battle
+  RelicDesc: Gain a fairy follower to fire at enemies.
   StaffProjectile: {fileID: 0}
   ItemType: 4
   RelicEffect: 12
+  RelicBagA: 0
+  RelicBagB: 0
+  RelicBagC: 0

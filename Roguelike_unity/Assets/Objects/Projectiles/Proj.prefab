@@ -143,7 +143,7 @@ MonoBehaviour:
   SecondaryExplosion: {fileID: 0}
   Penetrations: 0
   PenetrationMultiplier: 1
-  DefaultVel: 30
+  DefaultVel: 25
   Vel: 0
   CanBeDestroyed: 0
   life: 25
@@ -152,3 +152,4 @@ MonoBehaviour:
   MySpr: {fileID: 0}
   Trail: {fileID: 0}
   Velocity: {x: 0, y: 0}
+  HomingRate: 1

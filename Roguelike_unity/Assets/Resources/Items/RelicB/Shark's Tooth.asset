@@ -21,8 +21,11 @@ MonoBehaviour:
   Range: 0
   Luck: 0
   ItemGFX: {fileID: 33048400, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
-  RelicDesc: Your normal projectiles will penetrate multiple targets, dealing full
+  RelicDesc: Your normal projectiles will pierce  multiple targets, dealing full
     damage to each target.
   StaffProjectile: {fileID: 0}
   ItemType: 4
   RelicEffect: 3
+  RelicBagA: 0
+  RelicBagB: 0
+  RelicBagC: 0

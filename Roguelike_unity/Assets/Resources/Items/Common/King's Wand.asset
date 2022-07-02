@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
   m_Name: King's Wand
   m_EditorClassIdentifier: 
-  ItemName: King's Wand
+  ItemName: Wand of Frost
   ItemDescription: WEAPON
   MoveSpeed: 0
   RateOfFire: 3
@@ -25,3 +25,6 @@ MonoBehaviour:
   StaffProjectile: {fileID: 4848307892858330393, guid: 8683bcd3ea4d7f7409d95227354d4342, type: 3}
   ItemType: 1
   RelicEffect: 0
+  RelicBagA: 0
+  RelicBagB: 0
+  RelicBagC: 0
