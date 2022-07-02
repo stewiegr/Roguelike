@@ -27,8 +27,10 @@ public class BasicProjectile : MonoBehaviour
 
     public GameObject Trail;
     Vector2 LastTrailDrop;
+    bool angled = false;
 
     public Vector2 Velocity;
+    public float HomingRate = 1;
 
     private void Start()
     {
@@ -63,7 +65,7 @@ public class BasicProjectile : MonoBehaviour
             if (homingTarg != null)
             {
                 Direction = Vector3.Normalize(homingTarg.position - transform.position);
-                myRB.velocity = Vector3.Lerp(myRB.velocity, DefaultVel * Direction, 3 * Time.deltaTime);
+                myRB.velocity = Vector3.Lerp(myRB.velocity, DefaultVel * Direction, 3 * HomingRate * Time.deltaTime);
             }
             else
             {
@@ -88,6 +90,14 @@ public class BasicProjectile : MonoBehaviour
         if (EightDirections.Count != 0)
         {
             DoDirectionGraphics();
+        }
+        else
+        {
+            if (Homing || !angled)
+            {
+                transform.right = myRB.velocity;
+                angled = true;
+            }
         }
 
     }

@@ -18,6 +18,8 @@ public class PlayerSkills : MonoBehaviour
     public bool ShakeOnFire = true;
     bool autoFire = false;
 
+    int[] multiShotAngles = { 3, -3, 6, -6, 9, -9, 12, -12, 15, -15, 18, -18 };
+
     void Start()
     {
         myAnim = transform.root.GetComponent<Animator>();
@@ -97,24 +99,26 @@ public class PlayerSkills : MonoBehaviour
 
         if (MyStatus.Relics.TripleShot>0)
         {
-            GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.root.rotation);
-            //proj1.transform.Rotate(0, 0, 25);
-            BP = proj1.GetComponent<BasicProjectile>();
-            BP.life = BP.life * MyStatus.AttackRange;
-            BP.TargetEnemy = true;
-            BP.dmg = (int)MyStatus.AttackDamage;
-            if (MyStatus.Relics.PenetratingProjectile>0)
-                BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
-            if (BP.DefaultVel == 0)
-                proj1.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * 10.5f) + transform.up * 3f;
-            else
-                proj1.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * BP.DefaultVel)  +transform.up * 3f;
-
-            if (MyStatus.Relics.TrackingShots>0)
+            for (int i = 0; i <= MyStatus.Relics.TripleShot; i++)
             {
-                BP.AcquireTarget();
-            }
+                GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.root.rotation);
+                BP = proj1.GetComponent<BasicProjectile>();
+                BP.life = BP.life * MyStatus.AttackRange;
+                BP.TargetEnemy = true;
+                BP.dmg = (int)MyStatus.AttackDamage;
+                if (MyStatus.Relics.PenetratingProjectile > 0)
+                    BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
+                if (BP.DefaultVel == 0)
+                    proj1.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * 10.5f) + transform.up * multiShotAngles[i];
+                else
+                    proj1.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * BP.DefaultVel) + transform.up * multiShotAngles[i];
 
+                if (MyStatus.Relics.TrackingShots > 0)
+                {
+                    BP.AcquireTarget();
+                }
+            }
+            /*
             GameObject proj2 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.root.rotation);
            // proj2.transform.Rotate(0, 0, -25);
             BP = proj2.GetComponent<BasicProjectile>();
@@ -131,7 +135,8 @@ public class PlayerSkills : MonoBehaviour
             if (MyStatus.Relics.TrackingShots>0)
             {
                 BP.AcquireTarget();
-            }
+                BP.HomingRate = MyStatus.Relics.TrackingShots;
+            }*/
         }
 
 

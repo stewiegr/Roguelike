@@ -98,13 +98,10 @@ public class HomingAI : MonoBehaviour
 
     void DoMovement()
     {
-        // if(forcedVector==Vector2.zero)
         if (!stopAllMovement)
             MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(movement + forcedVector, MyStatus.RunSpeed * SpeedMod));
         else
             MyRB.velocity = Vector2.zero;
-      //  else
-       //     MyRB.velocity = ((Vector3)Vector2.ClampMagnitude(forcedVector, MyStatus.RunSpeed));// * Time.deltaTime;     
     }
 
     void LaunchMath()

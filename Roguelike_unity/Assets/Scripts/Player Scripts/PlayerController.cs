@@ -209,7 +209,8 @@ public class PlayerController : MonoBehaviour
             FootprintUpdate -= 60 * Time.deltaTime;
             if (FootprintUpdate <= 0)
             {
-                Instantiate(GameInfo.EffectsDB.SmallFlame, (Vector2)transform.position + Vector2.up * .5f, transform.rotation);
+                AreaDamageOverTime Abadons = Instantiate(GameInfo.EffectsDB.SmallFlame, (Vector2)transform.position + Vector2.up * .5f, transform.rotation).GetComponent<AreaDamageOverTime>();
+                Abadons.Dmg = 2 * MyStatus.Relics.FlamingFootprints;
                 FootprintUpdate = 19 - GameInfo.PlayerStatus.RunSpeed;
             }
         }

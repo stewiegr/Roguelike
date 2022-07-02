@@ -122,7 +122,7 @@ public class EveAI : MonoBehaviour
             {
                 Atk1Stage = 5;
                 atk1StageDelay = 60;
-                Scythe.SetTrigger("DoScythe");
+                
             }
         }
         if (Atk1Stage == 5)
@@ -140,9 +140,26 @@ public class EveAI : MonoBehaviour
                 ProjectileWithAngle(0 - 90, Atk1RedZone[0].transform.position, 60, false);
                 ProjectileWithAngle(60 - 90, Atk1RedZone[1].transform.position, 60, false);
                 ProjectileWithAngle(-60 - 90, Atk1RedZone[2].transform.position, 60, false);
+                Atk1ShotDelay = 60;
+                Scythe.SetTrigger("DoScythe");
+                Atk1Stage = 7;
+            }
+        }
+        if(Atk1Stage==7)
+        {
+            if (Atk1ShotDelay <= 0)
+            {
+                MyAnim.SetTrigger("DoScythe");
+                Atk1Stage = 8;
+                Atk1ShotDelay = 60;
+            }
+        }
+        if (Atk1Stage == 8)
+        {
+            if (Atk1ShotDelay <= 0)
+            {
                 GameObject dmgAr = Instantiate(ScytheDamageArea);
                 dmgAr.transform.position = Atk1RedZone[5].transform.position;
-                Atk1ShotDelay = 300;
                 Atk1SkullAnim = false;
                 DoAtk1 = false;
                 Atk1Stage = 0;

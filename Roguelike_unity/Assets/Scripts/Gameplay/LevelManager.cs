@@ -88,8 +88,16 @@ public class LevelManager : MonoBehaviour
 
         if (DelayWave > 0)
         {
-            DelayWave -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
-            WaveWarn.text = "Next Wave In: " + (int)(DelayWave / 60);
+            if (!CamID.CMController.zoom)
+            {
+                DelayWave -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+                WaveWarn.text = "Next Wave In: " + (int)(DelayWave / 60);
+            }
+            else
+            {
+                WaveWarn.text = "Player is preparing for next wave...";
+            }
+
         }
         else
             WaveWarn.text = "";
