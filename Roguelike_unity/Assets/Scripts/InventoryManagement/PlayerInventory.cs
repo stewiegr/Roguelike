@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public List<Item> MyItems = new List<Item>();
     public List<InvSlot> Squares;
+    public List<InvSlot> AllSquares;
     public InvSlot Weapon;
     public InvSlot Tome;
     public InvSlot Trinket1;
@@ -61,7 +62,10 @@ public class PlayerInventory : MonoBehaviour
     public void AddItem(Item _item, int _slot)
     {
         MyItems[_slot] = _item;
-        Squares[_slot].UpdateSlot(_item);
+        if (Squares[_slot].updateDel <= 0)
+            Squares[_slot].UpdateSlot(_item);
+        else
+            Squares[_slot].UpdateSlotWithDelay(_item);
     }
 
     public float CalcDmg()

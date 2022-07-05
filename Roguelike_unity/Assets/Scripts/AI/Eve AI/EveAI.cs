@@ -137,9 +137,9 @@ public class EveAI : MonoBehaviour
 
             if (Atk1ShotDelay <= 0)
             {
-                ProjectileWithAngle(0 - 90, Atk1RedZone[0].transform.position, 60, false);
-                ProjectileWithAngle(60 - 90, Atk1RedZone[1].transform.position, 60, false);
-                ProjectileWithAngle(-60 - 90, Atk1RedZone[2].transform.position, 60, false);
+                ProjectileWithAngle(0 - 90, Atk1RedZone[0].transform.position, 60, false,true);
+                ProjectileWithAngle(60 - 90, Atk1RedZone[1].transform.position, 60, false,true);
+                ProjectileWithAngle(-60 - 90, Atk1RedZone[2].transform.position, 60, false,true);
                 Atk1ShotDelay = 60;
                 Scythe.SetTrigger("DoScythe");
                 Atk1Stage = 7;
@@ -194,20 +194,21 @@ public class EveAI : MonoBehaviour
         {
             if (BigAtkDelay > 120)
             {
-
-                ProjectileWithAngle(-90, Atk1RedZone[2].transform.position, 9999, true);
+                ProjectileWithAngle(-90, Atk1RedZone[2].transform.position, 9999, true,false);
             }
             atkDly = 120;
         }
     }
 
 
-    public void ProjectileWithAngle(float _angle, Vector2 _startPos, float _life, bool _homing)
+    public void ProjectileWithAngle(float _angle, Vector2 _startPos, float _life, bool _homing, bool _trail)
     {
         LaunchPoint = transform;
         GameInfo.PlayAudio(AtkSfxIndex);
         GameObject proj = Instantiate(MyProjectile, _startPos, transform.localRotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
+        if (!_trail)
+            BP.Trail = null;
         BP.life = _life;
         BP.TargetEnemy = false;
         BP.TargetPlayer = true;

@@ -13,6 +13,8 @@ public class InvSlot : MonoBehaviour
     public ChestInventory MyChest;
     public PlayerInventory MyInv;
     public int IndexInInv;
+    public float updateDel = 0;
+    Item _queuedItem;
 
     public enum SlotType
     {
@@ -35,6 +37,15 @@ public class InvSlot : MonoBehaviour
 
     private void Update()
     {
+        if(updateDel>=0)
+        {
+            updateDel -= 60 * Time.deltaTime;
+            if (updateDel <= 0 && _queuedItem != null)
+            {
+                UpdateSlot(_queuedItem);
+                _queuedItem = null;
+            }
+        }
 
             ClickListener();
             if (dragging)
@@ -83,6 +94,11 @@ public class InvSlot : MonoBehaviour
             ClearSlot();
     }
 
+    public void UpdateSlotWithDelay(Item _item)
+    {
+            _queuedItem = _item;     
+    }
+
     public void ClearSlot()
     {
         GameItem = GameInfo.GM.GetComponent<ItemDatabase>().Empty;
@@ -91,11 +107,33 @@ public class InvSlot : MonoBehaviour
 
     public void ReturnHome()
     {
+        UnGlowSlots();
         dragging = false;
         if (MyItemGameObject != null)
         {
             MyItemGameObject.CancelInteract();
             MyItemGameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+        }
+    }
+
+    void GlowSlots(SlotType _type)
+    {
+        PlayerInventory inv = GameInfo.Player.GetComponent<PlayerInventory>();
+        foreach(InvSlot slot in inv.AllSquares)
+        {
+            if (slot.MyType == _type || slot.MyType == SlotType.General)
+                slot.GetComponent<Animator>().SetBool("Highlight", true);
+            else
+                slot.GetComponent<Animator>().SetBool("Highlight", false);
+        }
+    }
+
+    void UnGlowSlots()
+    {
+        PlayerInventory inv = GameInfo.Player.GetComponent<PlayerInventory>();
+        foreach (InvSlot slot in inv.AllSquares)
+        {
+            slot.GetComponent<Animator>().SetBool("Highlight", false);
         }
     }
 
@@ -111,12 +149,14 @@ public class InvSlot : MonoBehaviour
                 {
                     if (hit.collider.transform == this.transform)
                     {
-                        dragging = true;
+                        dragging = true;                     
+                        GlowSlots(GameItem.ItemType);
                     }
                 }
             }
             if (Input.GetMouseButtonUp(0) && dragging || GameInfo.GM.GameSpeed == 0)
             {
+                UnGlowSlots();
                 dragging = false;
                 InvSlot swap = MyItemGameObject.DropItem();
                 SwapItem(MyItemGameObject.DropItem());
@@ -128,12 +168,36 @@ public class InvSlot : MonoBehaviour
                 {
                     if (hit.collider.transform == this.transform)
                     {
-                        if (GameItem.RelicBagA)
+                        if (GameItem.RelicBagA && updateDel<=0)
+                        {
+                            updateDel = 20;
+                            ItemRenderer.sprite = null;
                             MyInv.AddItem(GameInfo.ItemDB.RelicA[Random.Range(0, GameInfo.ItemDB.RelicA.Length)], IndexInInv);
-                        if (GameItem.RelicBagB)
+                            Transform rel = Instantiate(GameInfo.UIDB.RelicBagTransition, this.transform, true).GetComponent<Transform>();
+                            rel.transform.position = this.transform.position + new Vector3(0,0,-1);
+                            rel.GetComponent<Animator>().SetTrigger("White");
+
+                        }
+                        if (GameItem.RelicBagB && updateDel <= 0)
+                        {
+                            updateDel = 20;
+                            ItemRenderer.sprite = null;
                             MyInv.AddItem(GameInfo.ItemDB.RelicB[Random.Range(0, GameInfo.ItemDB.RelicB.Length)], IndexInInv);
-                        if (GameItem.RelicBagC)
+                            Transform rel = Instantiate(GameInfo.UIDB.RelicBagTransition, this.transform, true).GetComponent<Transform>();
+                            rel.transform.position = this.transform.position + new Vector3(0, 0, -1);
+                            rel.GetComponent<Animator>().SetTrigger("Pink");
+
+                        }
+                        if (GameItem.RelicBagC && updateDel <= 0)
+                        {
+                            updateDel = 20;
+                            ItemRenderer.sprite = null;
                             MyInv.AddItem(GameInfo.ItemDB.RelicC[Random.Range(0, GameInfo.ItemDB.RelicC.Length)], IndexInInv);
+                            Transform rel = Instantiate(GameInfo.UIDB.RelicBagTransition, this.transform, true).GetComponent<Transform>();
+                            rel.transform.position = this.transform.position + new Vector3(0, 0, -1);
+                            rel.GetComponent<Animator>().SetTrigger("Red");
+
+                        }
                     }
                 }
 

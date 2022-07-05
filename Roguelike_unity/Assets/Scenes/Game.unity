@@ -8114,6 +8114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossHB: {fileID: 5465440447056776135, guid: 5d2482bcc4612bb48a3115a3d9588ad8, type: 3}
   BossHBPos: {fileID: 356066298}
+  RelicBagTransition: {fileID: 1511510664246005193, guid: 8eeee6ae16f01ca41bb660fb803f1c45, type: 3}
 --- !u!4 &159372887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6726443324542657302, guid: 54114800b2aedad4bb0ccc169877ef4b, type: 3}
@@ -9002,6 +9003,7 @@ GameObject:
   - component: {fileID: 234981174}
   - component: {fileID: 234981176}
   - component: {fileID: 234981175}
+  - component: {fileID: 234981179}
   m_Layer: 0
   m_Name: PlayerInvSlot (4)
   m_TagString: ItemSlot
@@ -9027,6 +9029,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 0
 --- !u!61 &234981175
 BoxCollider2D:
@@ -9115,7 +9118,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9143,6 +9146,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &234981179
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234981173}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &249808237
 GameObject:
   m_ObjectHideFlags: 0
@@ -9958,6 +9981,7 @@ GameObject:
   - component: {fileID: 323632281}
   - component: {fileID: 323632283}
   - component: {fileID: 323632282}
+  - component: {fileID: 323632286}
   m_Layer: 0
   m_Name: PlayerInvSlot (5)
   m_TagString: ItemSlot
@@ -9983,6 +10007,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 0
 --- !u!61 &323632282
 BoxCollider2D:
@@ -10071,7 +10096,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10099,6 +10124,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &323632286
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323632280}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &338661862
 GameObject:
   m_ObjectHideFlags: 0
@@ -16576,6 +16621,7 @@ GameObject:
   - component: {fileID: 467249427}
   - component: {fileID: 467249429}
   - component: {fileID: 467249428}
+  - component: {fileID: 467249432}
   m_Layer: 0
   m_Name: PlayerInvSlot (2)
   m_TagString: ItemSlot
@@ -16601,6 +16647,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 0
 --- !u!61 &467249428
 BoxCollider2D:
@@ -16689,7 +16736,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -16717,6 +16764,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &467249432
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467249426}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &498363789
 GameObject:
   m_ObjectHideFlags: 0
@@ -17247,6 +17314,7 @@ GameObject:
   - component: {fileID: 546265363}
   - component: {fileID: 546265365}
   - component: {fileID: 546265364}
+  - component: {fileID: 546265368}
   m_Layer: 0
   m_Name: PlayerInvSlot (11)
   m_TagString: ItemSlot
@@ -17272,6 +17340,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 4
 --- !u!61 &546265364
 BoxCollider2D:
@@ -17360,7 +17429,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -17388,6 +17457,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &546265368
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546265362}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &569195745
 GameObject:
   m_ObjectHideFlags: 0
@@ -18529,6 +18618,7 @@ GameObject:
   - component: {fileID: 653505418}
   - component: {fileID: 653505420}
   - component: {fileID: 653505419}
+  - component: {fileID: 653505423}
   m_Layer: 0
   m_Name: PlayerInvSlot (3)
   m_TagString: ItemSlot
@@ -18554,6 +18644,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 0
 --- !u!61 &653505419
 BoxCollider2D:
@@ -18642,7 +18733,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -18670,6 +18761,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &653505423
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653505417}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &654996344
 GameObject:
   m_ObjectHideFlags: 0
@@ -21377,6 +21488,7 @@ GameObject:
   - component: {fileID: 883966408}
   - component: {fileID: 883966410}
   - component: {fileID: 883966409}
+  - component: {fileID: 883966413}
   m_Layer: 0
   m_Name: PlayerInvSlot (10)
   m_TagString: ItemSlot
@@ -21402,6 +21514,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 4
 --- !u!61 &883966409
 BoxCollider2D:
@@ -21490,7 +21603,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -21518,6 +21631,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &883966413
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883966407}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &885639502
 GameObject:
   m_ObjectHideFlags: 0
@@ -22153,6 +22286,7 @@ GameObject:
   - component: {fileID: 960465129}
   - component: {fileID: 960465131}
   - component: {fileID: 960465130}
+  - component: {fileID: 960465134}
   m_Layer: 0
   m_Name: PlayerInvSlot (9)
   m_TagString: ItemSlot
@@ -22178,6 +22312,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 4
 --- !u!61 &960465130
 BoxCollider2D:
@@ -22266,7 +22401,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -22294,6 +22429,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &960465134
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960465128}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &987760030
 GameObject:
   m_ObjectHideFlags: 0
@@ -22491,6 +22646,7 @@ GameObject:
   - component: {fileID: 995122479}
   - component: {fileID: 995122481}
   - component: {fileID: 995122480}
+  - component: {fileID: 995122484}
   m_Layer: 0
   m_Name: PlayerInvSlot (6)
   m_TagString: ItemSlot
@@ -22516,6 +22672,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 0
 --- !u!61 &995122480
 BoxCollider2D:
@@ -22604,7 +22761,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -22632,6 +22789,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &995122484
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995122478}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &996296702
 GameObject:
   m_ObjectHideFlags: 0
@@ -22645,6 +22822,7 @@ GameObject:
   - component: {fileID: 996296703}
   - component: {fileID: 996296705}
   - component: {fileID: 996296704}
+  - component: {fileID: 996296708}
   m_Layer: 0
   m_Name: PlayerInvSlot (1)
   m_TagString: ItemSlot
@@ -22670,6 +22848,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 0
 --- !u!61 &996296704
 BoxCollider2D:
@@ -22758,7 +22937,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -22786,6 +22965,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &996296708
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996296702}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1010842851
 GameObject:
   m_ObjectHideFlags: 0
@@ -23224,6 +23423,7 @@ GameObject:
   - component: {fileID: 1055567331}
   - component: {fileID: 1055567333}
   - component: {fileID: 1055567332}
+  - component: {fileID: 1055567336}
   m_Layer: 0
   m_Name: TomeSlot
   m_TagString: ItemSlot
@@ -23249,6 +23449,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 18
+  updateDel: 0
   MyType: 2
 --- !u!61 &1055567332
 BoxCollider2D:
@@ -23337,8 +23538,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -669706633, guid: 518e7d4de67bd9d4dbf36aa8291cf6f1, type: 3}
+  m_SortingOrder: 15
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -23346,7 +23547,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1055567335
@@ -23365,6 +23566,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1055567336
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055567330}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1056762867
 GameObject:
   m_ObjectHideFlags: 0
@@ -24243,6 +24464,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eve
       objectReference: {fileID: 0}
+    - target: {fileID: 2068041340735735208, guid: 204de7e6ca347304882260f4825f6eff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204de7e6ca347304882260f4825f6eff, type: 3}
 --- !u!1 &1195487102
@@ -24822,6 +25047,7 @@ GameObject:
   - component: {fileID: 1264481426}
   - component: {fileID: 1264481428}
   - component: {fileID: 1264481427}
+  - component: {fileID: 1264481431}
   m_Layer: 0
   m_Name: PlayerInvSlot (7)
   m_TagString: ItemSlot
@@ -24847,6 +25073,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 0
 --- !u!61 &1264481427
 BoxCollider2D:
@@ -24935,7 +25162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -24963,6 +25190,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1264481431
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264481425}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1273550583
 GameObject:
   m_ObjectHideFlags: 0
@@ -25126,7 +25373,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.0068307, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -25324,6 +25571,7 @@ GameObject:
   - component: {fileID: 1319546431}
   - component: {fileID: 1319546433}
   - component: {fileID: 1319546432}
+  - component: {fileID: 1319546436}
   m_Layer: 0
   m_Name: WeaponSlot
   m_TagString: ItemSlot
@@ -25349,6 +25597,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 17
+  updateDel: 0
   MyType: 1
 --- !u!61 &1319546432
 BoxCollider2D:
@@ -25437,8 +25686,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1539839085, guid: 518e7d4de67bd9d4dbf36aa8291cf6f1, type: 3}
+  m_SortingOrder: 15
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -25446,7 +25695,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1319546435
@@ -25465,6 +25714,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1319546436
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319546430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1321041774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6726443324542657302, guid: 54114800b2aedad4bb0ccc169877ef4b, type: 3}
@@ -27750,6 +28019,7 @@ GameObject:
   - component: {fileID: 1621242359}
   - component: {fileID: 1621242361}
   - component: {fileID: 1621242360}
+  - component: {fileID: 1621242364}
   m_Layer: 0
   m_Name: PlayerInvSlot (14)
   m_TagString: ItemSlot
@@ -27775,6 +28045,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 4
 --- !u!61 &1621242360
 BoxCollider2D:
@@ -27863,7 +28134,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -27891,6 +28162,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1621242364
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621242358}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1626575636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28570,6 +28861,7 @@ GameObject:
   - component: {fileID: 1710436117}
   - component: {fileID: 1710436119}
   - component: {fileID: 1710436118}
+  - component: {fileID: 1710436122}
   m_Layer: 0
   m_Name: PlayerInvSlot (12)
   m_TagString: ItemSlot
@@ -28595,6 +28887,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 4
 --- !u!61 &1710436118
 BoxCollider2D:
@@ -28683,7 +28976,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -28711,6 +29004,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1710436122
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710436116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1719304067
 GameObject:
   m_ObjectHideFlags: 0
@@ -29185,6 +29498,7 @@ GameObject:
   - component: {fileID: 1772845294}
   - component: {fileID: 1772845296}
   - component: {fileID: 1772845295}
+  - component: {fileID: 1772845299}
   m_Layer: 0
   m_Name: PlayerInvSlot
   m_TagString: ItemSlot
@@ -29210,6 +29524,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 0
 --- !u!61 &1772845295
 BoxCollider2D:
@@ -29298,7 +29613,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -29326,6 +29641,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1772845299
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772845293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1799583451
 GameObject:
   m_ObjectHideFlags: 0
@@ -29440,6 +29775,7 @@ GameObject:
   - component: {fileID: 1801475244}
   - component: {fileID: 1801475246}
   - component: {fileID: 1801475245}
+  - component: {fileID: 1801475249}
   m_Layer: 0
   m_Name: TrinketSlot
   m_TagString: ItemSlot
@@ -29465,6 +29801,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 19
+  updateDel: 0
   MyType: 3
 --- !u!61 &1801475245
 BoxCollider2D:
@@ -29553,8 +29890,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -97464843, guid: 518e7d4de67bd9d4dbf36aa8291cf6f1, type: 3}
+  m_SortingOrder: 15
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -29562,7 +29899,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1801475248
@@ -29581,6 +29918,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1801475249
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801475243}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1807205738
 GameObject:
   m_ObjectHideFlags: 0
@@ -35654,6 +36011,7 @@ GameObject:
   - component: {fileID: 1877705938}
   - component: {fileID: 1877705940}
   - component: {fileID: 1877705939}
+  - component: {fileID: 1877705943}
   m_Layer: 0
   m_Name: PlayerInvSlot (15)
   m_TagString: ItemSlot
@@ -35679,6 +36037,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 4
 --- !u!61 &1877705939
 BoxCollider2D:
@@ -35767,7 +36126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -35795,6 +36154,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1877705943
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877705937}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1879556193
 GameObject:
   m_ObjectHideFlags: 0
@@ -36646,6 +37025,7 @@ GameObject:
   - component: {fileID: 2047892673}
   - component: {fileID: 2047892675}
   - component: {fileID: 2047892674}
+  - component: {fileID: 2047892678}
   m_Layer: 0
   m_Name: PlayerInvSlot (13)
   m_TagString: ItemSlot
@@ -36671,6 +37051,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 4
 --- !u!61 &2047892674
 BoxCollider2D:
@@ -36759,7 +37140,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -36787,6 +37168,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2047892678
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047892672}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2051084037
 GameObject:
   m_ObjectHideFlags: 0
@@ -36935,6 +37336,7 @@ GameObject:
   - component: {fileID: 2054724285}
   - component: {fileID: 2054724284}
   - component: {fileID: 2054724283}
+  - component: {fileID: 2054724287}
   m_Layer: 0
   m_Name: TrinketSlot2
   m_TagString: ItemSlot
@@ -37023,6 +37425,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 20
+  updateDel: 0
   MyType: 3
 --- !u!212 &2054724286
 SpriteRenderer:
@@ -37064,8 +37467,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -97464843, guid: 518e7d4de67bd9d4dbf36aa8291cf6f1, type: 3}
+  m_SortingOrder: 15
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -37073,9 +37476,29 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2054724287
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054724281}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2063531640
 GameObject:
   m_ObjectHideFlags: 0
@@ -37225,6 +37648,7 @@ GameObject:
   - component: {fileID: 2111834165}
   - component: {fileID: 2111834167}
   - component: {fileID: 2111834166}
+  - component: {fileID: 2111834170}
   m_Layer: 0
   m_Name: PlayerInvSlot (8)
   m_TagString: ItemSlot
@@ -37250,6 +37674,7 @@ MonoBehaviour:
   MyChest: {fileID: 0}
   MyInv: {fileID: 8958940026822404109}
   IndexInInv: 0
+  updateDel: 0
   MyType: 4
 --- !u!61 &2111834166
 BoxCollider2D:
@@ -37338,7 +37763,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: a69bb2e42b2a9044394aca438a613b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -37366,6 +37791,26 @@ Transform:
   m_Father: {fileID: 1998528999}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2111834170
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111834164}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee32702a9750344ab73f14b1ebac38e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2125085232
 GameObject:
   m_ObjectHideFlags: 0
@@ -37703,6 +38148,27 @@ MonoBehaviour:
   - {fileID: 2047892673}
   - {fileID: 1621242359}
   - {fileID: 1877705938}
+  AllSquares:
+  - {fileID: 1772845294}
+  - {fileID: 996296703}
+  - {fileID: 467249427}
+  - {fileID: 653505418}
+  - {fileID: 234981174}
+  - {fileID: 323632281}
+  - {fileID: 995122479}
+  - {fileID: 1264481426}
+  - {fileID: 2111834165}
+  - {fileID: 960465129}
+  - {fileID: 883966408}
+  - {fileID: 546265363}
+  - {fileID: 1710436117}
+  - {fileID: 2047892673}
+  - {fileID: 1621242359}
+  - {fileID: 1877705938}
+  - {fileID: 1319546431}
+  - {fileID: 1055567331}
+  - {fileID: 1801475244}
+  - {fileID: 2054724285}
   Weapon: {fileID: 1319546431}
   Tome: {fileID: 1055567331}
   Trinket1: {fileID: 1801475244}

@@ -6,6 +6,7 @@ public class UIDB : MonoBehaviour
 {
     public GameObject BossHB;
     public Transform BossHBPos;
+    public GameObject RelicBagTransition;
 
     private void Awake()
     {
