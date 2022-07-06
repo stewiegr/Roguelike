@@ -6,6 +6,8 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     GameManager GM;
+    public int EnvironmentIndex;
+    public GameObject Environment;
     float DelayWave = 1;
     public TextMeshProUGUI WaveWarn;
 
@@ -34,6 +36,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        Environment = GameInfo.GM.LevelEnvironments[EnvironmentIndex];
         WaveWarn = GameObject.Find("WaveWarning").GetComponent<TextMeshProUGUI>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         CommonChest = Resources.Load<GameObject>("Chests/CommonChest");
@@ -127,6 +130,7 @@ public class LevelManager : MonoBehaviour
             {
                 GameObject NPC = Instantiate(Waves[currentWave].AvailableMonsters[Random.Range(0, Waves[currentWave].AvailableMonsters.Count)], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
                 NPC.GetComponent<NPCStatus>().GM = GM;
+                NPC.transform.SetParent(transform.root);
                 SpawnedMonsters.Add(NPC.gameObject);
                 spawnedSoFar++;
                 GM.LivingEnemies++;
@@ -138,6 +142,7 @@ public class LevelManager : MonoBehaviour
             GameObject NPC = Instantiate(Waves[currentWave].RelicEnemiesToSpawn[relicEnemyIndex], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
             relicEnemyIndex++;
             NPC.GetComponent<NPCStatus>().GM = GM;
+            NPC.transform.SetParent(transform.root);
             SpawnedMonsters.Add(NPC.gameObject);
             spawnedSoFar++;
             GM.LivingEnemies++;

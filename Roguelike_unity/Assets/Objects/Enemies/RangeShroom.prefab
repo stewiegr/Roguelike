@@ -179,6 +179,7 @@ MonoBehaviour:
   IgnoreGMCounts: 0
   NoKnockback: 0
   Life: 5
+  maxLife: 0
   AtkDmg: 2
   AtkDly: 300
   preventAtk: 0
@@ -188,12 +189,15 @@ MonoBehaviour:
   GM: {fileID: 0}
   DmgSfxIndex: 3
   DeadSfxIndex: 2
-  CurrencyDropLowerUpper: {x: 1, y: 11}
+  CurrencyDropLowerUpper: {x: -10, y: 15}
   ChanceToDropRelic: 0
   ChanceToDropRareRelic: 0
   ChanceToDropLegendaryRelic: 0
+  DmgFlashEffect: {fileID: 0}
   BossHealthBar: {fileID: 0}
   Shielded: 0
+  RequireBigBossHealthbar: 0
+  BossName: 
 --- !u!114 &-1058236326798848937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eb1e048cf149e4bbe758ca71c1ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OverrideMovementAI: 0
   SpeedMod: 0.35
   SpeedModRandomize: 0.15
   locateDel: 60

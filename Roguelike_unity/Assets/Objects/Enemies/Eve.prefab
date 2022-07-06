@@ -693,6 +693,7 @@ GameObject:
   - component: {fileID: 2068041340735735122}
   - component: {fileID: 2068041340735735121}
   - component: {fileID: 2068041340735735135}
+  - component: {fileID: 596865671}
   m_Layer: 6
   m_Name: Eve
   m_TagString: Enemy
@@ -822,6 +823,7 @@ MonoBehaviour:
   ChanceToDropRelic: 0
   ChanceToDropRareRelic: 0
   ChanceToDropLegendaryRelic: 0
+  DmgFlashEffect: {fileID: 0}
   BossHealthBar: {fileID: 0}
   Shielded: 0
   RequireBigBossHealthbar: 1
@@ -932,6 +934,20 @@ MonoBehaviour:
   Bombs: {fileID: 5517275067043869670, guid: 610165f5cb4e03c46bd40048893a444c, type: 3}
   Scythe: {fileID: 417041144}
   ScytheDamageArea: {fileID: 8215716905075117777, guid: d85a01dd97b74af4fa6501078c08535f, type: 3}
+--- !u!114 &596865671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068041340735735208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb89660e74d51cf49b94e0d9bee3c159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DmgFlashMat: {fileID: 2100000, guid: 0feaa5480e55d4a498114698957ae06c, type: 2}
+  DefaultMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &7912767222829450779
 GameObject:
   m_ObjectHideFlags: 0

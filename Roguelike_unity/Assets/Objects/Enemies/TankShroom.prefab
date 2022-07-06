@@ -138,10 +138,11 @@ MonoBehaviour:
   GM: {fileID: 0}
   DmgSfxIndex: 3
   DeadSfxIndex: 2
-  CurrencyDropLowerUpper: {x: 1, y: 11}
+  CurrencyDropLowerUpper: {x: -10, y: 15}
   ChanceToDropRelic: 100
   ChanceToDropRareRelic: 10
   ChanceToDropLegendaryRelic: 3
+  DmgFlashEffect: {fileID: 0}
   BossHealthBar: {fileID: 3903193084205052293}
   Shielded: 0
   RequireBigBossHealthbar: 0

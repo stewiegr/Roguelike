@@ -22,10 +22,10 @@ public class PlayerSkills : MonoBehaviour
 
     void Start()
     {
-        myAnim = transform.root.GetComponent<Animator>();
-        MyStatus = transform.root.GetComponent<PlayerStatus>();
-        MyController = transform.root.GetComponent<PlayerController>();
-        MyInv = transform.root.GetComponent<PlayerInventory>();
+        myAnim = transform.parent.GetComponent<Animator>();
+        MyStatus = transform.parent.GetComponent<PlayerStatus>();
+        MyController = transform.parent.GetComponent<PlayerController>();
+        MyInv = transform.parent.GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -79,7 +79,7 @@ public class PlayerSkills : MonoBehaviour
         }
 
         GameInfo.PlayAudio(5);
-        GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f + transform.right * .85f, transform.root.rotation);
+        GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f + transform.right * .85f, transform.parent.rotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         BP.life = BP.life * MyStatus.AttackRange;
         BP.TargetEnemy = true;
@@ -101,7 +101,7 @@ public class PlayerSkills : MonoBehaviour
         {
             for (int i = 0; i <= MyStatus.Relics.TripleShot; i++)
             {
-                GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.root.rotation);
+                GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.parent.rotation);
                 BP = proj1.GetComponent<BasicProjectile>();
                 BP.life = BP.life * MyStatus.AttackRange;
                 BP.TargetEnemy = true;

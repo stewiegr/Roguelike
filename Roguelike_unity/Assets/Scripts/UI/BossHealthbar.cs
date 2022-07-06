@@ -9,6 +9,7 @@ public class BossHealthbar : MonoBehaviour
     float healthBarEmpty = -.255f;
     //.754 distance
 
+
     public void SetHealthBar(int _currentLife, int _maxLife)
     {
         HealthBar.localPosition = new Vector2(HealthBar.localPosition.x, (healthBarFull - (healthBarFull - healthBarEmpty - ((healthBarFull - healthBarEmpty) * _currentLife / _maxLife))));

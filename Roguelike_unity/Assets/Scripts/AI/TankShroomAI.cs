@@ -56,7 +56,6 @@ public class TankShroomAI : MonoBehaviour
 
         if (MyNav.InAtkRange && MyStatus.Alive)
         {
-            MyAnim.SetBool("Idle", true);
             if (atkDly <= 0 && shieldDly<=0 && MyNav.FreeMove)
             {
                 MyAnim.SetBool("Shielding",true);
@@ -64,8 +63,7 @@ public class TankShroomAI : MonoBehaviour
                 shieldDly = 180;
             }
         }
-        else if (!MyNav.InAtkRange)
-            MyAnim.SetBool("Idle", false);
+
 
     }
 

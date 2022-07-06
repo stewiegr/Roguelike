@@ -29,8 +29,9 @@ public class NPCStatus : MonoBehaviour
     public float ChanceToDropRelic;
     public float ChanceToDropRareRelic;
     public float ChanceToDropLegendaryRelic;
-
+    public BossDamageFlash DmgFlashEffect;
     public BossHealthbar BossHealthBar;
+
 
     public bool Shielded = false;
 
@@ -95,6 +96,10 @@ public class NPCStatus : MonoBehaviour
     public void TakeDmg(int _dmg, float _knockback)
     {
         GameInfo.PlayAudio(DmgSfxIndex);
+
+        if (DmgFlashEffect != null)
+            DmgFlashEffect.FlashDmg();
+
         Life -= _dmg;
         if (BossHealthBar != null)
         {

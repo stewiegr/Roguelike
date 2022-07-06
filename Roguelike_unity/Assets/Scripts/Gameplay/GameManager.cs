@@ -19,10 +19,16 @@ public class GameManager : MonoBehaviour
     public TextMeshPro GoldUI;
     public GameObject WorldObjects;
     public int Gold = 0;
+    public List<GameObject> LevelEnvironments;
     private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
         GameInfo.GM = this;
+    }
+
+    private void Start()
+    {
+        BeginLevel(0);
     }
 
     private void Update()
@@ -60,6 +66,29 @@ public class GameManager : MonoBehaviour
                 WorldObjects.transform.position += new Vector3(0, 0, -99);
             }
         }
+    }
+
+    public void BeginLevel(int _index)
+    {
+        CurrentLevel = Instantiate(Levels[_index]);
+        CurrentLevel.transform.SetParent(transform.root);
+        for(int i=0; i<LevelEnvironments.Count; i++)
+        {
+            if (CurrentLevel.EnvironmentIndex == i)
+            {
+                LevelEnvironments[i].SetActive(true);
+                CamID.CMController.GameArea = LevelEnvironments[i];
+            }
+            else
+                LevelEnvironments[i].SetActive(false);
+        }
+
+    }
+
+    public void StopLevel()
+    {
+        CurrentLevel.Environment.SetActive(false);
+        GameObject.Destroy(CurrentLevel);
     }
 
     public void ResetLevel()

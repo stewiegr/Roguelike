@@ -22,7 +22,7 @@ public class ChestInteract : MonoBehaviour
         for (int i = 0; i <= 8; i++)
             SquareCoords.Add((Vector2)Squares[i].transform.position);
 
-        Inv = transform.root.GetComponent<ChestInventory>();
+        Inv = transform.parent.GetComponent<ChestInventory>();
     }
 
     private void Update()
@@ -32,7 +32,7 @@ public class ChestInteract : MonoBehaviour
             if (Prompt.gameObject.activeSelf)
             {
                 GameInfo.PlayAudio(4);
-                transform.root.GetComponent<Animator>().Play("ChestOpen");
+                transform.parent.GetComponent<Animator>().Play("ChestOpen");
                 OpenChest();
             }
         }
@@ -171,7 +171,7 @@ public class ChestInteract : MonoBehaviour
                 Squares[i].SetActive(false);
             }
             allOpen = false;
-            transform.root.GetComponent<Animator>().Play("ChestClosed");
+            transform.parent.GetComponent<Animator>().Play("ChestClosed");
             GameInfo.PlayerInMenu = false;
             GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
             GameInfo.GM.InventoryWindow.SetActive(false);

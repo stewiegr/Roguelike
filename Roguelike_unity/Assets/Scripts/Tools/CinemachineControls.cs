@@ -23,7 +23,7 @@ public class CinemachineControls : MonoBehaviour
     float pauseFollow = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         CCam = GetComponent<CinemachineVirtualCamera>();
         CamID.CMController = this;
@@ -74,20 +74,23 @@ public class CinemachineControls : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!dead)
+        if (GameInfo.GM.CurrentLevel != null)
         {
-            if (!GameArea.activeSelf)
-                GameArea.SetActive(true);
+            if (!dead)
+            {
+                if (!GameArea.activeSelf)
+                    GameArea.SetActive(true);
 
-            if (zoom)
-                DoZoomIn();
+                if (zoom)
+                    DoZoomIn();
+                else
+                    DoZoomOut();
+            }
             else
-                DoZoomOut();
-        }
-        else
-        {
-            GameArea.SetActive(false);
-            DoDead();
+            {
+                GameArea.SetActive(false);
+                DoDead();
+            }
         }
     }
 
