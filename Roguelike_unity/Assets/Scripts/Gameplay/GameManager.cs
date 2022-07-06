@@ -71,7 +71,8 @@ public class GameManager : MonoBehaviour
     public void BeginLevel(int _index)
     {
         CurrentLevel = Instantiate(Levels[_index]);
-        CurrentLevel.transform.SetParent(transform.root);
+        CurrentLevel.transform.SetParent(transform.parent);
+        CurrentLevel.transform.position = Vector3.zero;
         for(int i=0; i<LevelEnvironments.Count; i++)
         {
             if (CurrentLevel.EnvironmentIndex == i)

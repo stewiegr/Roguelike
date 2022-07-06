@@ -130,7 +130,7 @@ public class LevelManager : MonoBehaviour
             {
                 GameObject NPC = Instantiate(Waves[currentWave].AvailableMonsters[Random.Range(0, Waves[currentWave].AvailableMonsters.Count)], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
                 NPC.GetComponent<NPCStatus>().GM = GM;
-                NPC.transform.SetParent(transform.root);
+                NPC.transform.SetParent(transform.parent);
                 SpawnedMonsters.Add(NPC.gameObject);
                 spawnedSoFar++;
                 GM.LivingEnemies++;
@@ -142,7 +142,7 @@ public class LevelManager : MonoBehaviour
             GameObject NPC = Instantiate(Waves[currentWave].RelicEnemiesToSpawn[relicEnemyIndex], pos + new Vector2(Random.Range(-15, 15), Random.Range(-15, 15)), transform.rotation);
             relicEnemyIndex++;
             NPC.GetComponent<NPCStatus>().GM = GM;
-            NPC.transform.SetParent(transform.root);
+            NPC.transform.SetParent(transform.parent);
             SpawnedMonsters.Add(NPC.gameObject);
             spawnedSoFar++;
             GM.LivingEnemies++;
