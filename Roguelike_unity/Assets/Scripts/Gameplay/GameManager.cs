@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject WorldObjects;
     public int Gold = 0;
     public List<GameObject> LevelEnvironments;
+    public GameObject MenuObj;
     private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
@@ -28,7 +29,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        BeginLevel(0);
+        if(!MenuObj.activeSelf)
+         BeginLevel(0);
     }
 
     private void Update()

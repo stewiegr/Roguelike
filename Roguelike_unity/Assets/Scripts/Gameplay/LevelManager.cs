@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     GameManager GM;
     public int EnvironmentIndex;
     public GameObject Environment;
-    float DelayWave = 1;
+    public float DelayWave = 1;
     public TextMeshProUGUI WaveWarn;
 
     public List<WaveData> Waves;
@@ -209,7 +209,7 @@ public class LevelManager : MonoBehaviour
     {
         relicEnemyIndex = 0;
         RelicEnemies = Waves[currentWave].RelicEnemiesToSpawn;
-        DelayWave = 200;
+        DelayWave = 360;
         spawnedSoFar = 0;
         setSpawnNumber = Waves[currentWave].SpawnHowMany;
         GM.currentKillsThisWave = 0;
