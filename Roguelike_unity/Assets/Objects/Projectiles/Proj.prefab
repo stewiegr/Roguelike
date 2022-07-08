@@ -143,7 +143,7 @@ MonoBehaviour:
   SecondaryExplosion: {fileID: 0}
   Penetrations: 0
   PenetrationMultiplier: 1
-  DefaultVel: 25
+  DefaultVel: 40
   Vel: 0
   CanBeDestroyed: 0
   life: 25
