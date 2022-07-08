@@ -22,6 +22,7 @@ public class EveAI : MonoBehaviour
 
     public Color RedZoneWarn;
     public Color RedZoneHurt;
+    public Color ScytheStart;
     public GameObject RingOfFire;
 
     bool DoAtk1;
@@ -40,9 +41,10 @@ public class EveAI : MonoBehaviour
     bool Atk1SkullAnim = false;
 
     bool DoAtk2;
-    int Atk2Shots = 0;
-    float Atk2Angle;
     float Atk2ShotDelay = 20;
+    int Atk2Stage = 0;
+    public GameObject EveAtk2Circle;
+    List<Vector2> Atk2Points = new List<Vector2>();
 
 
     private void Start()
@@ -69,10 +71,63 @@ public class EveAI : MonoBehaviour
             {
                 BigAtk1();
             }
+            if(DoAtk2)
+            {
+                BigAtk2();
+            }
         }
     }
 
 
+    void BigAtk2()
+    {
+        if (Atk2ShotDelay > 0)
+            Atk2ShotDelay -= 60 * Time.deltaTime;
+
+        if(Atk2ShotDelay<=0)
+        {
+            if(Atk2Stage<15)
+            {
+                for (int i = 0; i <= 6; i++)
+                {
+                    Atk2Points.Add(new Vector2(GameInfo.PlayerPos.x + Random.Range(-11, 11), GameInfo.PlayerPos.y + Random.Range(-11, 11)));
+                    if (i > 0)
+                    {
+                        if (Vector2.Distance(Atk2Points[i], Atk2Points[i - 1]) < 6)
+                        {
+                            i--;
+                            Atk2Points.RemoveAt(i);
+                        }
+                    }
+                }
+                Atk2Points.Add(GameInfo.Player.transform.position);
+                for (int i = 0; i<Atk2Points.Count; i++)
+                {
+                    Instantiate(EveAtk2Circle, Atk2Points[i], transform.rotation);
+                }
+                Atk2Stage++;
+                Atk2ShotDelay = 120 - Atk2Stage * 1.75f;
+                Atk2Points.Clear();
+               
+                
+            }
+            else
+            {
+                DoAtk2 = false;
+                Atk2Stage = 0;
+                atkDly = 120;
+                BigAtkDelay = 500;
+                MyNav.StopToAttack = false;
+                MyAnim.SetTrigger("DoTP");
+                GetComponent<BoxCollider2D>().enabled = true;
+                transform.position = TPPos + Vector2.up * 2;
+            }
+        }
+    }
+
+    //BIG ATK 1 REGION
+    #region BigAttack1
+    //END BIG ATK 1 REGIOn
     void BigAtk1()
     {
         if (Atk1ShotDelay > 0)
@@ -82,6 +137,7 @@ public class EveAI : MonoBehaviour
         if (Atk1ShotDelay <= 0 && Atk1Stage == 1)
         {
             MyAnim.SetTrigger("DoTP");
+            GetComponent<BoxCollider2D>().enabled = true;
             Atk1Stage = 2;
             transform.position = TPPos + Vector2.up * 2;
             atk1StageDelay = 60;
@@ -97,7 +153,7 @@ public class EveAI : MonoBehaviour
         {
             foreach (SpriteRenderer spr in Atk1RedZone)
             {
-                spr.color = RedZoneWarn;
+                //spr.color = RedZoneWarn;
             }
             Atk1Stage = 4;
         }
@@ -167,10 +223,15 @@ public class EveAI : MonoBehaviour
                 atkDly = 120;
                 BigAtkDelay = 500;
                 MyNav.StopToAttack = false;
+                Atk1RedZone[5].color = ScytheStart;
+                Atk1RedZone[5].transform.localScale = Vector2.zero;
             }
         }
 
     }
+    #endregion //BIG ATTACK 1 CODE
+
+
 
     public void StartTeleport()
     {
@@ -179,18 +240,53 @@ public class EveAI : MonoBehaviour
 
     void AttackHandler()
     {
-        if (BigAtkDelay <= 0 && !DoAtk1)
+        if (BigAtkDelay <= 0 && !DoAtk1 && !DoAtk2)
         {
+            if(Random.Range(0,10)>5)
+            {
+                DoAtk1 = true;
+            }    
+            else
+            {
+                DoAtk2 = true;
+            }
+        }
+        if(DoAtk1 && Atk1Stage==0)
+        { 
             Atk1Stage = 1;
             MyAnim.SetTrigger("StartTP");
             //Disable Collision?
+            GetComponent<BoxCollider2D>().enabled = false;
             TPPos = GameInfo.PlayerPos;
             Instantiate(RingOfFire, GameInfo.PlayerPos, transform.rotation);
             Atk1ShotDelay = 90;
             MyNav.StopToAttack = true;
-            DoAtk1 = true;
         }
-        else if (!DoAtk1)
+        if(DoAtk2 && Atk2Stage==0)
+        {
+            Atk2Stage = 1;
+            MyAnim.SetTrigger("StartTP");
+            GetComponent<BoxCollider2D>().enabled = false;
+            TPPos = GameInfo.PlayerPos;
+            Atk2ShotDelay = 90;
+            MyNav.StopToAttack = true;
+
+            for(int i=0; i<=10; i++)
+            {
+                Atk2Points.Add(new Vector2(GameInfo.PlayerPos.x + Random.Range(-12, 12), GameInfo.PlayerPos.y + Random.Range(-12, 12)));
+                if (i > 0)
+                {
+                    if (Vector2.Distance(Atk2Points[i], Atk2Points[i - 1]) < 6)
+                    {
+                        i--;
+                        Atk2Points.RemoveAt(i);
+                    }
+                }
+            }
+            Atk2Points.Add(GameInfo.PlayerPos);
+
+        }
+        else if (!DoAtk1 && !DoAtk2)
         {
             if (BigAtkDelay > 120)
             {
@@ -265,12 +361,16 @@ public class EveAI : MonoBehaviour
     {
         Instantiate(Bombs, Atk1RedZone[3].transform.position, transform.rotation);
         Instantiate(Bombs, Atk1RedZone[4].transform.position, transform.rotation);
-
+        int i = 0;
         foreach (SpriteRenderer spr in Atk1RedZone)
         {
+            i++;
             //Atk1RedZoneFullScale.Add(spr.transform.localScale);
-            spr.color = RedZoneWarn;
-            spr.transform.localScale = Vector2.zero;
+            if (i != 6)
+            {
+                spr.color = RedZoneWarn;
+                spr.transform.localScale = Vector2.zero;
+            }
         }
     }
 }
