@@ -52,14 +52,21 @@ public class CurrencyPickup : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, GameInfo.PlayerPos + Vector2.up * .5f, 20 * Time.deltaTime);
                 else
                 {
+
                     GameInfo.PlayAudio(1);
                     if (value != 0)
-                    {
+                    {                      
                         GameInfo.GM.AddGold(value);
+                        GameInfo.UIDB.goldAmt += value;
+                        GameInfo.UIDB.goldUICounter = 60;
+                        GameInfo.UIDB.Gold.text = "+" + GameInfo.UIDB.goldAmt.ToString() + " gold!";
+                        GameInfo.UIDB.Gold.fontSize = 22;
                         GameObject.Destroy(this.gameObject);
                     }
                     if (ItemToAdd != null)
                     {
+                        PopupText popup = Instantiate(GameInfo.EffectsDB.CustomText, (Vector2)transform.position + Vector2.up, transform.rotation).GetComponent<PopupText>();
+                        popup.InitTextCustom(ItemToAdd.ItemName + "!", 5, Color.cyan, 10);
                         int slot = GameInfo.Player.GetComponent<PlayerInventory>().EmptySlotAvail();
                         if (slot != -1)
                         {

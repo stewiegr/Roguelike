@@ -39,6 +39,7 @@ public class EveBombCircle : MonoBehaviour
         {
             if (spr.enabled)
             {
+                CamID.CMController.ShakeScreen(5, 3);
                 MyExplosion.SetActive(true);
                 spr.enabled = false;
             }

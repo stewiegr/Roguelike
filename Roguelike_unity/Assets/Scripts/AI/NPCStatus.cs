@@ -100,6 +100,10 @@ public class NPCStatus : MonoBehaviour
         if (DmgFlashEffect != null)
             DmgFlashEffect.FlashDmg();
 
+        _dmg += Mathf.RoundToInt(Random.Range((float)-_dmg * .2f, (float)_dmg * .2f));
+
+        PopupText popup = Instantiate(GameInfo.EffectsDB.CustomText, (Vector2)transform.position + Vector2.up, transform.rotation).GetComponent<PopupText>();
+        popup.InitTextCustom(_dmg.ToString() + " dmg", 4, Color.white, 8);
         Life -= _dmg;
         if (BossHealthBar != null)
         {

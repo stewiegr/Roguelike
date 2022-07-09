@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EveAI : MonoBehaviour
 {
@@ -46,9 +47,17 @@ public class EveAI : MonoBehaviour
     public GameObject EveAtk2Circle;
     List<Vector2> Atk2Points = new List<Vector2>();
 
+    public TextMeshPro EveTaunt;
+    string TauntSetString = "";
+    public List<string> Atk1Taunts;
+    public List<string> Atk2Taunts;
+    int currentChar = 0;
+    float tauntDel = 0;
+
 
     private void Start()
     {
+        ClearTaunt();
         foreach (SpriteRenderer spr in Atk1RedZone)
         {
             Atk1RedZoneFullScale.Add(spr.transform.localScale);
@@ -78,14 +87,26 @@ public class EveAI : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if(tauntDel>0)
+        {
+            tauntDel--;
+        }
+        if (TauntSetString != "")
+        {
+            ShowTaunt();
+        }
+    }
 
     void BigAtk2()
     {
         if (Atk2ShotDelay > 0)
             Atk2ShotDelay -= 60 * Time.deltaTime;
 
-        if(Atk2ShotDelay<=0)
+        if(Atk2ShotDelay<=0 && Atk2Stage > 0)
         {
+            ClearTaunt();
             if(Atk2Stage<15)
             {
                 for (int i = 0; i <= 6; i++)
@@ -136,6 +157,7 @@ public class EveAI : MonoBehaviour
         }
         if (Atk1ShotDelay <= 0 && Atk1Stage == 1)
         {
+            ClearTaunt();
             MyAnim.SetTrigger("DoTP");
             GetComponent<BoxCollider2D>().enabled = true;
             Atk1Stage = 2;
@@ -190,7 +212,7 @@ public class EveAI : MonoBehaviour
         }
         if (Atk1Stage == 6) //damage stage
         {
-
+            Atk1RedZone[5].color = Color.Lerp(Atk1RedZone[5].color, RedZoneHurt, .5f * Time.deltaTime * GameInfo.GM.GameSpeed);
             if (Atk1ShotDelay <= 0)
             {
                 ProjectileWithAngle(0 - 90, Atk1RedZone[0].transform.position, 60, false,true);
@@ -203,6 +225,7 @@ public class EveAI : MonoBehaviour
         }
         if(Atk1Stage==7)
         {
+            Atk1RedZone[5].color = Color.Lerp(Atk1RedZone[5].color, RedZoneHurt, .5f * Time.deltaTime * GameInfo.GM.GameSpeed);
             if (Atk1ShotDelay <= 0)
             {
                 MyAnim.SetTrigger("DoScythe");
@@ -215,6 +238,7 @@ public class EveAI : MonoBehaviour
             if (Atk1ShotDelay <= 0)
             {
                 GameObject dmgAr = Instantiate(ScytheDamageArea);
+                CamID.CMController.ShakeScreen(5, 7);
                 dmgAr.transform.position = Atk1RedZone[5].transform.position;
                 Atk1SkullAnim = false;
                 DoAtk1 = false;
@@ -244,14 +268,20 @@ public class EveAI : MonoBehaviour
         {
             if(Random.Range(0,10)>5)
             {
+                TauntSetString = Atk1Taunts[Random.Range(0, Atk1Taunts.Count)];
                 DoAtk1 = true;
+                MyNav.StopToAttack = true;
+                tauntDel = 90;
             }    
             else
             {
+                TauntSetString = Atk2Taunts[Random.Range(0, Atk2Taunts.Count)];
                 DoAtk2 = true;
+                MyNav.StopToAttack = true;
+                tauntDel = 90;
             }
         }
-        if(DoAtk1 && Atk1Stage==0)
+        if(DoAtk1 && Atk1Stage==0 && tauntDel<=0)
         { 
             Atk1Stage = 1;
             MyAnim.SetTrigger("StartTP");
@@ -260,16 +290,16 @@ public class EveAI : MonoBehaviour
             TPPos = GameInfo.PlayerPos;
             Instantiate(RingOfFire, GameInfo.PlayerPos, transform.rotation);
             Atk1ShotDelay = 90;
-            MyNav.StopToAttack = true;
+
         }
-        if(DoAtk2 && Atk2Stage==0)
+        if(DoAtk2 && Atk2Stage==0 && tauntDel<=0)
         {
             Atk2Stage = 1;
             MyAnim.SetTrigger("StartTP");
             GetComponent<BoxCollider2D>().enabled = false;
             TPPos = GameInfo.PlayerPos;
             Atk2ShotDelay = 90;
-            MyNav.StopToAttack = true;
+
 
             for(int i=0; i<=10; i++)
             {
@@ -327,8 +357,6 @@ public class EveAI : MonoBehaviour
         if (BigAtkDelay > 0)
         {
             BigAtkDelay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
-            if (BigAtkDelay <= 60)
-                MyNav.StopToAttack = true;
         }
         if (atk1StageDelay > 0)
         {
@@ -372,5 +400,17 @@ public class EveAI : MonoBehaviour
                 spr.transform.localScale = Vector2.zero;
             }
         }
+    }
+
+    void ShowTaunt()
+    {
+            EveTaunt.text = TauntSetString;
+    }
+
+    void ClearTaunt()
+    {
+        currentChar = 0;
+        EveTaunt.text = "";
+        TauntSetString = "";
     }
 }
