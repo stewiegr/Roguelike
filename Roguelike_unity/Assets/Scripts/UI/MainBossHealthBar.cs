@@ -30,8 +30,8 @@ public class MainBossHealthBar : MonoBehaviour
     {
         if (Boss != null)
         {
-            HBRed.sizeDelta = new Vector2(((float)Boss.Life / (float)Boss.maxLife) * 500, 15);
-            HBYellow.sizeDelta = Vector2.Lerp(new Vector2(HBYellow.rect.width, HBYellow.rect.height), new Vector2(((float)Boss.Life / (float)Boss.maxLife) * 500, 15), 10 * Time.deltaTime);
+            HBRed.sizeDelta = new Vector2(((float)Boss.Life / (float)Boss.maxLife) * 500, 5);
+            HBYellow.sizeDelta = Vector2.Lerp(new Vector2(HBYellow.rect.width, HBYellow.rect.height), new Vector2(((float)Boss.Life / (float)Boss.maxLife) * 500, 5), 10 * Time.deltaTime);
         }
         else
         {

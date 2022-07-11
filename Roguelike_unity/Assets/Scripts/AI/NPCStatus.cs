@@ -143,6 +143,8 @@ public class NPCStatus : MonoBehaviour
         Alive = false;
         if (!IgnoreGMCounts)
         {
+            if (GM == null)
+                GM = GameInfo.GM;
             GM.currentKillsThisWave++;
             GM.LivingEnemies--;
             GM.CurrentLevel.RemoveMe(this.gameObject);

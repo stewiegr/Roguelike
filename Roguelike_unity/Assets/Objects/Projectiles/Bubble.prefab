@@ -146,7 +146,7 @@ MonoBehaviour:
   DefaultVel: 5
   Vel: 0
   CanBeDestroyed: 0
-  life: 90
+  life: 190
   Homing: 0
   EightDirections: []
   MySpr: {fileID: 0}

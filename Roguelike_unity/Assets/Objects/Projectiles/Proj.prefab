@@ -143,10 +143,10 @@ MonoBehaviour:
   SecondaryExplosion: {fileID: 0}
   Penetrations: 0
   PenetrationMultiplier: 1
-  DefaultVel: 40
+  DefaultVel: 30
   Vel: 0
   CanBeDestroyed: 0
-  life: 25
+  life: 15
   Homing: 0
   EightDirections: []
   MySpr: {fileID: 0}

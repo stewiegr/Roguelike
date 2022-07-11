@@ -81,7 +81,7 @@ public class PlayerSkills : MonoBehaviour
         GameInfo.PlayAudio(5);
         GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f + transform.right * .85f, transform.parent.rotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
-        BP.life = BP.life * MyStatus.AttackRange;
+        //BP.life = BP.life * MyStatus.AttackRange;
         BP.TargetEnemy = true;
         BP.dmg = (int)MyStatus.AttackDamage;
         if (BP.DefaultVel == 0)
@@ -103,7 +103,7 @@ public class PlayerSkills : MonoBehaviour
             {
                 GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.parent.rotation);
                 BP = proj1.GetComponent<BasicProjectile>();
-                BP.life = BP.life * MyStatus.AttackRange;
+               // BP.life = BP.life * MyStatus.AttackRange;
                 BP.TargetEnemy = true;
                 BP.dmg = (int)MyStatus.AttackDamage;
                 if (MyStatus.Relics.PenetratingProjectile > 0)
