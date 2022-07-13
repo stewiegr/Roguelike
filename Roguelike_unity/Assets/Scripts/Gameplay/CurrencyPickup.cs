@@ -18,9 +18,7 @@ public class CurrencyPickup : MonoBehaviour
     {
         initialVector = new Vector2(Random.Range(-4, 4), Random.Range(10, 15));
         if(relicLevel!=-1)
-        AnimateMe();
-
-        
+        AnimateMe();      
     }
 
     // Update is called once per frame

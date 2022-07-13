@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AvailableMonsters:
   - {fileID: 8602976545583975059, guid: 71b3492d55260d047a4d875df5442c59, type: 3}
-  SpawnHowMany: 1
-  DelayBetweenSpawns: 1
+  SpawnHowMany: 150
+  DelayBetweenSpawns: 0.25
   RelicEnemiesToSpawn: []
-  MaxAliveAtOnce: 1
-  ChanceOfRareChest: 0
+  MaxAliveAtOnce: 150
+  ChanceOfRareChest: 5
   ChanceOfUniqueChest: 0
   ChanceOfLegendaryChest: 0

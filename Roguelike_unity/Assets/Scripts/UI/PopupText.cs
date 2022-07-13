@@ -22,7 +22,7 @@ public class PopupText : MonoBehaviour
     private void Update()
     {
         transform.Translate(new Vector2(sideVel * Time.deltaTime, riseSpeed * Time.deltaTime));
-        riseSpeed = Mathf.Lerp(riseSpeed, 0, 2 *Time.deltaTime);
+        riseSpeed = Mathf.Lerp(riseSpeed, 0, 3 *Time.deltaTime);
         if (riseSpeed <= .25f)
             GameObject.Destroy(this.gameObject);
     }

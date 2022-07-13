@@ -138,7 +138,7 @@ public class CinemachineControls : MonoBehaviour
 
     public void ShakeScreen(float _amp, float _dur)
     {
-        ShakeDur = _dur;
-        noise.m_AmplitudeGain = _amp;
+        ShakeDur += _dur;
+        noise.m_AmplitudeGain += _amp;
     }
 }

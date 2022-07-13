@@ -30,17 +30,35 @@ public class BasicProjectile : MonoBehaviour
     bool angled = false;
 
     public Vector2 Velocity;
+    public float accelMod = 0;
+    Vector2 setVel = Vector2.zero;
     public float HomingRate = 1;
+
+    public float ScreenShakeAmt = 0;
+    public float ScreenShakeDur = 0;
 
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
         MySpr = GetComponent<SpriteRenderer>();
         LastTrailDrop = transform.position;
+        //life = life * accelMod;
     }
+
+
     private void Update()
     {
-        Velocity = myRB.velocity;
+        if (accelMod != 0 && !Homing)
+        {
+            if (setVel == Vector2.zero)
+            {
+                setVel = myRB.velocity;
+                myRB.velocity *= Vector2.one * .05f;
+            }
+            if(!Homing)
+            DoAccelEffect();
+        }
+            Velocity = myRB.velocity;
         if (life > 0)
         {
             life -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
@@ -64,8 +82,16 @@ public class BasicProjectile : MonoBehaviour
         {
             if (homingTarg != null)
             {
+
                 Direction = Vector3.Normalize(homingTarg.position - transform.position);
-                myRB.velocity = Vector3.Lerp(myRB.velocity, DefaultVel * Direction, 3 * HomingRate * Time.deltaTime);
+                if (accelMod == 0)
+                {
+                    myRB.velocity = Vector3.Lerp(myRB.velocity, DefaultVel * Direction, 3 * HomingRate * Time.deltaTime);
+                }
+                else
+                {
+                    myRB.velocity = Vector3.Lerp(myRB.velocity, DefaultVel * Direction, 3 * HomingRate * Time.deltaTime);
+                }
             }
             else
             {
@@ -100,6 +126,11 @@ public class BasicProjectile : MonoBehaviour
             }
         }
 
+    }
+
+    void DoAccelEffect()
+    {
+        myRB.velocity = Vector2.Lerp(myRB.velocity, setVel, Time.deltaTime * accelMod);
     }
 
     public void AcquireTarget()
@@ -142,7 +173,7 @@ public class BasicProjectile : MonoBehaviour
 
         if (CanBeDestroyed)
         {
-            if(collision.transform.tag=="Projectile")
+            if (collision.transform.tag == "Projectile")
             {
                 if (collision.GetComponent<BasicProjectile>() != null)
                 {
@@ -165,6 +196,8 @@ public class BasicProjectile : MonoBehaviour
                 if (collision.GetComponent<NPCStatus>().Shielded && !breakout)
                 {
                     myRB.velocity = new Vector2(myRB.velocity.x * -.7f, myRB.velocity.y * -.7f);
+                    setVel = myRB.velocity;
+                    accelMod = 0;
                     life = 90;
                     dmg = 1;
                     Homing = false;
@@ -202,8 +235,16 @@ public class BasicProjectile : MonoBehaviour
         }
         if (collision.transform.tag == "WorldObject")
         {
-            CreateExplosion(TargetPlayer, TargetEnemy);
-            GameObject.Destroy(this.gameObject);
+
+            if(collision.transform.GetComponent<DestroyWorldObject>()!=null)
+            {
+                collision.transform.GetComponent<DestroyWorldObject>().DestroyMe(myRB.velocity);
+            }
+            else
+            {
+                CreateExplosion(TargetPlayer, TargetEnemy);
+                GameObject.Destroy(this.gameObject);
+            }
         }
 
 
@@ -217,6 +258,9 @@ public class BasicProjectile : MonoBehaviour
         AE.Dmg = dmg;
         AE.HitPlayer = _player;
         AE.HitNPC = _enemy;
+
+        if (ScreenShakeAmt != 0)
+            CamID.CMController.ShakeScreen(ScreenShakeAmt, ScreenShakeDur);
 
         if (SecondaryExplosion != null)
             Instantiate(SecondaryExplosion, transform.position, transform.rotation);

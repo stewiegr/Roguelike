@@ -86,7 +86,7 @@ public class NPCStatus : MonoBehaviour
         if (Random.Range(0, 30) > 28)
             RunSpeed = 6;
 
-        if(RequireBigBossHealthbar)
+        if (RequireBigBossHealthbar)
         {
             MainBossHealthBar MyHealthbar = Instantiate(GameInfo.UIDB.BossHB, GameInfo.UIDB.BossHBPos.position, transform.rotation, GameInfo.UIDB.transform).GetComponent<MainBossHealthBar>();
             MyHealthbar.InitHealthBar(this, BossName);
@@ -95,36 +95,50 @@ public class NPCStatus : MonoBehaviour
 
     public void TakeDmg(int _dmg, float _knockback)
     {
+        bool crit = false;
         GameInfo.PlayAudio(DmgSfxIndex);
 
         if (DmgFlashEffect != null)
             DmgFlashEffect.FlashDmg();
 
+        if (Random.Range(0, 100) < GameInfo.PlayerStatus.Luck)
+        {
+            crit = true;
+            _dmg *= 2;
+        }
+
         _dmg += Mathf.RoundToInt(Random.Range((float)-_dmg * .2f, (float)_dmg * .2f));
 
         PopupText popup = Instantiate(GameInfo.EffectsDB.CustomText, (Vector2)transform.position + Vector2.up, transform.rotation).GetComponent<PopupText>();
-        popup.InitTextCustom(_dmg.ToString() + " dmg", 4, Color.white, 8);
+        if (!crit)
+            popup.InitTextCustom(_dmg.ToString(), 4, Color.red, 8);
+        else
+        {
+            popup.InitTextCustom(_dmg.ToString(), 4, Color.red, 12);
+            CamID.CMController.ShakeScreen(3, 1);
+        }
+
         Life -= _dmg;
         if (BossHealthBar != null)
         {
             BossHealthBar.SetHealthBar(Life, maxLife);
         }
-        
+
         if (Life > 0)
         {
             MyAnim.SetTrigger("Hurt");
-            if(!NoKnockback && MyNav!=null)
-            MyNav.Knockback(_knockback);
+            if (!NoKnockback && MyNav != null)
+                MyNav.Knockback(_knockback);
 
         }
         else if (Alive)
         {
-            if(MyNav!=null)
-            MyNav.StopMovement();
+            if (MyNav != null)
+                MyNav.StopMovement();
             Die();
         }
 
-        if (GameInfo.PlayerStatus.Relics.Lifesteal>0)
+        if (GameInfo.PlayerStatus.Relics.Lifesteal > 0)
         {
             if (GameInfo.PlayerStatus.Relics.CheckLifestealChance() > 98)
             {
@@ -153,7 +167,7 @@ public class NPCStatus : MonoBehaviour
         DoCurrencyDrop();
         DoRelicDrop();
 
-        
+
         if (Random.Range(0, 10) > 7)
             CamID.CMController.ShakeScreen(1, 4);
         MyAnim.SetTrigger("Die");

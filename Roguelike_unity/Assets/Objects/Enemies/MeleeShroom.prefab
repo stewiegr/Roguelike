@@ -144,7 +144,7 @@ MonoBehaviour:
   MyNav: {fileID: -1058236326798848937}
   IgnoreGMCounts: 0
   NoKnockback: 0
-  Life: 100
+  Life: 3
   maxLife: 0
   AtkDmg: 2
   AtkDly: 65
@@ -156,7 +156,7 @@ MonoBehaviour:
   DmgSfxIndex: 3
   DeadSfxIndex: 2
   CurrencyDropLowerUpper: {x: -10, y: 15}
-  ChanceToDropRelic: 0
+  ChanceToDropRelic: 1
   ChanceToDropRareRelic: 0
   ChanceToDropLegendaryRelic: 0
   DmgFlashEffect: {fileID: 0}
