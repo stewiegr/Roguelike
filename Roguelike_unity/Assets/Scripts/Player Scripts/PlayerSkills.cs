@@ -17,6 +17,7 @@ public class PlayerSkills : MonoBehaviour
     PlayerInventory MyInv;
     public bool ShakeOnFire = true;
     bool autoFire = false;
+    public GameObject AutoAtkObj;
 
     int[] multiShotAngles = { 3, -3, 6, -6, 9, -9, 12, -12, 15, -15, 18, -18 };
 
@@ -112,7 +113,6 @@ public class PlayerSkills : MonoBehaviour
                     proj1.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * 10.5f) + transform.up * multiShotAngles[i];
                 else
                     proj1.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * BP.DefaultVel) + transform.up * multiShotAngles[i];
-
                 if (MyStatus.Relics.TrackingShots > 0)
                 {
                     BP.AcquireTarget();

@@ -102,6 +102,7 @@ public class InvSlot : MonoBehaviour
     public void ClearSlot()
     {
         GameItem = GameInfo.GM.GetComponent<ItemDatabase>().Empty;
+        MyInv.MyItems[IndexInInv] = GameInfo.GM.GetComponent<ItemDatabase>().Empty;
         ItemRenderer.sprite = null;
     }
 

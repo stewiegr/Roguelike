@@ -11,6 +11,10 @@ public class ChestInventory : MonoBehaviour
     public float ChanceOfUnique=0;
     public float ChanceOfLegendary=0;
 
+    int staffCt = 0;
+    int trinketCt = 0;
+    int tomeCt = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,7 @@ public class ChestInventory : MonoBehaviour
             float loot = Random.Range(0f, 100f);
             if (i <= MaxItemCountUpTo9)
             {
+
                 if (loot > 100 - ChanceOfLegendary)
                     MyItems.Add(GameInfo.ItemDB.Common[Random.Range(0, GameInfo.ItemDB.Legendary.Length)]);
                 else if (loot > 100 - ChanceOfUnique)

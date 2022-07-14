@@ -140,5 +140,11 @@ public class CinemachineControls : MonoBehaviour
     {
         ShakeDur += _dur;
         noise.m_AmplitudeGain += _amp;
+
+        if (ShakeDur > 2)
+            ShakeDur = 2;
+
+        if (noise.m_AmplitudeGain > 3.5f)
+            noise.m_AmplitudeGain = 3;
     }
 }
