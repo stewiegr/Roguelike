@@ -1842,6 +1842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eve
       objectReference: {fileID: 0}
+    - target: {fileID: 2068041340735735208, guid: 204de7e6ca347304882260f4825f6eff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204de7e6ca347304882260f4825f6eff, type: 3}
 --- !u!1 &159067019
