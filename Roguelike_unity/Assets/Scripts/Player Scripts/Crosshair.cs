@@ -18,4 +18,9 @@ public class Crosshair : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, angle);
         }
     }
+
+    public Vector3 GetMousePos()
+    {
+        return mousePosition;
+    }
 }

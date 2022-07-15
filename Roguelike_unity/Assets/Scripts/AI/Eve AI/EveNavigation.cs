@@ -111,6 +111,14 @@ public class EveNavigation : MonoBehaviour
         }
     }
 
+    public void ForceDashToCenter()
+    {
+        if(!dashing)
+        {
+            Dash(DirectionToDash.Center);
+        }
+    }
+
     void Dash(DirectionToDash _dashWhere)
     {
         dashing = true;

@@ -15,9 +15,11 @@ public class PlayerSkills : MonoBehaviour
     PlayerStatus MyStatus;
     PlayerController MyController;
     PlayerInventory MyInv;
+    Crosshair Crosshair;
     public bool ShakeOnFire = true;
     bool autoFire = false;
     public GameObject AutoAtkObj;
+    Spells SpellDB;
 
     int[] multiShotAngles = { 3, -3, 6, -6, 9, -9, 12, -12, 15, -15, 18, -18 };
 
@@ -27,6 +29,8 @@ public class PlayerSkills : MonoBehaviour
         MyStatus = transform.parent.GetComponent<PlayerStatus>();
         MyController = transform.parent.GetComponent<PlayerController>();
         MyInv = transform.parent.GetComponent<PlayerInventory>();
+        SpellDB = GameInfo.GM.GetComponent<Spells>();
+        Crosshair = GetComponent<Crosshair>();
     }
 
     // Update is called once per frame
@@ -51,7 +55,7 @@ public class PlayerSkills : MonoBehaviour
                 MyController.CDAlert.gameObject.SetActive(true);
                 MyController.CDAlert.GetComponent<AutoDisableObject>().ActivateObj(90);
                 MyController.CDAlert.text = "Autofire ON";
-                
+
             }
             else if (!autoFire)
                 autofireDetect = 10;
@@ -67,7 +71,21 @@ public class PlayerSkills : MonoBehaviour
                 MyController.CDAlert.GetComponent<AutoDisableObject>().ActivateObj(90);
                 MyController.CDAlert.text = "Autofire OFF";
             }
+        }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            if(MyInv.Tome.GameItem.ItemSpell!=GameInfo.SpellList.none)
+            {
+                switch (MyInv.Tome.GameItem.ItemSpell)
+                {
+                    case GameInfo.SpellList.Bomb:
+                        SpellDB.BombSpell((int)MyStatus.AttackDamage * 4, Crosshair.GetMousePos());
+                        break;
+                }
+
             }
+        }
 
 
     }
@@ -80,7 +98,7 @@ public class PlayerSkills : MonoBehaviour
         }
 
         GameInfo.PlayAudio(5);
-        GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f + transform.right * .85f, transform.parent.rotation);
+        GameObject proj = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f + transform.right * .85f, transform.rotation);
         BasicProjectile BP = proj.GetComponent<BasicProjectile>();
         //BP.life = BP.life * MyStatus.AttackRange;
         BP.TargetEnemy = true;
@@ -89,22 +107,22 @@ public class PlayerSkills : MonoBehaviour
             proj.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(transform.right) * 10.5f;
         else
             proj.GetComponent<Rigidbody2D>().velocity = Vector3.Normalize(transform.right) * BP.DefaultVel;
-        if (MyStatus.Relics.PenetratingProjectile>0)
+        if (MyStatus.Relics.PenetratingProjectile > 0)
             BP.Penetrations = MyStatus.Relics.SetProjectilePenetrations() * BP.PenetrationMultiplier;
 
-        if (MyStatus.Relics.TrackingShots>0)
+        if (MyStatus.Relics.TrackingShots > 0)
         {
             BP.AcquireTarget();
         }
 
 
-        if (MyStatus.Relics.TripleShot>0)
+        if (MyStatus.Relics.TripleShot > 0)
         {
             for (int i = 0; i <= MyStatus.Relics.TripleShot; i++)
             {
-                GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.parent.rotation);
+                GameObject proj1 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.rotation);
                 BP = proj1.GetComponent<BasicProjectile>();
-               // BP.life = BP.life * MyStatus.AttackRange;
+                // BP.life = BP.life * MyStatus.AttackRange;
                 BP.TargetEnemy = true;
                 BP.dmg = (int)MyStatus.AttackDamage;
                 if (MyStatus.Relics.PenetratingProjectile > 0)
@@ -118,25 +136,7 @@ public class PlayerSkills : MonoBehaviour
                     BP.AcquireTarget();
                 }
             }
-            /*
-            GameObject proj2 = Instantiate(MyInv.Weapon.GameItem.StaffProjectile, transform.position + Vector3.up * .35f, transform.root.rotation);
-           // proj2.transform.Rotate(0, 0, -25);
-            BP = proj2.GetComponent<BasicProjectile>();
-            BP.life = BP.life * MyStatus.AttackRange;
-            BP.TargetEnemy = true;
-            BP.dmg = (int)MyStatus.AttackDamage;
-            if (MyStatus.Relics.PenetratingProjectile>0)
-                BP.Penetrations = Random.Range(3, 5) * BP.PenetrationMultiplier;
-            if (BP.DefaultVel == 0)
-                proj2.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * 10.5f) + transform.up * -3f;
-            else
-                proj2.GetComponent<Rigidbody2D>().velocity = (Vector3.Normalize(transform.right) * BP.DefaultVel) + transform.up * -3f;
 
-            if (MyStatus.Relics.TrackingShots>0)
-            {
-                BP.AcquireTarget();
-                BP.HomingRate = MyStatus.Relics.TrackingShots;
-            }*/
         }
 
 

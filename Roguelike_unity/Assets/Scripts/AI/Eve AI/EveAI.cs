@@ -47,10 +47,16 @@ public class EveAI : MonoBehaviour
     public GameObject EveAtk2Circle;
     List<Vector2> Atk2Points = new List<Vector2>();
 
+    bool DoAtk3;
+    int Atk3Stage = 0;
+    float Atk3ShotDelay = 20;
+
+
     public TextMeshPro EveTaunt;
     string TauntSetString = "";
     public List<string> Atk1Taunts;
     public List<string> Atk2Taunts;
+    public List<string> Atk3Taunts;
     int currentChar = 0;
     float tauntDel = 0;
 
@@ -84,6 +90,10 @@ public class EveAI : MonoBehaviour
             {
                 BigAtk2();
             }
+            if(DoAtk3)
+            {
+                BigAtk3();
+            }
         }
     }
 
@@ -98,7 +108,8 @@ public class EveAI : MonoBehaviour
             ShowTaunt();
         }
     }
-
+    //BIG ATK 2 REGION
+    #region BIGATK2
     void BigAtk2()
     {
         if (Atk2ShotDelay > 0)
@@ -145,10 +156,10 @@ public class EveAI : MonoBehaviour
             }
         }
     }
-
+    #endregion 
     //BIG ATK 1 REGION
     #region BigAttack1
-    //END BIG ATK 1 REGIOn
+    //END BIG ATK 1 REGION
     void BigAtk1()
     {
         if (Atk1ShotDelay > 0)
@@ -255,6 +266,20 @@ public class EveAI : MonoBehaviour
     }
     #endregion //BIG ATTACK 1 CODE
 
+    void BigAtk3()
+    {
+        if (Atk3ShotDelay > 0)
+            Atk3ShotDelay -= 60 * Time.deltaTime;
+
+        if(Atk3Stage==1)
+        {
+            if(Atk3ShotDelay<=0)
+            {
+                ClearTaunt();
+                Atk3Stage = 2;
+            }
+        }
+    }
 
 
     public void StartTeleport()
@@ -264,20 +289,27 @@ public class EveAI : MonoBehaviour
 
     void AttackHandler()
     {
-        if (BigAtkDelay <= 0 && !DoAtk1 && !DoAtk2)
+        if (BigAtkDelay <= 0 && !DoAtk1 && !DoAtk2 && !DoAtk3)
         {
-            if(Random.Range(0,10)>5)
+            int atkSelect = Random.Range(0, 111);
+            if(atkSelect<5)
             {
                 TauntSetString = Atk1Taunts[Random.Range(0, Atk1Taunts.Count)];
                 DoAtk1 = true;
                 MyNav.StopToAttack = true;
                 tauntDel = 90;
             }    
-            else
+            if(atkSelect>=5 && atkSelect<=10)
             {
                 TauntSetString = Atk2Taunts[Random.Range(0, Atk2Taunts.Count)];
                 DoAtk2 = true;
                 MyNav.StopToAttack = true;
+                tauntDel = 90;
+            }
+            if(atkSelect>10)
+            {
+                TauntSetString = Atk3Taunts[Random.Range(0, Atk3Taunts.Count)];
+                DoAtk3 = true;
                 tauntDel = 90;
             }
         }
@@ -316,7 +348,16 @@ public class EveAI : MonoBehaviour
             Atk2Points.Add(GameInfo.PlayerPos);
 
         }
-        else if (!DoAtk1 && !DoAtk2)
+        if (DoAtk3 && Atk3Stage == 0 && tauntDel <= 0)
+        {
+            Atk3Stage = 1;
+            MyNav.StopToAttack = true;
+            MyAnim.SetTrigger("StartTP");
+            TPPos = new Vector3(0, 0, 0);
+            Atk3ShotDelay = 60;
+
+        }
+        else if (!DoAtk1 && !DoAtk2 && !DoAtk3)
         {
             if (BigAtkDelay > 120)
             {

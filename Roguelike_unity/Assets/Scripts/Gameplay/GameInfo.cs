@@ -19,6 +19,19 @@ public static class GameInfo
     public static SFXHandler SFX;
     public static UIDB UIDB;
 
+    public enum SpellList
+    {
+        none,
+        Bomb,
+        HealCircle,
+        DamageBuffCircle,
+        SlowCircle,
+        ManaRegenCircle,
+        RepelCircle
+    }
+
+    public static SpellList AllGameSpells;
+
     public static void PositionInv()
     {
         PlayerInventory inv = Player.GetComponent<PlayerInventory>();

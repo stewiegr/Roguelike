@@ -238,7 +238,7 @@ public class BasicProjectile : MonoBehaviour
 
             if(collision.transform.GetComponent<DestroyWorldObject>()!=null)
             {
-                collision.transform.GetComponent<DestroyWorldObject>().DestroyMe(myRB.velocity);
+                collision.transform.GetComponent<DestroyWorldObject>().DestroyMe(myRB.velocity, dmg * 2);
             }
             else
             {

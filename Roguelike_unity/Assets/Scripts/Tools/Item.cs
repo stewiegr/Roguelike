@@ -22,6 +22,7 @@ public class Item : ScriptableObject
 
     public InvSlot.SlotType ItemType;
 
+    public GameInfo.SpellList ItemSpell;
 
     public enum RelicBonus
     {

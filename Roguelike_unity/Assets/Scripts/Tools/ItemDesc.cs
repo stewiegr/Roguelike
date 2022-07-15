@@ -51,7 +51,7 @@ public class ItemDesc : MonoBehaviour
                     break;
 
             }
-            if (_item.ItemType != InvSlot.SlotType.Relic && _item.ItemType!=InvSlot.SlotType.General)
+            if (_item.ItemType != InvSlot.SlotType.Relic && _item.ItemType!=InvSlot.SlotType.General && _item.ItemType!=InvSlot.SlotType.Tome)
             {
                 foreach(TextMeshPro tx in TextFields)
                 {

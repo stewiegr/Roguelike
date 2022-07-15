@@ -948,6 +948,11 @@ MonoBehaviour:
   - The dusk calls your name...
   - The void's embrace calls...
   - Sweet death, it approaches.
+  Atk3Taunts:
+  - Children of the forest - assist me!
+  - Come to me my darlings...
+  - My children, assist me now!
+  - I call upon thee, my children!
 --- !u!114 &596865671
 MonoBehaviour:
   m_ObjectHideFlags: 0

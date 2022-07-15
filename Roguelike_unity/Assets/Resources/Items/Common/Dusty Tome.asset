@@ -12,13 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc68a131f0980e4ea451c683a25b9e9, type: 3}
   m_Name: Dusty Tome
   m_EditorClassIdentifier: 
-  ItemName: Dusty Tome
+  ItemName: Tome of Ordinance
   ItemDescription: It's full of book worms.
   MoveSpeed: 0
   RateOfFire: 0
+  EnergyRegen: 0
   Damage: 0
-  Range: 2
-  ShotSpeed: 0
+  Range: 0
   Luck: 0
   ItemGFX: {fileID: -159264506, guid: ed4dc5ae89aeb1a4a96050745c03e313, type: 3}
+  RelicDesc: Summon a large bomb that explodes after 5 seconds, or when it is hit
+    by a projectile.
+  StaffProjectile: {fileID: 0}
   ItemType: 2
+  ItemSpell: 1
+  RelicEffect: 0
+  RelicBagA: 0
+  RelicBagB: 0
+  RelicBagC: 0

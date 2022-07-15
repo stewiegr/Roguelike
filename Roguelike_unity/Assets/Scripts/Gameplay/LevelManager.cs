@@ -53,57 +53,64 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DelayWave <= 0)
+        if (!GM.DisableSpawnsForTesting)
         {
-            if (!waveStarted && currentWave < Waves.Count)
+            if (DelayWave <= 0)
             {
-                InitWave();
-            }
-            else if (waveStarted && GM.currentKillsThisWave < setSpawnNumber - 4)
-            {
-                if (spawnedSoFar <= setSpawnNumber && GM.LivingEnemies < Waves[currentWave].MaxAliveAtOnce && GameInfo.PlayerStatus.Alive)
+                if (!waveStarted && currentWave < Waves.Count)
                 {
-                    if (delay > 0)
+                    InitWave();
+                }
+                else if (waveStarted && GM.currentKillsThisWave < setSpawnNumber - 4)
+                {
+                    if (spawnedSoFar <= setSpawnNumber && GM.LivingEnemies < Waves[currentWave].MaxAliveAtOnce && GameInfo.PlayerStatus.Alive)
                     {
-                        delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
-                        if (delay <= 0)
+                        if (delay > 0)
                         {
-                            if (spawnedSoFar < 20)
-                                SpawnMonster(1);
-                            else
+                            delay -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+                            if (delay <= 0)
                             {
-                                if (Random.Range(0, 10) > 6)
-                                    SpawnMonster(Random.Range(20, 30));
+                                if (spawnedSoFar < 20)
+                                    SpawnMonster(1);
                                 else
-                                    SpawnMonster(Random.Range(5, 15));
+                                {
+                                    if (Random.Range(0, 10) > 6)
+                                        SpawnMonster(Random.Range(20, 30));
+                                    else
+                                        SpawnMonster(Random.Range(5, 15));
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        if (GM.currentKillsThisWave > setSpawnNumber && GM.currentKillsThisWave >= spawnedSoFar && waveStarted)
-        {
-            waveStarted = false;
-            DoChestSpawn();
-            currentWave++;
-        }
-
-        if (DelayWave > 0)
-        {
-            if (!CamID.CMController.zoom)
+            if (GM.currentKillsThisWave > setSpawnNumber && GM.currentKillsThisWave >= spawnedSoFar && waveStarted)
             {
-                DelayWave -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
-                WaveWarn.text = "Next Wave In: " + (int)(DelayWave / 60);
+                waveStarted = false;
+                DoChestSpawn();
+                currentWave++;
+            }
+
+            if (DelayWave > 0)
+            {
+                if (!CamID.CMController.zoom)
+                {
+                    DelayWave -= 60 * Time.deltaTime * GameInfo.GM.GameSpeed;
+                    WaveWarn.text = "Next Wave In: " + (int)(DelayWave / 60);
+                }
+                else
+                {
+                    WaveWarn.text = "Player is preparing for next wave...";
+                }
+
             }
             else
-            {
-                WaveWarn.text = "Player is preparing for next wave...";
-            }
-
+                WaveWarn.text = "";
         }
         else
-            WaveWarn.text = "";
+        {
+            WaveWarn.text = "Spawns disabled for testing";
+        }
     }
 
     public void RemoveMe(GameObject remove)

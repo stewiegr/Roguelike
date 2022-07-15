@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public bool DisableSpawnsForTesting;
     public int currentKillsThisWave = 0;
     public int LivingEnemies = 0;
     public GameObject InventoryWindow;
