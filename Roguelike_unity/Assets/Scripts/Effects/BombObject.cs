@@ -7,11 +7,12 @@ public class BombObject : MonoBehaviour
     public DestroyWorldObject DO;
     public SpriteRenderer MyRend;
     float Timer = 300;
-    float flashMe = 0;
+    bool flashMe = false;
     bool landed = false;
     float landY;
     float fallSpeed = -1;
     int dmg;
+
 
     public void InitBomb(float _landY, int _dmg)
     {
@@ -29,17 +30,10 @@ public class BombObject : MonoBehaviour
             Timer -= 60 * Time.deltaTime;
             if(Timer<=90)
             {
-                if(flashMe>0)
+               if(!flashMe)
                 {
-                    flashMe -= 60 * Time.deltaTime;
-                }
-                else
-                {
-                    flashMe = 10;
-                    if (MyRend.color == Color.white)
-                        MyRend.color = Color.red;
-                    else
-                        MyRend.color = Color.white;
+                    flashMe = true;
+                    GetComponent<Animator>().SetTrigger("Flash");
                 }
             }
             if(Timer<=0)

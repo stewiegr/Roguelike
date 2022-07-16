@@ -50,6 +50,9 @@ public class EveAI : MonoBehaviour
     bool DoAtk3;
     int Atk3Stage = 0;
     float Atk3ShotDelay = 20;
+    public List<GameObject> MinionSpawns;
+    public GameObject MinionObject;
+    public List<GameObject> SpawnedMinions = new List<GameObject>();
 
 
     public TextMeshPro EveTaunt;
@@ -275,8 +278,49 @@ public class EveAI : MonoBehaviour
         {
             if(Atk3ShotDelay<=0)
             {
+                transform.position = Vector3.zero;
+                MyAnim.SetTrigger("DoTP");                          
                 ClearTaunt();
                 Atk3Stage = 2;
+                Atk3ShotDelay = 180;
+            }
+        }
+        if(Atk3Stage==2)
+        {
+            if(Atk3ShotDelay<=0)
+            {
+                List<GameObject> DoneSpawns = new List<GameObject>();
+                int spawnNum = Random.Range(4, 10);
+                GameObject thisSpawn;
+
+                for(int i =0; i<=spawnNum; i++)
+                {
+                    do
+                    {
+                        thisSpawn = MinionSpawns[Random.Range(0, 11)];
+                    }
+                    while (DoneSpawns.Contains(thisSpawn) || thisSpawn==null);
+                    DoneSpawns.Add(thisSpawn);
+                    GameObject min = Instantiate(MinionObject, thisSpawn.transform.position, transform.rotation);
+                    min.GetComponent<EveMinion>().Eve = this.transform;
+                    SpawnedMinions.Add(min);
+                }
+                Atk3Stage = 3;
+            }
+        }
+        if(Atk3Stage==3)
+        {
+            if(SpawnedMinions.Count<=0)
+            {
+                GetComponent<BoxCollider2D>().enabled = true;
+                Atk3Stage = 0;
+                DoAtk3 = false;
+                MyNav.StopToAttack = false;
+                DoAtk1 = false;
+                atkDly = 120;
+                BigAtkDelay = 500;
+                SpawnedMinions.Clear();
+                
             }
         }
     }
@@ -350,6 +394,7 @@ public class EveAI : MonoBehaviour
         }
         if (DoAtk3 && Atk3Stage == 0 && tauntDel <= 0)
         {
+            GetComponent<BoxCollider2D>().enabled = false;
             Atk3Stage = 1;
             MyNav.StopToAttack = true;
             MyAnim.SetTrigger("StartTP");

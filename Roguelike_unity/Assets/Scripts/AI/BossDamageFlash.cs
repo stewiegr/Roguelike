@@ -25,6 +25,7 @@ public class BossDamageFlash : MonoBehaviour
             if (flashDur <= 0)
             {
                 MyRend.material = DefaultMat;
+                MyRend.color = Color.white;
             }
         }
     }
@@ -33,5 +34,13 @@ public class BossDamageFlash : MonoBehaviour
     {
         flashDur = 5;
         MyRend.material = DmgFlashMat;
+        MyRend.color = Color.red;
+    }
+
+    public void FlashHeal()
+    {
+        flashDur = 5;
+        MyRend.material = DmgFlashMat;
+        MyRend.color = Color.blue;
     }
 }

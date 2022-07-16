@@ -93,6 +93,16 @@ public class NPCStatus : MonoBehaviour
         }
     }
 
+    public void Heal(int _healAmt)
+    {
+        Life += _healAmt;
+        if (Life > maxLife)
+            Life = maxLife;
+
+        if (DmgFlashEffect != null)
+            DmgFlashEffect.FlashHeal();
+    }
+
     public void TakeDmg(int _dmg, float _knockback)
     {
         bool crit = false;
