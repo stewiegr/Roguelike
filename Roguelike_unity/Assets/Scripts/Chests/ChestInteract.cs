@@ -27,13 +27,19 @@ public class ChestInteract : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (Prompt.gameObject.activeSelf)
+            if (GameInfo.CurrentChest==this && !open)
             {
                 GameInfo.PlayAudio(4);
                 transform.parent.GetComponent<Animator>().Play("ChestOpen");
                 OpenChest();
+            }
+            else if(GameInfo.CurrentChest==this)
+            {
+                //GameInfo.GM.ActivateInvWindow(false);
+                CloseChest();
+                Prompt.gameObject.SetActive(true);
             }
         }
 
@@ -49,33 +55,6 @@ public class ChestInteract : MonoBehaviour
 
         if (open)
         {
-            #region OldChestOpen
-            /* if (animDel <= 0)
-             {
-                 if(!allOpen)
-                 {
-                     for (int i = 0; i <= 8; i++)
-                     {
-                         Squares[i].SetActive(true);
-                         Squares[i].GetComponent<InvSlot>().MyChest = Inv;
-                         Squares[i].GetComponent<InvSlot>().IndexInInv = i;
-                     }
-                     allOpen = true;
-                     GameInfo.PlayerInMenu = true;
-                     GameInfo.GM.InventoryWindow.SetActive(true);
-                     GameInfo.PositionInv();
-                     AssignItems();
-                 }
-             }
-             else
-             {
-                     animDel -= 60 * Time.deltaTime;
-                     if (Random.Range(0, 20) > animDel)
-                     {
-                         Squares[Random.Range(0, 9)].SetActive(true);
-                     }             
-             }*/
-            #endregion
             if (!allOpen)
             {
                 int open = 0;
@@ -98,9 +77,7 @@ public class ChestInteract : MonoBehaviour
                         Squares[i].GetComponent<InvSlot>().MyChest = Inv;
                         Squares[i].GetComponent<InvSlot>().IndexInInv = i;
                     }
-                    GameInfo.PlayerInMenu = true;
-                    GameInfo.GM.InventoryWindow.SetActive(true);
-                    GameInfo.PositionInv();
+                    // GameInfo.GM.ActivateInvWindow();
                     allOpen = true;
                     AssignItems();
                 }
@@ -112,18 +89,6 @@ public class ChestInteract : MonoBehaviour
             if (allAssigned)
                 CloseChest();
         }
-
-        if (open)
-        {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                GameInfo.PlayerInMenu = false;
-                GameInfo.GM.InventoryWindow.SetActive(false);
-                CloseChest();
-                Prompt.gameObject.SetActive(true);
-            }
-        }
-
 
     }
     void AssignItems()
@@ -146,6 +111,7 @@ public class ChestInteract : MonoBehaviour
     }
     void OpenChest()
     {
+        GameInfo.GM.ActivateInvWindow(true);
         GameInfo.CurrentChest = this;
         open = true;
         Prompt.gameObject.SetActive(false);
@@ -160,6 +126,7 @@ public class ChestInteract : MonoBehaviour
 
     public void CloseChest()
     {
+
         if (allAssigned)
         {
             delayClose = false;
@@ -172,24 +139,23 @@ public class ChestInteract : MonoBehaviour
             }
             allOpen = false;
             transform.parent.GetComponent<Animator>().Play("ChestClosed");
-            GameInfo.PlayerInMenu = false;
-            GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
-            GameInfo.GM.InventoryWindow.SetActive(false);
-            GameInfo.ItemInfoWindow.SetActive(false);
-            GameInfo.CurrentChest = null;
+            GameInfo.GM.ActivateInvWindow(false);
 
         }
         else
         {
             delayClose = true;
         }
+
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player" && !open)
         {
+            if (GameInfo.CurrentChest == null)
+                GameInfo.CurrentChest = this;
             Prompt.gameObject.SetActive(true);
         }
     }
@@ -198,10 +164,14 @@ public class ChestInteract : MonoBehaviour
     {
         if (collision.transform.tag == "Player" && !open)
         {
+            if (GameInfo.CurrentChest == this)
+                GameInfo.CurrentChest = null;
             Prompt.gameObject.SetActive(false);
         }
         if (collision.transform.tag == "Player" && open)
         {
+            if (GameInfo.CurrentChest == this)
+                GameInfo.CurrentChest = null;
             CloseChest();
         }
     }

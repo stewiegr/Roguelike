@@ -903,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2827822838113048877, guid: bb322b51617974b4aba6504cb02ba324, type: 3}
       propertyPath: m_text
-      value: E - Open / Close
+      value: Q - Open / Close
       objectReference: {fileID: 0}
     - target: {fileID: 2827822839696255034, guid: bb322b51617974b4aba6504cb02ba324, type: 3}
       propertyPath: MaxItemCountUpTo9

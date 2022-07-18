@@ -36,23 +36,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && GameSpeed==1)
+        if (Input.GetKeyDown(KeyCode.Q) && GameSpeed==1 && GameInfo.CurrentChest==null)
         {
-            InventoryWindow.SetActive(!InventoryWindow.activeSelf);
-            if(InventoryWindow.activeSelf)
-                GameInfo.PositionInv();
-            {
-                if (!GameInfo.PlayerInMenu)
-                    GameInfo.PlayerInMenu = true;
-                else
-                {
-                    GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
-                    GameInfo.PlayerInMenu = false;
-                    if (GameInfo.CurrentChest != null)
-                        GameInfo.CurrentChest.CloseChest();
-                    GameInfo.ItemInfoWindow.SetActive(false);
-                }
-            }
+            if (InventoryWindow.activeSelf)
+                ActivateInvWindow(false);
+            else
+                ActivateInvWindow(true);
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
@@ -69,6 +58,23 @@ public class GameManager : MonoBehaviour
                 WorldObjects.transform.position += new Vector3(0, 0, -99);
             }
         }
+    }
+
+    public void ActivateInvWindow(bool _open)
+    {
+        InventoryWindow.SetActive(_open);
+        if (_open)
+            GameInfo.PositionInv();
+        
+            if (_open)
+                GameInfo.PlayerInMenu = true;
+            else
+            {
+                GameInfo.Player.GetComponent<PlayerInventory>().CloseInv();
+                GameInfo.PlayerInMenu = false;
+                GameInfo.ItemInfoWindow.SetActive(false);
+            }
+        
     }
 
     public void BeginLevel(int _index)
